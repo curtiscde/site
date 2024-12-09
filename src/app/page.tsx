@@ -1,3 +1,4 @@
+import Link from "next/link";
 import "./hero.scss";
 
 export default function Home() {
@@ -9,7 +10,7 @@ export default function Home() {
             <img src="/images/curtis.jpeg" />
           </div>
         </div>
-        <a href="/" className="btn btn-ghost text-xl">Curtis Timson</a>
+        <Link href="/" className="btn btn-ghost text-xl">Curtis Timson</Link>
       </div>
 
       <div
