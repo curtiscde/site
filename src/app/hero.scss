@@ -1,0 +1,17 @@
+.hero {
+
+  .hero-text-container {
+    position: relative;
+  }
+
+  .description::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100px;
+    margin-left: -50px;
+    left: 50%;
+    top: 3em;
+    background: #d4d5d9;
+  }
+}
