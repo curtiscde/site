@@ -2,11 +2,12 @@ import Link from "next/link";
 import "./hero.scss";
 import Posts from "./components/Posts";
 import { Post } from "./types/Post";
-// import { getPosts } from "./posts";
+import { getPosts } from "./posts";
 
 export default function Home() {
 
-  // const posts: Array<Post> = getPosts();
+  const posts: Array<Post> = getPosts();
+  console.log('posts', posts)
 
   const _posts: Post[] = [
     {

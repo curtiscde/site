@@ -7,6 +7,8 @@ import { parsePost } from './parsePost';
 export function getPosts() {
   const files = fs.readdirSync(path.join('posts'));
 
+
+
   const posts: Post[] = files.map((filename) => {
     const markdownWithMeta = fs.readFileSync(
       path.join('posts', filename),
