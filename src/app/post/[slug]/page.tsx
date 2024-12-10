@@ -2,6 +2,14 @@ import { getPosts } from "@/app/posts"
 import Link from "next/link";
 import showdown from 'showdown';
 
+export async function generateStaticParams() {
+  const posts = await getPosts()
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
+
 function PostContent({ content }: { content: string }) {
   const convert = new showdown.Converter();
   const htmlContent = convert.makeHtml(content);
@@ -11,9 +19,7 @@ function PostContent({ content }: { content: string }) {
   );
 }
 
-export default async function Page({
-  params,
-}: {
+export default async function Page({ params }: {
   params: Promise<{ slug: string }>
 }) {
   const slug = (await params).slug
