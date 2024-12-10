@@ -1,17 +1,12 @@
-'use client'
-
 import Link from "next/link";
 import "./hero.scss";
-import { PostCard } from "./components/PostCard";
+import Posts from "./components/Posts";
 import { Post } from "./types/Post";
-import { Masonry } from "masonic";
 // import { getPosts } from "./posts";
 
 export default function Home() {
 
   // const posts: Array<Post> = getPosts();
-
-
 
   const _posts: Post[] = [
     {
@@ -21,7 +16,8 @@ export default function Home() {
       description: 'A preview of some of the tools I use in my terminal setup, as well as the commands I use on a daily basis when working with GitHub',
       slug: 'foo',
       tags: ['terminal', 'github', 'warp', 'ohmyzsh'],
-      date: new Date()
+      date: new Date(),
+      content: 'foo',
     },
     {
       id: 'b',
@@ -29,27 +25,26 @@ export default function Home() {
       thumbnailImageUrl: '/post/github-profile-readme/cover-latest-posts-600w.png',
       description: 'GitHub now has the option of adding a README to your profile page, which can be updated with your latest blog posts',
       slug: 'bar',
-      date: new Date()
+      date: new Date(),
+      content: 'foo',
     },
     {
       id: 'c',
       title: 'Using Codecov within a monorepo',
       description: 'A quick guide on how to integrate Codecov within a monorepo',
       slug: 'baz',
-      date: new Date()
+      date: new Date(),
+      content: 'foo',
     },
     {
       id: 'd',
       title: 'Displaying Strava stats using webhooks & GitHub Actions',
       description: 'A recent project displaying Strava Year-To-Date stats using webhooks, Firebase, GitHub Actions & Next.js',
       slug: 'foo2',
-      date: new Date()
+      date: new Date(),
+      content: 'foo',
     }
   ]
-
-  const EasyMasonryComponent = ({ posts }: { posts: Post[] }) => (
-    <Masonry items={posts} render={PostCard} columnGutter={14} rowGutter={14} maxColumnCount={3} columnWidth={417} />
-  );
 
   return (
     <>
@@ -84,7 +79,7 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="grid grid-cols-12 gap-4 p-4 lg:p-0">
             <div className="grid col-span-12">
-              <EasyMasonryComponent posts={_posts} />
+              <Posts posts={_posts} />
             </div>
           </div>
 
