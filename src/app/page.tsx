@@ -8,7 +8,7 @@ export default function Home() {
 
   const posts: Array<Post> = getPosts();
 
-  // const _posts: Post[] = [
+  // const posts: Post[] = [
   //   {
   //     id: 'a',
   //     title: 'My terminal setup and commands I use on a daily basis when working with GitHub',
@@ -82,8 +82,6 @@ export default function Home() {
               <Posts posts={posts} />
             </div>
           </div>
-
-
         </div>
       </main>
     </>
