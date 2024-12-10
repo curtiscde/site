@@ -8,6 +8,7 @@ export default function Home() {
     {
       id: 'a',
       title: 'My terminal setup and commands I use on a daily basis when working with GitHub',
+      imageUrl: '/post/daily-commands/daily-commands.png',
       description: 'A preview of some of the tools I use in my terminal setup, as well as the commands I use on a daily basis when working with GitHub'
     },
     {

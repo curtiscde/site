@@ -5,12 +5,13 @@ export const PostCard = ({ post }: { post: Post }) => {
 
   return (
     <div className="card bg-base-100 w-97 shadow-xl">
-
-      <figure>
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="Shoes" />
-      </figure>
+      {post.imageUrl != null &&
+        <figure>
+          <img
+            src={post.imageUrl}
+            alt={post.title} />
+        </figure>
+      }
       <div className="card-body">
         <h2 className="card-title">
           {post.title}
