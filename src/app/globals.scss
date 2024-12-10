@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-primary: theme('colors.primary');
+}
+
+
+main {
+  .container {
+    margin-top: -48px
+  }
+}
