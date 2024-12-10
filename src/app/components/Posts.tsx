@@ -2,15 +2,13 @@
 
 import React from "react";
 import { Post } from "../types/Post";
-import { Masonry } from "masonic";
-import { PostCard } from "./PostCard";
+import dynamic from "next/dynamic";
 
-const EasyMasonryComponent = ({ posts }: { posts: Post[] }) => (
-  <Masonry items={posts} render={PostCard} columnGutter={14} rowGutter={14} maxColumnCount={3} columnWidth={417} />
-);
+const DynamicMasonryPosts = dynamic(() => import('./MasonryPosts'), { ssr: false });
+
 
 export default function Posts({ posts }: { posts: Post[] }) {
   return (
-    <EasyMasonryComponent posts={posts} />
+    <DynamicMasonryPosts posts={posts} />
   )
 }
