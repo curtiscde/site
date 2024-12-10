@@ -3,7 +3,7 @@ tags: ['c-sharp', 'sql-server', 'stored-procedure', 'strong-type']
 date: 2012-05-14T00:00:00
 title: Strongly typed Stored Procedure names in C#
 slug: strongly-typed-stored-procedure-names-in-c-sharp
-disqusid: 6
+id: 6
 ---
 Calling SQL Stored Procedures in ASP.NET as simple text strings can cause problems such as:
 
