@@ -1,7 +1,10 @@
+'use client'
+
 import Link from "next/link";
 import "./hero.scss";
 import { PostCard } from "./components/PostCard";
 import { Post } from "./types/Post";
+import { Masonry } from "masonic";
 
 export default function Home() {
   const posts: Post[] = [
@@ -27,6 +30,10 @@ export default function Home() {
       description: 'A recent project displaying Strava Year-To-Date stats using webhooks, Firebase, GitHub Actions & Next.js'
     }
   ]
+
+  const EasyMasonryComponent = ({ posts }: { posts: Post[] }) => (
+    <Masonry items={posts} render={PostCard} columnGutter={14} rowGutter={14} maxColumnCount={3} columnWidth={417} />
+  );
 
   return (
     <>
@@ -61,11 +68,17 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="grid grid-cols-12 gap-4 p-4 lg:p-0">
 
-            {posts.map(post => (
+            <div className="grid col-span-12">
+
+              <EasyMasonryComponent posts={posts} />
+
+            </div>
+
+            {/* {posts.map(post => (
               <div key={post.id} className="grid col-span-12 md:col-span-4">
                 <PostCard post={post} />
               </div>
-            ))}
+            ))} */}
 
           </div>
         </div>

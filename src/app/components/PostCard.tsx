@@ -1,7 +1,7 @@
 import React from "react"
 import { Post } from "../types/Post"
 
-export const PostCard = ({ post }: { post: Post }) => {
+export const PostCard = ({ data: post }: { index: number, data: Post, width: number }) => {
 
   return (
     <div className="card bg-base-100 w-97 shadow-xl">
