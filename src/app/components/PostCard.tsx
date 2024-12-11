@@ -8,15 +8,15 @@ export const PostCard = ({ data: post }: { index: number, data: Post, width: num
     <a href={`/post/${post.slug}`} className="group">
       <div className="card bg-base-100 w-97 shadow-xl post-card">
 
-        {post.thumbnailImageUrl != null &&
+        {post.imageThumbnailUrl != null &&
           <figure className="bg-primary">
             <img
-              src={post.thumbnailImageUrl}
+              src={post.imageThumbnailUrl}
               alt={post.title} />
           </figure>
         }
         <div className="card-body">
-          <span className="text-xs text-neutral">4 Apr 2024</span>
+          <span className="text-xs text-neutral">{post.dateFormatted}</span>
           <h2 className="card-title group-hover:text-primary">
             {post.title}
             <div className="badge badge-secondary">NEW</div>

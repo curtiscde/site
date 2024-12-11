@@ -1,10 +1,39 @@
-export interface Post {
-  id: string
-  title: string
-  description?: string
-  thumbnailImageUrl?: string
-  slug: string
-  tags?: string[]
-  date: Date
-  content: string
+import { z } from "zod"
+
+const getOrdinalSuffix = (day: number) => {
+  if (day > 3 && day < 21) return 'th';
+  switch (day % 10) {
+    case 1: return 'st';
+    case 2: return 'nd';
+    case 3: return 'rd';
+    default: return 'th';
+  }
 }
+
+export const postSchema = z.object({
+  id: z.number(),
+  title: z.string(),
+  description: z.string().optional(),
+  image: z.string().optional(),
+  slug: z.string(),
+  tags: z.string().array(),
+  date: z.date(),
+  content: z.string(),
+}).transform((post) => {
+
+  const { date, image: imageThumbnailUrl, ...rest } = post
+
+  const day = date.getDate();
+  const month = date.toLocaleString('en-GB', { month: 'short' });
+  const year = date.getFullYear();
+  const dateFormatted = `${day}${getOrdinalSuffix(day)} ${month} ${year}`;
+
+  return {
+    ...rest,
+    date,
+    dateFormatted,
+    imageThumbnailUrl
+  }
+})
+
+export type Post = z.infer<typeof postSchema>
