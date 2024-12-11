@@ -1,6 +1,7 @@
 import { getPosts } from "@/app/posts"
 import Link from "next/link";
 import showdown from 'showdown';
+import "./PostPage.scss"
 
 export async function generateStaticParams() {
   const posts = await getPosts()
@@ -42,17 +43,15 @@ export default async function Page({ params }: {
         <Link href="/" className="btn btn-ghost text-xl">Curtis Timson</Link>
       </div>
 
-      <main>
+      <main className="post-page">
         <div className="container mx-auto">
-          {/* <div className="grid grid-cols-12 gap-4 p-4 lg:p-0">
-            <div className="grid col-span-12"> */}
-          <article className="prose lg:prose-xl mx-auto">
-            <span>{post.date.toString()}</span>
-            <h1 className="">{post.title}</h1>
-            <PostContent content={post.content} />
-          </article>
-          {/* </div>
-          </div> */}
+          <div className="mx-6">
+            <article className="prose lg:prose-lg mx-auto pt-12">
+              <span className="text-sm">{post.dateFormatted}</span>
+              <h1 >{post.title}</h1>
+              <PostContent content={post.content} />
+            </article>
+          </div>
 
 
         </div>
