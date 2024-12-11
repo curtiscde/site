@@ -52,6 +52,11 @@ export default async function Page({ params }: {
               <span className="text-sm">{post.dateFormatted}</span>
               <h1 >{post.title}</h1>
               <PostContent content={post.content} />
+              <div className="card-actions">
+                {post.tags.map(tag => (
+                  <a key={tag} href={`/tag/${tag}`}><div className="badge badge-secondary">{tag}</div></a>
+                ))}
+              </div>
             </article>
           </div>
 
