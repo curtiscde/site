@@ -12,7 +12,9 @@ export async function generateStaticParams() {
 }
 
 function PostContent({ content }: { content: string }) {
-  const convert = new showdown.Converter();
+  const convert = new showdown.Converter({
+    simplifiedAutoLink: true
+  });
   const htmlContent = convert.makeHtml(content);
   return (
     // eslint-disable-next-line react/no-danger
