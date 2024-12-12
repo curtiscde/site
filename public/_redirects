@@ -26,3 +26,6 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 
 /post/js/default-negative-variables-to-zero-in-javascript/ /post/default-negative-variables-to-zero-in-javascript
 /js/default-negative-variables-to-zero-in-javascript/ /post/default-negative-variables-to-zero-in-javascript
+
+/post/jquery/namespacing-jquery-event-handlers/ /post/namespacing-jquery-event-handlers
+/jquery/namespacing-jquery-event-handlers/ /post/namespacing-jquery-event-handlers
