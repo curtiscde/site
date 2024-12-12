@@ -1,6 +1,5 @@
 import { getPosts } from "@/app/posts"
 import "./PostPage.scss"
-import 'highlight.js/styles/github.css';
 import { PostPage } from "@/app/components/PostPage";
 
 export async function generateStaticParams() {

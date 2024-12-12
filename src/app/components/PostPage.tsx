@@ -1,8 +1,24 @@
+'use client'
+
 import Link from "next/link";
 import { Post } from "../types";
+import { useEffect } from "react";
+import hljs from "highlight.js";
+import javascript from 'highlight.js/lib/languages/javascript';
+import 'highlight.js/styles/atom-one-dark.css';
+import './PostPage.scss'
+
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('js', javascript);
 
 export const PostPage = ({ post }: { post: Post }) => {
+  useEffect(() => {
 
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightElement(block as HTMLElement);
+    });
+
+  }, [])
 
   return (
     <>
