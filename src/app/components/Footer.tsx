@@ -1,11 +1,14 @@
 import React from "react"
+import { TagCount } from "../types"
+import Link from "next/link"
+import "./Footer.scss"
 
-export const Footer = () => {
+export const Footer = ({ topTags }: { topTags: TagCount[] }) => {
   return (
     <>
       <div className="bg-neutral mt-16">
         <div className="container mx-auto">
-          <footer className="footer text-neutral-content p-10">
+          <footer className="footer text-neutral-content p-10 grid lg:grid-cols-3">
             <nav>
               <h6 className="footer-title">Social</h6>
               <a className="link link-hover" href="https://www.linkedin.com/in/curtis-timson-89040a37/" target="_blank">LinkedIn</a>
@@ -14,11 +17,13 @@ export const Footer = () => {
               <a className="link link-hover" href="https://github.com/curtiscde" target="_blank">GitHub</a>
             </nav>
             <nav>
-              <h6 className="footer-title">Company</h6>
-              <a className="link link-hover">About us</a>
-              <a className="link link-hover">Contact</a>
-              <a className="link link-hover">Jobs</a>
-              <a className="link link-hover">Press kit</a>
+              <h6 className="footer-title">Tags</h6>
+              <div className="card-actions">
+                {topTags.slice(0, 12).map(({ tag, count }) => (
+                  // <Link key={tag} className="link link-hover" href={`/tag/${tag}`}>{tag}</Link>
+                  <Link key={tag} className="link link-hover" href={`/tag/${tag}`} title={`${tag} [${count}]`}><div key={tag} className="badge badge-outline">{tag}</div></Link>
+                ))}
+              </div>
             </nav>
             <nav>
               <h6 className="footer-title">Legal</h6>
