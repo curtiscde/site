@@ -3,6 +3,9 @@ import { Post } from "../types/Post"
 import "./postcard.scss"
 
 export const PostCard = ({ data: post }: { index: number, data: Post, width: number }) => {
+  const today = new Date();
+  const oneMonthAgo = new Date(today.setMonth(today.getMonth() - 1));
+  const isNew = post.date >= oneMonthAgo
 
   return (
     <a href={`/post/${post.slug}`} className="group">
@@ -19,7 +22,7 @@ export const PostCard = ({ data: post }: { index: number, data: Post, width: num
           <span className="text-xs text-neutral">{post.dateFormatted}</span>
           <h2 className="card-title group-hover:text-primary">
             {post.title}
-            <div className="badge badge-secondary">NEW</div>
+            {isNew && <div className="badge badge-secondary">NEW</div>}
           </h2>
           <p>{post.description}</p>
           {post.tags != null && (

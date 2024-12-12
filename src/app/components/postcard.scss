@@ -8,6 +8,7 @@ a {
       img {
         transition: all ease-out .3s;
         transform-style: preserve-3d;
+        min-width: 100%;
       }
 
       &::after {

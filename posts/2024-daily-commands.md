@@ -68,7 +68,7 @@ This way I can simply run the command `pr` to open or create a new Pull Request 
 
 Putting these together I can then quickly commit, push and open a pull request using the following:
 
-```zsh
+```bash
 git add -p
 gc -m "commit message"
 gp
