@@ -2,6 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { Post, postSchema } from '../types/Post';
+import hljs from 'highlight.js';
+import javascript from 'highlight.js/lib/languages/javascript';
+
+hljs.registerLanguage('javascript', javascript);
 
 export function getPosts() {
   const files = fs.readdirSync(path.join('posts'));
