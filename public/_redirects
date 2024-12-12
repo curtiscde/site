@@ -23,3 +23,6 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 
 /post/jquery/understanding-jquery-data-storage/ /post/understanding-jquery-data-storage
 /jquery/understanding-jquery-data-storage/ /post/understanding-jquery-data-storage
+
+/post/js/default-negative-variables-to-zero-in-javascript/ /post/default-negative-variables-to-zero-in-javascript
+/js/default-negative-variables-to-zero-in-javascript/ /post/default-negative-variables-to-zero-in-javascript
