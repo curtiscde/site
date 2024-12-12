@@ -20,3 +20,6 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 
 /post/js/console-log-vs-alert-when-debugging/ /post/console-log-vs-alert-when-debugging
 /js/console-log-vs-alert-when-debugging/ /post/console-log-vs-alert-when-debugging
+
+/post/jquery/understanding-jquery-data-storage/ /post/understanding-jquery-data-storage
+/jquery/understanding-jquery-data-storage/ /post/understanding-jquery-data-storage
