@@ -1,7 +1,6 @@
 import React from "react"
 import { TagCount } from "../types"
 import Link from "next/link"
-import "./Footer.scss"
 
 export const Footer = ({ topTags }: { topTags: TagCount[] }) => {
   return (

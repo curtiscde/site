@@ -3,7 +3,7 @@ title: "Namespacing jQuery event handlers"
 slug: "namespacing-jquery-event-handlers"
 date: 2014-05-05T00:00:00
 description: "How to better manage jQuery event handlers"
-tags: ["javascript", "event-handlers", "jQuery", "namespace"]
+tags: ["javascript", "event-handlers", "jquery", "namespace"]
 id: 16
 ---
 If we are to attach 2 or more event handlers to an element these will become stacked and run linear in the order they were attached.
