@@ -3,7 +3,20 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 
 /jquery/using-jquery-callback-functions/ /post/using-jquery-callback-functions
 /post/jquery/using-jquery-callback-functions/ /post/using-jquery-callback-functions
+
 /xslt/how-to-prevent-self-closing-elements-in-xslt/ /post/how-to-prevent-self-closing-elements-in-xslt
 /post/xslt/how-to-prevent-self-closing-elements-in-xslt/ /post/how-to-prevent-self-closing-elements-in-xslt
-/jquery/creating-a-new-rule-for-a-css-class-in-jquery/ 
-/post/jquery/creating-a-new-rule-for-a-css-class-in-jquery/
+
+/post/jquery/creating-a-new-rule-for-a-css-class-in-jquery/ /post/creating-a-new-rule-for-a-css-class-in-jquery
+/jquery/creating-a-new-rule-for-a-css-class-in-jquery/ /post/creating-a-new-rule-for-a-css-class-in-jquery
+
+/post/js/check-javascript-function-exists-before-calling-it/ /post/check-javascript-function-exists-before-calling-it
+/js/check-javascript-function-exists-before-calling-it/ /post/check-javascript-function-exists-before-calling-it
+/javascript-2/check-javascript-function-exists-before-calling-it/ /post/check-javascript-function-exists-before-calling-it
+
+/post/js/reading-url-hashtag-values/ /post/reading-url-hashtag-values
+/js/reading-url-hashtag-values/ /post/reading-url-hashtag-values
+/javascript-2/reading-url-hashtag-values/ /post/reading-url-hashtag-values
+
+/post/js/console-log-vs-alert-when-debugging/ /post/console-log-vs-alert-when-debugging
+/js/console-log-vs-alert-when-debugging/ /post/console-log-vs-alert-when-debugging
