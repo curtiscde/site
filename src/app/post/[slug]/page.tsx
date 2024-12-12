@@ -1,7 +1,6 @@
 import { getPosts } from "@/app/posts"
-import Link from "next/link";
-import showdown from 'showdown';
 import "./PostPage.scss"
+import { PostPage } from "@/app/components/PostPage";
 
 export async function generateStaticParams() {
   const posts = await getPosts()
@@ -9,17 +8,6 @@ export async function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,
   }))
-}
-
-function PostContent({ content }: { content: string }) {
-  const convert = new showdown.Converter({
-    simplifiedAutoLink: true
-  });
-  const htmlContent = convert.makeHtml(content);
-  return (
-    // eslint-disable-next-line react/no-danger
-    <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-  );
 }
 
 export default async function Page({ params }: {
@@ -34,35 +22,5 @@ export default async function Page({ params }: {
     throw new Error('post not found')
   }
 
-  return (
-    <>
-      <div className="navbar bg-base-100">
-        <div className="avatar mx-2">
-          <div className="w-10 rounded-full">
-            <img src="/images/curtis.jpeg" />
-          </div>
-        </div>
-        <Link href="/" className="btn btn-ghost text-xl">Curtis Timson</Link>
-      </div>
-
-      <main className="post-page">
-        <div className="container mx-auto">
-          <div className="mx-6">
-            <article className="prose lg:prose-lg mx-auto pt-12">
-              <span className="text-sm">{post.dateFormatted}</span>
-              <h1 >{post.title}</h1>
-              <PostContent content={post.content} />
-              <div className="card-actions">
-                {post.tags.map(tag => (
-                  <a key={tag} href={`/tag/${tag}`}><div className="badge badge-secondary">{tag}</div></a>
-                ))}
-              </div>
-            </article>
-          </div>
-
-
-        </div>
-      </main>
-    </>
-  )
+  return <PostPage post={post} />
 }

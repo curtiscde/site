@@ -1,4 +1,5 @@
 import { z } from "zod"
+import showdown from 'showdown';
 
 const getOrdinalSuffix = (day: number) => {
   if (day > 3 && day < 21) return 'th';
@@ -9,6 +10,10 @@ const getOrdinalSuffix = (day: number) => {
     default: return 'th';
   }
 }
+
+const convert = new showdown.Converter({
+  simplifiedAutoLink: true
+});
 
 export const postSchema = z.object({
   id: z.number(),
@@ -27,11 +32,13 @@ export const postSchema = z.object({
   const month = date.toLocaleString('en-GB', { month: 'short' });
   const year = date.getFullYear();
   const dateFormatted = `${day}${getOrdinalSuffix(day)} ${month} ${year}`;
+  const contentHtml = convert.makeHtml(post.content);
 
   return {
     ...rest,
     date,
     dateFormatted,
+    contentHtml,
     imageThumbnailUrl
   }
 })
