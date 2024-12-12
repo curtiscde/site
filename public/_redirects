@@ -38,3 +38,6 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 
 /post/asp-net/abstract-config-settings-from-web-config/ /post/abstract-config-settings-from-web-config
 /asp-net/abstract-config-settings-from-web-config/ /post/abstract-config-settings-from-web-config
+
+/post/tools/quickly-create-html-elements-in-jsfiddle/ /post/quickly-create-html-elements-in-jsfiddle
+/tools/quickly-create-html-elements-in-jsfiddle/ /post/quickly-create-html-elements-in-jsfiddle
