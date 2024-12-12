@@ -35,3 +35,6 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 
 /post/ms-sql/copy-table-schema-to-new-a-table/ /post/copy-table-schema-to-new-a-table
 /ms-sql/copy-table-schema-to-new-a-table/ /post/copy-table-schema-to-new-a-table
+
+/post/asp-net/abstract-config-settings-from-web-config/ /post/abstract-config-settings-from-web-config
+/asp-net/abstract-config-settings-from-web-config/ /post/abstract-config-settings-from-web-config
