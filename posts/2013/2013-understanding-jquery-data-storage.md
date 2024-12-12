@@ -3,7 +3,7 @@ title: "Understanding jQuery data() storage"
 slug: "understanding-jquery-data-storage"
 date: 2013-05-14T00:00:00
 description: "It is a common misunderstanding that .data('key') is simply a shortcut for .attr('data-key')"
-tags: ["data-attributes", "expando", "html5", "jQuery", "jquery-data"]
+tags: ["data-attributes", "expando", "html5", "jquery", "jquery-data"]
 image: "/post/jquery-data-storage/jquery.jpg"
 id: 15
 ---

@@ -7,12 +7,14 @@ import hljs from "highlight.js";
 import javascript from 'highlight.js/lib/languages/javascript';
 import bash from 'highlight.js/lib/languages/bash';
 import typescript from 'highlight.js/lib/languages/typescript';
+import css from 'highlight.js/lib/languages/css';
 import 'highlight.js/styles/atom-one-dark.css';
 import './PostPage.scss'
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('bash', bash);
 hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('css', css);
 
 export const PostPage = ({ post }: { post: Post }) => {
   useEffect(() => {
