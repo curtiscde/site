@@ -3,8 +3,13 @@ import path from 'path';
 import matter from 'gray-matter';
 import { Post, postSchema } from '../types/Post';
 
-function readFilesRecursively(dir: string): string[] {
-  let fileContents: string[] = []
+interface ContentFile {
+  filename: string
+  content: string
+}
+
+function readFilesRecursively(dir: string): ContentFile[] {
+  let fileContents: ContentFile[] = []
 
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   entries.forEach((entry) => {
@@ -12,7 +17,12 @@ function readFilesRecursively(dir: string): string[] {
     if (entry.isDirectory()) {
       fileContents = fileContents.concat(...readFilesRecursively(fullPath))
     } else {
-      fileContents.push(fs.readFileSync(fullPath, 'utf-8'))
+      if (fullPath.endsWith('.md')) {
+        fileContents.push({
+          filename: fullPath,
+          content: fs.readFileSync(fullPath, 'utf-8')
+        });
+      }
     }
   });
 
@@ -22,10 +32,16 @@ function readFilesRecursively(dir: string): string[] {
 export function getPosts() {
   const fileContents = readFilesRecursively(path.join('posts'))
 
-  const posts: Post[] = fileContents.map((fileContent) => {
-    const { content, data } = matter(fileContent);
-    return postSchema.parse({ ...data, content })
-  });
+  const posts: Post[] = fileContents.reduce((files: Post[], file: ContentFile) => {
+    try {
+      const { content, data } = matter(file);
+      files.push(postSchema.parse({ ...data, content }))
+      return files
+    } catch (e) {
+      console.error(`error parsing post: ${file.filename}`, e)
+      return files
+    }
+  }, [] as Post[])
 
   return posts.sort((a, b) => b.date.getTime() - a.date.getTime());
 }
