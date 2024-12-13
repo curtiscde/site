@@ -44,3 +44,10 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 
 /post/front-end-dev/what-is-cache-busting/ /post/what-is-cache-busting
 /front-end-dev/what-is-cache-busting/ /post/what-is-cache-busting
+
+/post/js/round-to-the-nearest-decimal/ /post/round-to-the-nearest-decimal
+/js/round-to-the-nearest-decimal/ /post/round-to-the-nearest-decimal
+
+/post/js/preventing-console-log-issues-in-ie/ /post/preventing-console-log-issues-in-ie
+/js/preventing-console-log-issues-in-ie/ /post/preventing-console-log-issues-in-ie
+
