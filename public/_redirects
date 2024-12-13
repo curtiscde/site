@@ -51,3 +51,6 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 /post/js/preventing-console-log-issues-in-ie/ /post/preventing-console-log-issues-in-ie
 /js/preventing-console-log-issues-in-ie/ /post/preventing-console-log-issues-in-ie
 
+/less/using-font-face-and-preventing-faux-styles/ /post/using-font-face-and-preventing-faux-styles
+/css/using-font-face-and-preventing-faux-styles/ /post/using-font-face-and-preventing-faux-styles
+/post/less/using-font-face-and-preventing-faux-styles/ /post/using-font-face-and-preventing-faux-styles
