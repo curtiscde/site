@@ -54,3 +54,7 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 /less/using-font-face-and-preventing-faux-styles/ /post/using-font-face-and-preventing-faux-styles
 /css/using-font-face-and-preventing-faux-styles/ /post/using-font-face-and-preventing-faux-styles
 /post/less/using-font-face-and-preventing-faux-styles/ /post/using-font-face-and-preventing-faux-styles
+
+/post/css/managing-font-face-definitions-with-less/ /post/managing-font-face-definitions-with-less
+/css/managing-font-face-definitions-with-less/ /post/managing-font-face-definitions-with-less
+/less/managing-font-face-definitions-with-less /post/managing-font-face-definitions-with-less
