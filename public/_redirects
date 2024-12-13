@@ -41,3 +41,6 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 
 /post/tools/quickly-create-html-elements-in-jsfiddle/ /post/quickly-create-html-elements-in-jsfiddle
 /tools/quickly-create-html-elements-in-jsfiddle/ /post/quickly-create-html-elements-in-jsfiddle
+
+/post/front-end-dev/what-is-cache-busting/ /post/what-is-cache-busting
+/front-end-dev/what-is-cache-busting/ /post/what-is-cache-busting
