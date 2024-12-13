@@ -41,3 +41,20 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 
 /post/tools/quickly-create-html-elements-in-jsfiddle/ /post/quickly-create-html-elements-in-jsfiddle
 /tools/quickly-create-html-elements-in-jsfiddle/ /post/quickly-create-html-elements-in-jsfiddle
+
+/post/front-end-dev/what-is-cache-busting/ /post/what-is-cache-busting
+/front-end-dev/what-is-cache-busting/ /post/what-is-cache-busting
+
+/post/js/round-to-the-nearest-decimal/ /post/round-to-the-nearest-decimal
+/js/round-to-the-nearest-decimal/ /post/round-to-the-nearest-decimal
+
+/post/js/preventing-console-log-issues-in-ie/ /post/preventing-console-log-issues-in-ie
+/js/preventing-console-log-issues-in-ie/ /post/preventing-console-log-issues-in-ie
+
+/less/using-font-face-and-preventing-faux-styles/ /post/using-font-face-and-preventing-faux-styles
+/css/using-font-face-and-preventing-faux-styles/ /post/using-font-face-and-preventing-faux-styles
+/post/less/using-font-face-and-preventing-faux-styles/ /post/using-font-face-and-preventing-faux-styles
+
+/post/css/managing-font-face-definitions-with-less/ /post/managing-font-face-definitions-with-less
+/css/managing-font-face-definitions-with-less/ /post/managing-font-face-definitions-with-less
+/less/managing-font-face-definitions-with-less /post/managing-font-face-definitions-with-less
