@@ -1,7 +1,7 @@
 import "./hero.scss";
 import Posts from "./components/Posts";
 import { Post } from "./types/Post";
-import { filterPostsByPage, getPosts } from "./posts";
+import { filterPostsByPage, getPosts } from "./util/posts";
 import Pagination from "./components/Pagination";
 import { Hero } from "./components/Hero";
 import { Header } from "./components/Header";
