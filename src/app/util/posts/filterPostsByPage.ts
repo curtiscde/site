@@ -1,4 +1,4 @@
-import { Post } from '../types/Post';
+import { Post } from '../../types';
 
 export function filterPostsByPage(posts: Array<Post>, postsPerPage: number, page: number) {
   const start = (page - 1) * postsPerPage;
