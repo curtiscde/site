@@ -62,7 +62,7 @@ export default function Pagination({ currentPage, pageCount, tag }: IPagination)
           )
           : <button key={page.key} className="join-item btn btn-lg btn-disabled">...</button>
       ))}
-      {!isLastPage && <a className="join-item btn btn-lg" href={getPagePath(currentPage + 1)}>Next</a>}
+      {!isLastPage && <a className="join-item btn btn-lg" href={getPagePath(currentPage + 1)}>»</a>}
     </div>
   );
 }
