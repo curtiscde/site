@@ -58,3 +58,9 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 /post/css/managing-font-face-definitions-with-less/ /post/managing-font-face-definitions-with-less
 /css/managing-font-face-definitions-with-less/ /post/managing-font-face-definitions-with-less
 /less/managing-font-face-definitions-with-less /post/managing-font-face-definitions-with-less
+
+/post/asp-net/how-to-store-razor-helpers-globally/ /post/how-to-store-razor-helpers-globally
+/asp-net/how-to-store-razor-helpers-globally/ /post/how-to-store-razor-helpers-globally
+
+/post/angularjs/setting-up-a-simple-angularjs-app-to-display-an-array/ /post/setting-up-a-simple-angularjs-app-to-display-an-array
+/angularjs/setting-up-a-simple-angularjs-app-to-display-an-array/ /post/setting-up-a-simple-angularjs-app-to-display-an-array
