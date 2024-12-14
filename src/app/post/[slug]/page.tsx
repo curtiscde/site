@@ -1,4 +1,4 @@
-import { getPosts } from "@/app/posts"
+import { getPosts } from "@/app/util/posts"
 import "./PostPage.scss"
 import { PostPage } from "@/app/components/PostPage";
 

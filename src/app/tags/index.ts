@@ -1,1 +1,0 @@
-export { getTopTags } from './getTopTags'

@@ -1,5 +1,4 @@
-import { TagCount } from '../types';
-import { Post } from '../types/Post';
+import { Post, TagCount } from '../../types';
 
 export function getTopTags(posts: Array<Post>): TagCount[] {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

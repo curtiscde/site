@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.scss";
 import { Footer } from "./components/Footer";
-import { getPosts } from "./posts";
-import { getTopTags } from "./tags";
+import { getPosts, getTopTags } from "./util/posts";
 
 export const metadata: Metadata = {
   title: "Curtis Timson | Software Engineer",

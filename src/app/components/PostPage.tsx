@@ -1,6 +1,5 @@
 'use client'
 
-import Link from "next/link";
 import { Post } from "../types";
 import { useEffect } from "react";
 import hljs from "highlight.js";
@@ -10,6 +9,7 @@ import typescript from 'highlight.js/lib/languages/typescript';
 import css from 'highlight.js/lib/languages/css';
 import 'highlight.js/styles/atom-one-dark.css';
 import './PostPage.scss'
+import { Header } from "./Header";
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('bash', bash);
@@ -27,15 +27,7 @@ export const PostPage = ({ post }: { post: Post }) => {
 
   return (
     <>
-      <div className="navbar bg-base-100">
-        <div className="avatar mx-2">
-          <div className="w-10 rounded-full">
-            <img src="/images/curtis.jpeg" />
-          </div>
-        </div>
-        <Link href="/" className="btn btn-ghost text-xl">Curtis Timson</Link>
-      </div>
-
+      <Header />
       <main className="post-page">
         <div className="container mx-auto">
           <div className="mx-6">
