@@ -2,7 +2,7 @@ import React from "react"
 import { Post } from "../types/Post"
 import "./postcard.scss"
 
-export const PostCard = ({ data: post }: { index: number, data: Post, width: number }) => {
+export const PostCard = ({ data: post }: { index?: number, data: Post, width?: number }) => {
   const today = new Date();
   const oneMonthAgo = new Date(today.setMonth(today.getMonth() - 1));
   const isNew = post.date >= oneMonthAgo
