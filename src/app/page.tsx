@@ -3,6 +3,7 @@ import "./hero.scss";
 import Posts from "./components/Posts";
 import { Post } from "./types/Post";
 import { filterPostsByPage, getPages, getPosts } from "./posts";
+import Pagination from "./components/Pagination";
 
 export default function Home() {
   const postsPerPage = 20
@@ -48,11 +49,7 @@ export default function Home() {
               <Posts posts={pagePosts} />
             </div>
             <div className="grid col-span-12">
-              <div className="join py-8 mx-auto">
-                {pages.map((page) => (
-                  <button key={page} className={`join-item btn btn-lg${page === currentPage ? ' btn-active' : ''}`}>{page}</button>
-                ))}
-              </div>
+              <Pagination currentPage={currentPage} pageCount={pageCount} />
             </div>
           </div>
         </div>
