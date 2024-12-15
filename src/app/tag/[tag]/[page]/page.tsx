@@ -58,7 +58,7 @@ export default async function Page({ params }: {
   return (
     <>
       <Header />
-      <Hero />
+      <Hero tag={tag} />
       <main>
         <div className="container mx-auto">
           <div className="grid grid-cols-12 gap-4 p-4 lg:p-0">

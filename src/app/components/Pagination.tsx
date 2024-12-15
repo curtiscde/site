@@ -6,7 +6,7 @@ interface IPageLink {
   pageNumber: number;
   getPagePath: (pageNumber: number) => string;
 }
-interface IPagination {
+interface PaginationProps {
   currentPage: number;
   pageCount: number;
   tag?: string;
@@ -34,7 +34,7 @@ PageLink.defaultProps = {
   isCurrentPage: false,
 };
 
-export default function Pagination({ currentPage, pageCount, tag }: IPagination) {
+export default function Pagination({ currentPage, pageCount, tag }: PaginationProps) {
   if (pageCount === 1) return null;
 
   const isLastPage = currentPage === pageCount;
