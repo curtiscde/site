@@ -83,3 +83,5 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 /post/project/lischana-lane-photography/ /post/lischana-lane-photography
 
 /post/angularjs/angularjs-jest-unit-testing/ /post/angularjs-jest-unit-testing
+
+/post/project/massively-hugo-theme/ /post/massively-hugo-theme
