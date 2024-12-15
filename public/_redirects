@@ -64,3 +64,6 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 
 /post/angularjs/setting-up-a-simple-angularjs-app-to-display-an-array/ /post/setting-up-a-simple-angularjs-app-to-display-an-array
 /angularjs/setting-up-a-simple-angularjs-app-to-display-an-array/ /post/setting-up-a-simple-angularjs-app-to-display-an-array
+
+/post/angularjs/filtering-arrays-in-angularjs/ /post/filtering-arrays-in-angularjs
+/angularjs/filtering-arrays-in-angularjs/ /post/filtering-arrays-in-angularjs
