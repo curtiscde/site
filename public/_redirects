@@ -73,3 +73,5 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 
 /post/js/default-parameters-es6/ /post/default-parameters-es6
 /js/default-parameters-es6/ /post/default-parameters-es6
+
+/post/cms/moving-wordpress-hugo/ /post/moving-wordpress-hugo
