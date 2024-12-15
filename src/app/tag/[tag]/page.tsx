@@ -4,28 +4,28 @@ import Pagination from "@/app/components/Pagination";
 import Posts from "@/app/components/Posts";
 import { config } from "@/app/config";
 import { Post } from "@/app/types";
-import { filterPostsByPage, getPages, getPosts } from "@/app/util/posts";
+import { filterPostsByPage, filterPostsByTag, getPosts, getTopTags } from "@/app/util/posts";
+
+const { postsPerPage } = config
 
 export async function generateStaticParams() {
   const posts = getPosts();
-  const pageCount = Math.ceil(posts.length / config.postsPerPage);
-  const pages = getPages({ pageCount, excludeFirstPage: true });
+  const tags = getTopTags(posts);
 
-  return pages.map((page) => ({
-    page: page.toString(),
+  return tags.map(({ tag }) => ({
+    tag
   }))
 }
 
 export default async function Page({ params }: {
-  params: Promise<{ page: string }>
+  params: Promise<{ tag: string }>
 }) {
-  const { page } = (await params)
+  const { tag } = (await params)
 
-  const postsPerPage = 20
-  const posts: Post[] = getPosts();
-  const pageCount = Math.ceil(posts.length / postsPerPage);
-  const currentPage = Number(page)
-  const pagePosts = filterPostsByPage(posts, postsPerPage, currentPage)
+  const tagPosts: Post[] = filterPostsByTag(getPosts(), tag);
+  const pageCount = Math.ceil(tagPosts.length / postsPerPage);
+  const currentPage = Number(1)
+  const pagePosts = filterPostsByPage(tagPosts, postsPerPage, currentPage)
 
 
   return (
@@ -39,7 +39,7 @@ export default async function Page({ params }: {
               <Posts posts={pagePosts} />
             </div>
             <div className="grid col-span-12">
-              <Pagination currentPage={currentPage} pageCount={pageCount} />
+              <Pagination currentPage={currentPage} pageCount={pageCount} tag={tag} />
             </div>
           </div>
         </div>
