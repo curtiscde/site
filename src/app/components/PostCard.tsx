@@ -1,6 +1,6 @@
 import React from "react"
 import { Post } from "../types/Post"
-import "./PostCard.scss"
+import "./postcard.scss"
 
 export const PostCard = ({ data: post }: { index?: number, data: Post, width?: number }) => {
   const today = new Date();
