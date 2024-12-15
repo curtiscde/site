@@ -35,15 +35,13 @@ export const PostPage = ({ post }: { post: Post }) => {
               <span className="text-sm">{post.dateFormatted}</span>
               <h1 >{post.title}</h1>
               <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
-              <div className="card-actions">
+              <div className="card-actions mt-12">
                 {post.tags.map(tag => (
                   <a key={tag} href={`/tag/${tag}`}><div className="badge badge-secondary">{tag}</div></a>
                 ))}
               </div>
             </article>
           </div>
-
-
         </div>
       </main>
     </>
