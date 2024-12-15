@@ -81,3 +81,5 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 /post/tools/8-useful-atom-packages/ /post/8-useful-atom-packages
 
 /post/project/lischana-lane-photography/ /post/lischana-lane-photography
+
+/post/angularjs/angularjs-jest-unit-testing/ /post/angularjs-jest-unit-testing
