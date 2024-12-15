@@ -19,7 +19,7 @@ export const PostCard = ({ data: post }: { index?: number, data: Post, width?: n
           </figure>
         }
         <div className="card-body">
-          <span className="text-xs text-neutral">{post.dateFormatted}</span>
+          <span className="text-xs text-neutral post-date">{post.dateFormatted}</span>
           <h2 className="card-title group-hover:text-primary">
             {post.title}
             {isNew && <div className="badge badge-secondary">NEW</div>}
