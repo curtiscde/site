@@ -87,3 +87,5 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 /post/project/massively-hugo-theme/ /post/massively-hugo-theme
 
 /post/project/dopetrope-hugo-theme/ /post/dopetrope-hugo-theme
+
+/post/hosting/hugo-netlify/ /post/hugo-netlify
