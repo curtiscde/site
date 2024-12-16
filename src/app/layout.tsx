@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import "./globals.scss";
 import { Footer } from "./components/Footer";
 import { getPosts, getTopTags } from "./util/posts";
+import { config } from './config'
 
 export const metadata: Metadata = {
-  title: "Curtis Timson | Software Engineer",
+  title: config.pageTitle,
 };
 
 export default async function RootLayout({

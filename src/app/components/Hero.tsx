@@ -1,4 +1,5 @@
 import { config } from "../config"
+import "./Hero.scss"
 
 const { title, subtitle } = config
 

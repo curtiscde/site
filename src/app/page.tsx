@@ -1,4 +1,3 @@
-import "./hero.scss";
 import Posts from "./components/Posts";
 import { Post } from "./types/Post";
 import { filterPostsByPage, getPosts } from "./util/posts";
