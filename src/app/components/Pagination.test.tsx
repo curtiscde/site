@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom'
 import Pagination from './Pagination';
 
 describe('Pagination', () => {
@@ -8,13 +9,13 @@ describe('Pagination', () => {
 
     it('does not render a previous page link', () => {
       expect(screen.queryByRole('link', {
-        name: 'Prev',
+        name: '«',
       })).toBeNull();
     });
 
     it('does render a next page link', () => {
       expect(screen.getByRole('link', {
-        name: 'Next',
+        name: '»',
       })).toBeInTheDocument();
     });
   });
@@ -24,13 +25,13 @@ describe('Pagination', () => {
 
     it('does render a previous page link', () => {
       expect(screen.getByRole('link', {
-        name: 'Prev',
+        name: '«',
       })).toBeInTheDocument();
     });
 
     it('does not render a next page link', () => {
       expect(screen.queryByRole('link', {
-        name: 'Next',
+        name: '»',
       })).toBeNull();
     });
   });

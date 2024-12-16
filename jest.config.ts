@@ -15,6 +15,7 @@ const config: Config = {
     "!**/coverage/**",
     "!**/public/**",
     "!**/types/**",
+    "!**/out/**",
     "!**.config.{js,ts}",
     "!next-env.d.ts"
   ],
