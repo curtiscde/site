@@ -103,3 +103,5 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 /post/project/displaying-strava-stats-using-webhooks/ /post/displaying-strava-stats-using-webhooks
 
 /post/tools/codecov-monorepo/ /post/codecov-monorepo
+
+/post/github-profile-latest-posts/ /post/github-profile-latest-posts
