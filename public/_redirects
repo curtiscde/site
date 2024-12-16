@@ -85,3 +85,5 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 /post/angularjs/angularjs-jest-unit-testing/ /post/angularjs-jest-unit-testing
 
 /post/project/massively-hugo-theme/ /post/massively-hugo-theme
+
+/post/project/dopetrope-hugo-theme/ /post/dopetrope-hugo-theme
