@@ -2,7 +2,7 @@
 title: "Reading URL hashtag values"
 slug: "reading-url-hashtag-values"
 date: 2013-01-27T00:00:00
-tags: ["hastag", "javascript"]
+tags: ["hashtag", "javascript"]
 id: 18
 ---
 URL hashtags were primarily used in order to position the page scroll on load to a particular element.
