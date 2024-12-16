@@ -1,8 +1,16 @@
-import React from "react"
+'use client'
+
+import React, { useRef } from "react"
 import { TagCount } from "../types"
 import Link from "next/link"
+import "./Footer.scss"
 
 export const Footer = ({ topTags }: { topTags: TagCount[] }) => {
+  const tagsToDisplay = 12
+  const tagsNotDisplayedCount = topTags.length - tagsToDisplay
+
+  const dialog = useRef<HTMLDialogElement>(null)
+
   return (
     <>
       <div className="bg-neutral mt-16">
@@ -18,10 +26,10 @@ export const Footer = ({ topTags }: { topTags: TagCount[] }) => {
             <nav>
               <h6 className="footer-title">Tags</h6>
               <div className="card-actions">
-                {topTags.slice(0, 12).map(({ tag, count }) => (
-                  // <Link key={tag} className="link link-hover" href={`/tag/${tag}`}>{tag}</Link>
+                {topTags.slice(0, tagsToDisplay).map(({ tag, count }) => (
                   <Link key={tag} className="link link-hover" href={`/tag/${tag}`} title={`${tag} [${count}]`}><div key={tag} className="badge badge-outline">{tag}</div></Link>
                 ))}
+                <div className="badge badge-outline tags-more" onClick={() => dialog.current?.showModal()}>+ {tagsNotDisplayedCount} more</div>
               </div>
             </nav>
             <nav>
@@ -32,6 +40,19 @@ export const Footer = ({ topTags }: { topTags: TagCount[] }) => {
             </nav>
           </footer>
         </div>
+        <dialog className="modal" ref={dialog}>
+          <div className="modal-box">
+            <form method="dialog">
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={() => dialog.current?.close()}>✕</button>
+            </form>
+            <h3 className="font-bold text-lg">Post Tags</h3>
+            <div className="card-actions mt-4">
+              {topTags.map(({ tag, count }) => (
+                <Link key={tag} className="link link-hover" href={`/tag/${tag}`} title={`${tag} [${count}]`} onClick={() => dialog.current?.close()}><div key={tag} className="badge badge-outline">{tag}</div></Link>
+              ))}
+            </div>
+          </div>
+        </dialog>
       </div>
     </>
   )

@@ -89,3 +89,19 @@ https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 /post/project/dopetrope-hugo-theme/ /post/dopetrope-hugo-theme
 
 /post/hosting/hugo-netlify/ /post/hugo-netlify
+
+/post/nodejs/auth0-access-user-details-email-nodejs/ /post/auth0-access-user-details-email-nodejs
+
+/post/reactjs/reactjs-jest-snapshot-mocking/ /post/reactjs-jest-snapshot-mocking
+
+/post/gatsbyjs/add-body-class-gatsbyjs-fouc/ /post/add-body-class-gatsbyjs-fouc
+
+/post/js/nextjs-boilerplate-template-typerite/ /post/nextjs-boilerplate-template-typerite
+
+/post/js/chartjs-filtering-duplicate-data/ /post/chartjs-filtering-duplicate-data
+
+/post/project/displaying-strava-stats-using-webhooks/ /post/displaying-strava-stats-using-webhooks
+
+/post/tools/codecov-monorepo/ /post/codecov-monorepo
+
+/post/github-profile-latest-posts/ /post/github-profile-latest-posts
