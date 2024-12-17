@@ -22,7 +22,7 @@ export default async function RootLayout({
     <html lang="en" data-theme="light">
       <body>
         {children}
-        <Footer topTags={topTags} />
+        <Footer recentPosts={posts.slice(0, 5)} topTags={topTags} />
       </body>
     </html>
   );

@@ -35,6 +35,9 @@ export const postSchema = z.object({
   const dateFormatted = `${day}${getOrdinalSuffix(day)} ${month} ${year}`;
   const contentHtml = convert.makeHtml(post.content);
 
+  const path = `/post/${slug}`
+  const url = `${config.url}${path}`
+
   return {
     ...rest,
     date,
@@ -42,7 +45,8 @@ export const postSchema = z.object({
     contentHtml,
     imageThumbnailUrl,
     slug,
-    url: `${config.url}/post/${slug}`
+    path,
+    url
   }
 })
 
