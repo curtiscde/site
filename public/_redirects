@@ -1,6 +1,8 @@
 https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 /pay https://monzo.me/curtisjamestimson
 
+/index.xml /rss.xml
+
 /jquery/using-jquery-callback-functions/ /post/using-jquery-callback-functions
 /post/jquery/using-jquery-callback-functions/ /post/using-jquery-callback-functions
 
