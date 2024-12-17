@@ -3,6 +3,8 @@ import "./globals.scss";
 import { Footer } from "./components/Footer";
 import { getPosts, getTopTags } from "./util/posts";
 import { config } from './config'
+import { ThemeProvider } from "./context/ThemeContext";
+import ClientThemeWrapper from "./context/ClientThemeWrapper";
 
 export const metadata: Metadata = {
   title: config.pageTitle,
@@ -19,10 +21,14 @@ export default async function RootLayout({
   const topTags = getTopTags(posts)
 
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en">
       <body>
-        {children}
-        <Footer recentPosts={posts.slice(0, 5)} topTags={topTags} />
+        <ThemeProvider>
+          <ClientThemeWrapper>
+            {children}
+            <Footer recentPosts={posts.slice(0, 5)} topTags={topTags} />
+          </ClientThemeWrapper>
+        </ThemeProvider>
       </body>
     </html>
   );

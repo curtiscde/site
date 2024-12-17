@@ -10,7 +10,7 @@ interface Config {
     bluesky: string
     github: string
     stackoverflow: string
-    rss
+    rss: string
   }
 }
 
