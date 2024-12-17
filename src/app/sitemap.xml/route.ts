@@ -15,7 +15,7 @@ const generateSitemap = async () => {
   </url>
   ${posts.map(post => {
     return `<url>
-    <loc>${config.url}/post/${post.slug}</loc>
+    <loc>${post.url}</loc>
     <lastmod>${post.date.toISOString()}</lastmod>
   </url>
   `}).join('')}

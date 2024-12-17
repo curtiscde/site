@@ -22,6 +22,7 @@ export const Footer = ({ topTags }: { topTags: TagCount[] }) => {
               <a className="link link-hover" href="https://bsky.app/profile/curtiscode.dev" target="_blank">Bluesky</a>
               <a className="link link-hover" href="https://stackoverflow.com/users/370103/curtis" target="_blank">StackOverflow</a>
               <a className="link link-hover" href="https://github.com/curtiscde" target="_blank">GitHub</a>
+              <a className="link link-hover" href="/rss.xml">RSS</a>
             </nav>
             <nav>
               <h6 className="footer-title">Tags</h6>
@@ -33,10 +34,10 @@ export const Footer = ({ topTags }: { topTags: TagCount[] }) => {
               </div>
             </nav>
             <nav>
-              <h6 className="footer-title">Legal</h6>
-              <a className="link link-hover">Terms of use</a>
+              <h6 className="footer-title">General</h6>
+              {/* <a className="link link-hover">Terms of use</a>
               <a className="link link-hover">Privacy policy</a>
-              <a className="link link-hover">Cookie policy</a>
+              <a className="link link-hover">Cookie policy</a> */}
               <a className="link link-hover" href="/sitemap.xml">Sitemap.xml</a>
             </nav>
           </footer>
