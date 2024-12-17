@@ -44,7 +44,7 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
           </footer>
 
           <footer className="footer text-neutral-content border-base-300 border-t px-10 py-4">
-            <aside className="grid-flow-col items-center">
+            <aside className="grid-flow-col items-center mx-auto md:mx-0">
               <div className="avatar mx-2">
                 <div className="w-10 rounded-full grayscale">
                   <img src="/images/curtis.jpeg" />
@@ -52,7 +52,7 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
               </div>
               <p>{copyright}</p>
             </aside>
-            <nav className="md:place-self-center md:justify-self-end">
+            <nav className="md:place-self-center md:justify-self-end mx-auto md:mx-0">
               <div className="grid grid-flow-col gap-4">
                 <a href={config.socialLinks.bluesky}>
                   <svg xmlns="http://www.w3.org/2000/svg"
