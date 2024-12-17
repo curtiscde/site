@@ -1,4 +1,3 @@
-import type { MetadataRoute } from 'next'
 import { getPosts } from '../util/posts'
 import { config } from '../config'
 
@@ -25,7 +24,7 @@ ${posts.map(post => {
 </urlset>`
 }
 
-export async function GET(req: Request) {
+export async function GET() {
   return new Response(
     await generateSitemap(),
     {
