@@ -1,5 +1,6 @@
 import { z } from "zod"
 import showdown from 'showdown';
+import { config } from "../config";
 
 const getOrdinalSuffix = (day: number) => {
   if (day > 3 && day < 21) return 'th';
@@ -26,7 +27,7 @@ export const postSchema = z.object({
   content: z.string(),
 }).transform((post) => {
 
-  const { date, image: imageThumbnailUrl, ...rest } = post
+  const { date, image: imageThumbnailUrl, slug, ...rest } = post
 
   const day = date.getDate();
   const month = date.toLocaleString('en-GB', { month: 'short' });
@@ -39,7 +40,9 @@ export const postSchema = z.object({
     date,
     dateFormatted,
     contentHtml,
-    imageThumbnailUrl
+    imageThumbnailUrl,
+    slug,
+    url: `${config.url}/post/${slug}`
   }
 })
 
