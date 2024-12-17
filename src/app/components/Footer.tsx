@@ -4,7 +4,6 @@ import React, { useRef } from "react"
 import { TagCount } from "../types"
 import Link from "next/link"
 import "./Footer.scss"
-import { config } from "../config"
 
 export const Footer = ({ topTags }: { topTags: TagCount[] }) => {
   const tagsToDisplay = 12
@@ -35,10 +34,10 @@ export const Footer = ({ topTags }: { topTags: TagCount[] }) => {
               </div>
             </nav>
             <nav>
-              <h6 className="footer-title">Legal</h6>
-              <a className="link link-hover">Terms of use</a>
+              <h6 className="footer-title">General</h6>
+              {/* <a className="link link-hover">Terms of use</a>
               <a className="link link-hover">Privacy policy</a>
-              <a className="link link-hover">Cookie policy</a>
+              <a className="link link-hover">Cookie policy</a> */}
               <a className="link link-hover" href="/sitemap.xml">Sitemap.xml</a>
             </nav>
           </footer>
