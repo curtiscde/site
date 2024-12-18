@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
+import { config } from "../config";
 
 export const Header = () => {
   return (
@@ -8,7 +9,7 @@ export const Header = () => {
         <div className="flex-none">
           <div className="avatar mx-2">
             <div className="w-10 rounded-full">
-              <img src="/images/curtis.jpeg" />
+              <Link href="/"><img src="/images/curtis.jpeg" alt={config.title} /></Link>
             </div>
           </div>
         </div>
