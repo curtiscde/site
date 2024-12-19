@@ -48,8 +48,9 @@ const AdjacentPost = ({ post, imageBackgroundColor, type: adjacentPostType }: { 
       <div className="card card-compact card-side bg-base-100 shadow-xl w-96 h-full grow">
         {adjacentPostType === 'previous' && <AdjacentPostImage post={post} />}
         <div className={`card-body ${adjacentPostType === 'next' ? 'text-right' : ''}`}>
-          <h4 className="card-title text-sm block">{cardTitle}</h4>
-          <p>{post.title}</p>
+          <p className="text-xs">{cardTitle}</p>
+          <h4 className="card-title text-sm block">{post.title}</h4>
+
         </div>
         {adjacentPostType === 'next' && <AdjacentPostImage post={post} />}
       </div>
@@ -89,7 +90,7 @@ export const PostPage = ({ post, previousPost, nextPost }: { post: Post, previou
           <div className="mx-6">
             <article className="prose lg:prose-lg mx-auto pt-12">
               <span className="text-sm">{post.dateFormatted}</span>
-              <h1 >{post.title}</h1>
+              <h1>{post.title}</h1>
               <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
               <div className="card-actions mt-12">
                 {post.tags.map(tag => (
@@ -102,7 +103,7 @@ export const PostPage = ({ post, previousPost, nextPost }: { post: Post, previou
         <div className="bg-primary-content py-12 mt-12">
           <div className="container mx-auto">
             <div className="mx-6">
-              <div className="flex justify-between ajacent-posts">
+              <div className="flex justify-between adjacent-posts">
                 {previousPost != null &&
                   <AdjacentPost post={previousPost} type="previous" imageBackgroundColor={previousPostImageColor} />
                 }

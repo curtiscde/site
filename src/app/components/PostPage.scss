@@ -4,4 +4,19 @@
     padding: 0;
     background: none;
   }
+
+  .adjacent-posts {
+    img {
+      transition: all ease-out .3s;
+      transform-style: preserve-3d;
+      min-width: 100%;
+    }
+
+    a:hover {
+      img {
+        transform: scale(1.05);
+        opacity: .5;
+      }
+    }
+  }
 }
