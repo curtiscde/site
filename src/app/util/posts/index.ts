@@ -1,3 +1,4 @@
+export { getAdjacentPosts } from './getAdjacentPosts'
 export { getPages } from './getPages'
 export { getPosts } from './getPosts'
 export { getTopTags } from './getTopTags'

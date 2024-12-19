@@ -11,6 +11,9 @@
     "test:ci": "jest --coverage"
   },
   "dependencies": {
+    "extract-colors": "^4.1.1",
+    "fast-average-color": "^9.4.0",
+    "get-pixels": "^3.3.3",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.10.0",
     "masonic": "^4.0.1",

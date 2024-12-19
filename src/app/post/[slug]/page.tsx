@@ -1,4 +1,4 @@
-import { getPosts } from "@/app/util/posts"
+import { getAdjacentPosts, getPosts } from "@/app/util/posts"
 import "./PostPage.scss"
 import { PostPage } from "@/app/components/PostPage";
 import { Metadata, ResolvingMetadata } from "next";
@@ -68,5 +68,7 @@ export default async function Page({ params }: Props) {
     throw new Error('post not found')
   }
 
-  return <PostPage post={post} />
+  const { previousPost, nextPost } = getAdjacentPosts(posts, post)
+
+  return <PostPage post={post} previousPost={previousPost} nextPost={nextPost} />
 }
