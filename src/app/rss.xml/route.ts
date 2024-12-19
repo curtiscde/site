@@ -3,11 +3,19 @@ import { config } from '../config'
 
 export const dynamic = 'force-static'
 
-function formatDate(date: Date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based, so add 1
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
+function formatDateToRFC822(date: Date) {
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  const dayOfWeek = days[date.getUTCDay()];
+  const day = String(date.getUTCDate()).padStart(2, '0');
+  const month = months[date.getUTCMonth()];
+  const year = date.getUTCFullYear();
+  const hours = String(date.getUTCHours()).padStart(2, '0');
+  const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+  const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+
+  return `${dayOfWeek}, ${day} ${month} ${year} ${hours}:${minutes}:${seconds} GMT`;
 }
 
 const generateRssFeed = async () => {
@@ -21,7 +29,7 @@ const generateRssFeed = async () => {
       <link>${config.url}</link>
       <description>${config.rssFeedDescription}</description>
       <language>en-GB</language>
-      <lastBuildDate>${latestPost.date.toISOString()}</lastBuildDate>
+      <lastBuildDate>${formatDateToRFC822(latestPost.date)}</lastBuildDate>
       <atom:link href="${config.url}/rss.xml" rel="self" type="application/rss+xml"/>
       ${posts.map((post) => {
     return `<item>
@@ -33,7 +41,7 @@ const generateRssFeed = async () => {
         <![CDATA[ ${post.description} ]]>
         </description>` : ''
       }
-        <pubDate>${formatDate(post.date)}</pubDate>
+        <pubDate>${formatDateToRFC822(post.date)}</pubDate>
         <link>${post.url}</link>
         <guid>${post.url}</guid>
       </item>`}
