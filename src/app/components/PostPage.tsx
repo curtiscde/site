@@ -33,7 +33,7 @@ const AdjacentPost = ({ post, imageBackgroundColor, type: adjacentPostType }: { 
     }
 
     return (
-      <figure className="w-60" style={imageStyle}>
+      <figure className="w-60 hidden md:block" style={imageStyle}>
         <img
           src={post.imageThumbnailUrl}
           alt={post.title} />
@@ -41,12 +41,14 @@ const AdjacentPost = ({ post, imageBackgroundColor, type: adjacentPostType }: { 
     )
   }
 
+  const cardTitle = adjacentPostType === 'previous' ? 'Previous Post' : 'Next Post'
+
   return (
     <Link href={post.path}>
       <div className="card card-compact card-side bg-base-100 shadow-xl w-96 h-full grow">
         {adjacentPostType === 'previous' && <AdjacentPostImage post={post} />}
-        <div className="card-body">
-          <h4 className="card-title text-sm">Next Post</h4>
+        <div className={`card-body ${adjacentPostType === 'next' ? 'text-right' : ''}`}>
+          <h4 className="card-title text-sm block">{cardTitle}</h4>
           <p>{post.title}</p>
         </div>
         {adjacentPostType === 'next' && <AdjacentPostImage post={post} />}
