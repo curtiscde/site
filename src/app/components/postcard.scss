@@ -18,11 +18,10 @@ a {
         bottom: -2.5em;
         width: 110%;
         height: 4em;
-        background: #fff;
+        background: oklch(var(--b1));
         border-top: 4px solid var(--color-primary);
         box-shadow: 0 0 2em rgba(0, 0, 0, .2);
         transform: rotate(5deg);
-        transition: all ease-out .2s;
       }
     }
 
