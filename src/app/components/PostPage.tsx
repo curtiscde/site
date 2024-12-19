@@ -18,17 +18,29 @@ hljs.registerLanguage('bash', bash);
 hljs.registerLanguage('typescript', typescript);
 hljs.registerLanguage('css', css);
 
-const AdjacentPost = ({ post, imageBackgroundColor, type: adjacentPostType }: { post: Post, imageBackgroundColor: string | null, type: 'previous' | 'next' }) => {
+const AdjacentPost = ({ post, type: adjacentPostType }: { post: Post, type: 'previous' | 'next' }) => {
 
   const AdjacentPostImage = ({ post }: { post: Post }) => {
+    const [postImageColor, setPostImageColor] = useState<string | null>(null);
+
+    useEffect(() => {
+      const fac = new FastAverageColor();
+
+      if (post.imageThumbnailUrl != null) {
+        fac.getColorAsync(post.imageThumbnailUrl).then((color) => {
+          setPostImageColor(color.hex);
+        })
+      }
+    }, [post])
+
     if (post.imageThumbnailUrl == null) {
       return null
     }
 
     let imageStyle = {}
-    if (imageBackgroundColor != null) {
+    if (postImageColor != null) {
       imageStyle = {
-        backgroundColor: imageBackgroundColor
+        backgroundColor: postImageColor
       }
     }
 
@@ -48,7 +60,10 @@ const AdjacentPost = ({ post, imageBackgroundColor, type: adjacentPostType }: { 
       <div className="card card-compact card-side bg-base-100 shadow-xl w-96 h-full grow">
         {adjacentPostType === 'previous' && <AdjacentPostImage post={post} />}
         <div className={`card-body ${adjacentPostType === 'next' ? 'text-right' : ''}`}>
-          <p className="text-xs">{cardTitle}</p>
+          <div className="align-bottom">
+            <p className="text-xs">{cardTitle}</p>
+          </div>
+
           <h4 className="card-title text-sm block">{post.title}</h4>
 
         </div>
@@ -59,28 +74,11 @@ const AdjacentPost = ({ post, imageBackgroundColor, type: adjacentPostType }: { 
 }
 
 export const PostPage = ({ post, previousPost, nextPost }: { post: Post, previousPost?: Post | null, nextPost?: Post | null }) => {
-  const [previousPostImageColor, setPreviousPostImageColor] = useState<string | null>(null);
-  const [nextPostImageColor, setNextPostImageColor] = useState<string | null>(null)
-
   useEffect(() => {
-    const fac = new FastAverageColor();
-
     document.querySelectorAll('pre code').forEach((block) => {
       hljs.highlightElement(block as HTMLElement);
     });
-
-    if (previousPost?.imageThumbnailUrl != null) {
-      fac.getColorAsync(previousPost.imageThumbnailUrl).then((color) => {
-        setPreviousPostImageColor(color.hex);
-      })
-    }
-
-    if (nextPost?.imageThumbnailUrl != null) {
-      fac.getColorAsync(nextPost.imageThumbnailUrl).then((color) => {
-        setNextPostImageColor(color.hex);
-      })
-    }
-  }, [previousPost, nextPost])
+  }, [])
 
   return (
     <>
@@ -105,11 +103,12 @@ export const PostPage = ({ post, previousPost, nextPost }: { post: Post, previou
             <div className="mx-6">
               <div className="flex justify-between adjacent-posts">
                 {previousPost != null &&
-                  <AdjacentPost post={previousPost} type="previous" imageBackgroundColor={previousPostImageColor} />
+                  <AdjacentPost post={previousPost} type="previous" />
                 }
+                {previousPost == null && <div />}
                 {
                   nextPost != null &&
-                  <AdjacentPost post={nextPost} type="next" imageBackgroundColor={nextPostImageColor} />
+                  <AdjacentPost post={nextPost} type="next" />
                 }
               </div>
             </div>
