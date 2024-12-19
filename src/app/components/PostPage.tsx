@@ -33,7 +33,7 @@ const AdjacentPost = ({ post, imageBackgroundColor, type: adjacentPostType }: { 
     }
 
     return (
-      <figure className="max-w-32 flex-initial" style={imageStyle}>
+      <figure className="w-60" style={imageStyle}>
         <img
           src={post.imageThumbnailUrl}
           alt={post.title} />
@@ -43,9 +43,9 @@ const AdjacentPost = ({ post, imageBackgroundColor, type: adjacentPostType }: { 
 
   return (
     <Link href={post.path}>
-      <div className="card card-compact card-side bg-base-100 shadow-xl flex">
+      <div className="card card-compact card-side bg-base-100 shadow-xl w-96 h-full grow">
         {adjacentPostType === 'previous' && <AdjacentPostImage post={post} />}
-        <div className="card-body flex-none">
+        <div className="card-body">
           <h4 className="card-title text-sm">Next Post</h4>
           <p>{post.title}</p>
         </div>
@@ -101,17 +101,13 @@ export const PostPage = ({ post, previousPost, nextPost }: { post: Post, previou
           <div className="container mx-auto">
             <div className="mx-6">
               <div className="flex justify-between ajacent-posts">
-                <div>
-                  {previousPost != null &&
-                    <AdjacentPost post={previousPost} type="previous" imageBackgroundColor={previousPostImageColor} />
-                  }
-                </div>
-                <div>
-                  {
-                    nextPost != null &&
-                    <AdjacentPost post={nextPost} type="next" imageBackgroundColor={nextPostImageColor} />
-                  }
-                </div>
+                {previousPost != null &&
+                  <AdjacentPost post={previousPost} type="previous" imageBackgroundColor={previousPostImageColor} />
+                }
+                {
+                  nextPost != null &&
+                  <AdjacentPost post={nextPost} type="next" imageBackgroundColor={nextPostImageColor} />
+                }
               </div>
             </div>
           </div>
