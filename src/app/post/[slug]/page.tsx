@@ -1,4 +1,4 @@
-import { getPosts } from "@/app/util/posts"
+import { getPosts, getRelatedPosts } from "@/app/util/posts"
 import "./PostPage.scss"
 import { PostPage } from "@/app/components/PostPage";
 import { Metadata, ResolvingMetadata } from "next";
@@ -68,5 +68,11 @@ export default async function Page({ params }: Props) {
     throw new Error('post not found')
   }
 
-  return <PostPage post={post} />
+  const relatedPosts = getRelatedPosts(posts, post)
+
+  if (relatedPosts.length < 3) {
+    relatedPosts.push(...posts.filter(p => !relatedPosts.includes(p) && p.id !== post.id).slice(0, 3 - relatedPosts.length))
+  }
+
+  return <PostPage post={post} relatedPosts={relatedPosts} />
 }

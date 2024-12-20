@@ -21,12 +21,11 @@ export default async function Page({ params }: {
 }) {
   const { page } = (await params)
 
-  const postsPerPage = 20
+  const postsPerPage = config.postsPerPage
   const posts: Post[] = getPosts();
   const pageCount = Math.ceil(posts.length / postsPerPage);
   const currentPage = Number(page)
   const pagePosts = filterPostsByPage(posts, postsPerPage, currentPage)
-
 
   return (
     <>

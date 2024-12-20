@@ -4,9 +4,10 @@ import { filterPostsByPage, getPosts } from "./util/posts";
 import Pagination from "./components/Pagination";
 import { Hero } from "./components/Hero";
 import { Header } from "./components/Header";
+import { config } from "./config";
 
 export default function Home() {
-  const postsPerPage = 20
+  const { postsPerPage } = config
   const posts: Array<Post> = getPosts();
   const pageCount = Math.ceil(posts.length / postsPerPage);
   const currentPage = 1

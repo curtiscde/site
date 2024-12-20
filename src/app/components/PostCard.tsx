@@ -1,5 +1,5 @@
 import React from "react"
-import { Post } from "../types/Post"
+import { Post } from "../types"
 import "./postcard.scss"
 
 export const PostCard = ({ data: post }: { index?: number, data: Post, width?: number }) => {
