@@ -10,13 +10,14 @@ import css from 'highlight.js/lib/languages/css';
 import 'highlight.js/styles/atom-one-dark.css';
 import './PostPage.scss'
 import { Header } from "./Header";
+import { PostCard } from "./PostCard";
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('bash', bash);
 hljs.registerLanguage('typescript', typescript);
 hljs.registerLanguage('css', css);
 
-export const PostPage = ({ post }: { post: Post }) => {
+export const PostPage = ({ post, relatedPosts }: { post: Post, relatedPosts: Post[] }) => {
   useEffect(() => {
 
     document.querySelectorAll('pre code').forEach((block) => {
@@ -43,6 +44,21 @@ export const PostPage = ({ post }: { post: Post }) => {
             </article>
           </div>
         </div>
+        {relatedPosts.length > 0 && (
+          <div className="bg-primary-content py-12 mt-12">
+            <div className="container mx-auto">
+              <div className="mx-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {relatedPosts.map((relatedPost) => (
+                    <div className="" key={relatedPost.id}>
+                      <PostCard data={relatedPost} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </>
   )
