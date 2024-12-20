@@ -1,9 +1,9 @@
-import { Post } from '../types/Post';
+import { Post } from '../../types';
 import { getRelatedPosts } from './getRelatedPosts';
 
 function newPost(slug: string, date: string, tags: Array<string>, hasImage: boolean): Post {
   return {
-    title: slug, slug, content: 'foo', date: new Date(date), tags, image: hasImage ? '/foo.jpg' : undefined,
+    title: slug, slug, content: 'foo', date: new Date(date), tags, imageThumbnailUrl: hasImage ? '/foo.jpg' : undefined,
   };
 }
 
@@ -55,7 +55,7 @@ describe('getRelatedPosts', () => {
 
     it('returns only posts with images', () => {
       expect(
-        relatedPosts.filter((p) => p.image).length,
+        relatedPosts.filter((p) => p.imageThumbnailUrl).length,
       ).toEqual(relatedPosts.length);
     });
   });
