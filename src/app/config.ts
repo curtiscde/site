@@ -10,6 +10,7 @@ interface Config {
     bluesky: string
     github: string
     stackoverflow: string
+    linkedin: string
     rss: string
   }
 }
@@ -26,6 +27,7 @@ export const config: Config = {
     bluesky: 'https://bsky.app/profile/curtiscode.dev',
     stackoverflow: 'https://stackoverflow.com/users/370103/curtis',
     github: 'https://github.com/curtiscde',
+    linkedin: 'https://www.linkedin.com/in/curtis-timson-89040a37/',
     rss: '/rss.xml'
   }
 };
