@@ -16,7 +16,7 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
 
   return (
     <>
-      <div className="bg-neutral mt-16">
+      <div className="bg-neutral">
         <div className="container mx-auto">
           <footer className="footer text-neutral-content p-10 grid lg:grid-cols-3">
             <nav>

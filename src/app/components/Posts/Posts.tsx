@@ -1,13 +1,16 @@
 'use client'
 
 import React from "react";
-import { Post } from "../types/Post";
+import { Post } from "../../types/Post";
 import dynamic from "next/dynamic";
-import { PostCard } from "./PostCard";
+import { PostCard } from "../PostCard";
+import './Posts.scss';
 
+export interface PostsProps {
+  posts: Post[]
+}
 
-
-export default function Posts({ posts }: { posts: Post[] }) {
+export default function Posts({ posts }: PostsProps) {
   const StaticPosts = () => (
     <div className="grid grid-cols-12 gap-4 p-4 lg:p-0">
       {posts.map((post) => (
@@ -18,7 +21,7 @@ export default function Posts({ posts }: { posts: Post[] }) {
     </div>
   )
 
-  const DynamicMasonryPosts = dynamic(() => import('./MasonryPosts'), {
+  const DynamicMasonryPosts = dynamic(() => import('../MasonryPosts'), {
     ssr: false,
     loading: () => <StaticPosts />
   });

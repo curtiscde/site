@@ -6,7 +6,7 @@ interface IPageLink {
   pageNumber: number;
   getPagePath: (pageNumber: number) => string;
 }
-interface PaginationProps {
+export interface PaginationProps {
   currentPage: number;
   pageCount: number;
   tag?: string;
