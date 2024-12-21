@@ -10,7 +10,7 @@ import css from 'highlight.js/lib/languages/css';
 import 'highlight.js/styles/atom-one-dark.css';
 import './PostPage.scss'
 import { Header } from "./Header";
-import { PostCard } from "./PostCard";
+import { RelatedPosts } from "./RelatedPosts";
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('bash', bash);
@@ -48,13 +48,7 @@ export const PostPage = ({ post, relatedPosts }: { post: Post, relatedPosts: Pos
           <div className="bg-primary-content py-12 mt-12">
             <div className="container mx-auto">
               <div className="mx-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {relatedPosts.map((relatedPost) => (
-                    <div className="" key={relatedPost.id}>
-                      <PostCard data={relatedPost} />
-                    </div>
-                  ))}
-                </div>
+                <RelatedPosts posts={relatedPosts} />
               </div>
             </div>
           </div>
