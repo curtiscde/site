@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.scss";
-import { Footer } from "./components/Footer";
+import { Footer } from "./components/Footer/Footer";
 import { getPosts, getTopTags } from "./util/posts";
 import { config } from './config'
 import { ThemeProvider } from "./context/ThemeContext";
