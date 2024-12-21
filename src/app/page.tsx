@@ -1,10 +1,9 @@
-import Posts from "./components/Posts";
 import { Post } from "./types/Post";
 import { filterPostsByPage, getPosts } from "./util/posts";
-import Pagination from "./components/Pagination";
 import { Hero } from "./components/Hero";
 import { Header } from "./components/Header";
 import { config } from "./config";
+import PostsWithPagination from "./components/Posts/PostsWithPagination";
 
 export default function Home() {
   const { postsPerPage } = config
@@ -19,14 +18,7 @@ export default function Home() {
       <Hero />
       <main>
         <div className="container mx-auto">
-          <div className="grid grid-cols-12 gap-4 p-4 lg:p-0">
-            <div className="grid col-span-12 posts">
-              <Posts posts={pagePosts} />
-            </div>
-            <div className="grid col-span-12">
-              <Pagination currentPage={currentPage} pageCount={pageCount} />
-            </div>
-          </div>
+          <PostsWithPagination postsProps={{ posts: pagePosts }} paginationProps={{ currentPage, pageCount }} />
         </div>
       </main>
     </>
