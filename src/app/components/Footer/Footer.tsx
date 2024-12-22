@@ -40,6 +40,7 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
               {/* <a className="link link-hover">Terms of use</a>
               <a className="link link-hover">Privacy policy</a>
               <a className="link link-hover">Cookie policy</a> */}
+              <a href="https://buymeacoffee.com/curtiscode">☕️ Buy me a coffee</a>
               <a className="link link-hover" href="/sitemap.xml">Sitemap.xml</a>
             </nav>
           </footer>
