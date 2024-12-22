@@ -5,6 +5,7 @@ import { getPosts, getTopTags } from "./util/posts";
 import { config } from './config'
 import { ThemeProvider } from "./context/ThemeContext";
 import ClientThemeWrapper from "./context/ClientThemeWrapper";
+import { CookieConsent } from "./components/CookieConsent";
 
 export const metadata: Metadata = {
   title: config.pageTitle,
@@ -27,6 +28,7 @@ export default async function RootLayout({
           <ClientThemeWrapper>
             {children}
             <Footer recentPosts={posts.slice(0, 5)} topTags={topTags} />
+            <CookieConsent />
           </ClientThemeWrapper>
         </ThemeProvider>
       </body>

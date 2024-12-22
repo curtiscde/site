@@ -11,6 +11,7 @@
     "test:ci": "jest --coverage"
   },
   "dependencies": {
+    "cookies-next": "^5.0.2",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.0",
     "masonic": "^4.0.1",
