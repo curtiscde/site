@@ -92,7 +92,7 @@ npm run dev
 
 Now the application is running locally, I'll go ahead commit this to the repo, push, and open a PR.
 
-> Remember to add a .gitignore with node_modules to prevent committing all of the package dependencies!
+**Remember to add a .gitignore with node_modules to prevent committing all of the package dependencies!**
 
 ```zsh
 gc -m "Initial Next.js setup"

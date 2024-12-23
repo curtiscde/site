@@ -13,7 +13,8 @@ const getOrdinalSuffix = (day: number) => {
 }
 
 const convert = new showdown.Converter({
-  simplifiedAutoLink: true
+  simplifiedAutoLink: true,
+  disableForced4SpacesIndentedSublists: true,
 });
 
 export const postSchema = z.object({
