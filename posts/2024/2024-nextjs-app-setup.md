@@ -1,7 +1,7 @@
 ---
-tags: ["nextjs", "github"]
-date: 2024-12-23T12:00:00
-title: "How I set up a new Next.js application in 2025"
+tags: ["nextjs", "github", "tailwind", "daisyui", "jest", "github-actions", "netlify"]
+date: 2025-01-19T12:00:00
+title: "Setting up a Next.js application in 2025"
 description: "A walkthrough of my usual app setup steps when working on a new web app project"
 slug: "nextjs-app-setup"
 id: 1733167597032
@@ -15,9 +15,9 @@ id: 1733167597032
 - [Hosting via Netilify](#hosting-via-netilify)
   - [Setup Application on Netlify](#setup-application-on-netlify)
   - [Domain Management](#domain-management)
-- [🌼 DaisyUI Setup](#-daisyui-setup)
+- [DaisyUI Setup](#daisyui-setup)
 - [Unit Testing](#unit-testing)
-  - [Jest Installation](#jest-installation)
+  - [Jest \& Testing Library Installation](#jest--testing-library-installation)
   - [Initial Test Creation](#initial-test-creation)
 - [Linting](#linting)
 - [GitHub Actions CI](#github-actions-ci)
@@ -31,7 +31,7 @@ This article will walk you through these different steps I take in case these ar
 
 Before the creation of the web application, I start by creating a [new GitHub repository](https://github.com/new). This way I can commit my changes and save progress. It also means if something goes wrong, I have a save-point I can go back to.
 
-![github-new-repo](/post/2024/2024-nextjs-app-setup/github-new-repo.png)
+![github-new-repo](/post/2025/2025-nextjs-app-setup/github-new-repo.png)
 
 ### Clone Repo
 
@@ -48,7 +48,6 @@ Once we have the repo setup and cloned locally, we can get started with the init
 Right now, my go-to framework is Next.js, and their docs provide a lot of info on how to install here:
 
  - [Next.js: Automatic Installation](https://nextjs.org/docs/app/getting-started/installation#automatic-installation)
-
 
 
 ```zsh
@@ -86,7 +85,7 @@ Now the Next.js application has been installed, we can run the application local
 npm run dev
 ```
 
-![Next.js default](/post/2024/2024-nextjs-app-setup/next-js-default.png)
+![Next.js default](/post/2025/2025-nextjs-app-setup/next-js-default.png)
 
 ### Initial commit
 
@@ -94,7 +93,7 @@ Now the application is running locally, I'll go ahead commit this to the repo, p
 
 **Remember to add a .gitignore with node_modules to prevent committing all of the package dependencies!**
 
-```zsh
+```bash
 gc -m "Initial Next.js setup"
 gpsup
 pr
@@ -119,11 +118,11 @@ From here, follow the steps to link your GitHub account and select the relevant 
 
 Netlify is smart enough to detect that the application is a Next.js application, and will automatically configure to support this.
 
-![Netlify Next.js](/post/2024/2024-nextjs-app-setup/netlify-nextjs.png)
+![Netlify Next.js](/post/2025/2025-nextjs-app-setup/netlify-nextjs.png)
 
 At the end of the setup process, Netlify will automatically deploy the site to a subdomain of theirs (e.g: `http://<site-name>.netlify.com`)
 
-![Netlify Deployment](/post/2024/2024-nextjs-app-setup/netlify-deployment.png)
+![Netlify Deployment](/post/2025/2025-nextjs-app-setup/netlify-deployment.png)
 
 ### Domain Management
 
@@ -132,17 +131,103 @@ Netlify has the option to use a custom domain, but this is something I leave unt
 https://docs.netlify.com/domains-https/custom-domains
 
 
-## 🌼 DaisyUI Setup
+## DaisyUI Setup
+
+[daisyUI](https://daisyui.com/) is a popular component library for [Tailwind CSS](https://tailwindcss.com/) and I often install this when starting a new Next.js application, especially as Next.js comes with Tailwind pre-installed.
+
+There are [docs available](https://daisyui.com/docs/install/) for installing daisyUI, but the basic steps are as follows:
+
+```bash
+npm i -D daisyui@latest
+```
+
+**tailwind.config.ts**:
+```ts
+import type { Config } from "tailwindcss";
+import daisyui from "daisyui";
+
+export default {
+  //...
+  plugins: [daisyui],
+  daisyui: {
+    themes: ["dark"],
+  },
+} satisfies Config;
+```
+
+Above I've picked the "dark" theme, but there are [other presets to choose from](https://daisyui.com/docs/themes/), or you can [create custom themes](https://daisyui.com/theme-generator/) too.
+
+Next, apply the theme as a data attribute of the `html` element in the `layout.tsx`:
+
+```tsx
+<html lang="en" data-theme="dark">
+```
+
+With this in place, we can now override the default `page.tsx` with some daisyUI components;
+
+```tsx
+import React from "react";
+
+export default function Home() {
+  return (
+    <>
+      <div className="navbar bg-base-100">
+        <div className="flex-1">
+          <a className="btn btn-ghost text-xl">App Setup 2025</a>
+        </div>
+        <div className="flex-none">
+          <button className="btn btn-square btn-ghost">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              className="inline-block h-5 w-5 stroke-current">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div className="hero bg-base-200 min-h-screen">
+        <div className="hero-content text-center">
+          <div className="max-w-md">
+            <h1 className="text-5xl font-bold">Hello there</h1>
+            <p className="py-6">
+              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+              quasi. In deleniti eaque aut repudiandae et a id nisi.
+            </p>
+            <button className="btn btn-primary">Get Started</button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+```
+
+![daisyUI Example](/post/2025/2025-nextjs-app-setup/daisyui-example.png)
+
+Before progressing to the next stage, I'll go ahead and commit once again:
+
+```bash
+git add -p
+git add .
+gc -m "DaisyUI Setup"
+gp
+```
 
 
 ## Unit Testing
 
-For unit testing Next.js applications my preferred packages are Jest and React Testing Library.
+For unit testing Next.js applications my preferred packages are [Jest](https://jestjs.io/) and [Testing Library](https://testing-library.com/).
 
-### Jest Installation
+### Jest & Testing Library Installation
 
 ```zsh
-npm install -D jest jest-environment-jsdom @testing-library/react @testing-library/dom @testing-library/jest-dom ts-node
+npm install -D jest jest-environment-jsdom @testing-library/react @testing-library/dom @testing-library/jest-dom ts-node @testing-library/react @types/jest @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript
 ```
 
 Then initialise Jest:
@@ -163,15 +248,84 @@ Here are the options I choose:
 ✔ Automatically clear mock calls, instances, contexts and results before every test? … yes
 ```
 
-We can then run `npm t` (short for `npm run test`) which will run the test suite. For now this will throw an error as we have no existing tests.
+I then make afterwards is to adjust the test scripts so that `npm t` can run jest in watch mode, whereas `test:ci` will run jest with unit test coverage.
+
+```json
+"test": "jest --watch",
+"test:ci": "jest --ci --collectCoverage"
+```
+
+Then add a `babel.config.js` file:
+
+```js
+module.exports = {
+  presets: [
+    '@babel/preset-env',
+    '@babel/preset-react',
+    '@babel/preset-typescript',
+  ],
+  plugins: [
+    '@babel/plugin-transform-runtime',
+  ],
+};
+```
+
+Finally, I update the `jest.config.ts` file to include the coverage rules:
+
+```ts
+collectCoverageFrom: [
+  "**/*.{js,jsx,ts,tsx}",
+  "!**/node_modules/**",
+  "!**/.next/**",
+  "!**/coverage/**",
+  "!**/public/**",
+  "!**/types/**",
+  "!**.config.{js,ts}",
+  "!next-env.d.ts"
+],
+```
 
 ### Initial Test Creation
 
-To prove the test setup is complete, we can create a simple test against one of the React components created by the initial Next.js setup:
+To prove the test setup is complete, we can create a simple test against one of the React components created by the initial Next.js setup.
 
-```ts
+**page.test.tsx**
+```tsx
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom'
+import Home from './page';
 
+describe('Page', () => {
+  it('renders the navbar with the correct text', () => {
+    render(<Home />);
+    const navbarText = screen.getByText('App Setup 2025');
+    expect(navbarText).toBeInTheDocument();
+  });
+
+  it('renders the hero section with the correct heading', () => {
+    render(<Home />);
+    const heading = screen.getByText('Hello there');
+    expect(heading).toBeInTheDocument();
+  });
+
+  it('renders the hero section with the correct paragraph', () => {
+    render(<Home />);
+    const paragraph = screen.getByText(/Provident cupiditate voluptatem et in/i);
+    expect(paragraph).toBeInTheDocument();
+  });
+
+  it('renders the Get Started button', () => {
+    render(<Home />);
+    const button = screen.getByText('Get Started');
+    expect(button).toBeInTheDocument();
+  });
+});
 ```
+
+Finally, we can run `npm run test:ci` to check our new test setup is working correctly:
+
+![Test Result](/post/2025/2025-nextjs-app-setup/jest-test-results.png)
 
 
 ## Linting
