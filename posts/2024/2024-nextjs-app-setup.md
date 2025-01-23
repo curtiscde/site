@@ -1,10 +1,11 @@
 ---
 tags: ["nextjs", "github", "tailwind", "daisyui", "jest", "github-actions", "netlify"]
-date: 2025-01-19T12:00:00
+date: 2025-01-22T12:00:00
 title: "Setting up a Next.js application in 2025"
 description: "A walkthrough of my usual app setup steps when working on a new web app project"
 slug: "nextjs-app-setup"
 id: 1733167597032
+image: "/post/2025/2025-nextjs-app-setup/next-js-logo.png"
 ---
 - [Introduction](#introduction)
 - [GitHub repository setup](#github-repository-setup)
@@ -244,7 +245,7 @@ Here are the options I choose:
 ✔ Would you like to use Typescript for the configuration file? … yes
 ✔ Choose the test environment that will be used for testing › jsdom (browser-like)
 ✔ Do you want Jest to add coverage reports? … yes
-✔ Which provider should be used to instrument code for coverage? › babel
+✔ Which provider should be used to instrument code for coverage? › v8
 ✔ Automatically clear mock calls, instances, contexts and results before every test? … yes
 ```
 
