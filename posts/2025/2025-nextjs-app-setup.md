@@ -228,7 +228,7 @@ For unit testing Next.js applications my preferred packages are [Jest](https://j
 ### Jest & Testing Library Installation
 
 ```zsh
-npm install -D jest jest-environment-jsdom @testing-library/react @testing-library/dom @testing-library/jest-dom ts-node @testing-library/react @types/jest @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript
+npm install -D jest jest-environment-jsdom @testing-library/react @testing-library/dom @testing-library/jest-dom ts-node @testing-library/react @types/jest
 ```
 
 Then initialise Jest:
@@ -256,34 +256,27 @@ I then make afterwards is to adjust the test scripts so that `npm t` can run jes
 "test:ci": "jest --ci --collectCoverage"
 ```
 
-Then add a `babel.config.js` file:
-
-```js
-module.exports = {
-  presets: [
-    '@babel/preset-env',
-    '@babel/preset-react',
-    '@babel/preset-typescript',
-  ],
-  plugins: [
-    '@babel/plugin-transform-runtime',
-  ],
-};
-```
-
-Finally, I update the `jest.config.ts` file to include the coverage rules:
+Finally, I update the `jest.config.ts` file to include the coverage rules, and wrap with `nextJest`:
 
 ```ts
-collectCoverageFrom: [
-  "**/*.{js,jsx,ts,tsx}",
-  "!**/node_modules/**",
-  "!**/.next/**",
-  "!**/coverage/**",
-  "!**/public/**",
-  "!**/types/**",
-  "!**.config.{js,ts}",
-  "!next-env.d.ts"
-],
+import type { Config } from 'jest'
+import nextJest from 'next/jest.js'
+ 
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: './',
+})
+ 
+// Add any custom config to be passed to Jest
+const config: Config = {
+  coverageProvider: 'v8',
+  testEnvironment: 'jsdom',
+  // Add more setup options before each test is run
+  // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+}
+ 
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+export default createJestConfig(config)
 ```
 
 ### Initial Test Creation
