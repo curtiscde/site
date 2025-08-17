@@ -1,5 +1,6 @@
 https://curtistimson.co.uk/* https://www.curtiscode.dev/:splat 301!
 /pay https://monzo.me/curtisjamestimson
+/pay/:amount d=:description https://monzo.me/curtisjamestimson/:amount?d=:description 302
 
 /index.xml /rss.xml
 
