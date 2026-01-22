@@ -45,4 +45,26 @@ The marathon route needed to be more than a static visual. At a minimum, this me
  - Visually distinguish claimed sections from one another, and also unclaimed
  - Update incrementally as new donations arrived
 
+### 3. The route must be clearly segmented
+
+Finally, the segmentation itself had to be obvious.
+
+Donors needed to be able to:
+
+ - See where one sponsored section ends and another begins
+ - Understand how much of the route a donation covered
+ - Recognise continuity along the course as it filled in over time
+
+
+## Early Prototype: Canvas API
+
+![Early Prototype in HTML5 Canvas](/post/2026/2026-london-marathon/lm-canvas-img.png)
+
+With those requirements in place, the first version of the map was built using [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API).
+
+I started with a static image of the marathon course as the base map and drew a single polyline over the top to represent progress along the route. Even at that early stage, the visual idea worked. Seeing part of the course filled in immediately conveyed the concept more clearly than a progress bar could.
+
+However, it became obvious that scaling this approach would be difficult. The route only existed as pixels on a canvas, and any interaction would have had to be custom-built on top. If the route was going to be interactive, segmentable, and stateful, it needed to be treated as data rather than something that was drawn onto a canvas.
+
+That led to the move away from Canvas entirely.
 
