@@ -68,3 +68,18 @@ However, it became obvious that scaling this approach would be difficult. The ro
 
 That led to the move away from Canvas entirely.
 
+
+## Moving the route to Leaflet
+
+Instead of drawing the marathon course onto a canvas, I moved to plotting out the route using [Leaflet](https://leafletjs.com/). This came with a few clear benefits:
+
+**The route could be presented as data rather than a static image**
+- With canvas, I was simply plotting lines onto an image. With Leaflet, I was plotting coordinates onto a map. That meant core functionality, such as panning and zooming, came out of the box, rather than needing to be built from scratch.
+
+**Improved rendering**
+- In the early canvas prototype, there were some visible issues with line rendering. These problems disappeared when moving to Leaflet, which handles line rendering far more robustly as part of the mapping abstraction.
+
+**Interaction**
+- Polyline interaction comes out of the box with Leaflet, and therefore it made it much simpler to be able to add click event handlers for showing additional information about specific donations.
+
+This all made it possible to think about the course in terms of allocation rather than drawing. Donations could now map onto parts of a real path, and those parts could be rendered, updated, and interacted with consistently as the state of the fundraiser changed.
