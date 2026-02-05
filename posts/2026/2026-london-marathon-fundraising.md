@@ -74,6 +74,8 @@ That led to the move away from Canvas entirely.
 
 ## Moving the route to Leaflet
 
+![Map displayed with Leaflet](/post/2026/2026-london-marathon/leaflet.png)
+
 Instead of drawing the marathon course onto a canvas, I moved to plotting out the route using [Leaflet](https://leafletjs.com/). This came with a few clear benefits:
 
 **The route could be presented as data rather than a static image**
