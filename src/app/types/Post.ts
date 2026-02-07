@@ -13,8 +13,9 @@ const getOrdinalSuffix = (day: number) => {
 }
 
 const convert = new showdown.Converter({
-  simplifiedAutoLink: true
+  simplifiedAutoLink: true,
 });
+convert.setFlavor('github');
 
 export const postSchema = z.object({
   id: z.number(),
