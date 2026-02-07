@@ -22,29 +22,50 @@ export async function generateMetadata(
   }
 
   const { title: siteName, pageTitle, url } = config
-  const { title, description, tags, imageThumbnailUrl, date } = post
+  const { title, description, tags, imageThumbnailUrl, date, author } = post
   const parentOpenGraph = (await parent).openGraph
+
+  const postUrl = `${url}/post/${slug}`
+  const imageUrl = imageThumbnailUrl ? `${url}${imageThumbnailUrl}` : undefined
 
   const metaData: Metadata = {
     title: `${title} | ${pageTitle}`,
-  }
-
-  if (description != null) {
-    metaData.description = description
-  }
-
-  metaData.openGraph = {
-    ...parentOpenGraph,
-    title,
     description,
-    tags,
-    ...(imageThumbnailUrl != null && {
-      images: [`${url}${imageThumbnailUrl}`]
-    }),
-    type: 'article',
-    url: `${url}/post/${slug}`,
-    siteName,
-    publishedTime: date.toString(),
+    alternates: {
+      canonical: postUrl,
+    },
+    authors: author ? [{ name: author }] : undefined,
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      creator: '@curtcode',
+      ...(imageUrl && {
+        images: [imageUrl],
+      }),
+    },
+    openGraph: {
+      ...parentOpenGraph,
+      title,
+      description,
+      type: 'article',
+      url: postUrl,
+      siteName,
+      publishedTime: date.toString(),
+      authors: author ? [author] : undefined,
+      tags,
+      ...(imageUrl && {
+        images: [
+          {
+            url: imageUrl,
+            width: 1200,
+            height: 630,
+            alt: title,
+            type: 'image/png',
+          },
+        ],
+      }),
+    },
   }
 
   return metaData

@@ -26,6 +26,7 @@ export const postSchema = z.object({
   tags: z.string().array(),
   date: z.date(),
   content: z.string(),
+  author: z.string().optional(),
 }).transform((post) => {
 
   const { date, image: imageThumbnailUrl, slug, ...rest } = post

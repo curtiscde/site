@@ -11,6 +11,7 @@ import 'highlight.js/styles/atom-one-dark.css';
 import './PostPage.scss'
 import { Header } from "./Header";
 import { RelatedPosts } from "./RelatedPosts";
+import { config } from "../config";
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('bash', bash);
@@ -18,13 +19,40 @@ hljs.registerLanguage('typescript', typescript);
 hljs.registerLanguage('css', css);
 
 export const PostPage = ({ post, relatedPosts }: { post: Post, relatedPosts: Post[] }) => {
-  useEffect(() => {
+  // Generate JSON-LD structured data for BlogPosting
+  const structuredDataJson = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description || post.title,
+    author: {
+      '@type': 'Person',
+      name: post.author || 'Curtis Timson',
+    },
+    datePublished: post.date.toISOString(),
+    dateModified: post.date.toISOString(),
+    image: post.imageThumbnailUrl ? `${config.url}${post.imageThumbnailUrl}` : undefined,
+    keywords: post.tags.join(', '),
+    articleBody: post.contentHtml,
+  });
 
+  useEffect(() => {
     document.querySelectorAll('pre code').forEach((block) => {
       hljs.highlightElement(block as HTMLElement);
     });
+  }, []);
 
-  }, [])
+  useEffect(() => {
+    // Add JSON-LD script to head
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = structuredDataJson;
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, [structuredDataJson])
 
   return (
     <>
