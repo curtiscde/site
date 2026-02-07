@@ -1,12 +1,12 @@
 ---
 tags: ["london-marathon", "fundraising", "mapping", "leaflet", "project"]
 description: "How I designed a fundraising website that maps donations directly onto a marathon route."
-date: 2026-02-07T12:00:00
+date: 2026-02-0708:00:00
 title: "Turning my London Marathon fundraiser into a sponsorable route"
 slug: "turning-my-london-marathon-fundraiser-into-a-sponsorable-route"
 author: "Curtis Timson"
 image: "/post/2026/2026-london-marathon/london-marathon-curtis-site.png"
-id: 1770465600000
+id: 1770452029374
 ---
 
 **👉 [View the site & sponsor a segment, helping raise funds for Cancer Research UK](https://londonmarathon.curtiscode.dev)**
@@ -127,6 +127,18 @@ This creates a clear, mapping between donation data and the visual state of the 
 
 ---
 
+## Tech Stack
+
+The site is built with a simple, modern tech stack:
+
+- [Next.js](https://nextjs.org) - Handles data fetching and static generation
+- [TypeScript](https://www.typescriptlang.org) - Important for modelling donation data and route segments, with confidence
+- [Leaflet](https://leafletjs.com) - Used for rendering the marathon route on a map
+- [DaisyUI](https://daisyui.com) - Allowed me to create quick UI components without much overhead
+- [Netlify](https://www.netlify.com) - Provides simple and reliable hosting
+
+---
+
 ## Why this model works for fundraising
 
 What surprised me most was how effective this model is psychologically.
@@ -152,6 +164,7 @@ As with all personal projects, there is always more that can be done! Here are a
 - Allow donors to be able to easily share their segment with social media. Currently there's no way of doing this, other than screenshotting, which isn't ideal.
 - Some donors have suggested they would donate more for more premium spots on the route (for example, Tower Bridge). I'd like to find a way of incorporating this idea
 - Better interaction between JustGiving -> Donation Site. Once the donation is made, via JustGiving, the donor must find their own way back to the site, and refresh the page, to then see their donation on the map. It would be nice to give more instant gratification here with an immediate display of their donation segment.
+- Caching of segmentation allocation for performance gains
 
 ---
 
