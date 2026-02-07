@@ -1,7 +1,7 @@
 ---
 tags: ["london-marathon", "fundraising", "mapping", "leaflet", "project"]
 description: "How I designed a fundraising website that maps donations directly onto a marathon route."
-date: 2026-02-0708:00:00
+date: 2026-02-07T08:00:00
 title: "Turning my London Marathon fundraiser into a sponsorable route"
 slug: "turning-my-london-marathon-fundraiser-into-a-sponsorable-route"
 author: "Curtis Timson"
