@@ -21,7 +21,7 @@ export const config: Config = {
   rssFeedDescription: 'The Curtis Timson Blog',
   subtitle: "Software Engineer",
   title: "Curtis Timson",
-  url: 'https://www.curtiscode.dev',
+  url: 'https://deploy-preview-53--curtiscode-site.netlify.app',
   socialLinks: {
     x: 'https://x.com/curtcode',
     bluesky: 'https://bsky.app/profile/curtiscode.dev',
