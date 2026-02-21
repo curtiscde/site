@@ -9,7 +9,27 @@ import ClientThemeWrapper from "./context/ClientThemeWrapper";
 export const metadata: Metadata = {
   title: config.pageTitle,
   icons: '//0.gravatar.com/avatar/15a556c8b58e8aefa727088885925a12.png?s=16',
-  alternates: { types: { "application/rss+xml": `${config.url}/rss.xml`, }, }
+  alternates: { types: { "application/rss+xml": `${config.url}/rss.xml`, }, },
+  openGraph: {
+    title: config.pageTitle,
+    siteName: config.title,
+    url: config.url,
+    type: 'website',
+    images: [
+      {
+        url: `${config.url}/images/curtis-homepage.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Curtis Timson',
+        type: 'image/jpeg',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: config.pageTitle,
+    images: [`${config.url}/images/curtis-homepage.jpg`],
+  },
 };
 
 export default async function RootLayout({
