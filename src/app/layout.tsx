@@ -5,6 +5,10 @@ import { getPosts, getTopTags } from "./util/posts";
 import { config } from './config'
 import { ThemeProvider } from "./context/ThemeContext";
 import ClientThemeWrapper from "./context/ClientThemeWrapper";
+import { ConsentProvider } from "./context/ConsentContext";
+import { CookieBanner } from "./components/CookieBanner/CookieBanner";
+import { GoogleAnalytics } from "./components/Analytics/GoogleAnalytics";
+import { AdsenseScript } from "./components/Ads/AdsenseUnit";
 
 export const metadata: Metadata = {
   title: config.pageTitle,
@@ -43,12 +47,17 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeProvider>
-          <ClientThemeWrapper>
-            {children}
-            <Footer recentPosts={posts.slice(0, 5)} topTags={topTags} />
-          </ClientThemeWrapper>
-        </ThemeProvider>
+        <ConsentProvider>
+          <ThemeProvider>
+            <ClientThemeWrapper>
+              {children}
+              <Footer recentPosts={posts.slice(0, 5)} topTags={topTags} />
+            </ClientThemeWrapper>
+          </ThemeProvider>
+          <CookieBanner />
+          <GoogleAnalytics />
+          <AdsenseScript />
+        </ConsentProvider>
       </body>
     </html>
   );

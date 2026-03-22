@@ -37,9 +37,8 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
             </nav>
             <nav>
               <h6 className="footer-title">General</h6>
-              {/* <a className="link link-hover">Terms of use</a>
-              <a className="link link-hover">Privacy policy</a>
-              <a className="link link-hover">Cookie policy</a> */}
+              <Link className="link link-hover" href="/privacy-policy">Privacy policy</Link>
+              <button className="link link-hover text-left" onClick={() => { localStorage.removeItem('cookie-consent'); window.location.reload() }}>Cookie settings</button>
               <a href="https://buymeacoffee.com/curtiscode">☕️ Buy me a coffee</a>
               <a className="link link-hover" href="/sitemap.xml">Sitemap.xml</a>
             </nav>

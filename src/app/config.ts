@@ -13,6 +13,10 @@ interface Config {
     linkedin: string
     rss: string
   }
+  analytics: {
+    ga4MeasurementId: string
+    adsensePublisherId: string
+  }
 }
 
 export const config: Config = {
@@ -29,5 +33,9 @@ export const config: Config = {
     github: 'https://github.com/curtiscde',
     linkedin: 'https://www.linkedin.com/in/curtis-timson-89040a37/',
     rss: '/rss.xml'
+  },
+  analytics: {
+    ga4MeasurementId: 'G-CMJX9JB6WE',
+    adsensePublisherId: 'pub-3884839674570774',
   }
 };
