@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { config } from '../config'
+import { Header } from '../components/Header'
 
 export const metadata: Metadata = {
   title: `Privacy Policy | ${config.title}`,
@@ -8,7 +9,9 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicy() {
   return (
-    <main className="container mx-auto px-4 py-8 prose max-w-3xl">
+    <>
+      <Header />
+      <main className="container mx-auto px-4 py-8 prose max-w-3xl">
       <h1>Privacy Policy</h1>
       <p><strong>Last updated:</strong> March 2026</p>
 
@@ -93,5 +96,6 @@ export default function PrivacyPolicy() {
         <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a>.
       </p>
     </main>
+    </>
   )
 }
