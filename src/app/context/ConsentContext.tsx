@@ -5,13 +5,13 @@ import { createContext, useState, useEffect, useContext, JSX } from 'react'
 type ConsentState = 'undecided' | 'granted' | 'denied'
 
 interface ConsentContextValue {
-  consent: ConsentState
+  consent: ConsentState | null
   grantConsent: () => void
   denyConsent: () => void
 }
 
 export const ConsentContext = createContext<ConsentContextValue>({
-  consent: 'undecided',
+  consent: null,
   grantConsent: () => {},
   denyConsent: () => {},
 })
@@ -19,11 +19,11 @@ export const ConsentContext = createContext<ConsentContextValue>({
 const STORAGE_KEY = 'cookie-consent'
 
 export const ConsentProvider = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
-  const [consent, setConsent] = useState<ConsentState>('undecided')
+  const [consent, setConsent] = useState<ConsentState | null>(null)
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY) as ConsentState | null
-    if (stored === 'granted' || stored === 'denied') setConsent(stored)
+    setConsent(stored === 'granted' || stored === 'denied' ? stored : 'undecided')
   }, [])
 
   const grantConsent = () => {
