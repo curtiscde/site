@@ -17,6 +17,12 @@ interface Config {
     ga4MeasurementId: string
     adsensePublisherId: string
   }
+  giscus: {
+    repo: `${string}/${string}`
+    repoId: string
+    category: string
+    categoryId: string
+  }
 }
 
 export const config: Config = {
@@ -37,5 +43,11 @@ export const config: Config = {
   analytics: {
     ga4MeasurementId: 'G-CMJX9JB6WE',
     adsensePublisherId: 'pub-3884839674570774',
+  },
+  giscus: {
+    repo: 'curtiscde/site',
+    repoId: 'R_kgDONbMx2w',
+    category: 'Blog Post Comments',
+    categoryId: 'DIC_kwDONbMx284C5dxM',
   }
 };

@@ -11,6 +11,7 @@ import 'highlight.js/styles/atom-one-dark.css';
 import './PostPage.scss'
 import { Header } from "./Header";
 import { RelatedPosts } from "./RelatedPosts";
+import { Comments } from "./Comments/Comments";
 import { config } from "../config";
 
 hljs.registerLanguage('javascript', javascript);
@@ -70,6 +71,13 @@ export const PostPage = ({ post, relatedPosts }: { post: Post, relatedPosts: Pos
                 ))}
               </div>
             </article>
+          </div>
+        </div>
+        <div className="container mx-auto">
+          <div className="mx-6">
+            <div className="prose lg:prose-lg mx-auto py-12">
+              <Comments />
+            </div>
           </div>
         </div>
         {relatedPosts.length > 0 && (
