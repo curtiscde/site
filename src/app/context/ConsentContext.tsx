@@ -23,6 +23,7 @@ export const ConsentProvider = ({ children }: { children: JSX.Element | JSX.Elem
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY) as ConsentState | null
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setConsent(stored === 'granted' || stored === 'denied' ? stored : 'undecided')
   }, [])
 

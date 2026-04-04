@@ -10,6 +10,7 @@ export const ThemeProvider = ({ children }: { children: JSX.Element | JSX.Elemen
 
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme') || 'light';
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(storedTheme)
   }, [])
 

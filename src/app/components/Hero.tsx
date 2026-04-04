@@ -3,24 +3,24 @@ import "./Hero.scss"
 
 const { title, subtitle } = config
 
-export const Hero = ({ tag }: { tag?: string }) => {
-  const Content = () => {
-    if (tag != null) {
-      return (
-        <h1 className="mb-5 text-4xl font-bold">🔖 {tag}</h1>
-      )
-    }
-
+const Content = ({ tag }: { tag?: string }) => {
+  if (tag != null) {
     return (
-      <>
-        <h1 className="mb-5 text-4xl font-bold">{title}</h1>
-        <p className="mb-5 text-l description">
-          {subtitle}
-        </p>
-      </>
+      <h1 className="mb-5 text-4xl font-bold">🔖 {tag}</h1>
     )
   }
 
+  return (
+    <>
+      <h1 className="mb-5 text-4xl font-bold">{title}</h1>
+      <p className="mb-5 text-l description">
+        {subtitle}
+      </p>
+    </>
+  )
+}
+
+export const Hero = ({ tag }: { tag?: string }) => {
   return (
     <div
       className="hero"
@@ -32,7 +32,7 @@ export const Hero = ({ tag }: { tag?: string }) => {
       <div className="hero-overlay bg-opacity-10"></div>
       <div className="hero-content text-neutral-content text-center py-20 text-white">
         <div className="max-w-md hero-text-container">
-          <Content />
+          <Content tag={tag} />
         </div>
       </div>
     </div>
