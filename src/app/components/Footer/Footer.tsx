@@ -12,13 +12,21 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
   const tagsNotDisplayedCount = topTags.length - tagsToDisplay
 
   const dialog = useRef<HTMLDialogElement>(null)
-  const [modalSort, setModalSort] = useState<'smart' | 'count'>('smart')
+  const sortDropdown = useRef<HTMLDetailsElement>(null)
+  const [modalSort, setModalSort] = useState<'smart' | 'count' | 'alpha'>('smart')
+
+  const selectSort = (sort: 'smart' | 'count' | 'alpha') => {
+    setModalSort(sort)
+    sortDropdown.current?.removeAttribute('open')
+  }
 
   const copyright = `All rights reserved © ${config.title} ${new Date().getFullYear()}`
 
   const modalTags = modalSort === 'count'
     ? [...topTags].sort((a, b) => b.count - a.count)
-    : topTags
+    : modalSort === 'alpha'
+      ? [...topTags].sort((a, b) => a.tag.localeCompare(b.tag))
+      : topTags
 
   return (
     <>
@@ -70,31 +78,19 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
             </form>
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-bold text-lg">Post Tags</h3>
-              <div className="join">
-                <button
-                  className={`join-item btn btn-xs gap-1 ${modalSort === 'smart' ? 'btn-neutral' : 'btn-ghost'}`}
-                  onClick={() => setModalSort('smart')}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              <details className="dropdown dropdown-end" ref={sortDropdown}>
+                <summary className="btn btn-xs btn-ghost gap-1">
+                  Sort: {modalSort === 'smart' ? 'Relevance' : modalSort === 'count' ? 'Count' : 'A–Z'}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
                   </svg>
-                  Smart
-                </button>
-                <button
-                  className={`join-item btn btn-xs gap-1 ${modalSort === 'count' ? 'btn-neutral' : 'btn-ghost'}`}
-                  onClick={() => setModalSort('count')}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="8" y1="6" x2="21" y2="6" />
-                    <line x1="8" y1="12" x2="21" y2="12" />
-                    <line x1="8" y1="18" x2="21" y2="18" />
-                    <line x1="3" y1="6" x2="3.01" y2="6" />
-                    <line x1="3" y1="12" x2="3.01" y2="12" />
-                    <line x1="3" y1="18" x2="3.01" y2="18" />
-                  </svg>
-                  Count
-                </button>
-              </div>
+                </summary>
+                <ul className="dropdown-content menu bg-base-100 rounded-box z-10 w-36 p-2 shadow text-base-content">
+                  <li><a className={modalSort === 'smart' ? 'active' : ''} onClick={() => selectSort('smart')}>Relevance</a></li>
+                  <li><a className={modalSort === 'count' ? 'active' : ''} onClick={() => selectSort('count')}>Count</a></li>
+                  <li><a className={modalSort === 'alpha' ? 'active' : ''} onClick={() => selectSort('alpha')}>A–Z</a></li>
+                </ul>
+              </details>
             </div>
             <div className="card-actions mt-4">
               {modalTags.map(({ tag, count }) => (
