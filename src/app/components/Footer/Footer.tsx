@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import { Post, TagCount } from "../../types"
 import Link from "next/link"
 import "./Footer.scss"
@@ -12,8 +12,21 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
   const tagsNotDisplayedCount = topTags.length - tagsToDisplay
 
   const dialog = useRef<HTMLDialogElement>(null)
+  const sortDropdown = useRef<HTMLDetailsElement>(null)
+  const [modalSort, setModalSort] = useState<'smart' | 'count' | 'alpha'>('smart')
+
+  const selectSort = (sort: 'smart' | 'count' | 'alpha') => {
+    setModalSort(sort)
+    sortDropdown.current?.removeAttribute('open')
+  }
 
   const copyright = `All rights reserved © ${config.title} ${new Date().getFullYear()}`
+
+  const modalTags = modalSort === 'count'
+    ? [...topTags].sort((a, b) => b.count - a.count)
+    : modalSort === 'alpha'
+      ? [...topTags].sort((a, b) => a.tag.localeCompare(b.tag))
+      : topTags
 
   return (
     <>
@@ -63,9 +76,24 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
             <form method="dialog">
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={() => dialog.current?.close()}>✕</button>
             </form>
-            <h3 className="font-bold text-lg">Post Tags</h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-bold text-lg">Post Tags</h3>
+              <details className="dropdown dropdown-end" ref={sortDropdown}>
+                <summary className="btn btn-xs btn-ghost gap-1">
+                  Sort: {modalSort === 'smart' ? 'Relevance' : modalSort === 'count' ? 'Count' : 'A–Z'}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </summary>
+                <ul className="dropdown-content menu bg-base-100 rounded-box z-10 w-36 p-2 shadow text-base-content">
+                  <li><a className={modalSort === 'smart' ? 'active' : ''} onClick={() => selectSort('smart')}>Relevance</a></li>
+                  <li><a className={modalSort === 'count' ? 'active' : ''} onClick={() => selectSort('count')}>Count</a></li>
+                  <li><a className={modalSort === 'alpha' ? 'active' : ''} onClick={() => selectSort('alpha')}>A–Z</a></li>
+                </ul>
+              </details>
+            </div>
             <div className="card-actions mt-4">
-              {topTags.map(({ tag, count }) => (
+              {modalTags.map(({ tag, count }) => (
                 <Link key={tag} className="link link-hover" href={`/tag/${tag}`} title={`${tag} [${count}]`} onClick={() => dialog.current?.close()}><div key={tag} className="badge badge-outline">{tag}</div></Link>
               ))}
             </div>
