@@ -162,6 +162,7 @@ As with all personal projects, there is always more that can be done! Here are a
 
 - Currently the site is very fixed to my marathon fundraising. It would be great to allow other runners to use the model for their own fundraising, on different running courses
 - Allow donors to be able to easily share their segment with social media. Currently there's no way of doing this, other than screenshotting, which isn't ideal.
+  - **April 2026 Update**: This is now possible via a "Share" link in the donation modal
 - Some donors have suggested they would donate more for more premium spots on the route (for example, Tower Bridge). I'd like to find a way of incorporating this idea
 - Better interaction between JustGiving -> Donation Site. Once the donation is made, via JustGiving, the donor must find their own way back to the site, and refresh the page, to then see their donation on the map. It would be nice to give more instant gratification here with an immediate display of their donation segment.
 - Caching of segmentation allocation for performance gains
