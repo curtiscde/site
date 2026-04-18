@@ -1,4 +1,5 @@
 import React from "react"
+import Image from "next/image"
 import { Post } from "../types"
 import "./postcard.scss"
 
@@ -13,9 +14,11 @@ export const PostCard = ({ data: post }: { index?: number, data: Post, width?: n
 
         {post.imageThumbnailUrl != null &&
           <figure className="bg-primary">
-            <img
+            <Image
               src={post.imageThumbnailUrl}
-              alt={post.title} />
+              alt={post.title}
+              width={1200}
+              height={630} />
           </figure>
         }
         <div className="card-body">
