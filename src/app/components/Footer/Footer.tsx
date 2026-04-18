@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react"
 import { Post, TagCount } from "../../types"
 import Link from "next/link"
+import Image from "next/image"
 import "./Footer.scss"
 import { config } from "../../config"
 import SocialLinks from "./SocialLinks"
@@ -61,7 +62,7 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
             <aside className="grid-flow-col items-center mx-auto md:mx-0">
               <div className="avatar mx-2">
                 <div className="w-10 rounded-full grayscale">
-                  <img src="/images/curtis.jpeg" alt={config.title} />
+                  <Image src="/images/curtis.jpeg" alt={config.title} width={40} height={40} />
                 </div>
               </div>
               <p>{copyright}</p>

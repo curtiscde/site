@@ -6,8 +6,6 @@ const now = new Date('2026-01-01').getTime();
 
 // Recent post: ~0 years ago -> weight ~1.0
 const recentDate = new Date('2025-12-01');
-// Mid post: ~2 years ago -> weight ~0.33
-const midDate = new Date('2024-01-01');
 // Old post: ~6 years ago -> weight ~0.14
 const oldDate = new Date('2020-01-01');
 
