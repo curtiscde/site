@@ -1,5 +1,5 @@
 import { z } from "zod"
-import showdown from 'showdown';
+import { marked } from 'marked';
 import { config } from "../config";
 
 const getOrdinalSuffix = (day: number) => {
@@ -12,10 +12,7 @@ const getOrdinalSuffix = (day: number) => {
   }
 }
 
-const convert = new showdown.Converter({
-  simplifiedAutoLink: true,
-});
-convert.setFlavor('github');
+marked.setOptions({ gfm: true });
 
 export const postSchema = z.object({
   id: z.number(),
@@ -35,7 +32,7 @@ export const postSchema = z.object({
   const month = date.toLocaleString('en-GB', { month: 'short' });
   const year = date.getFullYear();
   const dateFormatted = `${day}${getOrdinalSuffix(day)} ${month} ${year}`;
-  const contentHtml = convert.makeHtml(post.content);
+  const contentHtml = marked.parse(post.content, { async: false });
 
   const path = `/post/${slug}`
   const url = `${config.url}${path}`
