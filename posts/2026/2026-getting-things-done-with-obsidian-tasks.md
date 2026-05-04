@@ -1,12 +1,12 @@
 ---
 tags: ["obsidian", "getting-things-done", "productivity", "tasks", "note-taking"]
 description: "How I built a GTD workflow inside Obsidian using the Obsidian Tasks plugin"
-date: 2026-05-03T08:00:00
+date: 2026-05-04T08:00:00
 title: "Getting Things Done with Obsidian Tasks"
 slug: "getting-things-done-with-obsidian-tasks"
 author: "Curtis Timson"
 image: "/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view.png"
-id: 1777795200000
+id: 1777881600000
 ---
 I've tried a lot of task management systems, however reading David Allen's [Getting Things Done](https://gettingthingsdone.com/) changed how I thought about this. I found that the process fit perfectly with [Todoist](https://www.todoist.com/), which they themselves promote in [their articles](https://www.todoist.com/productivity-methods/getting-things-done) as well as project templates within the app itself.
 
