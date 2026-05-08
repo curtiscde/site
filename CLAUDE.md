@@ -29,7 +29,11 @@ Markdown posts are loaded at build time:
 3. `showdown` converts markdown body to HTML
 4. `highlight.js` handles syntax highlighting (JS, Bash, TS, CSS)
 
-Post frontmatter requires: `id` (timestamp), `title`, `slug`, `date` (ISO), `tags` (array). Optional: `description`, `image`, `author`.
+Post frontmatter requires: `id` (GUID string, e.g. `550e8400-e29b-41d4-a716-446655440000`), `title`, `slug`, `date` (format: `2026-01-15T00:00:00`), `tags` (array). Optional: `description`, `image`, `author`.
+
+- **File location**: `posts/{year}/{year}-{slug}.md`
+- **`id`**: Use a GUID for new posts. Older posts have numeric or timestamp ids — the schema accepts all formats.
+- **`image`**: Path relative to `public/`, e.g. `/post/{slug}/cover.jpg`. OG images should be 1200×630px and placed under `public/post/{slug}/`.
 
 ### Routing
 
