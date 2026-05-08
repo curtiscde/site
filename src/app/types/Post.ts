@@ -15,7 +15,7 @@ const getOrdinalSuffix = (day: number) => {
 marked.setOptions({ gfm: true });
 
 export const postSchema = z.object({
-  id: z.number(),
+  id: z.union([z.number(), z.string()]),
   title: z.string(),
   description: z.string().optional(),
   image: z.string().optional(),
