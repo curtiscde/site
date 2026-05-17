@@ -42,7 +42,7 @@ describe('transformPost', () => {
   it('renames image field to imageThumbnailUrl', () => {
     const withImage = transformPost({ ...basePost, image: '/post/test/cover.jpg' });
     expect(withImage.imageThumbnailUrl).toBe('/post/test/cover.jpg');
-    expect((withImage as any).image).toBeUndefined();
+    expect('image' in withImage).toBe(false);
   });
 
   it('passes undefined imageThumbnailUrl when image is absent', () => {
