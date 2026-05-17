@@ -3,7 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { Post, postSchema } from '../../types';
 
-interface ContentFile {
+export interface ContentFile {
   filename: string
   content: string
 }
@@ -29,19 +29,21 @@ function readFilesRecursively(dir: string): ContentFile[] {
   return fileContents
 }
 
-export function getPosts() {
-  const fileContents = readFilesRecursively(path.join('posts'))
-
-  const posts: Post[] = fileContents.reduce((files: Post[], file: ContentFile) => {
+export function parsePosts(files: ContentFile[]): Post[] {
+  const posts = files.reduce((acc: Post[], file: ContentFile) => {
     try {
       const { content, data } = matter(file);
-      files.push(postSchema.parse({ ...data, content }))
-      return files
+      acc.push(postSchema.parse({ ...data, content }))
+      return acc
     } catch (e) {
       console.error(`error parsing post: ${file.filename}`, e)
-      return files
+      return acc
     }
-  }, [] as Post[])
+  }, [])
 
   return posts.sort((a, b) => b.date.getTime() - a.date.getTime());
+}
+
+export function getPosts(): Post[] {
+  return parsePosts(readFilesRecursively(path.join('posts')))
 }
