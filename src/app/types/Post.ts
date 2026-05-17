@@ -2,7 +2,7 @@ import { z } from "zod"
 import { marked } from 'marked';
 import { config } from "../config";
 
-const getOrdinalSuffix = (day: number) => {
+export function getOrdinalSuffix(day: number): string {
   if (day > 3 && day < 21) return 'th';
   switch (day % 10) {
     case 1: return 'st';
@@ -14,7 +14,7 @@ const getOrdinalSuffix = (day: number) => {
 
 marked.setOptions({ gfm: true });
 
-export const postSchema = z.object({
+export const rawPostSchema = z.object({
   id: z.union([z.number(), z.string()]),
   title: z.string(),
   description: z.string().optional(),
@@ -24,8 +24,11 @@ export const postSchema = z.object({
   date: z.date(),
   content: z.string(),
   author: z.string().optional(),
-}).transform((post) => {
+})
 
+export type RawPost = z.infer<typeof rawPostSchema>
+
+export function transformPost(post: RawPost) {
   const { date, image: imageThumbnailUrl, slug, ...rest } = post
 
   const day = date.getDate();
@@ -47,6 +50,8 @@ export const postSchema = z.object({
     path,
     url
   }
-})
+}
+
+export const postSchema = rawPostSchema.transform(transformPost)
 
 export type Post = z.infer<typeof postSchema>
