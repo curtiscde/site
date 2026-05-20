@@ -7,6 +7,7 @@ import Image from "next/image"
 import "./Footer.scss"
 import { config } from "../../config"
 import SocialLinks from "./SocialLinks"
+import { Laptop, FileText, Cookie, Coffee, Map } from "lucide-react"
 
 export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags: TagCount[] }) => {
   const tagsToDisplay = 12
@@ -51,10 +52,11 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
             </nav>
             <nav>
               <h6 className="footer-title">General</h6>
-              <Link className="link link-hover" href="/privacy-policy">Privacy policy</Link>
-              <button className="link link-hover text-left" onClick={() => { localStorage.removeItem('cookie-consent'); window.location.reload() }}>Cookie settings</button>
-              <a href="https://ko-fi.com/curtiscode">☕️ Support me on Ko-fi</a>
-              <a className="link link-hover" href="/sitemap.xml">Sitemap.xml</a>
+              <Link className="link link-hover flex items-center gap-2" href="/uses"><Laptop size={16} />Uses</Link>
+              <Link className="link link-hover flex items-center gap-2" href="/privacy-policy"><FileText size={16} />Privacy policy</Link>
+              <button className="link link-hover text-left flex items-center gap-2" onClick={() => { localStorage.removeItem('cookie-consent'); window.location.reload() }}><Cookie size={16} />Cookie settings</button>
+              <a className="flex items-center gap-2" href="https://ko-fi.com/curtiscode"><Coffee size={16} />Support me on Ko-fi</a>
+              <a className="link link-hover flex items-center gap-2" href="/sitemap.xml"><Map size={16} />Sitemap.xml</a>
             </nav>
           </footer>
 
