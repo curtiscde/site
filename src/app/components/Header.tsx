@@ -10,7 +10,7 @@ export const Header = () => {
         <div className="flex-none">
           <div className="avatar mx-2">
             <div className="w-10 rounded-full">
-              <Link href="/"><Image src="/images/curtis.jpeg" alt={config.title} width={40} height={40} /></Link>
+              <Link href="/"><Image src="/images/curtis.png" alt={config.title} width={40} height={40} /></Link>
             </div>
           </div>
         </div>
