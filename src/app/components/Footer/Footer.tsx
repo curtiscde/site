@@ -62,7 +62,7 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
             <aside className="grid-flow-col items-center mx-auto md:mx-0">
               <div className="avatar mx-2">
                 <div className="w-10 rounded-full grayscale">
-                  <Image src="/images/curtis.jpeg" alt={config.title} width={40} height={40} />
+                  <Image src="/images/curtis.png" alt={config.title} width={40} height={40} />
                 </div>
               </div>
               <p>{copyright}</p>
