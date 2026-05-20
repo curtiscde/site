@@ -51,6 +51,7 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
             </nav>
             <nav>
               <h6 className="footer-title">General</h6>
+              <Link className="link link-hover" href="/uses">Uses</Link>
               <Link className="link link-hover" href="/privacy-policy">Privacy policy</Link>
               <button className="link link-hover text-left" onClick={() => { localStorage.removeItem('cookie-consent'); window.location.reload() }}>Cookie settings</button>
               <a href="https://ko-fi.com/curtiscode">☕️ Support me on Ko-fi</a>
