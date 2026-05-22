@@ -19,7 +19,7 @@ A living document of the hardware, software, and tools I use day-to-day. See [us
 
 ## Development
 
-- [Warp Terminal](https://www.warp.dev/) with the Adeberry theme and [oh-my-zsh](https://ohmyz.sh/)
+- [Warp Terminal](https://www.warp.dev/) with the Dracula theme and [oh-my-zsh](https://ohmyz.sh/)
 - [Visual Studio Code](https://code.visualstudio.com/) with One Dark theme
 - [Google Chrome](https://www.google.com/chrome/)
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview)
