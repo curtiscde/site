@@ -22,7 +22,7 @@ A living document of the hardware, software, and tools I use day-to-day. See [us
 - [Warp Terminal](https://www.warp.dev/) with the Dracula theme and [oh-my-zsh](https://ohmyz.sh/)
 - [Visual Studio Code](https://code.visualstudio.com/) with One Dark theme
 - [Google Chrome](https://www.google.com/chrome/)
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview)
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) ([referral link](https://claude.ai/referral/X0ncmirfXw))
 
 ## Productivity
 
