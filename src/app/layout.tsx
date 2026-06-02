@@ -46,6 +46,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <link rel="me" href="https://gravatar.com/15a556c8b58e8aefa727088885925a12" />
+      </head>
       <body>
         <ConsentProvider>
           <ThemeProvider>
