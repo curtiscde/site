@@ -8,6 +8,8 @@ author: "Curtis Timson"
 image: "/post/2026/2026-tech-stack-snapshot/cover.png"
 id: "0cb79d0a-0970-46b3-803b-fa999ad7b4d3"
 ---
+![My 2026 Tech Stack](/post/2026/2026-tech-stack-snapshot/banner.png)
+
 A snapshot of the hardware, software, and tools I use day-to-day in 2026. See [uses.tech](https://uses.tech/) for other setups, and see my [/uses](/uses) page for my current setup.
 
 ## Hardware
