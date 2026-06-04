@@ -1,14 +1,14 @@
 ---
 tags: ["hardware", "software", "tools", "productivity", "development"]
 description: "A snapshot of the hardware, software, and tools I'm using in 2026"
-date: 2026-06-01T00:00:00
+date: 2026-06-04T00:00:00
 title: "My 2026 Tech Stack Snapshot"
 slug: "my-2026-tech-stack-snapshot"
 author: "Curtis Timson"
 image: "/post/2026/2026-tech-stack-snapshot/cover.png"
 id: "0cb79d0a-0970-46b3-803b-fa999ad7b4d3"
 ---
-A snapshot of the hardware, software, and tools I use day-to-day in 2026. See [uses.tech](https://uses.tech/) for other setups.
+A snapshot of the hardware, software, and tools I use day-to-day in 2026. See [uses.tech](https://uses.tech/) for other setups, and see my [/uses](/uses) page for my current setup.
 
 ## Hardware
 
@@ -49,3 +49,7 @@ A snapshot of the hardware, software, and tools I use day-to-day in 2026. See [u
 - Hosted on [Netlify](https://www.netlify.com/)
 - Source code on [GitHub](https://github.com/)
 - Content written in Markdown
+
+---
+
+Feel free to ask any questions below!
