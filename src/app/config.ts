@@ -33,7 +33,7 @@ export const config: Config = {
   title: "Curtis Timson",
   url: 'https://www.curtiscode.dev',
   socialLinks: {
-    x: 'https://x.com/curtcode',
+    x: 'https://x.com/curtiscodedev',
     bluesky: 'https://bsky.app/profile/curtiscode.dev',
     stackoverflow: 'https://stackoverflow.com/users/370103/curtis',
     github: 'https://github.com/curtiscde',
