@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
+import { NavLinks } from "./NavLinks";
 import { config } from "../config";
 
 export const Header = () => {
@@ -17,7 +18,8 @@ export const Header = () => {
         <div className="flex-1">
           <Link href="/" className="btn btn-ghost text-xl">Curtis Timson</Link>
         </div>
-        <div className="flex-none">
+        <div className="flex-none flex items-center gap-1">
+          <NavLinks />
           <ThemeToggle />
         </div>
       </div>
