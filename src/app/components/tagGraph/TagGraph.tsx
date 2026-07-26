@@ -289,7 +289,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
         const n = pick(m.x, m.y)
         hoveredRef.current = n
         canvas.style.cursor = n ? 'pointer' : 'grab'
-        if (n) setTip({ label: n.kind === 'tag' ? `#${n.label} · ${n.count} posts` : n.label, x: m.x, y: m.y })
+        if (n) setTip({ label: n.kind === 'tag' ? `#${n.label} · ${n.count} post${n.count === 1 ? '' : 's'}` : n.label, x: m.x, y: m.y })
         else setTip(null)
       }
       last = m
@@ -321,6 +321,10 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
     const openNode = (n: SimNode) => {
       selectedRef.current = n
       setSelected(n)
+      // Clear any lingering hover tooltip so it doesn't overlap the detail
+      // panel — notably on touch, where a tap synthesises a hover first.
+      hoveredRef.current = null
+      setTip(null)
     }
 
     canvas.addEventListener('mousedown', onMouseDown)
@@ -411,7 +415,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
 
         {/* detail panel */}
         {selected && (
-          <div className="tg-detail absolute right-4 top-4 max-h-[calc(100%-2rem)] w-[300px] max-w-[calc(100%-2rem)] overflow-auto rounded-xl p-[18px]">
+          <div className="tg-detail absolute inset-x-0 bottom-0 max-h-[65%] overflow-auto rounded-t-2xl p-[18px] sm:inset-x-auto sm:bottom-auto sm:right-4 sm:top-4 sm:max-h-[calc(100%-2rem)] sm:w-[300px] sm:rounded-xl">
             <button
               aria-label="Close details"
               onClick={closePanel}

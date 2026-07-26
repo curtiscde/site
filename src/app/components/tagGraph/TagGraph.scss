@@ -77,6 +77,12 @@
 .tg-detail {
   background: #ffffff;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+
+  // On mobile the panel is a full-width bottom sheet, so the shadow lifts
+  // upward off the top edge rather than dropping down.
+  @media (max-width: 639px) {
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.28);
+  }
 }
 
 [data-theme='dark'] .tg-detail {
