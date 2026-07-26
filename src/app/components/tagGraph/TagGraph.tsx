@@ -71,6 +71,10 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
   const queryRef = useRef('')
   const paletteRef = useRef<Palette>(PALETTES.light)
   const zoomControls = useRef<{ zoomBy: (f: number) => void; reset: () => void } | null>(null)
+  // Timestamp of the last node-open, used to ignore the browser's synthetic
+  // compatibility click that fires ~300ms after a tap and would otherwise
+  // land on the freshly-rendered modal backdrop and close it instantly.
+  const openedAtRef = useRef(0)
 
   // React state only for the DOM overlays (detail panel + tooltip + search).
   const [selected, setSelected] = useState<SimNode | null>(null)
@@ -289,7 +293,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
         const n = pick(m.x, m.y)
         hoveredRef.current = n
         canvas.style.cursor = n ? 'pointer' : 'grab'
-        if (n) setTip({ label: n.kind === 'tag' ? `#${n.label} · ${n.count} posts` : n.label, x: m.x, y: m.y })
+        if (n) setTip({ label: n.kind === 'tag' ? `#${n.label} · ${n.count} post${n.count === 1 ? '' : 's'}` : n.label, x: m.x, y: m.y })
         else setTip(null)
       }
       last = m
@@ -319,8 +323,13 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
       viewRef.current = zoomAbout(viewRef.current, m.x, m.y, Math.exp(-e.deltaY * 0.0016))
     }
     const openNode = (n: SimNode) => {
+      openedAtRef.current = Date.now()
       selectedRef.current = n
       setSelected(n)
+      // Clear any lingering hover tooltip so it doesn't overlap the detail
+      // panel — notably on touch, where a tap synthesises a hover first.
+      hoveredRef.current = null
+      setTip(null)
     }
 
     canvas.addEventListener('mousedown', onMouseDown)
@@ -356,6 +365,13 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
   const closePanel = () => {
     selectedRef.current = null
     setSelected(null)
+  }
+
+  // Backdrop tap-to-dismiss, but swallow the synthetic click that immediately
+  // follows the tap which opened the panel (see openedAtRef).
+  const onBackdropClick = () => {
+    if (Date.now() - openedAtRef.current < 350) return
+    closePanel()
   }
 
   return (
@@ -411,15 +427,25 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
 
         {/* detail panel */}
         {selected && (
-          <div className="tg-detail absolute right-4 top-4 max-h-[calc(100%-2rem)] w-[300px] max-w-[calc(100%-2rem)] overflow-auto rounded-xl p-[18px]">
-            <button
-              aria-label="Close details"
-              onClick={closePanel}
-              className="absolute right-2.5 top-2.5 flex h-6 w-6 items-center justify-center rounded-md text-base-content/50 hover:bg-base-content/10"
+          <div
+            className="absolute inset-0 z-20 flex items-center justify-center bg-black/50 p-4 sm:inset-auto sm:right-4 sm:top-4 sm:z-10 sm:block sm:bg-transparent sm:p-0"
+            onClick={onBackdropClick}
+          >
+            <div
+              role="dialog"
+              aria-modal="true"
+              onClick={(e) => e.stopPropagation()}
+              className="tg-detail relative max-h-full w-full max-w-sm overflow-auto rounded-2xl p-[18px] sm:max-h-[calc(100%-2rem)] sm:w-[300px] sm:rounded-xl"
             >
-              ✕
-            </button>
-            <DetailBody node={selected} posts={postsByTag.get(selected.id) ?? []} onNavigate={closePanel} />
+              <button
+                aria-label="Close details"
+                onClick={closePanel}
+                className="absolute right-2.5 top-2.5 flex h-6 w-6 items-center justify-center rounded-md text-base-content/50 hover:bg-base-content/10"
+              >
+                ✕
+              </button>
+              <DetailBody node={selected} posts={postsByTag.get(selected.id) ?? []} onNavigate={closePanel} />
+            </div>
           </div>
         )}
 
