@@ -104,10 +104,9 @@ describe('Footer', () => {
     expect(screen.getByText(`All rights reserved © ${config.title} 2026`)).toBeInTheDocument()
   })
 
-  it('links to the CV and tag graph pages from the General column', () => {
+  it('links to the tag graph page from the General column', () => {
     render(<Footer recentPosts={recentPosts} topTags={topTags} />)
 
-    expect(screen.getByRole('link', { name: 'CV' })).toHaveAttribute('href', '/cv')
     expect(screen.getByRole('link', { name: 'Tag graph' })).toHaveAttribute('href', '/tags')
   })
 

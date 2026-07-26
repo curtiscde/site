@@ -7,7 +7,7 @@ import Image from "next/image"
 import "./Footer.scss"
 import { config } from "../../config"
 import SocialLinks from "./SocialLinks"
-import { Laptop, FileText, Cookie, Map, FileUser, Waypoints } from "lucide-react"
+import { Laptop, FileText, Cookie, Map, Waypoints } from "lucide-react"
 
 export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags: TagCount[] }) => {
   const tagsToDisplay = 12
@@ -53,7 +53,6 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags:
             <nav>
               <h6 className="footer-title">General</h6>
               <Link className="link link-hover flex items-center gap-2" href="/uses"><Laptop size={16} />Uses</Link>
-              <Link className="link link-hover flex items-center gap-2" href="/cv"><FileUser size={16} />CV</Link>
               <Link className="link link-hover flex items-center gap-2" href="/tags"><Waypoints size={16} />Tag graph</Link>
               <Link className="link link-hover flex items-center gap-2" href="/privacy-policy"><FileText size={16} />Privacy policy</Link>
               <button className="link link-hover text-left flex items-center gap-2" onClick={() => { localStorage.removeItem('cookie-consent'); window.location.reload() }}><Cookie size={16} />Cookie settings</button>
