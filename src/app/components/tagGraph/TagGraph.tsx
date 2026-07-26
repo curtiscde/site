@@ -240,7 +240,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
     raf = requestAnimationFrame(frame)
 
     // ---- interaction ----
-    const relPos = (e: MouseEvent) => {
+    const relPos = (e: { clientX: number; clientY: number }) => {
       const rect = canvas.getBoundingClientRect()
       return { x: e.clientX - rect.left, y: e.clientY - rect.top }
     }
@@ -260,7 +260,10 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
     let last: { x: number; y: number } | null = null
     let moved = false
 
-    const onMouseDown = (e: MouseEvent) => {
+    const onPointerDown = (e: PointerEvent) => {
+      // Pointer Events cover mouse + touch + pen; capturing keeps the drag
+      // alive if the finger/cursor slips off the canvas mid-gesture.
+      canvas.setPointerCapture?.(e.pointerId)
       const m = relPos(e)
       downPt = m
       last = m
@@ -276,7 +279,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
         canvas.classList.add('grabbing')
       }
     }
-    const onMouseMove = (e: MouseEvent) => {
+    const onPointerMove = (e: PointerEvent) => {
       const m = relPos(e)
       if (downPt && (Math.abs(m.x - downPt.x) > 3 || Math.abs(m.y - downPt.y) > 3)) moved = true
       if (dragNode) {
@@ -294,7 +297,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
       }
       last = m
     }
-    const onMouseUp = () => {
+    const onPointerUp = () => {
       if (dragNode) {
         if (!moved) openNode(dragNode)
         // Leave fx/fy set so a dragged node stays pinned where it was dropped.
@@ -327,9 +330,10 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
       setTip(null)
     }
 
-    canvas.addEventListener('mousedown', onMouseDown)
-    window.addEventListener('mousemove', onMouseMove)
-    window.addEventListener('mouseup', onMouseUp)
+    canvas.addEventListener('pointerdown', onPointerDown)
+    window.addEventListener('pointermove', onPointerMove)
+    window.addEventListener('pointerup', onPointerUp)
+    window.addEventListener('pointercancel', onPointerUp)
     canvas.addEventListener('dblclick', onDblClick)
     canvas.addEventListener('wheel', onWheel, { passive: false })
 
@@ -348,9 +352,10 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
       cancelAnimationFrame(raf)
       simulation.stop()
       resizeObserver.disconnect()
-      canvas.removeEventListener('mousedown', onMouseDown)
-      window.removeEventListener('mousemove', onMouseMove)
-      window.removeEventListener('mouseup', onMouseUp)
+      canvas.removeEventListener('pointerdown', onPointerDown)
+      window.removeEventListener('pointermove', onPointerMove)
+      window.removeEventListener('pointerup', onPointerUp)
+      window.removeEventListener('pointercancel', onPointerUp)
       canvas.removeEventListener('dblclick', onDblClick)
       canvas.removeEventListener('wheel', onWheel)
       zoomControls.current = null
@@ -415,15 +420,25 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
 
         {/* detail panel */}
         {selected && (
-          <div className="tg-detail absolute inset-x-0 bottom-0 max-h-[65%] overflow-auto rounded-t-2xl p-[18px] sm:inset-x-auto sm:bottom-auto sm:right-4 sm:top-4 sm:max-h-[calc(100%-2rem)] sm:w-[300px] sm:rounded-xl">
-            <button
-              aria-label="Close details"
-              onClick={closePanel}
-              className="absolute right-2.5 top-2.5 flex h-6 w-6 items-center justify-center rounded-md text-base-content/50 hover:bg-base-content/10"
+          <div
+            className="absolute inset-0 z-20 flex items-center justify-center bg-black/50 p-4 sm:inset-auto sm:right-4 sm:top-4 sm:z-10 sm:block sm:bg-transparent sm:p-0"
+            onClick={closePanel}
+          >
+            <div
+              role="dialog"
+              aria-modal="true"
+              onClick={(e) => e.stopPropagation()}
+              className="tg-detail relative max-h-full w-full max-w-sm overflow-auto rounded-2xl p-[18px] sm:max-h-[calc(100%-2rem)] sm:w-[300px] sm:rounded-xl"
             >
-              ✕
-            </button>
-            <DetailBody node={selected} posts={postsByTag.get(selected.id) ?? []} onNavigate={closePanel} />
+              <button
+                aria-label="Close details"
+                onClick={closePanel}
+                className="absolute right-2.5 top-2.5 flex h-6 w-6 items-center justify-center rounded-md text-base-content/50 hover:bg-base-content/10"
+              >
+                ✕
+              </button>
+              <DetailBody node={selected} posts={postsByTag.get(selected.id) ?? []} onNavigate={closePanel} />
+            </div>
           </div>
         )}
 
