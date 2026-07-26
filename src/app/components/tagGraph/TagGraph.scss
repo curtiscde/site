@@ -12,9 +12,6 @@
 
 .tg-canvas {
   cursor: grab;
-  // Let the canvas own touch gestures (drag/pan) instead of the browser
-  // treating them as page scroll.
-  touch-action: none;
 
   &.grabbing {
     cursor: grabbing;

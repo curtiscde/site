@@ -71,6 +71,10 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
   const queryRef = useRef('')
   const paletteRef = useRef<Palette>(PALETTES.light)
   const zoomControls = useRef<{ zoomBy: (f: number) => void; reset: () => void } | null>(null)
+  // Timestamp of the last node-open, used to ignore the browser's synthetic
+  // compatibility click that fires ~300ms after a tap and would otherwise
+  // land on the freshly-rendered modal backdrop and close it instantly.
+  const openedAtRef = useRef(0)
 
   // React state only for the DOM overlays (detail panel + tooltip + search).
   const [selected, setSelected] = useState<SimNode | null>(null)
@@ -240,7 +244,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
     raf = requestAnimationFrame(frame)
 
     // ---- interaction ----
-    const relPos = (e: { clientX: number; clientY: number }) => {
+    const relPos = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect()
       return { x: e.clientX - rect.left, y: e.clientY - rect.top }
     }
@@ -260,10 +264,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
     let last: { x: number; y: number } | null = null
     let moved = false
 
-    const onPointerDown = (e: PointerEvent) => {
-      // Pointer Events cover mouse + touch + pen; capturing keeps the drag
-      // alive if the finger/cursor slips off the canvas mid-gesture.
-      canvas.setPointerCapture?.(e.pointerId)
+    const onMouseDown = (e: MouseEvent) => {
       const m = relPos(e)
       downPt = m
       last = m
@@ -279,7 +280,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
         canvas.classList.add('grabbing')
       }
     }
-    const onPointerMove = (e: PointerEvent) => {
+    const onMouseMove = (e: MouseEvent) => {
       const m = relPos(e)
       if (downPt && (Math.abs(m.x - downPt.x) > 3 || Math.abs(m.y - downPt.y) > 3)) moved = true
       if (dragNode) {
@@ -297,7 +298,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
       }
       last = m
     }
-    const onPointerUp = () => {
+    const onMouseUp = () => {
       if (dragNode) {
         if (!moved) openNode(dragNode)
         // Leave fx/fy set so a dragged node stays pinned where it was dropped.
@@ -322,6 +323,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
       viewRef.current = zoomAbout(viewRef.current, m.x, m.y, Math.exp(-e.deltaY * 0.0016))
     }
     const openNode = (n: SimNode) => {
+      openedAtRef.current = Date.now()
       selectedRef.current = n
       setSelected(n)
       // Clear any lingering hover tooltip so it doesn't overlap the detail
@@ -330,10 +332,9 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
       setTip(null)
     }
 
-    canvas.addEventListener('pointerdown', onPointerDown)
-    window.addEventListener('pointermove', onPointerMove)
-    window.addEventListener('pointerup', onPointerUp)
-    window.addEventListener('pointercancel', onPointerUp)
+    canvas.addEventListener('mousedown', onMouseDown)
+    window.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('mouseup', onMouseUp)
     canvas.addEventListener('dblclick', onDblClick)
     canvas.addEventListener('wheel', onWheel, { passive: false })
 
@@ -352,10 +353,9 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
       cancelAnimationFrame(raf)
       simulation.stop()
       resizeObserver.disconnect()
-      canvas.removeEventListener('pointerdown', onPointerDown)
-      window.removeEventListener('pointermove', onPointerMove)
-      window.removeEventListener('pointerup', onPointerUp)
-      window.removeEventListener('pointercancel', onPointerUp)
+      canvas.removeEventListener('mousedown', onMouseDown)
+      window.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('mouseup', onMouseUp)
       canvas.removeEventListener('dblclick', onDblClick)
       canvas.removeEventListener('wheel', onWheel)
       zoomControls.current = null
@@ -365,6 +365,13 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
   const closePanel = () => {
     selectedRef.current = null
     setSelected(null)
+  }
+
+  // Backdrop tap-to-dismiss, but swallow the synthetic click that immediately
+  // follows the tap which opened the panel (see openedAtRef).
+  const onBackdropClick = () => {
+    if (Date.now() - openedAtRef.current < 350) return
+    closePanel()
   }
 
   return (
@@ -422,7 +429,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
         {selected && (
           <div
             className="absolute inset-0 z-20 flex items-center justify-center bg-black/50 p-4 sm:inset-auto sm:right-4 sm:top-4 sm:z-10 sm:block sm:bg-transparent sm:p-0"
-            onClick={closePanel}
+            onClick={onBackdropClick}
           >
             <div
               role="dialog"
