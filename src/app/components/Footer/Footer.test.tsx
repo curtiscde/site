@@ -50,15 +50,19 @@ const topTags: TagCount[] = [
 
 const getDialog = () => document.querySelector('dialog') as HTMLDialogElement
 
-// Order of tags currently shown inside the modal's tag list. The sort menu
-// items are anchors without an href, so they are not exposed as links — only
-// the tag links are returned here.
-const modalTagOrder = () =>
-  within(getDialog())
-    // The dialog is closed in jsdom (showModal is a no-op stub), so its
-    // contents count as hidden — opt them back in for the role query.
-    .getAllByRole('link', { hidden: true })
-    .map((link) => link.textContent)
+// Order of tags currently shown inside the modal's tag list. Scoped to the
+// tag-list container so the "View tag graph →" CTA and the (href-less) sort
+// menu anchors are excluded — only the tag links are returned.
+const modalTagOrder = () => {
+  const tagList = getDialog().querySelector('.card-actions') as HTMLElement
+  return (
+    within(tagList)
+      // The dialog is closed in jsdom (showModal is a no-op stub), so its
+      // contents count as hidden — opt them back in for the role query.
+      .getAllByRole('link', { hidden: true })
+      .map((link) => link.textContent)
+  )
+}
 
 describe('Footer', () => {
   // jsdom does not implement HTMLDialogElement.showModal / close.
@@ -98,6 +102,30 @@ describe('Footer', () => {
     render(<Footer recentPosts={recentPosts} topTags={topTags} />)
 
     expect(screen.getByText(`All rights reserved © ${config.title} 2026`)).toBeInTheDocument()
+  })
+
+  it('links to the CV and tag graph pages from the General column', () => {
+    render(<Footer recentPosts={recentPosts} topTags={topTags} />)
+
+    expect(screen.getByRole('link', { name: 'CV' })).toHaveAttribute('href', '/cv')
+    expect(screen.getByRole('link', { name: 'Tag graph' })).toHaveAttribute('href', '/tags')
+  })
+
+  it('offers a "View tag graph" link to /tags inside the Post Tags modal', () => {
+    render(<Footer recentPosts={recentPosts} topTags={topTags} />)
+
+    const graphLink = within(getDialog()).getByRole('link', { name: /View tag graph/, hidden: true })
+    expect(graphLink).toHaveAttribute('href', '/tags')
+  })
+
+  it('keeps the "+ N more" chip opening the modal rather than navigating', () => {
+    render(<Footer recentPosts={recentPosts} topTags={topTags} />)
+
+    const chip = screen.getByText('+ 3 more')
+    // The chip is a modal trigger, not a link — it must not carry an href.
+    expect(chip.closest('a')).toBeNull()
+    fireEvent.click(chip)
+    expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalled()
   })
 
   describe('modal tag sorting', () => {
