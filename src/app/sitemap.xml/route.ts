@@ -13,6 +13,12 @@ const generateSitemap = async () => {
   <loc>https://www.curtiscode.dev/</loc>
   <lastmod>2024-12-07T12:00:00+00:00</lastmod>
   </url>
+  <url>
+  <loc>${config.url}/cv</loc>
+  </url>
+  <url>
+  <loc>${config.url}/tags</loc>
+  </url>
   ${posts.map(post => {
     return `<url>
     <loc>${post.url}</loc>
