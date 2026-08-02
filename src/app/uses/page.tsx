@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { config } from '../config'
 import { Header } from '../components/Header'
+import { Hero } from '../components/Hero'
 import { getMarkdownContent } from '../util/getMarkdownContent'
+import '../components/ContentPage.scss'
 
 export const metadata: Metadata = {
   title: `Uses | ${config.title}`,
@@ -13,8 +15,9 @@ export default function Uses() {
   return (
     <>
       <Header />
+      <Hero compact />
       <main
-        className="container mx-auto px-4 py-8 prose max-w-3xl"
+        className="content-page container mx-auto px-4 py-8 prose max-w-3xl"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </>

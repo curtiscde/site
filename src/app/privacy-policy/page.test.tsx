@@ -38,4 +38,19 @@ describe('PrivacyPolicy', () => {
     render(<PrivacyPolicy />)
     expect(screen.getByTestId('header')).toBeInTheDocument()
   })
+
+  it('renders a single h1 so the heading accent applies once', () => {
+    const { container } = render(<PrivacyPolicy />)
+    expect(container.querySelectorAll('h1')).toHaveLength(1)
+  })
+
+  it('applies the content-page class that carries the heading accent', () => {
+    const { container } = render(<PrivacyPolicy />)
+    expect(container.querySelector('main')).toHaveClass('content-page')
+  })
+
+  it('renders the compact banner', () => {
+    const { container } = render(<PrivacyPolicy />)
+    expect(container.querySelector('.hero--compact')).toBeInTheDocument()
+  })
 })
