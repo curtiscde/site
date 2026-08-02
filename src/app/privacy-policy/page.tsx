@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { config } from '../config'
 import { Header } from '../components/Header'
+import { Hero } from '../components/Hero'
+import '../components/ContentPage.scss'
 
 export const metadata: Metadata = {
   title: `Privacy Policy | ${config.title}`,
@@ -11,7 +13,8 @@ export default function PrivacyPolicy() {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-4 py-8 prose max-w-3xl">
+      <Hero variant="bare" />
+      <main className="content-page container mx-auto px-4 py-8 prose max-w-3xl">
       <h1>Privacy Policy</h1>
       <p><strong>Last updated:</strong> March 2026</p>
 

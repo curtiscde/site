@@ -16,7 +16,7 @@ export default function CvPage() {
   return (
     <>
       <Header />
-      <Hero title="Curriculum Vitae" subtitle="software engineer · london" />
+      <Hero title="Curriculum Vitae" subtitle="software engineer · london" variant="compact" />
       <main>
         <div className="cv-experience container mx-auto max-w-3xl px-6 py-10">
           <h2 className="cv-heading mb-2 text-3xl font-extrabold text-base-content">Experience</h2>

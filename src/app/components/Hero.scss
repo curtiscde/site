@@ -1,6 +1,11 @@
 .hero {
   border-bottom: 4px solid var(--color-primary);
 
+  // Image-only variant: no in-flow children, so the height has to be declared.
+  &.hero--bare {
+    min-height: 6rem;
+  }
+
   .hero-text-container {
     position: relative;
   }
