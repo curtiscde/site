@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
   return (
     <>
       <Header />
-      <Hero compact />
+      <Hero variant="bare" />
       <main className="content-page container mx-auto px-4 py-8 prose max-w-3xl">
       <h1>Privacy Policy</h1>
       <p><strong>Last updated:</strong> March 2026</p>

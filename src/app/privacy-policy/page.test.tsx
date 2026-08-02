@@ -49,8 +49,8 @@ describe('PrivacyPolicy', () => {
     expect(container.querySelector('main')).toHaveClass('content-page')
   })
 
-  it('renders the compact banner', () => {
+  it('renders the bare banner', () => {
     const { container } = render(<PrivacyPolicy />)
-    expect(container.querySelector('.hero--compact')).toBeInTheDocument()
+    expect(container.querySelector('.hero--bare')).toBeInTheDocument()
   })
 })

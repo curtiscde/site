@@ -2,8 +2,8 @@
   border-bottom: 4px solid var(--color-primary);
 
   // Image-only variant: no in-flow children, so the height has to be declared.
-  &.hero--compact {
-    min-height: 10rem;
+  &.hero--bare {
+    min-height: 6rem;
   }
 
   .hero-text-container {

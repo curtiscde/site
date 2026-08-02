@@ -15,7 +15,7 @@ export default function Uses() {
   return (
     <>
       <Header />
-      <Hero compact />
+      <Hero variant="bare" />
       <main
         className="content-page container mx-auto px-4 py-8 prose max-w-3xl"
         dangerouslySetInnerHTML={{ __html: html }}
