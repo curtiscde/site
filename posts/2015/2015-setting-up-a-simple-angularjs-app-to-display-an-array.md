@@ -26,7 +26,7 @@ var userData = [
         Location: "USA"
     },
     {
-        Name: "Curtis Timson",
+        Name: "Curtis Lane",
         Gender: "M",
         Location: "England"
     },

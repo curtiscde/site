@@ -4,7 +4,7 @@ description: "A snapshot of the hardware, software, and tools I'm using in 2026"
 date: 2026-06-04T00:00:00
 title: "My 2026 Tech Stack Snapshot"
 slug: "my-2026-tech-stack-snapshot"
-author: "Curtis Timson"
+author: "Curtis Lane"
 image: "/post/2026/2026-tech-stack-snapshot/cover.png"
 id: "0cb79d0a-0970-46b3-803b-fa999ad7b4d3"
 ---

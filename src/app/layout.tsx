@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         url: `${config.url}/images/curtis-homepage.jpg`,
         width: 1200,
         height: 630,
-        alt: 'Curtis Timson',
+        alt: config.title,
         type: 'image/jpeg',
       },
     ],

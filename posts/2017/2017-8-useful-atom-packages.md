@@ -4,7 +4,7 @@ description: "8 Atom Packages which are useful for front-end development"
 date: 2017-08-22T22:00:00
 title: "8 Useful Atom Packages"
 slug: "8-useful-atom-packages"
-author: "Curtis Timson"
+author: "Curtis Lane"
 image: "/post/2017/2017-8-useful-atom-packages/atom-editor-logo.jpg"
 id: 31
 ---

@@ -1,4 +1,4 @@
-# Curtis Timson Blog Site
+# Curtis Lane Blog Site
 
 https://www.curtiscode.dev
 

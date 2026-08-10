@@ -19,7 +19,7 @@ npx jest src/app/util/posts/getPosts.test.ts
 
 ## Architecture
 
-This is **Curtis Timson's personal blog** (curtiscode.dev), a Next.js 15 static site (`output: 'export'`) using the App Router. Content is stored as markdown files in `/posts/{year}/`.
+This is **Curtis Lane's personal blog** (curtiscode.dev), a Next.js 15 static site (`output: 'export'`) using the App Router. Content is stored as markdown files in `/posts/{year}/`.
 
 ### Content Pipeline
 

@@ -4,7 +4,7 @@ description: "How I built a GTD workflow inside Obsidian using the Obsidian Task
 date: 2026-05-04T08:00:00
 title: "Getting Things Done with Obsidian Tasks"
 slug: "getting-things-done-with-obsidian-tasks"
-author: "Curtis Timson"
+author: "Curtis Lane"
 image: "/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view.png"
 id: 1777881600000
 ---

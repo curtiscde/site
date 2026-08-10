@@ -4,7 +4,7 @@ description: "How I designed a fundraising website that maps donations directly 
 date: 2026-02-07T08:00:00
 title: "Turning my London Marathon fundraiser into a sponsorable route"
 slug: "turning-my-london-marathon-fundraiser-into-a-sponsorable-route"
-author: "Curtis Timson"
+author: "Curtis Lane"
 image: "/post/2026/2026-london-marathon/london-marathon-curtis-site.png"
 id: 1770452029374
 ---

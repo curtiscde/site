@@ -5,7 +5,7 @@ date: 2018-08-14T17:27:00
 image: "/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest.png"
 title: "ReactJs Snapshot unit testing and mocking components"
 slug: "reactjs-jest-snapshot-mocking"
-author: "Curtis Timson"
+author: "Curtis Lane"
 id: 35
 ---
 ![ReactJs with Jest Snapshot Testing](/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-snapshot.png)

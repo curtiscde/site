@@ -28,7 +28,7 @@ Your blog posts now have comprehensive social media metadata support, ensuring b
 
 ### 3. **Post Type Enhancement** ([src/app/types/Post.ts](src/app/types/Post.ts))
    - ✅ Added optional `author` field to the post schema
-   - Allows each post to specify its author (defaults to "Curtis Timson" if not provided)
+   - Allows each post to specify its author (defaults to "Curtis Lane" if not provided)
 
 ### 4. **Documentation** ([BLOG_METADATA_GUIDE.md](BLOG_METADATA_GUIDE.md))
    - ✅ Comprehensive guide for blog post metadata fields
@@ -85,7 +85,7 @@ slug: "my-amazing-blog-post"
 date: 2024-12-20T10:30:00
 description: "Learn how to do something amazing. This brief description shows in social media previews."
 image: "/post/my-amazing-blog-post/featured.png"
-author: "Curtis Timson"
+author: "Curtis Lane"
 tags: ["tutorial", "javascript", "beginner"]
 ---
 ```

@@ -32,7 +32,7 @@ image: "/post/slug/image.png"       # Featured image path
                                     # Recommended size: 1200x630px for best results
                                     # Supported formats: PNG, JPG, WebP
 
-author: "Curtis Timson"             # Author name (defaults to "Curtis Timson" if not specified)
+author: "Curtis Lane"             # Author name (defaults to "Curtis Lane" if not specified)
                                     # Used in JSON-LD structured data
 ---
 ```
@@ -47,7 +47,7 @@ date: 2024-12-20T10:30:00
 description: "Learn how to do something amazing in just 5 minutes. Perfect for beginners."
 tags: ["tutorial", "javascript", "beginner"]
 image: "/post/my-amazing-blog-post/featured.png"
-author: "Curtis Timson"
+author: "Curtis Lane"
 id: 1734158400000
 ---
 
