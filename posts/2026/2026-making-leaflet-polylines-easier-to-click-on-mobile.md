@@ -6,7 +6,7 @@ date: 2026-05-14T00:00:00
 tags: ["leaflet", "mapping", "mobile", "ux", "react"]
 description: "How to improve Leaflet polyline click and tap accuracy using a transparent hit-area overlay - especially useful on mobile devices."
 image: "/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click.png"
-author: "Curtis Timson"
+author: "Curtis Lane"
 ---
 
 Leaflet polylines have a frustratingly narrow clickable region. When building interactive maps where users need to tap or click on routes, this becomes a poor user experience. It's also particularly noticeable on mobile devices.

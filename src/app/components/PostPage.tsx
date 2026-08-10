@@ -28,7 +28,7 @@ export const PostPage = ({ post, relatedPosts }: { post: Post, relatedPosts: Pos
     description: post.description || post.title,
     author: {
       '@type': 'Person',
-      name: post.author || 'Curtis Timson',
+      name: post.author || config.title,
     },
     datePublished: post.date.toISOString(),
     dateModified: post.date.toISOString(),

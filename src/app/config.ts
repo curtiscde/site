@@ -26,11 +26,11 @@ interface Config {
 }
 
 export const config: Config = {
-  pageTitle: 'Curtis Timson | Software Engineer',
+  pageTitle: 'Curtis Lane | Software Engineer',
   postsPerPage: 20,
-  rssFeedDescription: 'The Curtis Timson Blog',
+  rssFeedDescription: 'The Curtis Lane Blog',
   subtitle: "Software Engineer",
-  title: "Curtis Timson",
+  title: "Curtis Lane",
   url: 'https://www.curtiscode.dev',
   socialLinks: {
     x: 'https://x.com/curtiscodedev',

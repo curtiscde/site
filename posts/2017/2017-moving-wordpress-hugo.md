@@ -5,7 +5,7 @@ date: 2017-08-02T19:45:00
 image: "/post/2017/2017-moving-wordpress-hugo/hugo.png"
 title: "Moving from Wordpress to Hugo"
 slug: "moving-wordpress-hugo"
-author: "Curtis Timson"
+author: "Curtis Lane"
 id: 7
 ---
 For the past few years I've been using [Wordpress](http://www.wordpress.com) to power this blog site and have recently switched to using [Hugo](https://gohugo.io/), a static site generator. Now I'd like to share my reasons for doing this, and how you can too.

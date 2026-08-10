@@ -5,7 +5,7 @@ description: "A preview of some of the tools I use in my terminal setup, as well
 date: 2024-12-07T12:00:00
 title: "My terminal setup and commands I use on a daily basis when working with GitHub"
 slug: "terminal-commands-i-use-on-a-daily-basis"
-author: "Curtis Timson"
+author: "Curtis Lane"
 image: "/post/daily-commands/daily-commands.png"
 id: 1733579828812
 ---

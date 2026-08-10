@@ -16,7 +16,7 @@ export const Header = () => {
           </div>
         </div>
         <div className="flex-1">
-          <Link href="/" className="btn btn-ghost text-xl">Curtis Timson</Link>
+          <Link href="/" className="btn btn-ghost text-xl">{config.title}</Link>
         </div>
         <div className="flex-none flex items-center gap-1">
           <NavLinks />

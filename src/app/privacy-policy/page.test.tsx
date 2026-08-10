@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import PrivacyPolicy from './page'
+import { config } from '../config'
 
 jest.mock('../components/Header', () => ({
   Header: () => <header data-testid="header" />,
@@ -21,6 +22,11 @@ describe('PrivacyPolicy', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'Your Rights' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 2, name: 'How to Withdraw Consent or Manage Cookies' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 2, name: 'Right to Complain' })).toBeInTheDocument()
+  })
+
+  it('names the site owner from config rather than a hardcoded name', () => {
+    const { container } = render(<PrivacyPolicy />)
+    expect(container.textContent).toContain(`This website is operated by ${config.title}`)
   })
 
   it('renders the site URL link', () => {

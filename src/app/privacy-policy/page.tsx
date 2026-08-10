@@ -20,7 +20,7 @@ export default function PrivacyPolicy() {
 
       <h2>Who We Are</h2>
       <p>
-        This website is operated by Curtis Timson (<a href={config.url}>{config.url}</a>).
+        This website is operated by {config.title} (<a href={config.url}>{config.url}</a>).
         If you have any questions about this privacy policy, please contact me via the social links in the footer.
       </p>
 
