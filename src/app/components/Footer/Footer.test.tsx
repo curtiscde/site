@@ -14,6 +14,7 @@ const makePost = (id: string, title: string, slug: string): Post => ({
   description: 'desc',
   tags: ['javascript'],
   imageThumbnailUrl: undefined,
+  content: 'Content',
   contentHtml: '<p>Content</p>',
   path: `/post/${slug}`,
   url: `${config.url}/post/${slug}`,

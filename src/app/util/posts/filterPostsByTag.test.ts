@@ -1,28 +1,36 @@
-import { Post } from '../types/Post';
+import { Post } from '../../types/Post';
 import { filterPostsByTag } from './filterPostsByTag';
+
+const makePost = (slug: string, tags: Array<string>): Post => ({
+  id: slug,
+  title: slug,
+  slug,
+  content: '',
+  contentHtml: '',
+  date: new Date('2021-01-30'),
+  dateFormatted: '30th Jan 2021',
+  tags,
+  imageThumbnailUrl: undefined,
+  path: `/post/${slug}`,
+  url: `https://www.curtiscode.dev/post/${slug}`,
+});
+
+// filterPostsByTag guards with `post.tags &&` for legacy posts that have no
+// tags field at all — a shape the Post type no longer permits, hence the cast.
+const untaggedPost = { ...makePost('d', []), tags: undefined } as unknown as Post;
 
 describe('filterPostsByTag', () => {
   const posts: Array<Post> = [
-    {
-      title: 'a', date: new Date('2021-01-30'), slug: 'a', tags: ['foo'],
-    },
-    {
-      title: 'b', date: new Date('2021-01-30'), slug: 'b', tags: ['bar'],
-    },
-    {
-      title: 'c', date: new Date('2021-01-30'), slug: 'c', tags: ['foo', 'bar'],
-    },
-    { title: 'd', date: new Date('2021-01-30'), slug: 'd' },
+    makePost('a', ['foo']),
+    makePost('b', ['bar']),
+    makePost('c', ['foo', 'bar']),
+    untaggedPost,
   ];
 
   it('should return correct posts', () => {
     expect(filterPostsByTag(posts, 'foo')).toEqual([
-      {
-        title: 'a', date: new Date('2021-01-30'), slug: 'a', tags: ['foo'],
-      },
-      {
-        title: 'c', date: new Date('2021-01-30'), slug: 'c', tags: ['foo', 'bar'],
-      },
+      makePost('a', ['foo']),
+      makePost('c', ['foo', 'bar']),
     ]);
   });
 });
