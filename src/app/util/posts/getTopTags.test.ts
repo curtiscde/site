@@ -1,4 +1,4 @@
-import { Post } from '../types';
+import { Post } from '../../types';
 import { getTopTags } from './getTopTags';
 
 // Fixed reference date: 2026-01-01
