@@ -3,7 +3,7 @@ import { Hero } from "@/app/components/Hero";
 import PostsWithPagination from "@/app/components/Posts";
 import { config } from "@/app/config";
 import { Post } from "@/app/types";
-import { filterPostsByPage, filterPostsByTag, getPages, getPosts, getTopTags } from "@/app/util/posts";
+import { filterPostsByTag, getPages, getPosts, getTopTags, paginatePosts } from "@/app/util/posts";
 
 const { postsPerPage } = config
 
@@ -50,9 +50,7 @@ export default async function Page({ params }: {
   const { tag, page } = (await params)
 
   const tagPosts: Post[] = filterPostsByTag(getPosts(), tag);
-  const pageCount = Math.ceil(tagPosts.length / postsPerPage);
-  const currentPage = Number(page)
-  const pagePosts = filterPostsByPage(tagPosts, postsPerPage, currentPage)
+  const { currentPage, pageCount, pagePosts } = paginatePosts(tagPosts, postsPerPage, page)
 
   return (
     <>

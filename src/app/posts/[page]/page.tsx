@@ -3,7 +3,7 @@ import { Hero } from "@/app/components/Hero";
 import PostsWithPagination from "@/app/components/Posts";
 import { config } from "@/app/config";
 import { Post } from "@/app/types";
-import { filterPostsByPage, getPages, getPosts } from "@/app/util/posts";
+import { getPages, getPosts, paginatePosts } from "@/app/util/posts";
 
 export async function generateStaticParams() {
   const posts = getPosts();
@@ -22,9 +22,7 @@ export default async function Page({ params }: {
 
   const postsPerPage = config.postsPerPage
   const posts: Post[] = getPosts();
-  const pageCount = Math.ceil(posts.length / postsPerPage);
-  const currentPage = Number(page)
-  const pagePosts = filterPostsByPage(posts, postsPerPage, currentPage)
+  const { currentPage, pageCount, pagePosts } = paginatePosts(posts, postsPerPage, page)
 
   return (
     <>
