@@ -1,4 +1,4 @@
-import { getPosts, getRelatedPosts } from "@/app/util/posts"
+import { findPostBySlug, getPosts, getRelatedPosts, padRelatedPosts } from "@/app/util/posts"
 import "./PostPage.scss"
 import { PostPage } from "@/app/components/PostPage";
 import { Metadata, ResolvingMetadata } from "next";
@@ -15,7 +15,7 @@ export async function generateMetadata(
   const slug = (await params).slug
 
   const posts = await getPosts();
-  const post = posts.find(post => post.slug === slug)
+  const post = findPostBySlug(posts, slug)
 
   if (post == null) {
     throw new Error('post not found')
@@ -83,17 +83,13 @@ export default async function Page({ params }: Props) {
   const slug = (await params).slug
 
   const posts = await getPosts();
-  const post = posts.find(post => post.slug === slug)
+  const post = findPostBySlug(posts, slug)
 
   if (post == null) {
     throw new Error('post not found')
   }
 
-  const relatedPosts = getRelatedPosts(posts, post)
-
-  if (relatedPosts.length < 3) {
-    relatedPosts.push(...posts.filter(p => !relatedPosts.includes(p) && p.id !== post.id).slice(0, 3 - relatedPosts.length))
-  }
+  const relatedPosts = padRelatedPosts(getRelatedPosts(posts, post), posts, post)
 
   return <PostPage post={post} relatedPosts={relatedPosts} />
 }
