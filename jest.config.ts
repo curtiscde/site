@@ -22,6 +22,9 @@ const config: Config = {
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  // Sibling git worktrees under .claude/ contain their own copies of these test files.
+  // Without this, a local `npm test` runs every branch's tests at once.
+  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/.claude/'],
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

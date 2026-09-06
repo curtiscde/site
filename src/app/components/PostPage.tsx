@@ -1,23 +1,15 @@
 'use client'
 
-import { Post } from "../types";
+import type { Post } from "../types";
 import { useEffect } from "react";
-import hljs from "highlight.js";
-import javascript from 'highlight.js/lib/languages/javascript';
-import bash from 'highlight.js/lib/languages/bash';
-import typescript from 'highlight.js/lib/languages/typescript';
-import css from 'highlight.js/lib/languages/css';
+// Stylesheet only — the markup it colours is produced at build time by the `code`
+// renderer in types/Post.ts, so highlight.js itself never reaches the browser.
 import 'highlight.js/styles/atom-one-dark.css';
 import './PostPage.scss'
 import { Header } from "./Header";
 import { RelatedPosts } from "./RelatedPosts";
 import { Comments } from "./Comments/Comments";
 import { config } from "../config";
-
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('bash', bash);
-hljs.registerLanguage('typescript', typescript);
-hljs.registerLanguage('css', css);
 
 export const PostPage = ({ post, relatedPosts }: { post: Post, relatedPosts: Post[] }) => {
   // Generate JSON-LD structured data for BlogPosting
@@ -36,12 +28,6 @@ export const PostPage = ({ post, relatedPosts }: { post: Post, relatedPosts: Pos
     keywords: post.tags.join(', '),
     articleBody: post.contentHtml,
   });
-
-  useEffect(() => {
-    document.querySelectorAll('pre code').forEach((block) => {
-      hljs.highlightElement(block as HTMLElement);
-    });
-  }, []);
 
   useEffect(() => {
     // Add JSON-LD script to head

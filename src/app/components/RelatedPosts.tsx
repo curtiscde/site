@@ -1,4 +1,4 @@
-import { Post } from "../types";
+import type { Post } from "../types";
 import { PostCard } from "./PostCard";
 
 export const RelatedPosts = ({ posts }: { posts: Post[] }) => {

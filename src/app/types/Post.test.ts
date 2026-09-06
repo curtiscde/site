@@ -55,3 +55,49 @@ describe('transformPost', () => {
     expect(withOptionals.author).toBe('Curtis');
   });
 });
+
+describe('transformPost code highlighting', () => {
+  const render = (content: string) => transformPost({ ...basePost, content }).contentHtml;
+
+  it('highlights a fenced block at build time', () => {
+    const html = render('```js\nconst answer = 42;\n```');
+    expect(html).toContain('<code class="hljs language-js">');
+    expect(html).toContain('hljs-keyword');
+  });
+
+  it('puts the hljs class on <code>, which is what the stylesheet targets', () => {
+    expect(render('```js\nconst a = 1;\n```')).toContain('<pre><code class="hljs');
+  });
+
+  it.each([
+    ['markup', 'xml'],
+    ['clike', 'c'],
+    ['zsh', 'bash'],
+    ['md', 'markdown'],
+  ])('maps the legacy language name "%s" to "%s"', (alias, expected) => {
+    expect(render(`\`\`\`${alias}\ncontent\n\`\`\``)).toContain(`language-${expected}`);
+  });
+
+  it('highlights html, which the old client-side setup never registered', () => {
+    const html = render('```html\n<div class="a">hi</div>\n```');
+    expect(html).toContain('language-html');
+    expect(html).toMatch(/hljs-/);
+  });
+
+  it('falls back to auto-detection for an unknown language', () => {
+    const html = render('```notalanguage\nconst a = 1;\n```');
+    expect(html).toContain('<code class="hljs">');
+    expect(html).not.toContain('language-notalanguage');
+  });
+
+  it('does not throw on a fence with no language', () => {
+    expect(() => render('```\nplain text\n```')).not.toThrow();
+    expect(render('```\nplain text\n```')).toContain('<code class="hljs">');
+  });
+
+  it('escapes markup so a code block cannot inject HTML', () => {
+    const html = render('```js\nconst x = "<script>alert(1)</script>";\n```');
+    expect(html).not.toContain('<script>alert(1)</script>');
+    expect(html).toContain('&lt;script&gt;');
+  });
+});

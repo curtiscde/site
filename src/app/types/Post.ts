@@ -1,5 +1,6 @@
 import { z } from "zod"
 import { marked } from 'marked';
+import hljs from 'highlight.js';
 import { config } from "../config";
 
 export function getOrdinalSuffix(day: number): string {
@@ -13,6 +14,37 @@ export function getOrdinalSuffix(day: number): string {
 }
 
 marked.setOptions({ gfm: true });
+
+// Posts were authored across a decade of tooling, so fences carry Prism-era language
+// names alongside highlight.js ones. Normalise before looking the language up.
+const LANGUAGE_ALIASES: Record<string, string> = {
+  clike: 'c',
+  markup: 'xml',
+  md: 'markdown',
+  zsh: 'bash',
+};
+
+// Highlighting happens here, at build time, rather than in the browser. This module is
+// reachable from server code only — every client import of `Post` is `import type`, so
+// neither marked nor highlight.js is bundled. See docs/specs/post-asset-pipeline.md.
+marked.use({
+  renderer: {
+    code({ text, lang }) {
+      // marked hands back the whole info string; take the first token so a future
+      // ```js title="x" still resolves to `js`.
+      const name = lang?.trim().split(/\s+/)[0] ?? '';
+      const language = LANGUAGE_ALIASES[name] ?? name;
+      const isKnown = language !== '' && hljs.getLanguage(language) != null;
+      const highlighted = isKnown
+        ? hljs.highlight(text, { language }).value
+        : hljs.highlightAuto(text).value;
+      // The `hljs` class must sit on <code> — that is what the atom-one-dark
+      // stylesheet targets for token colours.
+      const className = isKnown ? `hljs language-${language}` : 'hljs';
+      return `<pre><code class="${className}">${highlighted}</code></pre>`;
+    },
+  },
+});
 
 export const rawPostSchema = z.object({
   id: z.union([z.number(), z.string()]),

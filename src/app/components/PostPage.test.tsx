@@ -53,3 +53,28 @@ describe('PostPage JSON-LD author', () => {
     expect(getStructuredData().author.name).toBe('Guest Writer')
   })
 })
+
+describe('PostPage article content', () => {
+  const highlightedPost: Post = {
+    ...basePost,
+    contentHtml: '<pre><code class="hljs language-js">'
+      + '<span class="hljs-keyword">const</span> a = 1;'
+      + '</code></pre>',
+  }
+
+  it('renders pre-highlighted markup verbatim', () => {
+    const { container } = render(<PostPage post={highlightedPost} relatedPosts={[]} />)
+    const code = container.querySelector('pre code')
+    expect(code).toHaveClass('hljs', 'language-js')
+    expect(code?.querySelector('.hljs-keyword')).toBeInTheDocument()
+  })
+
+  // Highlighting moved to build time. If a client-side pass is ever reintroduced it will
+  // rewrite this markup on mount, so assert the DOM is untouched after the effects run.
+  it('does not re-highlight on the client', () => {
+    const { container } = render(<PostPage post={highlightedPost} relatedPosts={[]} />)
+    expect(container.querySelector('pre code')?.innerHTML).toBe(
+      '<span class="hljs-keyword">const</span> a = 1;'
+    )
+  })
+})
