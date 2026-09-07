@@ -101,3 +101,33 @@ describe('transformPost code highlighting', () => {
     expect(html).toContain('&lt;script&gt;');
   });
 });
+
+describe('transformPost images', () => {
+  const html = (markdown: string) =>
+    transformPost({
+      id: '1', title: 'T', slug: 's', date: new Date('2026-01-01T00:00:00'),
+      tags: [], content: markdown,
+    } as RawPost).contentHtml
+
+  it('renders a markdown image as a figure, not a bare img', () => {
+    const out = html('![A caption](/post/2026/nope/missing.png)')
+
+    expect(out).toContain('<figure>')
+    expect(out).toContain('<figcaption aria-hidden="true">A caption</figcaption>')
+  })
+
+  it('omits the caption when the markdown supplies no alt text', () => {
+    expect(html('![](/post/2026/nope/missing.png)')).not.toContain('figcaption')
+  })
+
+  it('lazy-loads in-article images', () => {
+    expect(html('![x](/post/2026/nope/missing.png)')).toContain('loading="lazy"')
+  })
+
+  it('leaves other markdown untouched', () => {
+    const out = html('Text with ![alt](/a.png) inline.\n\n## Heading')
+
+    expect(out).toContain('<h2')
+    expect(out).toContain('Text with')
+  })
+})

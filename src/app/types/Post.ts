@@ -1,6 +1,7 @@
 import { z } from "zod"
 import { marked } from 'marked';
 import hljs from 'highlight.js';
+import { renderPicture } from '../util/images';
 import { config } from "../config";
 
 export function getOrdinalSuffix(day: number): string {
@@ -42,6 +43,11 @@ marked.use({
       // stylesheet targets for token colours.
       const className = isKnown ? `hljs language-${language}` : 'hljs';
       return `<pre><code class="${className}">${highlighted}</code></pre>`;
+    },
+    // In-article images become responsive <picture> markup against the build-time
+    // manifest. The markdown alt text doubles as a visible caption.
+    image({ href, text }) {
+      return renderPicture({ src: href, alt: text ?? '' });
     },
   },
 });
