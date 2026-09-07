@@ -1,0 +1,71 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import { variantUrl, variantSrcSet } from './urls'
+import type { ImageManifest } from './manifest'
+
+describe('variantUrl', () => {
+  it('places the variant under /_img, mirroring the original path', () => {
+    expect(variantUrl('/post/2026/example/shot.png', 800, 'webp')).toBe(
+      '/_img/post/2026/example/shot-800.webp'
+    )
+  })
+
+  it('replaces the original extension rather than appending to it', () => {
+    expect(variantUrl('/images/curtis.jpeg', 400, 'avif')).toBe('/_img/images/curtis-400.avif')
+  })
+
+  it('handles a file at the root', () => {
+    expect(variantUrl('/cover.png', 400, 'webp')).toBe('/_img/cover-400.webp')
+  })
+
+  it('handles a name with dots in it', () => {
+    expect(variantUrl('/a/my.image.v2.png', 800, 'webp')).toBe('/_img/a/my.image.v2-800.webp')
+  })
+})
+
+describe('variantSrcSet', () => {
+  it('emits width descriptors in the order given', () => {
+    expect(variantSrcSet('/a/b.png', [400, 800], 'avif')).toBe(
+      '/_img/a/b-400.avif 400w, /_img/a/b-800.avif 800w'
+    )
+  })
+
+  it('is empty for no widths', () => {
+    expect(variantSrcSet('/a/b.png', [], 'avif')).toBe('')
+  })
+})
+
+// The generator writes URLs; this module derives them. If the two ever disagree, every
+// <source> on the site points at a file that does not exist — so check the real manifest
+// rather than trusting that the two string templates stayed in step.
+describe('agreement with the generated manifest', () => {
+  const manifestPath = path.join(process.cwd(), 'public', '_img', 'manifest.json')
+  const exists = fs.existsSync(manifestPath)
+
+  // Skipped rather than failed when the manifest is absent: `npm test` on a fresh clone
+  // runs before any `npm run images`, and CI's coverage job never builds.
+  const maybe = exists ? it : it.skip
+
+  maybe('derives exactly the URLs the generator wrote, for every image', () => {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8')) as ImageManifest
+    const entries = Object.entries(manifest)
+    expect(entries.length).toBeGreaterThan(0)
+
+    for (const [src, entry] of entries) {
+      for (const format of ['avif', 'webp'] as const) {
+        for (const [width, url] of entry.variants[format]) {
+          expect(variantUrl(src, width, format)).toBe(url)
+        }
+      }
+    }
+  })
+
+  maybe('points at files that exist on disk', () => {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8')) as ImageManifest
+    for (const [src, entry] of Object.entries(manifest)) {
+      const widths = entry.variants.webp.map(([w]) => w)
+      const url = variantUrl(src, widths[widths.length - 1], 'webp')
+      expect(fs.existsSync(path.join(process.cwd(), 'public', url))).toBe(true)
+    }
+  })
+})

@@ -50,13 +50,7 @@ export const Hero = ({ tag, title, subtitle, variant }: HeroProps) => {
   const isBare = variant === 'bare'
 
   return (
-    <div
-      className={variant != null ? `hero hero--${variant}` : "hero"}
-      style={{
-        background: 'no-repeat fixed 50% 100% / cover',
-        backgroundImage: "url(/images/cover.jpg)",
-
-      }}>
+    <div className={variant != null ? `hero hero--${variant}` : "hero"}>
       <div className="hero-overlay bg-opacity-10"></div>
       {!isBare && (
         <div className={`hero-content text-neutral-content text-center ${variant === 'compact' ? 'py-10' : 'py-20'} text-white`}>

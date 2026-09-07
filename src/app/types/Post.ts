@@ -1,7 +1,7 @@
 import { z } from "zod"
 import { marked } from 'marked';
 import hljs from 'highlight.js';
-import { renderPicture } from '../util/images';
+import { getImageManifest, renderPicture } from '../util/images';
 import { config } from "../config";
 
 export function getOrdinalSuffix(day: number): string {
@@ -66,8 +66,29 @@ export const rawPostSchema = z.object({
 
 export type RawPost = z.infer<typeof rawPostSchema>
 
+/**
+ * Variant data for a post's cover image, resolved at build time.
+ *
+ * PostCard renders inside `'use client'` components, so it cannot read the manifest from
+ * disk the way the in-article renderer does. Only the widths travel with the post — the
+ * URLs are derived from them by `variantUrl`, which keeps the serialised props small.
+ */
+export interface CoverImage {
+  width: number;
+  height: number;
+  widths: number[];
+}
+
+function resolveCoverImage(src: string | undefined): CoverImage | undefined {
+  if (src === undefined) return undefined;
+  const entry = getImageManifest()[src];
+  if (entry === undefined) return undefined;
+  return { width: entry.width, height: entry.height, widths: entry.variants.webp.map(([w]) => w) };
+}
+
 export function transformPost(post: RawPost) {
   const { date, image: imageThumbnailUrl, slug, ...rest } = post
+  const imageThumbnail = resolveCoverImage(imageThumbnailUrl)
 
   const day = date.getDate();
   const month = date.toLocaleString('en-GB', { month: 'short' });
@@ -84,6 +105,9 @@ export function transformPost(post: RawPost) {
     dateFormatted,
     contentHtml,
     imageThumbnailUrl,
+    // Absent rather than undefined when there is no cover or no variants, so the field
+    // is optional on Post and existing fixtures stay valid.
+    ...(imageThumbnail !== undefined && { imageThumbnail }),
     slug,
     path,
     url

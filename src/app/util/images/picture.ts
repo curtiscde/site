@@ -1,4 +1,5 @@
 import { getImageManifest, type ImageManifest } from './manifest';
+import { variantSrcSet } from './urls';
 
 // The article column is `prose lg:prose-lg` (~720px at its widest). Below the md
 // breakpoint the image spans the viewport less the `mx-6` gutters.
@@ -11,9 +12,6 @@ function escapeAttribute(value: string): string {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 }
-
-const srcSet = (entries: [number, string][]) =>
-  entries.map(([width, url]) => `${url} ${width}w`).join(', ');
 
 export interface PictureOptions {
   src: string;
@@ -45,6 +43,7 @@ export function renderPicture({ src, alt, sizes = ARTICLE_SIZES, manifest }: Pic
   }
 
   const { width, height, variants } = entry;
+  const widths = variants.webp.map(([w]) => w);
   // Widest variant as the <img> fallback: it is only fetched by browsers that support
   // neither AVIF nor WebP, which in practice means none.
   const fallback = variants.webp[variants.webp.length - 1]?.[1] ?? src;
@@ -56,8 +55,8 @@ export function renderPicture({ src, alt, sizes = ARTICLE_SIZES, manifest }: Pic
   return (
     '<figure>' +
     '<picture>' +
-    `<source type="image/avif" srcset="${srcSet(variants.avif)}" sizes="${sizes}">` +
-    `<source type="image/webp" srcset="${srcSet(variants.webp)}" sizes="${sizes}">` +
+    `<source type="image/avif" srcset="${variantSrcSet(src, widths, 'avif')}" sizes="${sizes}">` +
+    `<source type="image/webp" srcset="${variantSrcSet(src, widths, 'webp')}" sizes="${sizes}">` +
     `<img src="${escapeAttribute(fallback)}" alt="${safeAlt}" width="${width}" height="${height}"` +
     ` data-full="${safeSrc}" loading="lazy" decoding="async">` +
     '</picture>' +
