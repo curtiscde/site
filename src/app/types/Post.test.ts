@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { transformPost, getOrdinalSuffix, RawPost } from './Post';
 
 const basePost: RawPost = {
@@ -129,5 +131,25 @@ describe('transformPost images', () => {
 
     expect(out).toContain('<h2')
     expect(out).toContain('Text with')
+  })
+
+  // Every other image test either injects a manifest or uses a deliberately-absent path,
+  // so all of them pass whether or not the manifest is actually found on disk. Without
+  // this one, a wrong MANIFEST_PATH would leave the whole suite green while every image
+  // on the site silently reverted to its full-size original.
+  describe('against the real generated manifest', () => {
+    const manifestPath = path.join(process.cwd(), 'public', '_img', 'manifest.json')
+    // Skipped, not failed, when absent: `npm test` on a fresh clone runs before any
+    // `npm run images`, and the coverage job never builds.
+    const maybe = fs.existsSync(manifestPath) ? it : it.skip
+
+    maybe('emits picture markup for an image the generator processed', () => {
+      const out = html('![Cover](/images/cover.jpg)')
+
+      expect(out).toContain('<picture>')
+      expect(out).toContain('type="image/avif"')
+      expect(out).toContain('/_img/images/cover-1600.avif')
+      expect(out).not.toContain('src="/images/cover.jpg"')
+    })
   })
 })

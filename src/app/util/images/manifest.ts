@@ -1,17 +1,22 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export interface ImageVariants {
+export interface ImageEntry {
   hash: string;
   width: number;
   height: number;
-  variants: {
+  /**
+   * Absent for formats the generator measures but does not re-encode (GIFs). Those entries
+   * exist only to carry intrinsic dimensions, so a plain <img> of the original can still
+   * reserve its space in the layout.
+   */
+  variants?: {
     avif: [number, string][];
     webp: [number, string][];
   };
 }
 
-export type ImageManifest = Record<string, ImageVariants>;
+export type ImageManifest = Record<string, ImageEntry>;
 
 const MANIFEST_PATH = path.join(process.cwd(), 'public', '_img', 'manifest.json');
 

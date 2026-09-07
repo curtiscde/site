@@ -96,6 +96,23 @@ describe('renderPicture', () => {
       expect(html).toContain('loading="lazy"')
     })
 
+    it('still reserves layout space when the generator measured the source', () => {
+      // GIFs are measured but never re-encoded. Without the dimensions they would be the
+      // only images on the site that shift the layout as they load — and they are among
+      // the largest files in the content set.
+      const html = renderPicture({
+        src: '/post/2017/example/measured.gif',
+        alt: 'An animation',
+        manifest: {
+          '/post/2017/example/measured.gif': { hash: 'def456', width: 416, height: 154 },
+        },
+      })
+
+      expect(html).not.toContain('<picture>')
+      expect(html).toContain('width="416"')
+      expect(html).toContain('height="154"')
+    })
+
     it('keeps the caption behaviour of a processed image', () => {
       expect(render('/nope.gif', 'Caption')).toContain('<figcaption aria-hidden="true">Caption</figcaption>')
       expect(render('/nope.gif', '')).not.toContain('figcaption')

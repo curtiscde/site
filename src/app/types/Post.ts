@@ -76,6 +76,7 @@ export type RawPost = z.infer<typeof rawPostSchema>
 export interface CoverImage {
   width: number;
   height: number;
+  /** Empty for a measured-but-not-encoded source (a GIF cover); the dimensions still apply. */
   widths: number[];
 }
 
@@ -83,7 +84,11 @@ function resolveCoverImage(src: string | undefined): CoverImage | undefined {
   if (src === undefined) return undefined;
   const entry = getImageManifest()[src];
   if (entry === undefined) return undefined;
-  return { width: entry.width, height: entry.height, widths: entry.variants.webp.map(([w]) => w) };
+  return {
+    width: entry.width,
+    height: entry.height,
+    widths: entry.variants?.webp.map(([w]) => w) ?? [],
+  };
 }
 
 export function transformPost(post: RawPost) {

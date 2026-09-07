@@ -31,13 +31,16 @@ export function renderPicture({ src, alt, sizes = ARTICLE_SIZES, manifest }: Pic
   const entry = (manifest ?? getImageManifest())[src];
   const safeAlt = escapeAttribute(alt);
   const safeSrc = escapeAttribute(src);
+  const caption = alt === '' ? '' : `<figcaption aria-hidden="true">${safeAlt}</figcaption>`;
 
-  // GIFs, SVGs and anything sharp could not read have no entry. Degrade to a plain
-  // <img> of the original rather than emitting a broken <source>.
-  if (entry === undefined) {
-    const caption = alt === '' ? '' : `<figcaption aria-hidden="true">${safeAlt}</figcaption>`;
+  // No variants: a GIF (measured but not re-encoded), an SVG, a remote URL, or anything
+  // sharp could not read. Degrade to a plain <img> of the original rather than emitting a
+  // broken <source>, but keep the intrinsic dimensions when the manifest has them — these
+  // are some of the largest files on the site and would otherwise shift the layout.
+  if (entry?.variants === undefined) {
+    const dimensions = entry === undefined ? '' : ` width="${entry.width}" height="${entry.height}"`;
     return (
-      `<figure><img src="${safeSrc}" alt="${safeAlt}" loading="lazy" decoding="async">` +
+      `<figure><img src="${safeSrc}" alt="${safeAlt}"${dimensions} loading="lazy" decoding="async">` +
       `${caption}</figure>`
     );
   }
@@ -50,8 +53,6 @@ export function renderPicture({ src, alt, sizes = ARTICLE_SIZES, manifest }: Pic
 
   // `data-full` is the untouched original, which phase 3's lightbox opens on click. It
   // costs nothing until then.
-  const caption = alt === '' ? '' : `<figcaption aria-hidden="true">${safeAlt}</figcaption>`;
-
   return (
     '<figure>' +
     '<picture>' +

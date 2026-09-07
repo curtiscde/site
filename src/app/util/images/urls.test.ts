@@ -52,6 +52,8 @@ describe('agreement with the generated manifest', () => {
     expect(entries.length).toBeGreaterThan(0)
 
     for (const [src, entry] of entries) {
+      // Measure-only entries (GIFs) carry dimensions but no variants.
+      if (entry.variants === undefined) continue
       for (const format of ['avif', 'webp'] as const) {
         for (const [width, url] of entry.variants[format]) {
           expect(variantUrl(src, width, format)).toBe(url)
@@ -60,9 +62,34 @@ describe('agreement with the generated manifest', () => {
     }
   })
 
+  // A CSS background cannot use <picture>, so Hero.scss hardcodes its variant URLs
+  // instead of deriving them. That bypasses every guard above, and the failure is silent:
+  // once image-set() parses, the browser has discarded the earlier url() declaration, so a
+  // 404 leaves no background at all rather than falling back. Swapping the source image
+  // for a narrower one would be enough to cause it.
+  maybe('has every /_img path that a stylesheet hardcodes', () => {
+    const stylesheets = fs
+      .readdirSync(path.join(process.cwd(), 'src', 'app', 'components'), { recursive: true })
+      .filter((f) => typeof f === 'string' && f.endsWith('.scss'))
+      .map((f) => path.join(process.cwd(), 'src', 'app', 'components', f as string))
+
+    const referenced = stylesheets.flatMap((file) =>
+      Array.from(fs.readFileSync(file, 'utf8').matchAll(/\/_img\/[^)"'\s]+/g), (m) => m[0])
+    )
+
+    // Guards the regex itself: if the SCSS is reformatted so nothing matches, this test
+    // would otherwise pass vacuously forever.
+    expect(referenced.length).toBeGreaterThan(0)
+
+    for (const url of referenced) {
+      expect(fs.existsSync(path.join(process.cwd(), 'public', url))).toBe(true)
+    }
+  })
+
   maybe('points at files that exist on disk', () => {
     const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8')) as ImageManifest
     for (const [src, entry] of Object.entries(manifest)) {
+      if (entry.variants === undefined) continue
       const widths = entry.variants.webp.map(([w]) => w)
       const url = variantUrl(src, widths[widths.length - 1], 'webp')
       expect(fs.existsSync(path.join(process.cwd(), 'public', url))).toBe(true)

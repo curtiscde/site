@@ -35,9 +35,13 @@ const CONFIG_HASH = createHash('sha1')
   .digest('hex')
   .slice(0, 8);
 
-// GIFs are frequently animated and sharp would flatten them to a still; SVGs are already
-// resolution independent. Both fall through to a plain <img> at render time.
-const EXTENSIONS = new Set(['.png', '.jpg', '.jpeg']);
+const ENCODE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg']);
+// Measured but never re-encoded: GIFs are frequently animated and sharp would flatten them
+// to a still. They still get a manifest entry carrying intrinsic dimensions, so the
+// renderers can set width/height on the plain <img> and avoid layout shift — these are
+// among the largest files on the site. SVGs are resolution independent and are left alone.
+const MEASURE_EXTENSIONS = new Set(['.gif']);
+const EXTENSIONS = new Set([...ENCODE_EXTENSIONS, ...MEASURE_EXTENSIONS]);
 
 /**
  * Widths to emit for a source of intrinsic width `native`.
@@ -88,6 +92,7 @@ async function main() {
 
   let encoded = 0;
   let reused = 0;
+  let measured = 0;
   let skipped = 0;
 
   for (const file of sources) {
@@ -102,6 +107,24 @@ async function main() {
       // A corrupt or unsupported file must not fail the build; it degrades to <img>.
       console.warn(`  skip ${src} — sharp could not read it (${error.message})`);
       skipped += 1;
+      continue;
+    }
+
+    // sharp types width as optional, and a header it cannot make sense of would otherwise
+    // reach targetWidths as undefined and produce `name-NaN.avif`.
+    if (!meta.width || !meta.height) {
+      console.warn(`  skip ${src} — sharp reported no intrinsic dimensions`);
+      skipped += 1;
+      continue;
+    }
+
+    const dimensions = { hash, config: CONFIG_HASH, width: meta.width, height: meta.height };
+
+    // Measure-only formats carry dimensions but no `variants` key at all, which is what
+    // tells the renderers to emit a plain <img> of the original.
+    if (!ENCODE_EXTENSIONS.has(path.extname(file).toLowerCase())) {
+      manifest[src] = dimensions;
+      measured += 1;
       continue;
     }
 
@@ -133,7 +156,7 @@ async function main() {
       }
     }
 
-    manifest[src] = { hash, config: CONFIG_HASH, width: meta.width, height: meta.height, variants };
+    manifest[src] = { ...dimensions, variants };
     encoded += 1;
   }
 
@@ -145,8 +168,8 @@ async function main() {
   const generated = bytes(walkOut());
 
   console.log(
-    `images: ${encoded} encoded, ${reused} reused from cache, ${skipped} skipped, ` +
-      `${sources.length} in manifest`
+    `images: ${encoded} encoded, ${reused} reused from cache, ${measured} measured only, ` +
+      `${skipped} skipped, ${Object.keys(manifest).length} in manifest`
   );
   console.log(
     `sources ${(originals / 1024 / 1024).toFixed(1)} MB -> variants ${(generated / 1024 / 1024).toFixed(1)} MB`

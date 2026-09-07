@@ -75,5 +75,22 @@ describe('PostImage', () => {
       expect(screen.getByAltText('Animation')).toHaveAttribute('src', '/post/x/animation.gif')
       expect(container.querySelector('picture')).toBeNull()
     })
+
+    it('keeps dimensions when the generator measured but did not encode the source', () => {
+      const { container } = render(
+        <PostImage
+          src="/post/x/animation.gif"
+          alt="Animation"
+          sizes="400px"
+          variants={{ width: 416, height: 154, widths: [] }}
+        />
+      )
+
+      // An empty `widths` must not become src="…-undefined.webp".
+      expect(container.querySelector('picture')).toBeNull()
+      expect(screen.getByAltText('Animation')).toHaveAttribute('src', '/post/x/animation.gif')
+      expect(screen.getByAltText('Animation')).toHaveAttribute('width', '416')
+      expect(screen.getByAltText('Animation')).toHaveAttribute('height', '154')
+    })
   })
 })

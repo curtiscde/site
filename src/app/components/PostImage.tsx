@@ -23,11 +23,20 @@ export const PostImage = ({ src, alt, sizes, variants, className, priority }: Po
   const loading = priority ? "eager" : "lazy"
 
   // No variants: a GIF, an SVG, or a file sharp could not read. Serve the original rather
-  // than pointing at files that were never generated.
-  if (variants === undefined) {
+  // than pointing at files that were never generated, but keep the intrinsic dimensions
+  // when the manifest measured them, so the card still reserves its space.
+  if (variants === undefined || variants.widths.length === 0) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={src} alt={alt} className={className} loading={loading} decoding="async" />
+      <img
+        src={src}
+        alt={alt}
+        width={variants?.width}
+        height={variants?.height}
+        className={className}
+        loading={loading}
+        decoding="async"
+      />
     )
   }
 
