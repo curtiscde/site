@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react";
-import { Post } from "../types/Post";
+import type { Post } from "../types/Post";
 import { Masonry } from "masonic";
 import { PostCard } from "./PostCard";
 

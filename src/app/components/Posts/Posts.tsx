@@ -1,7 +1,7 @@
 'use client'
 
 import React, { Suspense } from "react";
-import { Post } from "../../types/Post";
+import type { Post } from "../../types/Post";
 import dynamic from "next/dynamic";
 import { PostCard } from "../PostCard";
 import './Posts.scss';

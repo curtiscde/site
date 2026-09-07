@@ -1,6 +1,6 @@
 import React from "react"
 import Image from "next/image"
-import { Post } from "../types"
+import type { Post } from "../types"
 import "./postcard.scss"
 
 export const PostCard = ({ data: post }: { index?: number, data: Post, width?: number }) => {

@@ -23,4 +23,7 @@ jobs:
     - run: npm ci
     - run: npm run lint
     - run: npm run build
+    # Fails if highlight.js or marked reappear in a client chunk. Both are
+    # build-time-only; see docs/specs/post-asset-pipeline.md.
+    - run: npm run check:bundle
     - run: npm run test:ci

@@ -12,7 +12,7 @@ import {
   SimulationNodeDatum,
 } from 'd3-force'
 import { ThemeContext } from '../../context/ThemeContext'
-import { GraphLink, GraphNode } from '../../util/graph'
+import type { GraphLink, GraphNode } from '../../util/graph'
 import { hitTest, labelVisible, screenToWorld, View, worldToScreen, zoomAbout } from './helpers'
 import './TagGraph.scss'
 

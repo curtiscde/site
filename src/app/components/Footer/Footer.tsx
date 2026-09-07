@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useRef, useState } from "react"
-import { Post, TagCount } from "../../types"
+import type { Post, TagCount } from "../../types"
 import Link from "next/link"
 import Image from "next/image"
 import "./Footer.scss"
