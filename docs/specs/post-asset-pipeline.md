@@ -91,7 +91,8 @@ sooner.
 - **`next/image` outside post content** — `Header.tsx`, `Footer/Footer.tsx`,
   `cv/components/CompanyRow.tsx`. Unchanged in all three phases.
 - **Lightbox on cover images** in `PostCard` / `RelatedPosts`. The card is a link to the post; a
-  modal would fight it. In-article images only.
+  modal would fight it. In-article images only. (Their *variants* are in scope — see the decision
+  table; it is only the click-to-enlarge behaviour that is not.)
 - **Zoom and pan inside the modal.** This is a lightbox, not an image viewer.
 
 ## Decisions taken (confirmed with the human before writing this spec)
@@ -109,6 +110,7 @@ sooner.
 | `next/image` custom loader | **Dropped** (2026-09-07, reverses the original choice). A loader returns a single URL and so cannot offer AVIF *and* WebP. `<picture>` is used for both React and in-article images — one mechanism, better output. `images.unoptimized` stays `true`. Resolves open question 1. |
 | Which images the prebuild processes | **All of `public/`** (116 files, 37.7 MB), not just `public/post/`. A uniform rule means nothing to remember when adding a post. |
 | Encoder quality | **AVIF q65, WebP q80.** Measured, not guessed — see below. Resolves open questions 2 and 3. |
+| Cover images and the hero | **In scope for phase 2** (added 2026-09-07). The first pass wired only the `marked` renderer, so the homepage still served every card's cover at full size — a 2,488px file in a ~505px card. `PostCard` renders inside a `'use client'` tree, so it cannot read the manifest from disk; the widths travel on the post instead and `util/images/urls.ts` derives the URLs. The hero background uses CSS `image-set()`. |
 
 ## Assumptions
 
