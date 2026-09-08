@@ -18,10 +18,17 @@
  *
  * See docs/specs/post-asset-pipeline.md.
  */
-import { readdirSync, readFileSync } from 'node:fs';
+import { gzipSync } from 'node:zlib';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const CHUNK_DIR = join(process.cwd(), '.next', 'static', 'chunks');
+
+// Phase 3 adds client JavaScript to a site whose headline problem was client JavaScript,
+// so the spec makes its cost a success criterion rather than an aspiration. Measured on
+// the 9-image article, which loads every chunk a post page can pull.
+const BUDGET_PAGE = join(process.cwd(), 'out', 'post', '8-useful-atom-packages.html');
+const BUDGET_KB = 190; // phase 2 baseline was 187.7 KB gzipped across 9 chunks
 
 const FORBIDDEN = [
   { name: 'highlight.js', patterns: [/\bhljs\b/, /Could not find the language/] },
@@ -66,3 +73,25 @@ if (failures.length > 0) {
 }
 
 console.log(`✓ ${files.length} client chunks checked — no marked, no highlight.js.`);
+
+// Budget check runs against `out/`, which only exists after a full export. Skipped rather
+// than failed when absent, so `check:bundle` still works against a plain `next build`.
+if (existsSync(BUDGET_PAGE)) {
+  const html = readFileSync(BUDGET_PAGE, 'utf-8');
+  const referenced = [...new Set(html.match(/\/_next\/static\/chunks\/[A-Za-z0-9_\-./]+\.js/g) ?? [])];
+  const gzipped = referenced.reduce((total, url) => {
+    const file = join(process.cwd(), 'out', url);
+    return existsSync(file) ? total + gzipSync(readFileSync(file), { level: 9 }).length : total;
+  }, 0);
+  const kb = gzipped / 1024;
+
+  if (kb > BUDGET_KB) {
+    console.error(
+      `✗ Post-page JavaScript is ${kb.toFixed(1)} KB gzipped across ${referenced.length} chunks, ` +
+        `over the ${BUDGET_KB} KB budget.\n\n  The lightbox is allowed 2 KB on top of the phase 2 ` +
+        `baseline of 187.7 KB. Something larger than that has been added to a client component.\n`
+    );
+    process.exit(1);
+  }
+  console.log(`✓ post-page JS ${kb.toFixed(1)} KB gzipped (${referenced.length} chunks, budget ${BUDGET_KB} KB).`);
+}
