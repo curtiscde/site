@@ -1,4 +1,20 @@
 .hero {
+  // A CSS background cannot use <picture>, so format negotiation happens with
+  // image-set(). This must be two declarations, not one comma-separated value — a comma
+  // in background-image stacks layers rather than falling back. Engines that cannot parse
+  // image-set() ignore the second declaration and keep the JPEG.
+  // Was an inline `background` shorthand on the element. Moved here because the
+  // shorthand resets background-image, which would have wiped the image-set() below.
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 100%;
+  background-size: cover;
+  background-image: url(/images/cover.jpg);
+  background-image: image-set(
+    url(/_img/images/cover-1600.avif) type("image/avif"),
+    url(/_img/images/cover-1600.webp) type("image/webp")
+  );
+
   border-bottom: 4px solid var(--color-primary);
 
   // Image-only variant: no in-flow children, so the height has to be declared.

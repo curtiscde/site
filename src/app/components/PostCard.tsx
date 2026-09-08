@@ -1,6 +1,6 @@
 import React from "react"
-import Image from "next/image"
 import type { Post } from "../types"
+import { PostImage } from "./PostImage"
 import "./postcard.scss"
 
 export const PostCard = ({ data: post }: { index?: number, data: Post, width?: number }) => {
@@ -14,11 +14,14 @@ export const PostCard = ({ data: post }: { index?: number, data: Post, width?: n
 
         {post.imageThumbnailUrl != null &&
           <figure className="bg-primary">
-            <Image
+            {/* Measured: masonry cards render at ~505px on a 1272px viewport and full
+                width on mobile. `sizes` drives variant selection, so under-declaring it
+                here would pick a variant too small for the slot on a 2x display. */}
+            <PostImage
               src={post.imageThumbnailUrl}
               alt={post.title}
-              width={1200}
-              height={630} />
+              variants={post.imageThumbnail}
+              sizes="(max-width: 768px) 100vw, 520px" />
           </figure>
         }
         <div className="card-body">

@@ -91,7 +91,8 @@ sooner.
 - **`next/image` outside post content** — `Header.tsx`, `Footer/Footer.tsx`,
   `cv/components/CompanyRow.tsx`. Unchanged in all three phases.
 - **Lightbox on cover images** in `PostCard` / `RelatedPosts`. The card is a link to the post; a
-  modal would fight it. In-article images only.
+  modal would fight it. In-article images only. (Their *variants* are in scope — see the decision
+  table; it is only the click-to-enlarge behaviour that is not.)
 - **Zoom and pan inside the modal.** This is a lightbox, not an image viewer.
 
 ## Decisions taken (confirmed with the human before writing this spec)
@@ -106,6 +107,10 @@ sooner.
 | Lightbox dependency | **None.** Native `<dialog>` + DaisyUI modal classes, matching the existing pattern in `Footer.tsx:78`. |
 | Captions | **Show the markdown alt text as a visible `<figcaption>` on the page**, not only inside the modal, whenever the author supplied one. No caption when the alt is empty. |
 | New dependency for highlighting | **No.** See "no `marked-highlight`" below. |
+| `next/image` custom loader | **Dropped** (2026-09-07, reverses the original choice). A loader returns a single URL and so cannot offer AVIF *and* WebP. `<picture>` is used for both React and in-article images — one mechanism, better output. `images.unoptimized` stays `true`. Resolves open question 1. |
+| Which images the prebuild processes | **All of `public/`** (116 files, 37.7 MB), not just `public/post/`. A uniform rule means nothing to remember when adding a post. |
+| Encoder quality | **AVIF q65, WebP q80.** Measured, not guessed — see below. Resolves open questions 2 and 3. |
+| Cover images and the hero | **In scope for phase 2** (added 2026-09-07). The first pass wired only the `marked` renderer, so the homepage still served every card's cover at full size — a 2,488px file in a ~505px card. `PostCard` renders inside a `'use client'` tree, so it cannot read the manifest from disk; the widths travel on the post instead and `util/images/urls.ts` derives the URLs. The hero background uses CSS `image-set()`. |
 
 ## Assumptions
 
@@ -290,10 +295,26 @@ A third leak path also turned up that this spec had missed: `TagGraph.tsx:15` va
 // scripts/generate-image-variants.mjs
 const WIDTHS = [400, 800, 1200];
 const FORMATS = [
-  ['avif', { quality: 55 }],
-  ['webp', { quality: 78 }],
+  ['avif', { quality: 65 }],
+  ['webp', { quality: 80 }],
 ];
 ```
+
+**Why these qualities.** The original spec guessed q55/q78 and flagged text-heavy screenshots as a
+risk needing a case-by-case eyeball. Measuring the three largest sources removed the question: at
+1400w the reduction is 96-98% *even at q80*, so buying artefact-safety on UI screenshots costs
+almost nothing in absolute bytes.
+
+| source | original | AVIF q80 | WebP q80 |
+|---|---:|---:|---:|
+| `2026-london-marathon/london-marathon-curtis-site.png` | 4,776 KB | 194 KB | **136 KB** |
+| `2026-london-marathon/leaflet.png` | 1,832 KB | 73 KB | **45 KB** |
+| `2017-lischana-lane-photography/lischana-lane-portfolio.png` | 1,708 KB | 42 KB | **29 KB** |
+
+Note WebP *beats* AVIF at this quality on flat UI screenshots. Both formats are emitted and the
+browser picks the first it supports, so the `<source>` order matters: AVIF wins on photographs,
+WebP on screenshots, and neither is universally smaller. This also settles open question 3 --
+`/post/2026-london-marathon` is screenshots like everything else and needs no special handling.
 
 Never upscale: skip any width at or above the source's intrinsic width. Write a manifest keyed by
 source path with `{ mtimeMs, size, width, height }` so unchanged images are skipped on rebuild,
@@ -524,22 +545,22 @@ the one new test that must run in CI rather than locally.
 
 ## Open Questions
 
-1. **`next/image` custom loader, or drop `next/image` for post images?** The agreed approach was a
-   custom `loaderFile`. Writing it up surfaced a problem: a custom loader returns a *single* URL,
-   so it can produce a multi-width `srcset` in one format but cannot offer AVIF *and* WebP — that
-   needs `<picture>`. Since in-article images need `<picture>` regardless (they come from a
-   `marked` renderer, not from React), a loader would mean two mechanisms for one job.
-   **Recommendation:** use `<picture>` for both, keep `unoptimized: true` for the remaining
-   `next/image` call sites (`Header`, `Footer`, `CompanyRow`), and skip the custom loader
-   entirely. Fewer moving parts, better output. Confirm before phase 2 — **this does not affect
-   phase 1.**
-2. **AVIF quality floor.** `q=55` AVIF is usually indistinguishable from source for screenshots,
-   but several covers are text-heavy UI screenshots where artefacts show. Should the pipeline use
-   a higher quality for images above a certain width, or should we eyeball the three worst cases
-   and settle it then?
-3. **Does `/post/2026-london-marathon` need special handling?** Its cover is 4,996 KB and a second
-   image is 2,388 KB — together 20% of all in-article bytes. If those are photographs rather than
-   screenshots they may warrant a different quality setting.
+All three are resolved as of 2026-09-07, before phase 2 began. Kept here with their answers rather
+than deleted, so the reasoning survives.
+
+1. ~~**`next/image` custom loader, or drop `next/image` for post images?**~~ **Resolved: drop the
+   loader.** A custom loader returns a single URL, so it can produce a multi-width `srcset` in one
+   format but cannot offer AVIF *and* WebP. In-article images need `<picture>` regardless, since
+   they come from a `marked` renderer rather than React. A loader would have meant two mechanisms
+   for one job, with the React path losing AVIF. `<picture>` is now used for both;
+   `images.unoptimized` stays `true` and no `loaderFile` is added.
+2. ~~**AVIF quality floor.**~~ **Resolved: no floor needed, q65 AVIF / q80 WebP throughout.**
+   Measurement showed the savings are 96-98% even at q80, so there is no tension between file size
+   and artefacts on text-heavy screenshots. The proposed "eyeball the three worst cases" step is
+   dropped as unnecessary.
+3. ~~**Does `/post/2026-london-marathon` need special handling?**~~ **Resolved: no.** Both large
+   images are UI screenshots, not photographs; the 4,996 KB cover encodes to 136 KB WebP at 1400w
+   under the standard settings.
 
 ---
 

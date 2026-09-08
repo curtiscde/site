@@ -90,3 +90,43 @@ describe('PostCard', () => {
     })
   })
 })
+
+describe('PostCard cover image', () => {
+  const withCover: Post = {
+    ...basePost,
+    imageThumbnailUrl: '/post/x/cover.png',
+    imageThumbnail: { width: 2488, height: 1642, widths: [400, 800, 1200] },
+  }
+
+  it('serves a card-sized variant rather than the full-resolution original', () => {
+    const { container } = render(<PostCard data={withCover} />)
+
+    expect(container.querySelector('picture')).not.toBeNull()
+    expect(container.innerHTML).toContain('/_img/post/x/cover-400.webp 400w')
+    expect(container.innerHTML).not.toContain('src="/post/x/cover.png"')
+  })
+
+  it('tells the browser the card is ~520px, not full width, on desktop', () => {
+    const { container } = render(<PostCard data={withCover} />)
+
+    expect(container.querySelector('source')).toHaveAttribute(
+      'sizes',
+      '(max-width: 768px) 100vw, 520px'
+    )
+  })
+
+  it('falls back to the original when the cover has no variants', () => {
+    const { container } = render(
+      <PostCard data={{ ...basePost, imageThumbnailUrl: '/post/x/old.gif' }} />
+    )
+
+    expect(container.querySelector('picture')).toBeNull()
+    expect(container.querySelector('img')).toHaveAttribute('src', '/post/x/old.gif')
+  })
+
+  it('renders no figure at all when the post has no cover', () => {
+    const { container } = render(<PostCard data={basePost} />)
+
+    expect(container.querySelector('figure')).toBeNull()
+  })
+})
