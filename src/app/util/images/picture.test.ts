@@ -3,7 +3,6 @@ import type { ImageManifest } from './manifest';
 
 const manifest: ImageManifest = {
   '/post/2026/example/screenshot.png': {
-    hash: 'abc123',
     width: 2488,
     height: 1642,
     variants: {
@@ -104,7 +103,7 @@ describe('renderPicture', () => {
         src: '/post/2017/example/measured.gif',
         alt: 'An animation',
         manifest: {
-          '/post/2017/example/measured.gif': { hash: 'def456', width: 416, height: 154 },
+          '/post/2017/example/measured.gif': { width: 416, height: 154 },
         },
       })
 

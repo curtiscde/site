@@ -93,6 +93,7 @@ async function main() {
   let encoded = 0;
   let reused = 0;
   let measured = 0;
+  let measuredBytes = 0;
   let skipped = 0;
 
   for (const file of sources) {
@@ -118,12 +119,13 @@ async function main() {
       continue;
     }
 
-    const dimensions = { hash, config: CONFIG_HASH, width: meta.width, height: meta.height };
-
     // Measure-only formats carry dimensions but no `variants` key at all, which is what
-    // tells the renderers to emit a plain <img> of the original.
+    // tells the renderers to emit a plain <img> of the original. No `hash`/`config`
+    // either: nothing is encoded, so there is no cached output for them to invalidate,
+    // and re-reading a handful of headers each run costs nothing.
     if (!ENCODE_EXTENSIONS.has(path.extname(file).toLowerCase())) {
-      manifest[src] = dimensions;
+      manifest[src] = { width: meta.width, height: meta.height };
+      measuredBytes += fs.statSync(file).size;
       measured += 1;
       continue;
     }
@@ -156,7 +158,7 @@ async function main() {
       }
     }
 
-    manifest[src] = { ...dimensions, variants };
+    manifest[src] = { hash, config: CONFIG_HASH, width: meta.width, height: meta.height, variants };
     encoded += 1;
   }
 
@@ -164,7 +166,9 @@ async function main() {
   fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2));
 
   const bytes = (files) => files.reduce((a, f) => a + fs.statSync(f).size, 0);
-  const originals = bytes(sources);
+  // Measure-only sources produce no variants, so counting them in the "before" figure
+  // would flatter the ratio against a "after" figure they contribute nothing to.
+  const originals = bytes(sources) - measuredBytes;
   const generated = bytes(walkOut());
 
   console.log(

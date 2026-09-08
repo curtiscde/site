@@ -68,10 +68,14 @@ describe('agreement with the generated manifest', () => {
   // 404 leaves no background at all rather than falling back. Swapping the source image
   // for a narrower one would be enough to cause it.
   maybe('has every /_img path that a stylesheet hardcodes', () => {
+    // Scoped to all of src/app, not just components/ — PostPage.scss and Cv.scss are
+    // exactly the kind of place a background image would be added next, and scoping this
+    // to one directory would let that bypass the guard silently.
+    const root = path.join(process.cwd(), 'src', 'app')
     const stylesheets = fs
-      .readdirSync(path.join(process.cwd(), 'src', 'app', 'components'), { recursive: true })
-      .filter((f) => typeof f === 'string' && f.endsWith('.scss'))
-      .map((f) => path.join(process.cwd(), 'src', 'app', 'components', f as string))
+      .readdirSync(root, { recursive: true })
+      .filter((f): f is string => typeof f === 'string' && f.endsWith('.scss'))
+      .map((f) => path.join(root, f))
 
     const referenced = stylesheets.flatMap((file) =>
       Array.from(fs.readFileSync(file, 'utf8').matchAll(/\/_img\/[^)"'\s]+/g), (m) => m[0])

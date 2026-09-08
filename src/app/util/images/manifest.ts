@@ -1,8 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+/**
+ * What a consumer needs from one manifest entry. The generator also writes `hash` and
+ * `config` for its own cache invalidation; nothing here reads them, so they are
+ * deliberately absent from this type.
+ */
 export interface ImageEntry {
-  hash: string;
   width: number;
   height: number;
   /**
