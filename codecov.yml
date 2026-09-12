@@ -1,3 +1,14 @@
 coverage:
   status:
+    # Patch coverage is off because the files this repo adds lines to most often —
+    # Next.js page components — have never been unit tested, so a two-line edit to one
+    # reports as 0% patch coverage regardless of what the change actually does.
     patch: off
+    project:
+      default:
+        # Small drops are usually an artefact rather than a gap. Adding a couple of lines
+        # to an already-uncovered page component lowers the ratio without leaving anything
+        # newly untested, and deleting well-covered code does the same. Both have failed
+        # this check on changes that improved the codebase (#109, #113). A real regression
+        # moves the number considerably further than this.
+        threshold: 0.5%

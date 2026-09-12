@@ -5,7 +5,6 @@ const makePost = (slug: string): Post => ({
   id: slug,
   title: slug,
   slug,
-  content: '',
   contentHtml: '',
   date: new Date('2021-01-30'),
   dateFormatted: '30th Jan 2021',

@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { transformPost, getOrdinalSuffix, toSummary, toArticle, RawPost, Post } from './Post';
+import { transformPost, getOrdinalSuffix, toSummary, RawPost, Post } from './Post';
 
 const basePost: RawPost = {
   id: '550e8400-e29b-41d4-a716-446655440000',
@@ -55,6 +55,13 @@ describe('transformPost', () => {
     const withOptionals = transformPost({ ...basePost, description: 'A description', author: 'Curtis' });
     expect(withOptionals.description).toBe('A description');
     expect(withOptionals.author).toBe('Curtis');
+  });
+
+  it('drops the markdown source once it has been rendered', () => {
+    // Nothing reads `content` after this point, and leaving it on Post sent every
+    // article to the browser twice — once as markdown, once as rendered HTML.
+    expect('content' in post).toBe(false);
+    expect(post.contentHtml).toContain('<h1>Hello</h1>');
   });
 });
 
@@ -160,11 +167,8 @@ describe('toSummary', () => {
     tags: ['a'], content: '# Heading\n\nBody text with `code`.',
   } as RawPost);
 
-  it('drops both the markdown source and the rendered body', () => {
-    const summary = toSummary(post);
-
-    expect('content' in summary).toBe(false);
-    expect('contentHtml' in summary).toBe(false);
+  it('drops the rendered body, which no listing card displays', () => {
+    expect('contentHtml' in toSummary(post)).toBe(false);
   });
 
   it('keeps every field a listing card renders', () => {
@@ -177,8 +181,9 @@ describe('toSummary', () => {
   });
 
   it('carries a new Post field through without being edited', () => {
-    // Destructuring rather than picking is what makes this true — a field added to Post
-    // reaches listings automatically, and only the two body fields are ever dropped.
+    // Excluding rather than picking is what makes this true, so a rename in Post cannot
+    // silently empty a card. The cost is that it is fail-open for payload size — see the
+    // note on toSummary.
     const extended = { ...post, somethingNew: 'x' } as unknown as Post;
 
     expect(toSummary(extended)).toHaveProperty('somethingNew', 'x');
@@ -191,17 +196,3 @@ describe('toSummary', () => {
   });
 });
 
-describe('toArticle', () => {
-  const post = transformPost({
-    id: '1', title: 'T', slug: 's', date: new Date('2026-01-01T00:00:00'),
-    tags: [], content: '## Section\n\nText.',
-  } as RawPost);
-
-  it('keeps the rendered body an article page renders', () => {
-    expect(toArticle(post).contentHtml).toContain('<h2');
-  });
-
-  it('drops the markdown it was rendered from, which no client code reads', () => {
-    expect('content' in toArticle(post)).toBe(false);
-  });
-});

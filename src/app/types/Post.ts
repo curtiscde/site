@@ -92,7 +92,12 @@ function resolveCoverImage(src: string | undefined): CoverImage | undefined {
 }
 
 export function transformPost(post: RawPost) {
-  const { date, image: imageThumbnailUrl, slug, ...rest } = post
+  // `content` is destructured out, not spread: it is the markdown source, consumed below
+  // to produce `contentHtml` and read by nothing afterwards. Leaving it on `Post` sent
+  // every article to the browser twice — once as markdown, once as rendered HTML — on
+  // every page that carried a post.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { date, image: imageThumbnailUrl, slug, content, ...rest } = post
   const imageThumbnail = resolveCoverImage(imageThumbnailUrl)
 
   const day = date.getDate();
@@ -129,35 +134,23 @@ export type Post = z.infer<typeof postSchema>
  * Listing pages render summary cards, never an article. But `PostCard` sits inside
  * `'use client'` components (`Posts`, `MasonryPosts`), so whatever is handed to them is
  * serialised into the RSC payload of every page that renders one. Passing a whole `Post`
- * shipped both `content` (the raw markdown) and `contentHtml` (the rendered article) to
- * pages that display neither — 11.4 MB across the 150 listing pages.
+ * shipped the rendered article to pages that display none — 11.4 MB across the 150
+ * listing pages, before the markdown was dropped in `transformPost` as well.
  *
  * Note that typing alone does not fix this: `Post` is structurally assignable to
- * `PostSummary`, so the extra fields would still cross the boundary and still serialise.
- * The payload only shrinks because `toSummary` actually removes them. The build assertion
+ * `PostSummary`, so `contentHtml` would still cross the boundary and still serialise.
+ * The payload only shrinks because `toSummary` actually removes it. The build assertion
  * in scripts/check-client-bundle.mjs is what stops that regressing.
  */
-export type PostSummary = Omit<Post, 'content' | 'contentHtml'>
-
-/**
- * A post as an article page needs it: the rendered body, but not the markdown it came
- * from. `PostPage` is a client component and reads `contentHtml` only, so shipping
- * `content` alongside it sent every article to the browser twice.
- */
-export type PostArticle = Omit<Post, 'content'>
+export type PostSummary = Omit<Post, 'contentHtml'>
 
 /** Strips the body off a post. See PostSummary for why this must be called, not just typed. */
-export function toSummary(post: Post): PostSummary {
-  // Destructured out rather than picked, so a new field added to Post reaches listings
-  // automatically and only the two body fields are ever dropped.
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { content, contentHtml, ...summary } = post
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function toSummary({ contentHtml, ...summary }: Post): PostSummary {
+  // Picked by exclusion rather than by listing the fields a card needs, so a rename in
+  // `Post` cannot silently empty a card. The trade is that this is fail-open for payload
+  // size: a large field added to `Post` reaches all 150 listing pages without anyone
+  // deciding to send it, and the build assertion only looks for article-body markers.
+  // Worth revisiting if `Post` ever grows another heavy field.
   return summary
-}
-
-/** Drops the markdown source, keeping the rendered body an article page actually renders. */
-export function toArticle(post: Post): PostArticle {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { content, ...article } = post
-  return article
 }
