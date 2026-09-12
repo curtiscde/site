@@ -1,11 +1,11 @@
 'use client'
 
 import React from "react";
-import type { Post } from "../types/Post";
+import type { PostSummary } from "../types/Post";
 import { Masonry } from "masonic";
 import { PostCard } from "./PostCard";
 
-const MasonryPosts = ({ posts }: { posts: Post[] }) => (
+const MasonryPosts = ({ posts }: { posts: PostSummary[] }) => (
   <Masonry items={posts} render={PostCard} columnGutter={14} rowGutter={14} maxColumnCount={3} columnWidth={417} />
 );
 

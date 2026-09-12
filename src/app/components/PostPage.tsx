@@ -1,6 +1,6 @@
 'use client'
 
-import type { Post } from "../types";
+import type { PostArticle, PostSummary } from "../types";
 import { useEffect, useRef } from "react";
 // Stylesheet only — the markup it colours is produced at build time by the `code`
 // renderer in types/Post.ts, so highlight.js itself never reaches the browser.
@@ -12,7 +12,7 @@ import { Comments } from "./Comments/Comments";
 import { ArticleLightbox } from "./ArticleLightbox/ArticleLightbox";
 import { config } from "../config";
 
-export const PostPage = ({ post, relatedPosts }: { post: Post, relatedPosts: Post[] }) => {
+export const PostPage = ({ post, relatedPosts }: { post: PostArticle, relatedPosts: PostSummary[] }) => {
   // In-article images are injected HTML, not components, so the lightbox delegates
   // from this container rather than rendering anything per image.
   const article = useRef<HTMLDivElement>(null);

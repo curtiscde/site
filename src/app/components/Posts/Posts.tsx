@@ -1,13 +1,13 @@
 'use client'
 
 import React, { Suspense } from "react";
-import type { Post } from "../../types/Post";
+import type { PostSummary } from "../../types/Post";
 import dynamic from "next/dynamic";
 import { PostCard } from "../PostCard";
 import './Posts.scss';
 
 export interface PostsProps {
-  posts: Post[]
+  posts: PostSummary[]
 }
 
 const StaticPosts = ({ posts }: PostsProps) => (

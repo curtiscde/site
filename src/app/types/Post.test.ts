@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { transformPost, getOrdinalSuffix, RawPost } from './Post';
+import { transformPost, getOrdinalSuffix, toSummary, toArticle, RawPost, Post } from './Post';
 
 const basePost: RawPost = {
   id: '550e8400-e29b-41d4-a716-446655440000',
@@ -153,3 +153,55 @@ describe('transformPost images', () => {
     })
   })
 })
+
+describe('toSummary', () => {
+  const post = transformPost({
+    id: '1', title: 'T', slug: 's', date: new Date('2026-01-01T00:00:00'),
+    tags: ['a'], content: '# Heading\n\nBody text with `code`.',
+  } as RawPost);
+
+  it('drops both the markdown source and the rendered body', () => {
+    const summary = toSummary(post);
+
+    expect('content' in summary).toBe(false);
+    expect('contentHtml' in summary).toBe(false);
+  });
+
+  it('keeps every field a listing card renders', () => {
+    const summary = toSummary(post);
+
+    // PostCard reads these; losing any of them silently empties a card.
+    for (const field of ['id', 'title', 'tags', 'slug', 'path', 'url', 'date', 'dateFormatted']) {
+      expect(summary).toHaveProperty(field);
+    }
+  });
+
+  it('carries a new Post field through without being edited', () => {
+    // Destructuring rather than picking is what makes this true — a field added to Post
+    // reaches listings automatically, and only the two body fields are ever dropped.
+    const extended = { ...post, somethingNew: 'x' } as unknown as Post;
+
+    expect(toSummary(extended)).toHaveProperty('somethingNew', 'x');
+  });
+
+  it('leaves the original post untouched', () => {
+    toSummary(post);
+
+    expect(post.contentHtml).toContain('<h1');
+  });
+});
+
+describe('toArticle', () => {
+  const post = transformPost({
+    id: '1', title: 'T', slug: 's', date: new Date('2026-01-01T00:00:00'),
+    tags: [], content: '## Section\n\nText.',
+  } as RawPost);
+
+  it('keeps the rendered body an article page renders', () => {
+    expect(toArticle(post).contentHtml).toContain('<h2');
+  });
+
+  it('drops the markdown it was rendered from, which no client code reads', () => {
+    expect('content' in toArticle(post)).toBe(false);
+  });
+});

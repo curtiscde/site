@@ -74,6 +74,49 @@ if (failures.length > 0) {
 
 console.log(`✓ ${files.length} client chunks checked — no marked, no highlight.js.`);
 
+// Listing pages render summary cards and no article body, but PostCard sits inside
+// 'use client' components, so anything handed to it is serialised into the page's RSC
+// payload. Passing a whole Post shipped both the markdown and the rendered article to
+// pages that display neither — 11.4 MB across 150 pages. `toSummary` strips them.
+//
+// Typing alone cannot hold this: Post is structurally assignable to PostSummary, so a
+// forgotten `.map(toSummary)` type-checks and silently restores the payload. This is the
+// assertion that actually catches it.
+const LISTING_PAGES = [
+  ['homepage', join(process.cwd(), 'out', 'index.html')],
+  ['paginated listing', join(process.cwd(), 'out', 'posts', '2.html')],
+  ['tag listing', join(process.cwd(), 'out', 'tag', 'javascript.html')],
+];
+
+const bodyLeaks = [];
+for (const [label, page] of LISTING_PAGES) {
+  if (!existsSync(page)) continue;
+  const html = readFileSync(page, 'utf-8');
+  // Markers that only ever come from a rendered or raw article body.
+  const found = [
+    ['contentHtml', html.includes('contentHtml')],
+    ['highlighted code', html.includes('hljs-')],
+    ['article figures', html.includes('\\u003cfigure\\u003e') || html.includes('<figure>')],
+  ].filter(([, hit]) => hit).map(([name]) => name);
+  if (found.length > 0) bodyLeaks.push({ label, page, found });
+}
+
+if (bodyLeaks.length > 0) {
+  console.error(`✗ Article bodies found in ${bodyLeaks.length} listing page(s) that render none:\n`);
+  for (const { label, page, found } of bodyLeaks) {
+    console.error(`    ${label} → ${page.replace(process.cwd() + '/', '')}  (${found.join(', ')})`);
+  }
+  console.error(`
+  A listing page is passing whole Post objects into a client component. Map them through
+  \`toSummary\` — note that the types alone will not complain, because Post is
+  structurally assignable to PostSummary.
+`);
+  process.exit(1);
+}
+if (LISTING_PAGES.some(([, page]) => existsSync(page))) {
+  console.log('✓ listing pages carry no article bodies.');
+}
+
 // Budget check runs against `out/`, which only exists after a full export. Skipped rather
 // than failed when absent, so `check:bundle` still works against a plain `next build`.
 if (existsSync(BUDGET_PAGE)) {

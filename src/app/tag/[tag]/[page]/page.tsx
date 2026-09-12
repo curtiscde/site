@@ -4,6 +4,7 @@ import PostsWithPagination from "@/app/components/Posts";
 import { config } from "@/app/config";
 import { Post } from "@/app/types";
 import { filterPostsByTag, getPages, getPosts, getTopTags, paginatePosts } from "@/app/util/posts";
+import { toSummary } from "@/app/types";
 
 const { postsPerPage } = config
 
@@ -58,7 +59,7 @@ export default async function Page({ params }: {
       <Hero tag={tag} />
       <main>
         <div className="container mx-auto">
-          <PostsWithPagination postsProps={{ posts: pagePosts }} paginationProps={{ currentPage, pageCount, tag }} />
+          <PostsWithPagination postsProps={{ posts: pagePosts.map(toSummary) }} paginationProps={{ currentPage, pageCount, tag }} />
         </div>
       </main>
     </>

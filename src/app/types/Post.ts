@@ -122,3 +122,42 @@ export function transformPost(post: RawPost) {
 export const postSchema = rawPostSchema.transform(transformPost)
 
 export type Post = z.infer<typeof postSchema>
+
+/**
+ * A post without its body — everything a listing card needs and nothing it does not.
+ *
+ * Listing pages render summary cards, never an article. But `PostCard` sits inside
+ * `'use client'` components (`Posts`, `MasonryPosts`), so whatever is handed to them is
+ * serialised into the RSC payload of every page that renders one. Passing a whole `Post`
+ * shipped both `content` (the raw markdown) and `contentHtml` (the rendered article) to
+ * pages that display neither — 11.4 MB across the 150 listing pages.
+ *
+ * Note that typing alone does not fix this: `Post` is structurally assignable to
+ * `PostSummary`, so the extra fields would still cross the boundary and still serialise.
+ * The payload only shrinks because `toSummary` actually removes them. The build assertion
+ * in scripts/check-client-bundle.mjs is what stops that regressing.
+ */
+export type PostSummary = Omit<Post, 'content' | 'contentHtml'>
+
+/**
+ * A post as an article page needs it: the rendered body, but not the markdown it came
+ * from. `PostPage` is a client component and reads `contentHtml` only, so shipping
+ * `content` alongside it sent every article to the browser twice.
+ */
+export type PostArticle = Omit<Post, 'content'>
+
+/** Strips the body off a post. See PostSummary for why this must be called, not just typed. */
+export function toSummary(post: Post): PostSummary {
+  // Destructured out rather than picked, so a new field added to Post reaches listings
+  // automatically and only the two body fields are ever dropped.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { content, contentHtml, ...summary } = post
+  return summary
+}
+
+/** Drops the markdown source, keeping the rendered body an article page actually renders. */
+export function toArticle(post: Post): PostArticle {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { content, ...article } = post
+  return article
+}

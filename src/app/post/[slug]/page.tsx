@@ -3,6 +3,7 @@ import "./PostPage.scss"
 import { PostPage } from "@/app/components/PostPage";
 import { Metadata, ResolvingMetadata } from "next";
 import { config } from "@/app/config";
+import { toArticle, toSummary } from "@/app/types";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -91,5 +92,5 @@ export default async function Page({ params }: Props) {
 
   const relatedPosts = padRelatedPosts(getRelatedPosts(posts, post), posts, post)
 
-  return <PostPage post={post} relatedPosts={relatedPosts} />
+  return <PostPage post={toArticle(post)} relatedPosts={relatedPosts.map(toSummary)} />
 }
