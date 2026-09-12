@@ -1,0 +1,49 @@
+// The modal shows the original at its natural size within the viewport — no zoom, no pan.
+.article-lightbox {
+  &__box {
+    max-width: 95vw;
+    width: fit-content;
+    padding: 1.5rem;
+  }
+
+  &__figure {
+    margin: 0;
+  }
+
+  &__image {
+    display: block;
+    // Leaves room for the close button, the caption and the gallery controls.
+    max-height: 78vh;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  &__caption {
+    margin-top: 0.75rem;
+    text-align: center;
+    font-size: 0.875rem;
+    opacity: 0.75;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  &__count {
+    font-size: 0.875rem;
+    opacity: 0.75;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+// The affordance is applied from JavaScript, so this only ever styles images the
+// lightbox can actually open.
+.post-page article img[role='button'] {
+  cursor: zoom-in;
+}
