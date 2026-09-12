@@ -6,7 +6,6 @@ function newPost(slug: string): Post {
     id: slug,
     title: slug,
     slug,
-    content: 'foo',
     contentHtml: '<p>foo</p>',
     date: new Date('2023-12-30'),
     dateFormatted: '30th Dec 2023',

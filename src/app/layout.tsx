@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.scss";
 import { Footer } from "./components/Footer/Footer";
 import { getPosts, getTopTags } from "./util/posts";
+import { toSummary } from "./types";
 import { config } from './config'
 import { ThemeProvider } from "./context/ThemeContext";
 import ClientThemeWrapper from "./context/ClientThemeWrapper";
@@ -54,7 +55,7 @@ export default async function RootLayout({
           <ThemeProvider>
             <ClientThemeWrapper>
               {children}
-              <Footer recentPosts={posts.slice(0, 5)} topTags={topTags} />
+              <Footer recentPosts={posts.slice(0, 5).map(toSummary)} topTags={topTags} />
             </ClientThemeWrapper>
           </ThemeProvider>
           <CookieBanner />

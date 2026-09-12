@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useRef, useState } from "react"
-import type { Post, TagCount } from "../../types"
+import type { PostSummary, TagCount } from "../../types"
 import Link from "next/link"
 import Image from "next/image"
 import "./Footer.scss"
@@ -9,7 +9,7 @@ import { config } from "../../config"
 import SocialLinks from "./SocialLinks"
 import { Laptop, FileText, Cookie, Map, Waypoints } from "lucide-react"
 
-export const Footer = ({ recentPosts, topTags }: { recentPosts: Post[], topTags: TagCount[] }) => {
+export const Footer = ({ recentPosts, topTags }: { recentPosts: PostSummary[], topTags: TagCount[] }) => {
   const tagsToDisplay = 12
   const tagsNotDisplayedCount = topTags.length - tagsToDisplay
 

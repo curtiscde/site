@@ -6,7 +6,6 @@ function newPost(slug: string, date: string, tags: Array<string>, hasImage: bool
     id: slug,
     title: slug,
     slug,
-    content: 'foo',
     contentHtml: '<p>foo</p>',
     date: new Date(date),
     dateFormatted: date,

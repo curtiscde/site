@@ -1,5 +1,6 @@
 import { Post } from "./types/Post";
 import { filterPostsByPage, getPosts } from "./util/posts";
+import { toSummary } from "./types";
 import { Hero } from "./components/Hero";
 import { Header } from "./components/Header";
 import { config } from "./config";
@@ -18,7 +19,7 @@ export default function Home() {
       <Hero />
       <main>
         <div className="container mx-auto">
-          <PostsWithPagination postsProps={{ posts: pagePosts }} paginationProps={{ currentPage, pageCount }} />
+          <PostsWithPagination postsProps={{ posts: pagePosts.map(toSummary) }} paginationProps={{ currentPage, pageCount }} />
         </div>
       </main>
     </>

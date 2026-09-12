@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { transformPost, getOrdinalSuffix, RawPost } from './Post';
+import { transformPost, getOrdinalSuffix, toSummary, RawPost, Post } from './Post';
 
 const basePost: RawPost = {
   id: '550e8400-e29b-41d4-a716-446655440000',
@@ -55,6 +55,13 @@ describe('transformPost', () => {
     const withOptionals = transformPost({ ...basePost, description: 'A description', author: 'Curtis' });
     expect(withOptionals.description).toBe('A description');
     expect(withOptionals.author).toBe('Curtis');
+  });
+
+  it('drops the markdown source once it has been rendered', () => {
+    // Nothing reads `content` after this point, and leaving it on Post sent every
+    // article to the browser twice — once as markdown, once as rendered HTML.
+    expect('content' in post).toBe(false);
+    expect(post.contentHtml).toContain('<h1>Hello</h1>');
   });
 });
 
@@ -153,3 +160,39 @@ describe('transformPost images', () => {
     })
   })
 })
+
+describe('toSummary', () => {
+  const post = transformPost({
+    id: '1', title: 'T', slug: 's', date: new Date('2026-01-01T00:00:00'),
+    tags: ['a'], content: '# Heading\n\nBody text with `code`.',
+  } as RawPost);
+
+  it('drops the rendered body, which no listing card displays', () => {
+    expect('contentHtml' in toSummary(post)).toBe(false);
+  });
+
+  it('keeps every field a listing card renders', () => {
+    const summary = toSummary(post);
+
+    // PostCard reads these; losing any of them silently empties a card.
+    for (const field of ['id', 'title', 'tags', 'slug', 'path', 'url', 'date', 'dateFormatted']) {
+      expect(summary).toHaveProperty(field);
+    }
+  });
+
+  it('carries a new Post field through without being edited', () => {
+    // Excluding rather than picking is what makes this true, so a rename in Post cannot
+    // silently empty a card. The cost is that it is fail-open for payload size — see the
+    // note on toSummary.
+    const extended = { ...post, somethingNew: 'x' } as unknown as Post;
+
+    expect(toSummary(extended)).toHaveProperty('somethingNew', 'x');
+  });
+
+  it('leaves the original post untouched', () => {
+    toSummary(post);
+
+    expect(post.contentHtml).toContain('<h1');
+  });
+});
+

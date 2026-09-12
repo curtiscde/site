@@ -26,7 +26,6 @@ const basePost: Post = {
   description: 'A test description',
   tags: ['javascript'],
   imageThumbnailUrl: undefined,
-  content: 'Content',
   contentHtml: '<p>Content</p>',
   path: '/post/test-post',
   url: 'https://www.curtiscode.dev/post/test-post',

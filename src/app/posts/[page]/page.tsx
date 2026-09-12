@@ -4,6 +4,7 @@ import PostsWithPagination from "@/app/components/Posts";
 import { config } from "@/app/config";
 import { Post } from "@/app/types";
 import { getPages, getPosts, paginatePosts } from "@/app/util/posts";
+import { toSummary } from "@/app/types";
 
 export async function generateStaticParams() {
   const posts = getPosts();
@@ -30,7 +31,7 @@ export default async function Page({ params }: {
       <Hero />
       <main>
         <div className="container mx-auto">
-          <PostsWithPagination postsProps={{ posts: pagePosts }} paginationProps={{ currentPage, pageCount }} />
+          <PostsWithPagination postsProps={{ posts: pagePosts.map(toSummary) }} paginationProps={{ currentPage, pageCount }} />
         </div>
       </main>
     </>

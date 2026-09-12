@@ -92,7 +92,12 @@ function resolveCoverImage(src: string | undefined): CoverImage | undefined {
 }
 
 export function transformPost(post: RawPost) {
-  const { date, image: imageThumbnailUrl, slug, ...rest } = post
+  // `content` is destructured out, not spread: it is the markdown source, consumed below
+  // to produce `contentHtml` and read by nothing afterwards. Leaving it on `Post` sent
+  // every article to the browser twice — once as markdown, once as rendered HTML — on
+  // every page that carried a post.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { date, image: imageThumbnailUrl, slug, content, ...rest } = post
   const imageThumbnail = resolveCoverImage(imageThumbnailUrl)
 
   const day = date.getDate();
@@ -122,3 +127,30 @@ export function transformPost(post: RawPost) {
 export const postSchema = rawPostSchema.transform(transformPost)
 
 export type Post = z.infer<typeof postSchema>
+
+/**
+ * A post without its body — everything a listing card needs and nothing it does not.
+ *
+ * Listing pages render summary cards, never an article. But `PostCard` sits inside
+ * `'use client'` components (`Posts`, `MasonryPosts`), so whatever is handed to them is
+ * serialised into the RSC payload of every page that renders one. Passing a whole `Post`
+ * shipped the rendered article to pages that display none — 11.4 MB across the 150
+ * listing pages, before the markdown was dropped in `transformPost` as well.
+ *
+ * Note that typing alone does not fix this: `Post` is structurally assignable to
+ * `PostSummary`, so `contentHtml` would still cross the boundary and still serialise.
+ * The payload only shrinks because `toSummary` actually removes it. The build assertion
+ * in scripts/check-client-bundle.mjs is what stops that regressing.
+ */
+export type PostSummary = Omit<Post, 'contentHtml'>
+
+/** Strips the body off a post. See PostSummary for why this must be called, not just typed. */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function toSummary({ contentHtml, ...summary }: Post): PostSummary {
+  // Picked by exclusion rather than by listing the fields a card needs, so a rename in
+  // `Post` cannot silently empty a card. The trade is that this is fail-open for payload
+  // size: a large field added to `Post` reaches all 150 listing pages without anyone
+  // deciding to send it, and the build assertion only looks for article-body markers.
+  // Worth revisiting if `Post` ever grows another heavy field.
+  return summary
+}

@@ -1,7 +1,7 @@
-import type { Post } from "../types";
+import type { PostSummary } from "../types";
 import { PostCard } from "./PostCard";
 
-export const RelatedPosts = ({ posts }: { posts: Post[] }) => {
+export const RelatedPosts = ({ posts }: { posts: PostSummary[] }) => {
   return (
     <>
       <h2 className="mb-12 text-3xl font-extrabold leading-none tracking-tight light:text-gray-900 md:text-5xl lg:text-6xl text-center">Continue Reading</h2>

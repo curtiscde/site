@@ -74,6 +74,63 @@ if (failures.length > 0) {
 
 console.log(`✓ ${files.length} client chunks checked — no marked, no highlight.js.`);
 
+// Listing pages render summary cards and no article body, but PostCard sits inside
+// 'use client' components, so anything handed to it is serialised into the page's RSC
+// payload. Passing a whole Post shipped both the markdown and the rendered article to
+// pages that display neither — 11.4 MB across 150 pages. `toSummary` strips them.
+//
+// Typing alone cannot hold this: Post is structurally assignable to PostSummary, so a
+// forgotten `.map(toSummary)` type-checks and silently restores the payload. This is the
+// assertion that actually catches it.
+const OUT_DIR = join(process.cwd(), 'out');
+
+/** Every generated page except the article pages, which legitimately carry one body. */
+function listingPagesIn(dir) {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) return full === join(OUT_DIR, 'post') ? [] : listingPagesIn(full);
+    return entry.name.endsWith('.html') ? [full] : [];
+  });
+}
+
+// Scanned in full rather than sampled: there are ~150 tag listings, and checking three
+// named files would let a regression on any of the others through silently. The whole
+// scan takes about a second.
+if (existsSync(OUT_DIR)) {
+  const pages = listingPagesIn(OUT_DIR);
+  if (pages.length === 0) {
+    console.error(`✗ No listing pages under ${OUT_DIR} — the export looks incomplete.`);
+    process.exit(1);
+  }
+
+  const bodyLeaks = [];
+  for (const page of pages) {
+    const html = readFileSync(page, 'utf-8');
+    // Markers that only ever come from a rendered article body.
+    const found = [
+      ['contentHtml', html.includes('contentHtml')],
+      ['highlighted code', html.includes('hljs-')],
+      ['article figures', html.includes('\\u003cfigure\\u003e') || html.includes('<figure>')],
+    ].filter(([, hit]) => hit).map(([name]) => name);
+    if (found.length > 0) bodyLeaks.push({ page, found });
+  }
+
+  if (bodyLeaks.length > 0) {
+    console.error(`✗ Article bodies found in ${bodyLeaks.length} of ${pages.length} listing page(s):\n`);
+    for (const { page, found } of bodyLeaks.slice(0, 10)) {
+      console.error(`    ${page.replace(process.cwd() + '/', '')}  (${found.join(', ')})`);
+    }
+    if (bodyLeaks.length > 10) console.error(`    ... and ${bodyLeaks.length - 10} more`);
+    console.error(`
+  A listing page is passing whole Post objects into a client component. Map them through
+  \`toSummary\` — note that the types alone will not complain, because Post is
+  structurally assignable to PostSummary.
+`);
+    process.exit(1);
+  }
+  console.log(`✓ ${pages.length} listing pages carry no article bodies.`);
+}
+
 // Budget check runs against `out/`, which only exists after a full export. Skipped rather
 // than failed when absent, so `check:bundle` still works against a plain `next build`.
 if (existsSync(BUDGET_PAGE)) {
