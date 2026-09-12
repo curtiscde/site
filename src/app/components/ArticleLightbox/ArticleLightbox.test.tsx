@@ -200,6 +200,44 @@ describe('ArticleLightbox dismissal', () => {
     expect(document.activeElement).toBe(img)
   })
 
+  // The regression these guard: state was reset only by the dialog's `close` event, which
+  // in at least one Chrome build never fires. The index therefore stayed set, and
+  // re-clicking the *same* image did nothing — setting state to the value it already
+  // holds re-runs no effect, so showModal() was never called again. Clicking a different
+  // image still worked, which is why the original tests missed it.
+  //
+  // Each dismissal is now driven by its own handler, so these exercise the real path
+  // rather than a `close` event this environment happens to deliver.
+  describe.each([
+    ['the close button', () => fireEvent.click(screen.getByLabelText('Close'))],
+    ['the backdrop', () => fireEvent.click(screen.getByLabelText('Close image viewer'))],
+    ['Escape', () => fireEvent.keyDown(dialog(), { key: 'Escape' })],
+  ])('dismissed with %s', (_label, dismissWith) => {
+    it('closes, and the same image can be reopened', () => {
+      render(<Article html={gallery} />)
+      openImage('Two')
+      expect(dialog().open).toBe(true)
+
+      dismissWith()
+      expect(dialog().open).toBe(false)
+
+      openImage('Two')
+
+      expect(dialog().open).toBe(true)
+      expect(shownImage()).toHaveAttribute('alt', 'Two')
+    })
+
+    it('returns focus to the image that opened it', () => {
+      render(<Article html={gallery} />)
+      const img = screen.getByAltText('Two')
+      fireEvent.click(img)
+
+      dismissWith()
+
+      expect(document.activeElement).toBe(img)
+    })
+  })
+
   it('closes when the dialog emits close, however it was dismissed', () => {
     // Escape and the backdrop button both surface as the dialog's own close event.
     render(<Article html={gallery} />)

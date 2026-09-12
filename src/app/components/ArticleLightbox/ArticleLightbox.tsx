@@ -38,6 +38,20 @@ export const ArticleLightbox = ({
     }
   }, [index])
 
+  // Belt and braces. Every dismissal below also calls `close()` directly, because the
+  // `close` event cannot be relied on: in at least one Chrome build it never fires, even
+  // for a plain <dialog> with no framework involved. When state depended on it alone the
+  // index stayed set after dismissal, so re-clicking the *same* image did nothing —
+  // setting state to the value it already holds re-runs no effect, so showModal() was
+  // never called again. Clicking a different image still worked, which is what made it
+  // easy to miss. `close` does not bubble, so this binds to the element itself.
+  useEffect(() => {
+    const element = dialog.current
+    if (element === null) return
+    element.addEventListener('close', close)
+    return () => element.removeEventListener('close', close)
+  }, [close])
+
   // The original is requested here — on open, never on page load. That is the bargain
   // that lets the article ship variants a fraction of the size.
   useEffect(() => {
@@ -61,6 +75,11 @@ export const ArticleLightbox = ({
   }, [current])
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLDialogElement>) => {
+    // Escape closes the dialog natively; this is what resets our state alongside it.
+    if (event.key === 'Escape') {
+      close()
+      return
+    }
     if (images.length < 2) return
     if (event.key === 'ArrowRight') {
       event.preventDefault()
@@ -75,16 +94,20 @@ export const ArticleLightbox = ({
     <dialog
       className="modal article-lightbox"
       ref={dialog}
-      onClose={close}
       onKeyDown={onKeyDown}
       aria-label={current === undefined ? 'Image viewer' : `Full size: ${current.alt || 'image'}`}
     >
       <div className="modal-box article-lightbox__box">
-        <form method="dialog">
-          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" aria-label="Close">
-            ✕
-          </button>
-        </form>
+        {/* Driven by onClick rather than `<form method="dialog">`, so dismissal resets our
+            state even where the close event never arrives. */}
+        <button
+          type="button"
+          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+          aria-label="Close"
+          onClick={close}
+        >
+          ✕
+        </button>
 
         {current !== undefined && (
           <figure className="article-lightbox__figure">
@@ -115,10 +138,12 @@ export const ArticleLightbox = ({
         )}
       </div>
 
-      {/* DaisyUI's backdrop: a full-bleed submit button that closes the dialog. */}
-      <form method="dialog" className="modal-backdrop">
-        <button aria-label="Close image viewer">close</button>
-      </form>
+      {/* DaisyUI's full-bleed backdrop button, on the same explicit onClick as the rest. */}
+      <div className="modal-backdrop">
+        <button type="button" aria-label="Close image viewer" onClick={close}>
+          close
+        </button>
+      </div>
     </dialog>
   )
 }
