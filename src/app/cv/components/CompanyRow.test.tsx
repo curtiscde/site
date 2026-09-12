@@ -100,3 +100,22 @@ describe('CompanyRow skills scoping', () => {
     expect(within(lead).getByText('Leadership')).toBeInTheDocument()
   })
 })
+
+describe('CompanyRow logos', () => {
+  it('renders a raster logo as a picture, not the 3840px original', () => {
+    const rasterCompany: Company = { ...singleRoleCompany, name: 'Next', logo: '/images/logos/next.png' }
+
+    const { container } = render(<CompanyRow company={rasterCompany} />)
+
+    expect(container.querySelector('picture')).not.toBeNull()
+    expect(container.innerHTML).not.toContain('src="/images/logos/next.png"')
+  })
+
+  it('leaves an SVG logo exactly as authored', () => {
+    // Vector: already small, and rasterising would lose quality for no gain.
+    const { container } = render(<CompanyRow company={singleRoleCompany} />)
+
+    expect(container.querySelector('picture')).toBeNull()
+    expect(screen.getByAltText('Tesco logo')).toHaveAttribute('src', '/images/logos/tesco.svg')
+  })
+})

@@ -24,4 +24,17 @@ describe('Header', () => {
     render(<Header />)
     expect(screen.getByRole('img', { name: config.title })).toBeInTheDocument()
   })
+
+  it('serves a variant of the avatar, never the 347 KB original', () => {
+    // Header is in the layout, so this image loads on every page on the site.
+    const { container } = render(<Header />)
+
+    expect(container.innerHTML).not.toContain('src="/images/curtis.png"')
+  })
+
+  it('loads the avatar eagerly, since it is above the fold on every page', () => {
+    render(<Header />)
+
+    expect(screen.getByRole('img', { name: config.title })).toHaveAttribute('loading', 'eager')
+  })
 })

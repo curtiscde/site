@@ -131,6 +131,44 @@ if (existsSync(OUT_DIR)) {
   console.log(`✓ ${pages.length} listing pages carry no article bodies.`);
 }
 
+// Site chrome — the avatar and the CV logo tiles — used `next/image`, which with
+// `images.unoptimized` is a bare <img> of the original. The avatar is in the layout, so a
+// 347 KB 600x600 PNG loaded on every page to fill a 40x40 slot. Nothing in the type system
+// notices if a call site goes back to an untouched original, so assert on the output.
+// See docs/specs/site-chrome-images.md.
+const CHROME_ORIGINALS = ['/images/curtis.png', '/images/logos/next.png', '/images/logos/dreamscape.jpeg'];
+
+if (existsSync(OUT_DIR)) {
+  const pages = listingPagesIn(OUT_DIR).concat(
+    existsSync(join(OUT_DIR, 'post')) ? listingPagesIn(join(OUT_DIR, 'post')) : []
+  );
+  const served = [];
+  for (const page of pages) {
+    const html = readFileSync(page, 'utf-8');
+    for (const original of CHROME_ORIGINALS) {
+      // Only an <img src>, not a <source srcset> or a data attribute: the original is
+      // still a legitimate fallback target, it just must not be what gets served.
+      if (html.includes(`<img src="${original}"`) || html.includes(`src=\\"${original}\\"`)) {
+        served.push({ page, original });
+      }
+    }
+  }
+
+  if (served.length > 0) {
+    console.error(`✗ Chrome images served as untouched originals on ${served.length} page(s):\n`);
+    for (const { page, original } of served.slice(0, 10)) {
+      console.error(`    ${original} → ${page.replace(process.cwd() + '/', '')}`);
+    }
+    if (served.length > 10) console.error(`    ... and ${served.length - 10} more`);
+    console.error(`
+  A call site has gone back to serving the original. Use SiteImage (server components) or
+  pass resolved variants in as a prop (client components, as layout.tsx does for Footer).
+`);
+    process.exit(1);
+  }
+  console.log(`✓ chrome images served as variants across ${pages.length} pages.`);
+}
+
 // Budget check runs against `out/`, which only exists after a full export. Skipped rather
 // than failed when absent, so `check:bundle` still works against a plain `next build`.
 if (existsSync(BUDGET_PAGE)) {

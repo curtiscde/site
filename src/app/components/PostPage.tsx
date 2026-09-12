@@ -6,7 +6,6 @@ import { useEffect, useRef } from "react";
 // renderer in types/Post.ts, so highlight.js itself never reaches the browser.
 import 'highlight.js/styles/atom-one-dark.css';
 import './PostPage.scss'
-import { Header } from "./Header";
 import { RelatedPosts } from "./RelatedPosts";
 import { Comments } from "./Comments/Comments";
 import { ArticleLightbox } from "./ArticleLightbox/ArticleLightbox";
@@ -47,7 +46,6 @@ export const PostPage = ({ post, relatedPosts }: { post: Post, relatedPosts: Pos
 
   return (
     <>
-      <Header />
       <main className="post-page">
         <div className="container mx-auto">
           <div className="mx-6">
