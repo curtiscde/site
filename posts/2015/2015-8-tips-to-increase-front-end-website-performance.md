@@ -39,7 +39,7 @@ This is done by adding the contents of multiple images into one image, then use 
 
 Here is an example of one of Google's current sprite images:
 
-<img src="/post/2015/2015-8-tips-to-increase-front-end-website-performance/google-sprite-2015.png" alt="google-sprite-2015" width="167" height="410" class="alignnone size-full wp-image-287" />
+![One of Google's sprite sheets, combining dozens of icons into a single image](/post/2015/2015-8-tips-to-increase-front-end-website-performance/google-sprite-2015.png)
 
 This can then be used in CSS such as:
 
@@ -95,11 +95,9 @@ Therefore moving javascript references further down the page reduces render bloc
 
 Ideally javascript references should be placed just before the end body tag, <code></body></code>, if for whatever reason this is not possible, aim to have them referenced at least <a href="http://en.wikipedia.org/wiki/Above_the_fold#Below_the_fold" target="_blank">below the fold</a>.
 
-<strong>BAD:</strong>
-<img src="/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-bad.jpg" alt="js-bad" width="518" height="158" class="alignnone size-full wp-image-224" />
+![BAD — the script tag sits in the head, blocking the render](/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-bad.jpg)
 
-<strong>GOOD:</strong>
-<img src="/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-good.jpg" alt="js-good" width="518" height="154" class="alignnone size-full wp-image-223" />
+![GOOD — the script tag sits at the end of the body, after the content](/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-good.jpg)
 
 
 <h3>7. Use data-uri in CSS for small images</h3>

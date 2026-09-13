@@ -63,4 +63,4 @@ Which produces:
 <a href="http://curtistimson.co.uk"></a>
 ```
 
-<img src="/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle.gif" alt="jsfiddle" />
+![Typing a shorthand abbreviation in JSFiddle's HTML panel and watching it expand into full markup](/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle.gif)

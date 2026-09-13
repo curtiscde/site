@@ -142,10 +142,20 @@ if (existsSync(OUT_DIR)) {
 // before. Measure-only entries (GIFs, which carry dimensions but no `variants`) are
 // legitimately served as originals and must not be flagged.
 //
-// Scoped to non-article pages for now: three 2015 posts reference their images as raw
-// HTML <img> tags, which `marked`'s image renderer never sees, so seven originals are
-// still served inside out/post/. That is a real bug with its own fix in flight; once it
-// lands this scoping comes off and the rule covers every page.
+// Unscoped, articles included. It was briefly held off out/post/ because three 2015 posts
+// referenced their images as raw HTML <img> tags, which `marked`'s image renderer never
+// sees — seven originals, 91.0 KB, served for the life of the pipeline while phase 2's
+// success criterion 8 claimed otherwise. Those are markdown now, so the rule covers every
+// generated page.
+/** Every generated page, articles included — the scoping this check must not have. */
+function htmlPagesIn(dir) {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) return htmlPagesIn(full);
+    return entry.name.endsWith('.html') ? [full] : [];
+  });
+}
+
 function encodedSources() {
   const manifestPath = join(process.cwd(), 'public', '_img', 'manifest.json');
   if (!existsSync(manifestPath)) return new Set();
@@ -155,7 +165,7 @@ function encodedSources() {
 
 if (existsSync(OUT_DIR)) {
   const encoded = encodedSources();
-  const pages = listingPagesIn(OUT_DIR);
+  const pages = htmlPagesIn(OUT_DIR);
   const served = [];
 
   if (encoded.size > 0) {
