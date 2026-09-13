@@ -1,7 +1,7 @@
 import { z } from "zod"
 import { marked } from 'marked';
 import hljs from 'highlight.js';
-import { getImageManifest, renderPicture } from '../util/images';
+import { renderPicture, resolveImage, type ImageVariantSet } from '../util/images';
 import { config } from "../config";
 
 export function getOrdinalSuffix(day: number): string {
@@ -73,23 +73,8 @@ export type RawPost = z.infer<typeof rawPostSchema>
  * disk the way the in-article renderer does. Only the widths travel with the post — the
  * URLs are derived from them by `variantUrl`, which keeps the serialised props small.
  */
-export interface CoverImage {
-  width: number;
-  height: number;
-  /** Empty for a measured-but-not-encoded source (a GIF cover); the dimensions still apply. */
-  widths: number[];
-}
-
-function resolveCoverImage(src: string | undefined): CoverImage | undefined {
-  if (src === undefined) return undefined;
-  const entry = getImageManifest()[src];
-  if (entry === undefined) return undefined;
-  return {
-    width: entry.width,
-    height: entry.height,
-    widths: entry.variants?.webp.map(([w]) => w) ?? [],
-  };
-}
+/** @see ImageVariantSet — the same shape, named for its use on a post. */
+export type CoverImage = ImageVariantSet
 
 export function transformPost(post: RawPost) {
   // `content` is destructured out, not spread: it is the markdown source, consumed below
@@ -98,7 +83,7 @@ export function transformPost(post: RawPost) {
   // every page that carried a post.
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { date, image: imageThumbnailUrl, slug, content, ...rest } = post
-  const imageThumbnail = resolveCoverImage(imageThumbnailUrl)
+  const imageThumbnail = resolveImage(imageThumbnailUrl)
 
   const day = date.getDate();
   const month = date.toLocaleString('en-GB', { month: 'short' });

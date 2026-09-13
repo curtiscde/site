@@ -4,6 +4,17 @@ import '@testing-library/jest-dom'
 import { CompanyRow } from './CompanyRow'
 import { Company } from '../experience'
 
+// SiteImage reads the build-time manifest from disk, so asserting on its resolved output
+// here would make this file depend on whether `npm run images` has run. CompanyRow's own
+// responsibility is the props it passes; SiteImage.test.tsx covers the resolution, and
+// check:bundle asserts the built output across every page.
+jest.mock('../../components/SiteImage', () => ({
+  SiteImage: ({ src, alt, sizes, className }: { src: string; alt: string; sizes: string; className?: string }) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img alt={alt} src={src} data-sizes={sizes} className={className} />
+  ),
+}))
+
 const singleRoleCompany: Company = {
   name: 'Tesco',
   logo: '/images/logos/tesco.svg',
@@ -98,5 +109,22 @@ describe('CompanyRow skills scoping', () => {
     render(<CompanyRow company={multiRoleCompany} />)
     const lead = screen.getByText('Technical Lead').closest('div')!.parentElement!
     expect(within(lead).getByText('Leadership')).toBeInTheDocument()
+  })
+})
+
+describe('CompanyRow logos', () => {
+  it('routes every logo through the image pipeline, sized for the 56px tile', () => {
+    const rasterCompany: Company = { ...singleRoleCompany, name: 'Next', logo: '/images/logos/next.png' }
+
+    render(<CompanyRow company={rasterCompany} />)
+
+    expect(screen.getByAltText('Next logo')).toHaveAttribute('src', '/images/logos/next.png')
+    expect(screen.getByAltText('Next logo')).toHaveAttribute('data-sizes', '56px')
+  })
+
+  it('keeps the tile classes the layout depends on', () => {
+    render(<CompanyRow company={singleRoleCompany} />)
+
+    expect(screen.getByAltText('Tesco logo')).toHaveClass('object-contain')
   })
 })

@@ -131,6 +131,61 @@ if (existsSync(OUT_DIR)) {
   console.log(`✓ ${pages.length} listing pages carry no article bodies.`);
 }
 
+// Site chrome — the avatar and the CV logo tiles — used `next/image`, which with
+// `images.unoptimized` is a bare <img> of the original. The avatar is in the layout, so a
+// 347 KB 600x600 PNG loaded on every page to fill a 40x40 slot. Nothing in the type system
+// notices if a call site goes back to an untouched original, so assert on the output.
+// See docs/specs/site-chrome-images.md.
+// Derived from the manifest rather than a hardcoded list: any source the generator
+// encoded has variants, so serving the original instead is always a mistake. A named list
+// would miss the next chrome image someone adds — and this repo has shipped that mistake
+// before. Measure-only entries (GIFs, which carry dimensions but no `variants`) are
+// legitimately served as originals and must not be flagged.
+//
+// Scoped to non-article pages for now: three 2015 posts reference their images as raw
+// HTML <img> tags, which `marked`'s image renderer never sees, so seven originals are
+// still served inside out/post/. That is a real bug with its own fix in flight; once it
+// lands this scoping comes off and the rule covers every page.
+function encodedSources() {
+  const manifestPath = join(process.cwd(), 'public', '_img', 'manifest.json');
+  if (!existsSync(manifestPath)) return new Set();
+  const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
+  return new Set(Object.entries(manifest).filter(([, e]) => e.variants).map(([src]) => src));
+}
+
+if (existsSync(OUT_DIR)) {
+  const encoded = encodedSources();
+  const pages = listingPagesIn(OUT_DIR);
+  const served = [];
+
+  if (encoded.size > 0) {
+    for (const page of pages) {
+      const html = readFileSync(page, 'utf-8');
+      // Only an <img src>, never a <source srcset> or a data attribute: the original is
+      // still a legitimate fallback target, it just must not be what gets served.
+      for (const [, src] of html.matchAll(/<img src="([^"]+)"/g)) {
+        if (encoded.has(src)) served.push({ page, src });
+      }
+    }
+  }
+
+  if (served.length > 0) {
+    console.error(`✗ Originals served where a variant exists, on ${served.length} page(s):\n`);
+    for (const { page, src } of served.slice(0, 10)) {
+      console.error(`    ${src} → ${page.replace(process.cwd() + '/', '')}`);
+    }
+    if (served.length > 10) console.error(`    ... and ${served.length - 10} more`);
+    console.error(`
+  A call site is serving an untouched original. Use SiteImage (server components), or pass
+  resolved variants in as a prop (client components, as layout.tsx does for Footer).
+`);
+    process.exit(1);
+  }
+  if (encoded.size > 0) {
+    console.log(`✓ ${pages.length} pages serve variants, never an encoded original.`);
+  }
+}
+
 // Budget check runs against `out/`, which only exists after a full export. Skipped rather
 // than failed when absent, so `check:bundle` still works against a plain `next build`.
 if (existsSync(BUDGET_PAGE)) {
