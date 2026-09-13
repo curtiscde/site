@@ -142,10 +142,12 @@ if (existsSync(OUT_DIR)) {
 // before. Measure-only entries (GIFs, which carry dimensions but no `variants`) are
 // legitimately served as originals and must not be flagged.
 //
-// Scoped to non-article pages for now: three 2015 posts reference their images as raw
-// HTML <img> tags, which `marked`'s image renderer never sees, so seven originals are
-// still served inside out/post/. That is a real bug with its own fix in flight; once it
-// lands this scoping comes off and the rule covers every page.
+// Now unscoped, articles included. It was held off out/post/ because three 2015 posts
+// reference their images as raw HTML <img> tags, which `marked`'s image renderer never
+// sees — seven originals, 91.0 KB, served for the life of the pipeline while phase 2's
+// success criterion 8 claimed otherwise. util/images/rawHtml.ts fixes that, so the rule
+// covers every page and nothing in the type system has to notice, because nothing in the
+// type system sees the markdown.
 function encodedSources() {
   const manifestPath = join(process.cwd(), 'public', '_img', 'manifest.json');
   if (!existsSync(manifestPath)) return new Set();
@@ -153,31 +155,45 @@ function encodedSources() {
   return new Set(Object.entries(manifest).filter(([, e]) => e.variants).map(([src]) => src));
 }
 
+/** Every generated page, articles included — the scoping this check must not have. */
+function htmlPagesIn(dir) {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) return htmlPagesIn(full);
+    return entry.name.endsWith('.html') ? [full] : [];
+  });
+}
+
 if (existsSync(OUT_DIR)) {
   const encoded = encodedSources();
-  const pages = listingPagesIn(OUT_DIR);
+  const pages = htmlPagesIn(OUT_DIR);
   const served = [];
 
   if (encoded.size > 0) {
     for (const page of pages) {
       const html = readFileSync(page, 'utf-8');
       // Only an <img src>, never a <source srcset> or a data attribute: the original is
-      // still a legitimate fallback target, it just must not be what gets served.
-      for (const [, src] of html.matchAll(/<img src="([^"]+)"/g)) {
+      // still a legitimate fallback target, it just must not be what gets served. `src`
+      // is not required to come first: a WordPress-era tag may put `class` in front of
+      // it, and JSX emits props in source order — so allow any attributes before it.
+      for (const [, src] of html.matchAll(/<img\b[^>]*?\bsrc="([^"]+)"/g)) {
         if (encoded.has(src)) served.push({ page, src });
       }
     }
   }
 
   if (served.length > 0) {
-    console.error(`✗ Originals served where a variant exists, on ${served.length} page(s):\n`);
+    console.error(`✗ Originals served where a variant exists, on ${served.length} reference(s):\n`);
     for (const { page, src } of served.slice(0, 10)) {
       console.error(`    ${src} → ${page.replace(process.cwd() + '/', '')}`);
     }
     if (served.length > 10) console.error(`    ... and ${served.length - 10} more`);
     console.error(`
-  A call site is serving an untouched original. Use SiteImage (server components), or pass
-  resolved variants in as a prop (client components, as layout.tsx does for Footer).
+  Something is emitting a bare <img> of an image the generator re-encoded. In an article,
+  that means markup \`marked\` did not route through the image renderer — see
+  util/images/rawHtml.ts. Elsewhere, a call site is serving an untouched original: use
+  SiteImage (server components), or pass resolved variants in as a prop (client
+  components, as layout.tsx does for Footer).
 `);
     process.exit(1);
   }
