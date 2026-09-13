@@ -4,6 +4,17 @@ import '@testing-library/jest-dom'
 import { CompanyRow } from './CompanyRow'
 import { Company } from '../experience'
 
+// SiteImage reads the build-time manifest from disk, so asserting on its resolved output
+// here would make this file depend on whether `npm run images` has run. CompanyRow's own
+// responsibility is the props it passes; SiteImage.test.tsx covers the resolution, and
+// check:bundle asserts the built output across every page.
+jest.mock('../../components/SiteImage', () => ({
+  SiteImage: ({ src, alt, sizes, className }: { src: string; alt: string; sizes: string; className?: string }) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img alt={alt} src={src} data-sizes={sizes} className={className} />
+  ),
+}))
+
 const singleRoleCompany: Company = {
   name: 'Tesco',
   logo: '/images/logos/tesco.svg',
@@ -102,20 +113,18 @@ describe('CompanyRow skills scoping', () => {
 })
 
 describe('CompanyRow logos', () => {
-  it('renders a raster logo as a picture, not the 3840px original', () => {
+  it('routes every logo through the image pipeline, sized for the 56px tile', () => {
     const rasterCompany: Company = { ...singleRoleCompany, name: 'Next', logo: '/images/logos/next.png' }
 
-    const { container } = render(<CompanyRow company={rasterCompany} />)
+    render(<CompanyRow company={rasterCompany} />)
 
-    expect(container.querySelector('picture')).not.toBeNull()
-    expect(container.innerHTML).not.toContain('src="/images/logos/next.png"')
+    expect(screen.getByAltText('Next logo')).toHaveAttribute('src', '/images/logos/next.png')
+    expect(screen.getByAltText('Next logo')).toHaveAttribute('data-sizes', '56px')
   })
 
-  it('leaves an SVG logo exactly as authored', () => {
-    // Vector: already small, and rasterising would lose quality for no gain.
-    const { container } = render(<CompanyRow company={singleRoleCompany} />)
+  it('keeps the tile classes the layout depends on', () => {
+    render(<CompanyRow company={singleRoleCompany} />)
 
-    expect(container.querySelector('picture')).toBeNull()
-    expect(screen.getByAltText('Tesco logo')).toHaveAttribute('src', '/images/logos/tesco.svg')
+    expect(screen.getByAltText('Tesco logo')).toHaveClass('object-contain')
   })
 })
