@@ -1,7 +1,7 @@
 import { z } from "zod"
 import { marked } from 'marked';
 import hljs from 'highlight.js';
-import { renderPicture, resolveImage, type ImageVariantSet } from '../util/images';
+import { renderPicture, resolveImage, upgradeRawImages, type ImageVariantSet } from '../util/images';
 import { config } from "../config";
 
 export function getOrdinalSuffix(day: number): string {
@@ -48,6 +48,13 @@ marked.use({
     // manifest. The markdown alt text doubles as a visible caption.
     image({ href, text }) {
       return renderPicture({ src: href, alt: text ?? '' });
+    },
+    // The renderer above only ever fires for `![alt](src)`. Raw HTML is passed through by
+    // marked untouched, so the WordPress-era posts that reference their screenshots as
+    // literal `<img>` tags bypassed the image pipeline entirely and shipped originals.
+    // This hook is the only place those tokens are reachable. See util/images/rawHtml.ts.
+    html({ text }) {
+      return upgradeRawImages(text);
     },
   },
 });

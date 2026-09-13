@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import matter from 'gray-matter';
 import { transformPost, getOrdinalSuffix, toSummary, RawPost, Post } from './Post';
 
 const basePost: RawPost = {
@@ -158,6 +159,91 @@ describe('transformPost images', () => {
       expect(out).toContain('/_img/images/cover-1600.avif')
       expect(out).not.toContain('src="/images/cover.jpg"')
     })
+  })
+})
+
+// The WordPress-era imports reference their screenshots as literal HTML, which never
+// reaches the `image` renderer — marked passes raw HTML straight through. Seven images
+// across three articles were served as untouched originals because of it.
+describe('transformPost raw HTML images', () => {
+  const html = (markdown: string) =>
+    transformPost({
+      id: '1', title: 'T', slug: 's', date: new Date('2026-01-01T00:00:00'),
+      tags: [], content: markdown,
+    } as RawPost).contentHtml
+
+  const manifestPath = path.join(process.cwd(), 'public', '_img', 'manifest.json')
+  // Skipped, not failed, when absent — same reason as the block above: `npm test` on a
+  // fresh clone runs before any `npm run images`, and the coverage job never builds.
+  const maybe = fs.existsSync(manifestPath) ? it : it.skip
+
+  it('leaves raw HTML that is not an image alone', () => {
+    expect(html('<strong>BAD:</strong>')).toContain('<strong>BAD:</strong>')
+  })
+
+  it('never rewrites an img inside a fenced code block', () => {
+    const out = html('```html\n<img src="/images/cover.jpg" alt="x" />\n```')
+
+    expect(out).not.toContain('<picture>')
+  })
+
+  maybe('upgrades a block-level raw img to picture markup', () => {
+    const out = html('<img src="/images/cover.jpg" alt="cover" width="1" height="1" />')
+
+    expect(out).toContain('<picture>')
+    expect(out).toContain('/_img/images/cover-1600.avif')
+    expect(out).not.toContain('src="/images/cover.jpg"')
+  })
+
+  // A <figure> here would close the <p> early and change the rendered document, so the
+  // inline case is the one that constrains the markup shape.
+  maybe('upgrades a raw img sitting inside a paragraph without breaking the paragraph', () => {
+    const out = html('<strong>Label:</strong>\n<img src="/images/cover.jpg" alt="cover" />')
+
+    expect(out).toContain('<p><strong>Label:</strong>\n<picture>')
+    expect(out).not.toContain('<figure>')
+  })
+})
+
+// The assertion that actually covers the bug: not "the helper works" but "no article
+// still ships an original". scripts/check-client-bundle.mjs makes the same check against
+// the exported HTML; this one fails in a second rather than after a full build.
+describe('every in-article image resolves to a variant', () => {
+  const manifestPath = path.join(process.cwd(), 'public', '_img', 'manifest.json')
+  const maybe = fs.existsSync(manifestPath) ? it : it.skip
+
+  maybe('serves no original that the generator re-encoded', () => {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8')) as Record<
+      string,
+      { variants?: unknown }
+    >
+    const encoded = new Set(
+      Object.entries(manifest)
+        .filter(([, entry]) => entry.variants !== undefined)
+        .map(([src]) => src)
+    )
+    expect(encoded.size).toBeGreaterThan(0)
+
+    const postsRoot = path.join(process.cwd(), 'posts')
+    const files = fs
+      .readdirSync(postsRoot, { recursive: true })
+      .filter((f): f is string => typeof f === 'string' && f.endsWith('.md'))
+    expect(files.length).toBeGreaterThan(0)
+
+    const served: string[] = []
+    for (const file of files) {
+      const { content } = matter(fs.readFileSync(path.join(postsRoot, file), 'utf8'))
+      const rendered = transformPost({
+        id: '1', title: 'T', slug: 's', date: new Date('2026-01-01T00:00:00'),
+        tags: [], content,
+      } as RawPost).contentHtml
+
+      for (const [, src] of rendered.matchAll(/<img\b[^>]*?\bsrc="([^"]*)"/g)) {
+        if (encoded.has(src)) served.push(`${file} → ${src}`)
+      }
+    }
+
+    expect(served).toEqual([])
   })
 })
 

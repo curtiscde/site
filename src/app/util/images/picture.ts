@@ -5,12 +5,27 @@ import { variantSrcSet } from './urls';
 // breakpoint the image spans the viewport less the `mx-6` gutters.
 export const ARTICLE_SIZES = '(max-width: 768px) 100vw, 720px';
 
-function escapeAttribute(value: string): string {
+export function escapeAttribute(value: string): string {
   return value
     .replace(/&/g, '&amp;')
     .replace(/"/g, '&quot;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
+}
+
+/**
+ * The two `<source>` elements of a `<picture>`, AVIF first so a browser that supports it
+ * never reaches the WebP line.
+ *
+ * Shared with `rawHtml.ts` rather than duplicated: format order, the `sizes` attribute and
+ * the srcset shape are the parts most likely to drift if two renderers each wrote their
+ * own, and drift here is silent — the page still renders, just from the wrong file.
+ */
+export function pictureSources(src: string, widths: number[], sizes: string): string {
+  return (
+    `<source type="image/avif" srcset="${variantSrcSet(src, widths, 'avif')}" sizes="${sizes}">` +
+    `<source type="image/webp" srcset="${variantSrcSet(src, widths, 'webp')}" sizes="${sizes}">`
+  );
 }
 
 export interface PictureOptions {
@@ -56,8 +71,7 @@ export function renderPicture({ src, alt, sizes = ARTICLE_SIZES, manifest }: Pic
   return (
     '<figure>' +
     '<picture>' +
-    `<source type="image/avif" srcset="${variantSrcSet(src, widths, 'avif')}" sizes="${sizes}">` +
-    `<source type="image/webp" srcset="${variantSrcSet(src, widths, 'webp')}" sizes="${sizes}">` +
+    pictureSources(src, widths, sizes) +
     `<img src="${escapeAttribute(fallback)}" alt="${safeAlt}" width="${width}" height="${height}"` +
     ` data-full="${safeSrc}" loading="lazy" decoding="async">` +
     '</picture>' +
