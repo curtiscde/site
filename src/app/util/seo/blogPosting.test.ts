@@ -1,8 +1,8 @@
 import { buildBlogPosting, escapeJsonLd } from './blogPosting'
-import { transformPost, type RawPost, type Post } from '../../types/Post'
+import { transformPost, type RawPost, type PostSummary } from '../../types/Post'
 import { config } from '../../config'
 
-const post = (overrides: Partial<RawPost> = {}): Post =>
+const post = (overrides: Partial<RawPost> = {}): PostSummary =>
   transformPost({
     id: '1',
     title: 'A Post',
@@ -13,7 +13,7 @@ const post = (overrides: Partial<RawPost> = {}): Post =>
     ...overrides,
   } as RawPost)
 
-const parsed = (p: Post) => JSON.parse(buildBlogPosting(p))
+const parsed = (p: PostSummary) => JSON.parse(buildBlogPosting(p))
 
 describe('buildBlogPosting', () => {
   it('declares itself as a schema.org BlogPosting', () => {

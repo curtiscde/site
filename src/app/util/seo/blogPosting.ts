@@ -1,4 +1,4 @@
-import type { Post } from '../../types'
+import type { PostSummary } from '../../types'
 import { config } from '../../config'
 
 /**
@@ -14,9 +14,10 @@ import { config } from '../../config'
  * `articleBody` is deliberately not emitted. It carried `post.contentHtml` — the rendered
  * article, markup and all — which is not what the property means (it expects text) and
  * added 16-25 KB to every article page, 15-23% of their weight, for a property Google
- * does not use for Article results.
+ * does not use for Article results. Taking `PostSummary` rather than `Post` is what makes
+ * that structural: the body is not in scope, so it cannot creep back in.
  */
-export function buildBlogPosting(post: Post): string {
+export function buildBlogPosting(post: PostSummary): string {
   return JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
