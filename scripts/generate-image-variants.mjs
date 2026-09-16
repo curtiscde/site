@@ -15,7 +15,10 @@ const OUT_DIR = '_img';
 const OUT_ROOT = path.join(SOURCE_ROOT, OUT_DIR);
 const MANIFEST = path.join(OUT_ROOT, 'manifest.json');
 
-const WIDTHS = [400, 800, 1200, 1600];
+// 96 and 200 exist for site chrome — the 40px avatar and the 56px CV logo tiles — where
+// the smallest article rung was 10x the slot. In-article images declare a 720px `sizes`,
+// so a browser never picks them there; the cost is generation time and gitignored disk.
+const WIDTHS = [96, 200, 400, 800, 1200, 1600];
 // The article column tops out near 720px, so 1600 covers a 2x display with headroom.
 // Sources wider than this are never served at full size; sources narrower than it are
 // always offered at their native width (see `targetWidths`).

@@ -5,10 +5,6 @@ import { PostPage } from './PostPage'
 import { Post } from '../types'
 import { config } from '../config'
 
-jest.mock('./Header', () => ({
-  Header: () => <header data-testid="header" />,
-}))
-
 jest.mock('./RelatedPosts', () => ({
   RelatedPosts: () => <aside data-testid="related-posts" />,
 }))

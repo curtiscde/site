@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
 import { NavLinks } from "./NavLinks";
 import { config } from "../config";
+import { SiteImage } from "./SiteImage";
 
 export const Header = () => {
   return (
@@ -11,7 +11,7 @@ export const Header = () => {
         <div className="flex-none">
           <div className="avatar mx-2">
             <div className="w-10 rounded-full">
-              <Link href="/"><Image src="/images/curtis.png" alt={config.title} width={40} height={40} /></Link>
+              <Link href="/"><SiteImage src="/images/curtis.png" alt={config.title} sizes="40px" priority /></Link>
             </div>
           </div>
         </div>

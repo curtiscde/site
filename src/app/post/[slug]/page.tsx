@@ -1,5 +1,6 @@
 import { findPostBySlug, getPosts, getRelatedPosts, padRelatedPosts } from "@/app/util/posts"
 import "./PostPage.scss"
+import { Header } from "@/app/components/Header";
 import { PostPage } from "@/app/components/PostPage";
 import { Metadata, ResolvingMetadata } from "next";
 import { config } from "@/app/config";
@@ -92,5 +93,13 @@ export default async function Page({ params }: Props) {
 
   const relatedPosts = padRelatedPosts(getRelatedPosts(posts, post), posts, post)
 
-  return <PostPage post={post} relatedPosts={relatedPosts.map(toSummary)} />
+  // Header renders here rather than inside PostPage, which is a client component:
+  // keeping site chrome at the page level is what every other route already does, and it
+  // is what lets Header read the build-time image manifest.
+  return (
+    <>
+      <Header />
+      <PostPage post={post} relatedPosts={relatedPosts.map(toSummary)} />
+    </>
+  )
 }

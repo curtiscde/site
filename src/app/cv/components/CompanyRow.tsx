@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import { Company, Role } from '../experience'
+import { SiteImage } from '../../components/SiteImage'
 
 const SkillBadges = ({ skills, size }: { skills: string[]; size: 'sm' | 'xs' }) => (
   <div className={`flex flex-wrap ${size === 'sm' ? 'gap-2 mt-3' : 'gap-1.5 mt-2.5'}`}>
@@ -53,11 +53,10 @@ export const CompanyRow = ({ company }: { company: Company }) => {
   return (
     <div className="flex gap-4 border-t border-base-200 py-6">
       <div className="cv-logo-tile flex-none w-14 h-14 rounded-lg">
-        <Image
+        <SiteImage
           src={company.logo}
           alt={`${company.name} logo`}
-          width={56}
-          height={56}
+          sizes="56px"
           className="h-full w-full rounded-lg object-contain p-1.5"
         />
       </div>

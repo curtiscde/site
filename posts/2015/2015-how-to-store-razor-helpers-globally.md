@@ -24,11 +24,11 @@ In which case the helper can be stored in a seperate View in the "App_Code" fold
 
 For example create a new View in the "App_Code" folder called "MyHelpers.cshtml":
 
-<img src="/post/2015-how-to-store-razor-helpers-globally/HelpersSolutionExplorer.jpg" alt="HelpersSolutionExplorer" width="209" height="112" class="alignnone size-full wp-image-229" />
+![Visual Studio Solution Explorer showing MyHelpers.cshtml inside the App_Code folder](/post/2015-how-to-store-razor-helpers-globally/HelpersSolutionExplorer.jpg)
 
 Move the helper code into this file:
 
-<img src="/post/2015-how-to-store-razor-helpers-globally/MyHelpersView.jpg" alt="MyHelpersView" width="319" height="108" class="alignnone size-full wp-image-230" />
+![The MyHelpers.cshtml file open in Visual Studio, containing the @helper DisplayGreeting block](/post/2015-how-to-store-razor-helpers-globally/MyHelpersView.jpg)
 
 Then the helper can be called from the previous view by using `MyHelpers.DisplayGreeting`:
 

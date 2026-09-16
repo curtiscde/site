@@ -2,14 +2,20 @@
 
 import React, { useRef, useState } from "react"
 import type { PostSummary, TagCount } from "../../types"
+import type { ImageVariantSet } from "../../util/images/resolve"
+import { PostImage } from "../PostImage"
 import Link from "next/link"
-import Image from "next/image"
 import "./Footer.scss"
 import { config } from "../../config"
 import SocialLinks from "./SocialLinks"
 import { Laptop, FileText, Cookie, Map, Waypoints } from "lucide-react"
 
-export const Footer = ({ recentPosts, topTags }: { recentPosts: PostSummary[], topTags: TagCount[] }) => {
+export const Footer = ({ recentPosts, topTags, avatar }: {
+  recentPosts: PostSummary[],
+  topTags: TagCount[],
+  /* Resolved in layout.tsx: this is a client component and cannot read the manifest. */
+  avatar?: ImageVariantSet,
+}) => {
   const tagsToDisplay = 12
   const tagsNotDisplayedCount = topTags.length - tagsToDisplay
 
@@ -65,7 +71,7 @@ export const Footer = ({ recentPosts, topTags }: { recentPosts: PostSummary[], t
             <aside className="grid-flow-col items-center mx-auto md:mx-0">
               <div className="avatar mx-2">
                 <div className="w-10 rounded-full grayscale">
-                  <Image src="/images/curtis.png" alt={config.title} width={40} height={40} />
+                  <PostImage src="/images/curtis.png" alt={config.title} sizes="40px" variants={avatar} />
                 </div>
               </div>
               <p>{copyright}</p>
