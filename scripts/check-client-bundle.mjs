@@ -196,6 +196,51 @@ if (existsSync(OUT_DIR)) {
   }
 }
 
+// Structured data used to be appended to document.head from a useEffect in PostPage, so
+// it existed in zero bytes of served HTML — the data was computed correctly and never
+// reached the page. Nothing in the type system notices that, and neither does a unit test
+// of the builder: deleting the <script> from the route leaves tsc, the whole suite and
+// every other assertion here green. Verified by doing exactly that.
+// See src/app/util/seo/blogPosting.ts.
+const ARTICLE_DIR = join(OUT_DIR, 'post');
+
+if (existsSync(ARTICLE_DIR)) {
+  const articles = htmlPagesIn(ARTICLE_DIR);
+  const bad = [];
+
+  for (const page of articles) {
+    const html = readFileSync(page, 'utf-8');
+    const match = html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s);
+    if (match === null) {
+      bad.push({ page, reason: 'no JSON-LD in the served HTML' });
+      continue;
+    }
+    try {
+      const data = JSON.parse(match[1]);
+      if (data['@type'] !== 'BlogPosting') bad.push({ page, reason: `@type is ${data['@type']}` });
+    } catch (error) {
+      // Almost certainly an unescaped < or > from post metadata breaking out of the tag.
+      bad.push({ page, reason: `unparseable JSON (${error.message})` });
+    }
+  }
+
+  if (bad.length > 0) {
+    console.error(`✗ Structured data missing or broken on ${bad.length} of ${articles.length} article page(s):\n`);
+    for (const { page, reason } of bad.slice(0, 10)) {
+      console.error(`    ${page.replace(process.cwd() + '/', '')}  (${reason})`);
+    }
+    if (bad.length > 10) console.error(`    ... and ${bad.length - 10} more`);
+    console.error(`
+  The <script type="application/ld+json"> in post/[slug]/page.tsx is the only thing that
+  puts structured data in the document. Building it is not enough — it has to render.
+`);
+    process.exit(1);
+  }
+  if (articles.length > 0) {
+    console.log(`✓ ${articles.length} article pages carry valid BlogPosting structured data.`);
+  }
+}
+
 // Budget check runs against `out/`, which only exists after a full export. Skipped rather
 // than failed when absent, so `check:bundle` still works against a plain `next build`.
 if (existsSync(BUDGET_PAGE)) {

@@ -5,6 +5,7 @@ import { PostPage } from "@/app/components/PostPage";
 import { Metadata, ResolvingMetadata } from "next";
 import { config } from "@/app/config";
 import { toSummary } from "@/app/types";
+import { buildBlogPosting, escapeJsonLd } from "@/app/util/seo/blogPosting";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -98,6 +99,12 @@ export default async function Page({ params }: Props) {
   // is what lets Header read the build-time image manifest.
   return (
     <>
+      {/* Rendered into the document the server sends, not appended from a useEffect:
+          crawlers that do not execute JavaScript saw no structured data at all before. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: escapeJsonLd(buildBlogPosting(post)) }}
+      />
       <Header />
       <PostPage post={post} relatedPosts={relatedPosts.map(toSummary)} />
     </>
