@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { marked } from 'marked';
+import { marked, type Token } from 'marked';
 import hljs from 'highlight.js';
 import { renderPicture, resolveImage, type ImageVariantSet } from '../util/images';
 import { config } from "../config";
@@ -25,6 +25,23 @@ const LANGUAGE_ALIASES: Record<string, string> = {
   zsh: 'bash',
 };
 
+/**
+ * Is this paragraph nothing but an image?
+ *
+ * Covers a bare `![alt](src)`, the reference form `![alt][1]`, and an image wrapped in a
+ * link — `2017-moving-wordpress-hugo` links its xkcd image out, and an <a> is transparent
+ * content, so a <figure> inside it is just as invalid inside a <p>.
+ *
+ * A paragraph mixing text and an image stays wrapped: unwrapping it would move the text
+ * out of any paragraph at all. No post does that today, but the check is cheap.
+ */
+function isLoneImage(tokens: Token[]): boolean {
+  if (tokens.length !== 1) return false;
+  const [token] = tokens;
+  if (token.type === 'image') return true;
+  return token.type === 'link' && isLoneImage(token.tokens ?? []);
+}
+
 // Highlighting happens here, at build time, rather than in the browser. This module is
 // reachable from server code only — every client import of `Post` is `import type`, so
 // neither marked nor highlight.js is bundled. See docs/specs/post-asset-pipeline.md.
@@ -49,6 +66,18 @@ marked.use({
     image({ href, text }) {
       return renderPicture({ src: href, alt: text ?? '' });
     },
+    // `image` is an inline renderer, so its <figure> landed wherever the image sat —
+    // and a markdown image alone on a line is still a paragraph containing an image.
+    // That produced `<p><figure>...</figure></p>` on 77 of the site's 78 images.
+    // <figure> is flow content and cannot live in a <p>, so browsers closed the
+    // paragraph early and left a stray empty <p> either side of every image.
+    //
+    // Unwrapping here rather than post-processing the HTML keeps it in the one place
+    // that knows the paragraph only ever held the image.
+    paragraph({ tokens }) {
+      const inner = this.parser.parseInline(tokens);
+      return isLoneImage(tokens) ? inner : `<p>${inner}</p>`;
+    },
   },
 });
 
@@ -66,13 +95,6 @@ export const rawPostSchema = z.object({
 
 export type RawPost = z.infer<typeof rawPostSchema>
 
-/**
- * Variant data for a post's cover image, resolved at build time.
- *
- * PostCard renders inside `'use client'` components, so it cannot read the manifest from
- * disk the way the in-article renderer does. Only the widths travel with the post — the
- * URLs are derived from them by `variantUrl`, which keeps the serialised props small.
- */
 /** @see ImageVariantSet — the same shape, named for its use on a post. */
 export type CoverImage = ImageVariantSet
 

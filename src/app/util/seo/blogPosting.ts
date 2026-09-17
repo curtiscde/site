@@ -6,10 +6,13 @@ import { config } from '../../config'
  * `<script type="application/ld+json">`.
  *
  * This used to be built in `PostPage` and appended to `document.head` from a `useEffect`,
- * which meant it existed in **zero bytes of served HTML**. On a statically exported site
- * that is all cost and no benefit: Googlebot may render JavaScript and eventually see it,
- * but Bing, LinkedIn, Slack unfurls and every other crawler get nothing. Building it here
- * puts it in the document the server sends.
+ * which meant it existed in **zero bytes of served HTML** — dead code on every article
+ * page. Building it here puts it in the document the server sends.
+ *
+ * Worth being accurate about what that buys: JSON-LD is read by search engines'
+ * structured-data parsers and nothing else. Link previews use OpenGraph, which was always
+ * server-rendered, so unfurls were never affected. Structured data is not a ranking
+ * factor either. The reason to do it is correctness.
  *
  * `articleBody` is deliberately not emitted. It carried `post.contentHtml` — the rendered
  * article, markup and all — which is not what the property means (it expects text) and
