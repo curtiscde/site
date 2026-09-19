@@ -8,6 +8,7 @@ slug: "nextjs-boilerplate-template-typerite"
 id: 37
 ---
 ![](/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot.png)
+
 Recently I ported the free HTML5 template, Typerite, from [StyleShout](https://www.styleshout.com/) to be used as a Next.js Boilerplate.
 
 https://github.com/curtiscde/nextjs-typerite-boilerplate

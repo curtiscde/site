@@ -140,6 +140,46 @@ describe('transformPost images', () => {
     expect(out).toContain('Text with')
   })
 
+  // <figure> is flow content and cannot live inside a <p>. `image` is an inline renderer,
+  // so before the `paragraph` override its output landed inside the paragraph that held
+  // the image — `<p><figure>...</figure></p>` on 77 of the site's 78 images. Browsers
+  // closed the paragraph early and left a stray empty <p> either side of every one.
+  describe('block-level images', () => {
+    it('does not wrap a lone image in a paragraph', () => {
+      const out = html('![A caption](/post/2026/nope/missing.png)')
+
+      expect(out).not.toMatch(/<p>\s*<figure>/)
+      expect(out.trim().startsWith('<figure>')).toBe(true)
+    })
+
+    it('unwraps a reference-style image too', () => {
+      const out = html('![Alt][1]\n\n[1]: /post/2026/nope/missing.png')
+
+      expect(out).not.toMatch(/<p>\s*<figure>/)
+    })
+
+    it('unwraps an image wrapped in a link', () => {
+      // 2017-moving-wordpress-hugo links its xkcd image out. An <a> is transparent
+      // content, so a <figure> inside it is just as invalid inside a <p>.
+      const out = html('[![Bobby](/post/2026/nope/missing.png)](https://xkcd.com/327/)')
+
+      expect(out).not.toMatch(/<p>\s*<a/)
+      expect(out).toContain('href="https://xkcd.com/327/"')
+      expect(out).toContain('<figure>')
+    })
+
+    it('still wraps a paragraph that mixes text with an image', () => {
+      // Unwrapping this one would leave the prose in no paragraph at all.
+      const out = html('Before ![x](/post/2026/nope/missing.png) after')
+
+      expect(out).toMatch(/<p>Before/)
+    })
+
+    it('leaves ordinary prose paragraphs alone', () => {
+      expect(html('Just some prose.')).toContain('<p>Just some prose.</p>')
+    })
+  })
+
   // Every other image test either injects a manifest or uses a deliberately-absent path,
   // so all of them pass whether or not the manifest is actually found on disk. Without
   // this one, a wrong MANIFEST_PATH would leave the whole suite green while every image
