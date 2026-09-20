@@ -5,6 +5,17 @@ a {
       position: relative;
       margin-bottom: -36px;
 
+      // daisyUI makes `.card figure` a flex container. Since PostImage started emitting
+      // <picture>, that wrapper — not the img — is the flex item, and flex items are
+      // blockified, so the picture became the img's containing block. `min-width: 100%`
+      // then resolved against the picture's own max-content width (the widest variant)
+      // instead of the figure's, letterboxing every cover narrower than the card against
+      // the `bg-primary` fill. `display: contents` drops the picture's box so the img is
+      // the flex item again, exactly as it was before the <picture> markup landed.
+      picture {
+        display: contents;
+      }
+
       img {
         transition: all ease-out .3s;
         transform-style: preserve-3d;
