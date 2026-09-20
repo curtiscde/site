@@ -62,11 +62,16 @@ describe('agreement with the generated manifest', () => {
     }
   })
 
-  // A CSS background cannot use <picture>, so Hero.scss hardcodes its variant URLs
-  // instead of deriving them. That bypasses every guard above, and the failure is silent:
-  // once image-set() parses, the browser has discarded the earlier url() declaration, so a
-  // 404 leaves no background at all rather than falling back. Swapping the source image
-  // for a narrower one would be enough to cause it.
+  // A CSS background cannot use <picture>, so a stylesheet that wants a responsive image
+  // has to hardcode its variant URLs. That bypasses every guard above, and the failure is
+  // silent: once image-set() parses, the browser has discarded the earlier url()
+  // declaration, so a 404 leaves no background at all rather than falling back.
+  //
+  // Hero.scss was the only place doing this, and its photographic background has since
+  // been replaced by a CSS gradient — so today this finds nothing and passes vacuously.
+  // That is the point: it is a tripwire for the next stylesheet to reach for a hardcoded
+  // variant URL. There is deliberately no assertion that the list is non-empty, because
+  // empty is now the correct state.
   maybe('has every /_img path that a stylesheet hardcodes', () => {
     // Scoped to all of src/app, not just components/ — PostPage.scss and Cv.scss are
     // exactly the kind of place a background image would be added next, and scoping this
@@ -80,10 +85,6 @@ describe('agreement with the generated manifest', () => {
     const referenced = stylesheets.flatMap((file) =>
       Array.from(fs.readFileSync(file, 'utf8').matchAll(/\/_img\/[^)"'\s]+/g), (m) => m[0])
     )
-
-    // Guards the regex itself: if the SCSS is reformatted so nothing matches, this test
-    // would otherwise pass vacuously forever.
-    expect(referenced.length).toBeGreaterThan(0)
 
     for (const url of referenced) {
       expect(fs.existsSync(path.join(process.cwd(), 'public', url))).toBe(true)
