@@ -1,43 +1,348 @@
+// Palette sampled from the original postit photo by hue-bucketing its most saturated
+// pixels. The photo's lime is deliberately absent: at any useful blur radius it sat
+// next to the orange and red and the pair averaged into brown. Every hue here is a
+// neighbour of the next, which is what keeps the blends clean.
+
 .hero {
-  // A CSS background cannot use <picture>, so format negotiation happens with
-  // image-set(). This must be two declarations, not one comma-separated value — a comma
-  // in background-image stacks layers rather than falling back. Engines that cannot parse
-  // image-set() ignore the second declaration and keep the JPEG.
-  // Was an inline `background` shorthand on the element. Moved here because the
-  // shorthand resets background-image, which would have wiped the image-set() below.
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 50% 100%;
-  background-size: cover;
-  background-image: url(/images/cover.jpg);
-  background-image: image-set(
-    url(/_img/images/cover-1600.avif) type("image/avif"),
-    url(/_img/images/cover-1600.webp) type("image/webp")
-  );
+  --hero-magenta: #e0197f;
+  --hero-violet: #8b3fd0;
+  --hero-red: #e0341a;
+  --hero-orange: #f5742a;
+  --hero-amber: #e8b33c;
+  --hero-base: #0a0c0f;
 
+  // The title is centred on the VISIBLE band rather than the element box, because on
+  // listing pages the post grid rides up over the bottom of the banner and hides part
+  // of it. Defaults to 0; Posts.scss raises it, because that is where the negative
+  // margin causing the overlap lives and the two must not drift apart.
+  --hero-card-overlap: 0px;
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  height: 268px;
+  background: var(--hero-base);
   border-bottom: 4px solid var(--color-primary);
+}
 
-  // Image-only variant: no in-flow children, so the height has to be declared.
-  &.hero--bare {
-    min-height: 6rem;
+[data-theme='dark'] .hero {
+  --hero-magenta: #a8135f;
+  --hero-violet: #6830a0;
+  --hero-red: #a82613;
+  --hero-orange: #b4521c;
+  --hero-amber: #a87f24;
+  --hero-base: #07080b;
+}
+
+.hero--compact {
+  height: 190px;
+}
+
+.hero--bare {
+  height: 6rem;
+}
+
+/* ---------------------------------------------------------------- *
+ * Colour field
+ * ---------------------------------------------------------------- */
+
+.hero-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+// Pointer parallax sits on its own wrapper so it never fights the keyframe animation
+// on .hero-bands — two transforms on one element means the last one wins. The
+// transition is what makes it read as drag rather than cursor-follow.
+.hero-parallax {
+  position: absolute;
+  inset: 0;
+  transform: translate3d(calc(var(--hero-mx, 0) * 2.2%), calc(var(--hero-my, 0) * 1.4%), 0);
+  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.hero-bands {
+  position: absolute;
+  // Oversized so neither the drift nor the pointer offset can expose an edge.
+  inset: -20% -35%;
+  // Enough blur to soften the seams, not enough to average the hues together.
+  filter: blur(18px);
+  will-change: transform;
+}
+
+// Double stops, not single ones. A single-stop gradient interpolates the whole way
+// across and reads as one smooth wash; this holds each colour over a flat span so the
+// blur turns the boundary into a seam. Both ends carry colour because the element is
+// 170% of the banner width — a transparent end stop lands inside the visible window
+// and blacks out a third of the banner.
+.hero-bands--main {
+  background: linear-gradient(
+    100deg,
+    var(--hero-violet) 0% 9%,
+    var(--hero-magenta) 9% 30%,
+    var(--hero-red) 30% 41%,
+    var(--hero-orange) 41% 64%,
+    var(--hero-amber) 64% 84%,
+    var(--hero-magenta) 84% 100%
+  );
+  animation: hero-drift 140s ease-in-out infinite alternate;
+}
+
+.hero-bands--cross {
+  background: linear-gradient(
+    64deg,
+    var(--hero-amber) 0% 16%,
+    var(--hero-orange) 16% 38%,
+    var(--hero-magenta) 38% 58%,
+    var(--hero-violet) 58% 78%,
+    var(--hero-red) 78% 100%
+  );
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  animation: hero-cross 95s ease-in-out infinite alternate;
+}
+
+// Travel is deliberately wide. At +-4% the field moved about 0.3px/second, which is
+// below the threshold at which motion is perceptible at all.
+@keyframes hero-drift {
+  from { transform: translate3d(-13%, 0, 0) scaleX(1); }
+  to   { transform: translate3d(12%, 0, 0) scaleX(1.18); }
+}
+
+@keyframes hero-cross {
+  from { transform: translate3d(11%, -4%, 0) scaleX(1.14); }
+  to   { transform: translate3d(-12%, 5%, 0) scaleX(1); }
+}
+
+// With colour reaching both edges there is nowhere dark left for the faint rows to sit
+// against, so a flat scrim takes the whole field down a stop.
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 8, 11, 0.18);
+}
+
+// Kills the banding large gradients produce on 8-bit displays — worst in the dark
+// areas, which is where the title sits.
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------------------------------------------------------------- *
+ * Marquee rows
+ * ---------------------------------------------------------------- */
+
+.hero-rows {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // Text dissolves at the edges instead of hard-clipping at the viewport boundary.
+  mask-image: linear-gradient(to right, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 7%, #000 93%, transparent 100%);
+}
+
+.hero-row {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: var(--hero-row-opacity);
+  color: #fff;
+}
+
+.hero-row--title {
+  font-weight: 600;
+}
+
+.hero-track {
+  display: flex;
+  width: max-content;
+  animation: hero-scroll var(--hero-row-duration) linear infinite;
+  will-change: transform;
+}
+
+.hero-row--right .hero-track {
+  animation-direction: reverse;
+}
+
+@keyframes hero-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+.hero-run {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.hero-item {
+  display: inline-block;
+  padding-inline: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+// focus-within alongside hover is what makes the pause reachable without a mouse.
+// WCAG 2.2.2 wants a pause mechanism for motion lasting over five seconds, and hover
+// serves pointer users only.
+.hero-row:hover .hero-track,
+.hero-row:focus-within .hero-track {
+  animation-play-state: paused;
+}
+
+.hero-row:hover,
+.hero-row:focus-within {
+  opacity: 1;
+}
+
+// Hover must not use a palette colour: the background IS the palette, so amber text
+// over the amber band disappears. White on a dark chip holds contrast over any band.
+//
+// No box-shadow ring: box-shadow was not in the transition list, so the ring snapped in
+// at full strength while the background was still fading — reading as a border that
+// appears first and fills in afterwards. The 24px inline padding already gives the chip
+// enough room without one. Size is still never animated, because a width change here
+// would jolt the whole track sideways mid-scroll.
+a.hero-item:hover,
+a.hero-item:focus-visible {
+  color: #fff;
+  background: rgba(6, 8, 11, 0.88);
+  border-radius: 4px;
+  outline: none;
+}
+
+// On /tag/{tag}, the tag being browsed is picked out of the field. Free: the tag is
+// known at build time, so only the class varies per route, never the layout.
+.hero-item--active {
+  color: #fff;
+  font-weight: 700;
+  background: rgba(6, 8, 11, 0.7);
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------- *
+ * Title block
+ * ---------------------------------------------------------------- */
+
+.hero-centre {
+  position: absolute;
+  inset: 0 0 var(--hero-card-overlap) 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hero-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 0.9rem 2.25rem;
+  border-radius: 12px;
+  text-align: center;
+  pointer-events: auto;
+  background: rgba(8, 10, 14, 0.42);
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// Without backdrop-filter the panel would be a transparent box over moving text.
+@supports not (backdrop-filter: blur(1px)) {
+  .hero-panel {
+    background: rgba(8, 10, 14, 0.88);
+  }
+}
+
+// The organic blob: four independent corner radii on each axis, so no two corners
+// match and it reads as hand-drawn rather than as a squircle. Kept on the wrapper
+// rather than the <img> so it clips whatever <picture> emits.
+.hero-avatar {
+  flex: none;
+  width: 76px;
+  height: 76px;
+  overflow: hidden;
+  // Opposing corners pulled hard in opposite directions, so it reads as a deliberate
+  // organic shape rather than a dented circle. Values closer to 50% collapse visually
+  // into a plain circle at this size and are not worth the complexity.
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.hero-text {
+  text-align: center;
+}
+
+.hero-title {
+  margin: 0;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+  // Two shadows: a tight one for edge definition against a band, and a wide soft one
+  // to lift the whole word off the field.
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55), 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  font-size: 0.9rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55), 0 3px 12px rgba(0, 0, 0, 0.4);
+
+  // The hairline between title and subtitle, carried over from the original
+  // `.description::after`. As a ::before on the subtitle it stays centred without
+  // needing absolute positioning.
+  &::before {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 1px;
+    margin: 0.85rem auto;
+    background: #d4d5d9;
+    opacity: 0.55;
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * Reduced motion
+ * ---------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-track,
+  .hero-bands {
+    animation: none !important;
   }
 
-  .hero-text-container {
-    position: relative;
-  }
-
-  .description {
-    text-transform: lowercase;
-
-    &::after {
-      content: '';
-      position: absolute;
-      height: 1px;
-      width: 100px;
-      margin-left: -50px;
-      left: 50%;
-      top: 3em;
-      background: #d4d5d9;
-    }
+  // BannerPointer bails out on reduced-motion too; this also pins the transform so a
+  // stale custom property can never leave the field offset.
+  .hero-parallax {
+    transform: none !important;
+    transition: none !important;
   }
 }

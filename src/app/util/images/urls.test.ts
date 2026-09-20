@@ -62,32 +62,49 @@ describe('agreement with the generated manifest', () => {
     }
   })
 
-  // A CSS background cannot use <picture>, so Hero.scss hardcodes its variant URLs
-  // instead of deriving them. That bypasses every guard above, and the failure is silent:
-  // once image-set() parses, the browser has discarded the earlier url() declaration, so a
-  // 404 leaves no background at all rather than falling back. Swapping the source image
-  // for a narrower one would be enough to cause it.
-  maybe('has every /_img path that a stylesheet hardcodes', () => {
-    // Scoped to all of src/app, not just components/ — PostPage.scss and Cv.scss are
-    // exactly the kind of place a background image would be added next, and scoping this
-    // to one directory would let that bypass the guard silently.
-    const root = path.join(process.cwd(), 'src', 'app')
-    const stylesheets = fs
-      .readdirSync(root, { recursive: true })
-      .filter((f): f is string => typeof f === 'string' && f.endsWith('.scss'))
-      .map((f) => path.join(root, f))
+  // A CSS background cannot use <picture>, so a stylesheet that wants a responsive image
+  // has to hardcode its variant URLs. That bypasses every guard above, and the failure is
+  // silent: once image-set() parses, the browser has discarded the earlier url()
+  // declaration, so a 404 leaves no background at all rather than falling back.
+  //
+  // Hero.scss was the only stylesheet doing this, and its photographic background has been
+  // replaced by a CSS gradient, so the repo scan below currently finds nothing. That makes
+  // the scan alone worthless as a guard: it would keep passing if the pattern silently
+  // stopped matching. The pattern is therefore asserted against a fixture first, so the
+  // tripwire stays armed for the next stylesheet that reaches for a variant URL.
+  describe('hardcoded /_img paths in stylesheets', () => {
+    const PATTERN = /\/_img\/[^)"'\s]+/g
 
-    const referenced = stylesheets.flatMap((file) =>
-      Array.from(fs.readFileSync(file, 'utf8').matchAll(/\/_img\/[^)"'\s]+/g), (m) => m[0])
-    )
+    it('matches the declaration shape it is looking for', () => {
+      const declaration = `background-image: image-set(
+        url(/_img/images/cover-1600.avif) type("image/avif"),
+        url(/_img/images/cover-1600.webp) type("image/webp")
+      );`
 
-    // Guards the regex itself: if the SCSS is reformatted so nothing matches, this test
-    // would otherwise pass vacuously forever.
-    expect(referenced.length).toBeGreaterThan(0)
+      expect(Array.from(declaration.matchAll(PATTERN), (m) => m[0])).toEqual([
+        '/_img/images/cover-1600.avif',
+        '/_img/images/cover-1600.webp',
+      ])
+    })
 
-    for (const url of referenced) {
-      expect(fs.existsSync(path.join(process.cwd(), 'public', url))).toBe(true)
-    }
+    maybe('points every one it finds at a file that exists', () => {
+      // Scoped to all of src/app, not just components/ — PostPage.scss and Cv.scss are
+      // exactly the kind of place a background image would be added next, and scoping this
+      // to one directory would let that bypass the guard silently.
+      const root = path.join(process.cwd(), 'src', 'app')
+      const stylesheets = fs
+        .readdirSync(root, { recursive: true })
+        .filter((f): f is string => typeof f === 'string' && f.endsWith('.scss'))
+        .map((f) => path.join(root, f))
+
+      const referenced = stylesheets.flatMap((file) =>
+        Array.from(fs.readFileSync(file, 'utf8').matchAll(PATTERN), (m) => m[0])
+      )
+
+      for (const url of referenced) {
+        expect(fs.existsSync(path.join(process.cwd(), 'public', url))).toBe(true)
+      }
+    })
   })
 
   maybe('points at files that exist on disk', () => {

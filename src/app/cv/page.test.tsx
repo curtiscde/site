@@ -12,10 +12,13 @@ describe('CvPage', () => {
     expect(screen.getByText('software engineer · london')).toBeInTheDocument()
   })
 
+  // The banner's height is set by the variant class now rather than by padding
+  // utilities on an inner element, so the class is the whole assertion.
   it('renders the banner at the compact height, not full height', () => {
     const { container } = render(<CvPage />)
-    expect(container.querySelector('.hero--compact')).toBeInTheDocument()
-    expect(container.querySelector('.hero-content')).toHaveClass('py-10')
+    const hero = container.querySelector('.hero')
+    expect(hero).toHaveClass('hero--compact')
+    expect(hero).not.toHaveClass('hero--bare')
   })
 
   it('keeps the banner text, unlike the bare content-page banner', () => {

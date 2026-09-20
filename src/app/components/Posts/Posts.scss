@@ -3,3 +3,13 @@ main {
     margin-top: -48px
   }
 }
+
+// The pull-up above hides the bottom 48px of the Hero banner, so the banner has to
+// centre its title on what is left rather than on its own box. The compensation is
+// declared here, next to its cause: only pages that actually render a post grid get it,
+// which is why /tags — a full-height Hero followed by the tag graph, not a grid — must
+// not. Browsers without :has() fall back to the 0 default, which sits the title 24px
+// low on listing pages rather than breaking anything.
+body:has(main .posts) .hero {
+  --hero-card-overlap: 48px;
+}

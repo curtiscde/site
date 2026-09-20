@@ -190,13 +190,16 @@ describe('transformPost images', () => {
     // `npm run images`, and the coverage job never builds.
     const maybe = fs.existsSync(manifestPath) ? it : it.skip
 
+    // Uses the OG image because it is referenced from layout.tsx metadata, so it
+    // cannot quietly disappear the way an image referenced only from CSS can. Its
+    // source is 1200px wide, hence the 1200 variant rather than 1600.
     maybe('emits picture markup for an image the generator processed', () => {
-      const out = html('![Cover](/images/cover.jpg)')
+      const out = html('![Homepage](/images/curtis-homepage.jpg)')
 
       expect(out).toContain('<picture>')
       expect(out).toContain('type="image/avif"')
-      expect(out).toContain('/_img/images/cover-1600.avif')
-      expect(out).not.toContain('src="/images/cover.jpg"')
+      expect(out).toContain('/_img/images/curtis-homepage-1200.avif')
+      expect(out).not.toContain('src="/images/curtis-homepage.jpg"')
     })
   })
 })
