@@ -1,6 +1,7 @@
 import { config } from "../config"
-import { getBannerRows, type BannerRow, type BannerVariant } from "../util/banner"
+import { getBannerRows, type BannerItem, type BannerRow, type BannerVariant } from "../util/banner"
 import { BannerPointer } from "./BannerPointer"
+import { SiteImage } from "./SiteImage"
 import "./Hero.scss"
 
 const { title, subtitle } = config
@@ -20,6 +21,16 @@ interface HeroProps {
   rows?: BannerRow[]
 }
 
+/**
+ * Shown only alongside the site's own name, not on tag or custom-title banners —
+ * a face next to "🔖 javascript" reads as a byline for the tag.
+ */
+const Avatar = () => (
+  <div className="hero-avatar">
+    <SiteImage src="/images/curtis.png" alt={config.title} sizes="76px" priority />
+  </div>
+)
+
 const Content = ({ tag, title: titleProp, subtitle: subtitleProp }: HeroProps) => {
   if (titleProp != null) {
     return (
@@ -36,8 +47,11 @@ const Content = ({ tag, title: titleProp, subtitle: subtitleProp }: HeroProps) =
 
   return (
     <>
-      <h1 className="hero-title">{title}</h1>
-      <p className="hero-subtitle">{subtitle}</p>
+      <Avatar />
+      <div className="hero-text">
+        <h1 className="hero-title">{title}</h1>
+        <p className="hero-subtitle">{subtitle}</p>
+      </div>
     </>
   )
 }
@@ -66,7 +80,15 @@ const Field = () => (
  * the duplicate is plain text, hidden from assistive tech and out of the tab order,
  * so the anchors are never duplicated.
  */
-const MarqueeRow = ({ row, activeTag }: { row: BannerRow; activeTag?: string }) => (
+const MarqueeRow = ({ row, activeTag }: { row: BannerRow; activeTag?: string }) => {
+  // Shared by both runs: the highlight has to survive the duplicate half of the cycle
+  // too, or the browsed tag blinks out every time the track wraps.
+  const itemClass = (item: BannerItem) =>
+    activeTag != null && row.kind === 'tag' && item.label === activeTag
+      ? 'hero-item hero-item--active'
+      : 'hero-item'
+
+  return (
   <div
     className={`hero-row hero-row--${row.kind} hero-row--${row.direction}`}
     style={
@@ -79,29 +101,30 @@ const MarqueeRow = ({ row, activeTag }: { row: BannerRow; activeTag?: string }) 
     <div className="hero-track">
       <div className="hero-run">
         {row.items.map((item) => (
-          <a
-            key={item.href}
-            className={
-              activeTag != null && row.kind === 'tag' && item.label === activeTag
-                ? 'hero-item hero-item--active'
-                : 'hero-item'
-            }
-            href={item.href}
-          >
+          <a key={item.href} className={itemClass(item)} href={item.href}>
             {item.label}
           </a>
         ))}
       </div>
+      {/*
+        The duplicate must be anchors too, not spans. The track scrolls to -50%, so for
+        roughly half of every cycle what you are looking at IS the duplicate — rendering
+        it as text made half the marquee silently unclickable, and the faster tag rows
+        reached that dead half almost twice as quickly as the title rows.
+        aria-hidden + tabindex="-1" keep it out of the a11y tree and the tab order; the
+        repeated hrefs are the same page's own links, which is harmless.
+      */}
       <div className="hero-run" aria-hidden="true">
         {row.items.map((item) => (
-          <span className="hero-item" key={`dup-${item.href}`} tabIndex={-1}>
+          <a key={`dup-${item.href}`} className={itemClass(item)} href={item.href} tabIndex={-1}>
             {item.label}
-          </span>
+          </a>
         ))}
       </div>
     </div>
   </div>
-)
+  )
+}
 
 export const Hero = ({ tag, title, subtitle, variant, rows }: HeroProps) => {
   const isBare = variant === 'bare'

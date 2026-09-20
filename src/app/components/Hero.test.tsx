@@ -101,11 +101,13 @@ describe('Hero', () => {
       expect(screen.queryByText(config.title)).toBeNull()
     })
 
-    it('marks the browsed tag as active in the marquee', () => {
+    // Both runs, so the highlight does not blink out each time the track wraps.
+    it('marks the browsed tag as active in both runs', () => {
       const { container } = render(<Hero tag="javascript" rows={rows} />)
       const active = container.querySelectorAll('.hero-item--active')
-      expect(active).toHaveLength(1)
-      expect(active[0]).toHaveTextContent('javascript')
+
+      expect(active).toHaveLength(2)
+      active.forEach((el) => expect(el).toHaveTextContent('javascript'))
     })
 
     it('marks nothing active when no tag is being browsed', () => {
@@ -141,19 +143,37 @@ describe('Hero', () => {
       expect(container.querySelectorAll('.hero-run')).toHaveLength(4)
     })
 
-    it('links every item exactly once, with the duplicate run kept out of the a11y tree', () => {
+    // Regression: the duplicate run used to render spans. The track scrolls to -50%, so
+    // for half of every cycle the duplicate IS what you are looking at, which made half
+    // the marquee silently unclickable.
+    it('links every item in the duplicate run too, not just the first', () => {
       const { container } = render(<Hero rows={rows} />)
-      const hrefs = [...container.querySelectorAll('.hero-item')]
-        .filter((el) => el.tagName === 'A')
+      const duplicates = container.querySelectorAll('.hero-run[aria-hidden="true"]')
+
+      expect(duplicates).toHaveLength(2)
+      duplicates.forEach((run) => {
+        const items = run.querySelectorAll('.hero-item')
+        expect(items.length).toBeGreaterThan(0)
+        items.forEach((item) => {
+          expect(item.tagName).toBe('A')
+          expect(item).toHaveAttribute('href')
+        })
+      })
+    })
+
+    it('keeps the duplicate run out of the tab order', () => {
+      const { container } = render(<Hero rows={rows} />)
+      container.querySelectorAll('.hero-run[aria-hidden="true"] .hero-item').forEach((item) => {
+        expect(item).toHaveAttribute('tabindex', '-1')
+      })
+    })
+
+    it('exposes each href once to the accessibility tree', () => {
+      const { container } = render(<Hero rows={rows} />)
+      const hrefs = [...container.querySelectorAll('.hero-run:not([aria-hidden]) .hero-item')]
         .map((el) => el.getAttribute('href'))
 
       expect(hrefs).toEqual(['/post/a-post', '/tag/javascript', '/tag/react'])
-
-      const duplicates = container.querySelectorAll('.hero-run[aria-hidden="true"]')
-      expect(duplicates).toHaveLength(2)
-      duplicates.forEach((run) => {
-        expect(run.querySelector('a')).toBeNull()
-      })
     })
 
     it('carries each row opacity and duration as custom properties', () => {
