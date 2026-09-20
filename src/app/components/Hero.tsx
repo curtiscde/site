@@ -31,6 +31,11 @@ const Avatar = () => (
   </div>
 )
 
+/**
+ * Text only. The avatar is a sibling, not part of this, because `.hero-panel` is a flex
+ * row — returning the heading and subtitle as direct panel children laid them out side
+ * by side instead of stacked.
+ */
 const Content = ({ tag, title: titleProp, subtitle: subtitleProp }: HeroProps) => {
   if (titleProp != null) {
     return (
@@ -47,11 +52,8 @@ const Content = ({ tag, title: titleProp, subtitle: subtitleProp }: HeroProps) =
 
   return (
     <>
-      <Avatar />
-      <div className="hero-text">
-        <h1 className="hero-title">{title}</h1>
-        <p className="hero-subtitle">{subtitle}</p>
-      </div>
+      <h1 className="hero-title">{title}</h1>
+      <p className="hero-subtitle">{subtitle}</p>
     </>
   )
 }
@@ -143,7 +145,12 @@ export const Hero = ({ tag, title, subtitle, variant, rows }: HeroProps) => {
       {!isBare && (
         <div className="hero-centre">
           <div className="hero-panel">
-            <Content tag={tag} title={title} subtitle={subtitle} />
+            {/* Only beside the site's own name — a face next to "🔖 javascript" or
+                "Curriculum Vitae" reads as a byline for that page's subject. */}
+            {tag == null && title == null && <Avatar />}
+            <div className="hero-text">
+              <Content tag={tag} title={title} subtitle={subtitle} />
+            </div>
           </div>
         </div>
       )}

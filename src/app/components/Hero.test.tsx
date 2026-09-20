@@ -135,6 +135,41 @@ describe('Hero', () => {
     })
   })
 
+  // Regression: `.hero-panel` is a flex row, so returning the heading and subtitle as
+  // direct panel children laid them out side by side on /cv and /tags, stranding the
+  // hairline beside the title. Both must sit inside the .hero-text column.
+  describe('title block structure', () => {
+    it.each([
+      ['default', <Hero key="d" rows={rows} />],
+      ['custom title', <Hero key="c" title="Curriculum Vitae" subtitle="software engineer" rows={rows} />],
+      ['tag', <Hero key="t" tag="javascript" rows={rows} />],
+    ])('keeps the %s heading and subtitle stacked inside .hero-text', (_name, element) => {
+      const { container } = render(element)
+      const text = container.querySelector('.hero-text')
+
+      expect(text).toBeInTheDocument()
+      expect(text!.querySelector('.hero-title')).toBeInTheDocument()
+      expect(container.querySelector('.hero-panel > .hero-title')).toBeNull()
+      expect(container.querySelector('.hero-panel > .hero-subtitle')).toBeNull()
+    })
+  })
+
+  describe('avatar', () => {
+    it('appears beside the site title', () => {
+      const { container } = render(<Hero rows={rows} />)
+      expect(container.querySelector('.hero-avatar')).toBeInTheDocument()
+    })
+
+    it.each([
+      ['tag', <Hero key="t" tag="javascript" rows={rows} />],
+      ['custom title', <Hero key="c" title="Curriculum Vitae" rows={rows} />],
+      ['bare', <Hero key="b" variant="bare" rows={rows} />],
+    ])('is absent on the %s banner', (_name, element) => {
+      const { container } = render(element)
+      expect(container.querySelector('.hero-avatar')).toBeNull()
+    })
+  })
+
   describe('marquee', () => {
     it('renders one track per row, each duplicated for a seamless loop', () => {
       const { container } = render(<Hero rows={rows} />)

@@ -11,11 +11,11 @@
   --hero-amber: #e8b33c;
   --hero-base: #0a0c0f;
 
-  // The post cards ride up over the bottom of the banner (see postcard.scss, which
-  // pulls the figures up), so the visible band is shorter than the element. The title
-  // is centred on the visible band, not the element box — centring on the box sits it
-  // noticeably below the optical centre. Pages with no card grid override this to 0.
-  --hero-card-overlap: 48px;
+  // The title is centred on the VISIBLE band rather than the element box, because on
+  // listing pages the post grid rides up over the bottom of the banner and hides part
+  // of it. Defaults to 0; Posts.scss raises it, because that is where the negative
+  // margin causing the overlap lives and the two must not drift apart.
+  --hero-card-overlap: 0px;
 
   position: relative;
   overflow: hidden;
@@ -32,12 +32,6 @@
   --hero-orange: #b4521c;
   --hero-amber: #a87f24;
   --hero-base: #07080b;
-}
-
-// No card grid follows on these pages, so there is nothing overlapping to compensate for.
-.hero--compact,
-.hero--bare {
-  --hero-card-overlap: 0px;
 }
 
 .hero--compact {
