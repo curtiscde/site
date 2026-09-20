@@ -133,6 +133,15 @@ sooner.
    posts.
 6. `sharp@0.35.4` is already present transitively via `next`. Phase 2 promotes it to an explicit
    `devDependency` rather than relying on a transitive install.
+7. **A `<picture>` must never be left as a direct flex or grid item.** Added after this pipeline
+   regressed the post cards: wrapping the `<img>` changed which element is the flex item, and flex
+   and grid items are blockified, so the `<picture>` became the img's containing block. Any
+   percentage width on the img then resolves against the picture's max-content width — the widest
+   generated variant — instead of the container's, so every cover narrower than its slot
+   letterboxed against the container's background. Before adding a `PostImage`/`SiteImage` call
+   site, check the parent's `display`: if it is `flex` or `grid`, give the picture
+   `display: contents` so the img remains the item. `display: block` does **not** fix it — a block
+   picture is still the item and still sizes to max-content.
 
 ## Tech Stack
 
