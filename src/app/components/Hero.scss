@@ -283,9 +283,10 @@ a.hero-item:focus-visible {
   width: 76px;
   height: 76px;
   overflow: hidden;
-  // All eight values distinct on purpose: a repeating pair collapses back to a
-  // symmetrical shape, which just reads as a slightly wonky circle.
-  border-radius: 58% 42% 47% 53% / 43% 57% 49% 51%;
+  // Opposing corners pulled hard in opposite directions, so it reads as a deliberate
+  // organic shape rather than a dented circle. Values closer to 50% collapse visually
+  // into a plain circle at this size and are not worth the complexity.
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 
   img {
