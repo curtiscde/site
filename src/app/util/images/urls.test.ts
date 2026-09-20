@@ -67,28 +67,44 @@ describe('agreement with the generated manifest', () => {
   // silent: once image-set() parses, the browser has discarded the earlier url()
   // declaration, so a 404 leaves no background at all rather than falling back.
   //
-  // Hero.scss was the only place doing this, and its photographic background has since
-  // been replaced by a CSS gradient — so today this finds nothing and passes vacuously.
-  // That is the point: it is a tripwire for the next stylesheet to reach for a hardcoded
-  // variant URL. There is deliberately no assertion that the list is non-empty, because
-  // empty is now the correct state.
-  maybe('has every /_img path that a stylesheet hardcodes', () => {
-    // Scoped to all of src/app, not just components/ — PostPage.scss and Cv.scss are
-    // exactly the kind of place a background image would be added next, and scoping this
-    // to one directory would let that bypass the guard silently.
-    const root = path.join(process.cwd(), 'src', 'app')
-    const stylesheets = fs
-      .readdirSync(root, { recursive: true })
-      .filter((f): f is string => typeof f === 'string' && f.endsWith('.scss'))
-      .map((f) => path.join(root, f))
+  // Hero.scss was the only stylesheet doing this, and its photographic background has been
+  // replaced by a CSS gradient, so the repo scan below currently finds nothing. That makes
+  // the scan alone worthless as a guard: it would keep passing if the pattern silently
+  // stopped matching. The pattern is therefore asserted against a fixture first, so the
+  // tripwire stays armed for the next stylesheet that reaches for a variant URL.
+  describe('hardcoded /_img paths in stylesheets', () => {
+    const PATTERN = /\/_img\/[^)"'\s]+/g
 
-    const referenced = stylesheets.flatMap((file) =>
-      Array.from(fs.readFileSync(file, 'utf8').matchAll(/\/_img\/[^)"'\s]+/g), (m) => m[0])
-    )
+    it('matches the declaration shape it is looking for', () => {
+      const declaration = `background-image: image-set(
+        url(/_img/images/cover-1600.avif) type("image/avif"),
+        url(/_img/images/cover-1600.webp) type("image/webp")
+      );`
 
-    for (const url of referenced) {
-      expect(fs.existsSync(path.join(process.cwd(), 'public', url))).toBe(true)
-    }
+      expect(Array.from(declaration.matchAll(PATTERN), (m) => m[0])).toEqual([
+        '/_img/images/cover-1600.avif',
+        '/_img/images/cover-1600.webp',
+      ])
+    })
+
+    maybe('points every one it finds at a file that exists', () => {
+      // Scoped to all of src/app, not just components/ — PostPage.scss and Cv.scss are
+      // exactly the kind of place a background image would be added next, and scoping this
+      // to one directory would let that bypass the guard silently.
+      const root = path.join(process.cwd(), 'src', 'app')
+      const stylesheets = fs
+        .readdirSync(root, { recursive: true })
+        .filter((f): f is string => typeof f === 'string' && f.endsWith('.scss'))
+        .map((f) => path.join(root, f))
+
+      const referenced = stylesheets.flatMap((file) =>
+        Array.from(fs.readFileSync(file, 'utf8').matchAll(PATTERN), (m) => m[0])
+      )
+
+      for (const url of referenced) {
+        expect(fs.existsSync(path.join(process.cwd(), 'public', url))).toBe(true)
+      }
+    })
   })
 
   maybe('points at files that exist on disk', () => {

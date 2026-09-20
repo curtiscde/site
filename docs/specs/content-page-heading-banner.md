@@ -1,6 +1,18 @@
 # Spec: Content-page heading accent + compact banner
 
-Status: **implemented** · Branch: `feat/content-page-heading-banner`
+Status: **implemented, partly superseded** · Branch: `feat/content-page-heading-banner`
+
+> **Superseded in part by [`marquee-banner.md`](./marquee-banner.md)** (branch
+> `banner-marquee-redesign`). That change replaced the photographic `Hero` with an animated
+> marquee, which removed the `py-20` / `py-10` padding mechanism this spec describes and
+> changed `bare` from `min-height` to a fixed `height`. Success criteria 9, 10 and 14 below
+> are therefore no longer true as written, and the `Hero` code sample under
+> [Code Style](#code-style) is no longer the shipped component.
+>
+> What still holds, and was carried forward deliberately: the three named variants and their
+> meanings, `bare` at 6rem with no text, `compact` as a shorter banner that keeps its text,
+> the 4px `--color-primary` bottom border, the `.content-page h1` accent rule, and the
+> requirement that the four other call sites keep working with no page edits.
 
 ## Objective
 
@@ -258,17 +270,21 @@ Each is independently checkable.
 6. The accent is visible and correctly coloured in both light and dark themes on both pages.
 7. `/` renders an unchanged full-height `Hero` with the site title and subtitle.
 8. `/post/<any slug>` is unchanged: no banner, `<h1>` accent exactly as before.
-9. `/tags`, `/tag/<tag>`, and `/posts/2` all render the unchanged full-height `Hero` at `py-20`
-   with no `hero--*` modifier.
-10. `/cv` renders its banner at `py-10` with `hero--compact`, still showing "Curriculum Vitae"
-    and the subtitle; its `Experience` heading accent and company rows are unchanged.
+9. ~~`/tags`, `/tag/<tag>`, and `/posts/2` all render the unchanged full-height `Hero` at
+   `py-20` with no `hero--*` modifier.~~ **Superseded**: `py-20` no longer exists; the
+   full-height banner is a fixed `268px`. The "no `hero--*` modifier" half still holds.
+10. ~~`/cv` renders its banner at `py-10` with `hero--compact`~~ **Superseded**: `py-10` no
+    longer exists; `hero--compact` is a fixed `190px`. The rest of the criterion — still
+    showing "Curriculum Vitae" and the subtitle, `Experience` accent and company rows
+    unchanged — still holds.
 11. `git diff --stat main` touches only the files listed under [Project Structure](#project-structure).
 12. `npm run lint` reports no new errors or warnings.
 13. `npm run test:ci` passes, including every pre-existing assertion in
     `privacy-policy/page.test.tsx` and `Hero.test.tsx`.
 14. `npm run build` completes and the static export contains `out/uses.html` and
-    `out/privacy-policy.html`, both carrying `hero--bare` and `content-page`; the compiled CSS
-    contains `.hero.hero--bare{min-height:6rem}` and `.py-10`.
+    `out/privacy-policy.html`, both carrying `hero--bare` and `content-page`. ~~The compiled
+    CSS contains `.hero.hero--bare{min-height:6rem}` and `.py-10`.~~ **Superseded**: `bare`
+    is now `height: 6rem` rather than `min-height`, and no `py-*` utility is involved.
 
 ## Deferred
 
