@@ -9,6 +9,7 @@ import './PostPage.scss'
 import { RelatedPosts } from "./RelatedPosts";
 import { Comments } from "./Comments/Comments";
 import { ArticleLightbox } from "./ArticleLightbox/ArticleLightbox";
+import { displayTag } from "../util/tags";
 
 export const PostPage = ({ post, relatedPosts }: { post: Post, relatedPosts: PostSummary[] }) => {
   // In-article images are injected HTML, not components, so the lightbox delegates
@@ -27,7 +28,7 @@ export const PostPage = ({ post, relatedPosts }: { post: Post, relatedPosts: Pos
               <ArticleLightbox containerRef={article} />
               <div className="card-actions mt-12">
                 {post.tags.map(tag => (
-                  <a key={tag} href={`/tag/${tag}`}><div className="badge badge-secondary">{tag}</div></a>
+                  <a key={tag} href={`/tag/${tag}`}><div className="badge badge-secondary">{displayTag(tag)}</div></a>
                 ))}
               </div>
             </article>

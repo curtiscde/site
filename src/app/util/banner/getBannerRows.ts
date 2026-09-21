@@ -1,4 +1,5 @@
 import { getPosts, getTopTags } from '../posts'
+import { displayTag } from '../tags'
 import { buildRows, type BannerRow } from './buildRows'
 
 /**
@@ -30,7 +31,7 @@ export function getBannerRows(variant: BannerVariant = 'full'): BannerRow[] {
     titles: posts.map((post) => ({ label: post.title, href: `/post/${post.slug}` })),
     // Every tag, not a shortlist: at four rows the width has to come from somewhere,
     // and repeating a shortlist to fill it is more noticeable than a rare tag shown once.
-    tags: getTopTags(posts).map(({ tag }) => ({ label: tag, href: `/tag/${tag}` })),
+    tags: getTopTags(posts).map(({ tag }) => ({ label: displayTag(tag), href: `/tag/${tag}`, slug: tag })),
     titleRowCount,
     tagRowCount,
     minOpacity: MIN_OPACITY,

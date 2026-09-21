@@ -1,5 +1,6 @@
 import { config } from "../config"
 import { getBannerRows, type BannerItem, type BannerRow, type BannerVariant } from "../util/banner"
+import { displayTag } from "../util/tags"
 import { BannerPointer } from "./BannerPointer"
 import { SiteImage } from "./SiteImage"
 import "./Hero.scss"
@@ -47,7 +48,7 @@ const Content = ({ tag, title: titleProp, subtitle: subtitleProp }: HeroProps) =
   }
 
   if (tag != null) {
-    return <h1 className="hero-title">🔖 {tag}</h1>
+    return <h1 className="hero-title">🔖 {displayTag(tag)}</h1>
   }
 
   return (
@@ -85,8 +86,13 @@ const Field = () => (
 const MarqueeRow = ({ row, activeTag }: { row: BannerRow; activeTag?: string }) => {
   // Shared by both runs: the highlight has to survive the duplicate half of the cycle
   // too, or the browsed tag blinks out every time the track wraps.
+  //
+  // Compares slugs, not labels. `activeTag` is the slug from the route params, while
+  // `item.label` is what the reader sees — for a tag with a display name those are
+  // different strings (`c-sharp` vs `c#`), and matching on the label silently loses
+  // the highlight on exactly the pages this mapping exists for.
   const itemClass = (item: BannerItem) =>
-    activeTag != null && row.kind === 'tag' && item.label === activeTag
+    activeTag != null && row.kind === 'tag' && item.slug === activeTag
       ? 'hero-item hero-item--active'
       : 'hero-item'
 

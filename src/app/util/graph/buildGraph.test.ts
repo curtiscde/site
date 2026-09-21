@@ -38,10 +38,22 @@ describe('buildGraph', () => {
       id: 'tag:react',
       kind: 'tag',
       label: 'react',
+      display: 'react',
       count: 2,
       radius: 5 + Math.sqrt(2) * 4.2,
       href: '/tag/react',
     })
+  })
+
+  // `label` stays the slug because it is the node's identity and what `href` is built
+  // from; `display` is the only thing that moves.
+  it('resolves a display name for a mapped tag while keeping the slug', () => {
+    const { nodes } = buildGraph([], [{ tag: 'c-sharp', count: 1, smartScore: 1 }])
+    const cSharp = nodes.find((n) => n.id === 'tag:c-sharp') as TagNode
+
+    expect(cSharp.label).toBe('c-sharp')
+    expect(cSharp.display).toBe('c#')
+    expect(cSharp.href).toBe('/tag/c-sharp')
   })
 
   it('builds post nodes with the expected shape and fixed radius', () => {

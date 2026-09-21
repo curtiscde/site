@@ -9,8 +9,15 @@
  */
 
 export interface BannerItem {
+  /** What the reader sees — a post title, or a tag's display name. */
   label: string
   href: string
+  /**
+   * Tag rows only; titles leave it unset. The active-tag highlight compares against
+   * the slug from the route params, and `label` can no longer serve: a tag with a
+   * display name has a label (`c#`) that never equals its slug (`c-sharp`).
+   */
+  slug?: string
 }
 
 export interface BannerRow {

@@ -54,7 +54,7 @@ beforeAll(() => {
 })
 
 const nodes: GraphNode[] = [
-  { id: 'tag:react', kind: 'tag', label: 'react', count: 2, radius: 10, href: '/tag/react' },
+  { id: 'tag:react', kind: 'tag', label: 'react', display: 'react', count: 2, radius: 10, href: '/tag/react' },
   { id: 'post:a', kind: 'post', label: 'Post A', radius: 4.5, href: '/post/a', tags: ['react'] },
 ]
 const links: GraphLink[] = [{ source: 'post:a', target: 'tag:react' }]

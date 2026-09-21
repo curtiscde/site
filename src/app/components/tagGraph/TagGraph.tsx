@@ -13,6 +13,7 @@ import {
 } from 'd3-force'
 import { ThemeContext } from '../../context/ThemeContext'
 import type { GraphLink, GraphNode } from '../../util/graph'
+import { displayTag } from '../../util/tags'
 import { hitTest, labelVisible, screenToWorld, View, worldToScreen, zoomAbout } from './helpers'
 import './TagGraph.scss'
 
@@ -169,8 +170,13 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
       adjacency.get(focus.id)?.forEach((id) => set.add(id))
       return set
     }
+    // Matches the slug and the display name both: someone typing `c#` and someone
+    // typing `c-sharp` are looking for the same node, and finding nothing is the
+    // failure mode where you conclude the blog has never covered it.
     const matches = (n: SimNode) =>
-      queryRef.current.length > 0 && n.kind === 'tag' && n.label.toLowerCase().includes(queryRef.current)
+      queryRef.current.length > 0 &&
+      n.kind === 'tag' &&
+      (n.label.toLowerCase().includes(queryRef.current) || n.display.toLowerCase().includes(queryRef.current))
 
     const draw = () => {
       const view = viewRef.current
@@ -231,7 +237,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
         ctx.font = `${focused ? 600 : 500} ${Math.max(10, 11 * Math.min(view.k, 1.4))}px ui-sans-serif, system-ui, sans-serif`
         ctx.globalAlpha = dim ? 0.22 : 0.95
         ctx.fillStyle = focused ? pal.labelFocus : pal.label
-        ctx.fillText(n.label, p.x, p.y + r + 3)
+        ctx.fillText(n.kind === 'tag' ? n.display : n.label, p.x, p.y + r + 3)
         ctx.globalAlpha = 1
       }
     }
@@ -293,7 +299,7 @@ export function TagGraph({ nodes, links }: TagGraphProps) {
         const n = pick(m.x, m.y)
         hoveredRef.current = n
         canvas.style.cursor = n ? 'pointer' : 'grab'
-        if (n) setTip({ label: n.kind === 'tag' ? `#${n.label} · ${n.count} post${n.count === 1 ? '' : 's'}` : n.label, x: m.x, y: m.y })
+        if (n) setTip({ label: n.kind === 'tag' ? `${n.display} · ${n.count} post${n.count === 1 ? '' : 's'}` : n.label, x: m.x, y: m.y })
         else setTip(null)
       }
       last = m
@@ -477,12 +483,12 @@ function DetailBody({ node, posts, onNavigate }: DetailBodyProps) {
     return (
       <>
         <div className="text-xs font-bold uppercase tracking-wider text-primary">Tag</div>
-        <div className="mb-0.5 mt-0.5 text-[22px] font-extrabold text-base-content">{node.label}</div>
+        <div className="mb-0.5 mt-0.5 text-[22px] font-extrabold text-base-content">{node.display}</div>
         <div className="mb-3 text-[13px] text-base-content/60">
           {node.count} post{node.count === 1 ? '' : 's'}
         </div>
         <a href={node.href} className="btn btn-primary btn-sm mb-3.5" onClick={onNavigate}>
-          View all posts tagged {node.label} →
+          View all posts tagged {node.display} →
         </a>
         <div className="flex flex-col">
           {posts.map((p) => (
@@ -515,7 +521,7 @@ function DetailBody({ node, posts, onNavigate }: DetailBodyProps) {
             onClick={onNavigate}
             className="rounded-[1.9rem] border border-primary/40 px-2.5 py-0.5 text-[12.5px] text-primary"
           >
-            {tag}
+            {displayTag(tag)}
           </a>
         ))}
       </div>

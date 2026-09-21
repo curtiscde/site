@@ -1,4 +1,5 @@
 import { Post, TagCount } from '../../types'
+import { displayTag } from '../tags'
 import { Graph, GraphLink, GraphNode, PostNode, TagNode } from './types'
 
 const TAG_RADIUS_BASE = 5
@@ -20,6 +21,7 @@ export function buildGraph(posts: Post[], tags: TagCount[]): Graph {
     id: tagId(tag),
     kind: 'tag',
     label: tag,
+    display: displayTag(tag),
     count,
     radius: TAG_RADIUS_BASE + Math.sqrt(count) * TAG_RADIUS_SCALE,
     href: `/tag/${tag}`,
