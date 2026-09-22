@@ -6,6 +6,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import { config } from "@/app/config";
 import { toSummary } from "@/app/types";
 import { buildBlogPosting, escapeJsonLd } from "@/app/util/seo/blogPosting";
+import { displayTag } from "@/app/util/tags";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -56,7 +57,10 @@ export async function generateMetadata(
       siteName,
       publishedTime: date.toString(),
       authors: author ? [author] : undefined,
-      tags,
+      // Display names, for the same reason as JSON-LD `keywords`: `article:tag` is
+      // read as prose by crawlers and unfurlers, so it wants `c#` rather than the
+      // URL workaround `c-sharp`.
+      tags: tags.map(displayTag),
       ...(imageUrl && {
         images: [
           {
