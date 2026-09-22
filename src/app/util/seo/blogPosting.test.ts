@@ -32,6 +32,14 @@ describe('buildBlogPosting', () => {
     expect(data.mainEntityOfPage).toEqual({ '@type': 'WebPage', '@id': 'https://www.curtiscode.dev/post/a-post' })
   })
 
+  // `keywords` is read as prose by structured-data parsers, so it carries the display
+  // name rather than the URL slug.
+  it('uses display names for keywords', () => {
+    const data = parsed(post({ tags: ['c-sharp', 'sql-server'] } as never))
+
+    expect(data.keywords).toBe('c#, sql-server')
+  })
+
   it('falls back to the title when a post has no description', () => {
     expect(parsed(post()).description).toBe('A Post')
     expect(parsed(post({ description: 'A real description' })).description).toBe('A real description')

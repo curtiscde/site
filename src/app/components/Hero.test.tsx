@@ -19,8 +19,11 @@ const rows: BannerRow[] = [
   {
     kind: 'tag',
     items: [
-      { label: 'javascript', href: '/tag/javascript' },
-      { label: 'react', href: '/tag/react' },
+      { label: 'javascript', href: '/tag/javascript', slug: 'javascript' },
+      { label: 'react', href: '/tag/react', slug: 'react' },
+      // A mapped tag, where the label the reader sees and the slug the route params
+      // carry are different strings. The active-tag check has to use the slug.
+      { label: 'c#', href: '/tag/c-sharp', slug: 'c-sharp' },
     ],
     direction: 'right',
     opacity: 0.28,
@@ -108,6 +111,24 @@ describe('Hero', () => {
 
       expect(active).toHaveLength(2)
       active.forEach((el) => expect(el).toHaveTextContent('javascript'))
+    })
+
+    // The highlight compares slugs, not labels: `/tag/c-sharp` renders `c#` in the
+    // marquee, so matching on the visible text would lose the highlight on exactly
+    // the pages the display mapping exists for.
+    it('marks a tag active by slug when its display name differs', () => {
+      const { container } = render(<Hero tag="c-sharp" rows={rows} />)
+      const active = container.querySelectorAll('.hero-item--active')
+
+      expect(active).toHaveLength(2)
+      active.forEach((el) => expect(el).toHaveTextContent('c#'))
+    })
+
+    it('renders the tag heading using the display name', () => {
+      render(<Hero tag="c-sharp" rows={rows} />)
+
+      expect(screen.getByRole('heading', { name: /c#/ })).toBeInTheDocument()
+      expect(screen.queryByRole('heading', { name: /c-sharp/ })).toBeNull()
     })
 
     it('marks nothing active when no tag is being browsed', () => {
@@ -208,7 +229,7 @@ describe('Hero', () => {
       const hrefs = [...container.querySelectorAll('.hero-run:not([aria-hidden]) .hero-item')]
         .map((el) => el.getAttribute('href'))
 
-      expect(hrefs).toEqual(['/post/a-post', '/tag/javascript', '/tag/react'])
+      expect(hrefs).toEqual(['/post/a-post', '/tag/javascript', '/tag/react', '/tag/c-sharp'])
     })
 
     it('carries each row opacity and duration as custom properties', () => {

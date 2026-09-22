@@ -1,6 +1,7 @@
 import React from "react"
 import type { PostSummary } from "../types"
 import { PostImage } from "./PostImage"
+import { displayTag } from "../util/tags"
 import "./postcard.scss"
 
 export const PostCard = ({ data: post }: { index?: number, data: PostSummary, width?: number }) => {
@@ -34,7 +35,7 @@ export const PostCard = ({ data: post }: { index?: number, data: PostSummary, wi
           {post.tags != null && (
             <div className="card-actions justify-end">
               {post.tags.map(tag => (
-                <div key={tag} className="badge badge-outline">{tag}</div>
+                <div key={tag} className="badge badge-outline">{displayTag(tag)}</div>
               ))}
             </div>
           )}

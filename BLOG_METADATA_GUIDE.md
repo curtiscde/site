@@ -100,6 +100,12 @@ For best results with social media previews:
 
 3. **Choose relevant tags**: Use 2-5 tags that accurately describe the post content. Tags help with discovery and organization.
 
+   Tags are lowercase and URL-safe, because the tag value *is* the URL segment: `javascript` serves `/tag/javascript`. Most tags need nothing more than that.
+
+   Occasionally a tag's slug is not how the thing is actually written — `c-sharp` exists only because `#` cannot appear in a URL path, and nobody writes "c-sharp" for c#. For those, add a display name in `src/app/util/tags/tagDisplay.ts`; the slug stays the URL and the display name is what every page shows.
+
+   The bar is narrow on purpose: **if nobody writes the tag that way, map it; otherwise leave it.** `nodejs`, `nextjs` and `chartjs` all stay as they are — those are how the projects write their own names. Adding a post with a new tag that needs one is the one case no test can catch for you.
+
 4. **Format dates correctly**: Use ISO 8601 format: `YYYY-MM-DDTHH:MM:SS`
 
 5. **Create unique slugs**: Make slugs descriptive and SEO-friendly. They become part of the post URL.

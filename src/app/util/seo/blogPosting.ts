@@ -1,5 +1,6 @@
 import type { PostSummary } from '../../types'
 import { config } from '../../config'
+import { displayTag } from '../tags'
 
 /**
  * schema.org `BlogPosting` for an article, as a JSON string ready for a
@@ -33,7 +34,9 @@ export function buildBlogPosting(post: PostSummary): string {
     datePublished: post.date.toISOString(),
     dateModified: post.date.toISOString(),
     image: post.imageThumbnailUrl ? `${config.url}${post.imageThumbnailUrl}` : undefined,
-    keywords: post.tags.join(', '),
+    // Display names, not slugs: `keywords` is read as prose by structured-data
+    // parsers, and `c-sharp` is not a keyword anyone searches for.
+    keywords: post.tags.map(displayTag).join(', '),
     mainEntityOfPage: { '@type': 'WebPage', '@id': post.url },
   })
 }

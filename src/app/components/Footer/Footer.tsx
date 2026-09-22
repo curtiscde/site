@@ -7,6 +7,7 @@ import { PostImage } from "../PostImage"
 import Link from "next/link"
 import "./Footer.scss"
 import { config } from "../../config"
+import { displayTag } from "../../util/tags"
 import SocialLinks from "./SocialLinks"
 import { Laptop, FileText, Cookie, Map, Waypoints } from "lucide-react"
 
@@ -33,7 +34,7 @@ export const Footer = ({ recentPosts, topTags, avatar }: {
   const modalTags = modalSort === 'count'
     ? [...topTags].sort((a, b) => b.count - a.count)
     : modalSort === 'alpha'
-      ? [...topTags].sort((a, b) => a.tag.localeCompare(b.tag))
+      ? [...topTags].sort((a, b) => displayTag(a.tag).localeCompare(displayTag(b.tag)))
       : topTags
 
   return (
@@ -51,7 +52,7 @@ export const Footer = ({ recentPosts, topTags, avatar }: {
               <h6 className="footer-title">Tags</h6>
               <div className="card-actions">
                 {topTags.slice(0, tagsToDisplay).map(({ tag, count }) => (
-                  <Link key={tag} className="link link-hover" href={`/tag/${tag}`} title={`${tag} [${count}]`}><div key={tag} className="badge badge-outline">{tag}</div></Link>
+                  <Link key={tag} className="link link-hover" href={`/tag/${tag}`} title={`${displayTag(tag)} [${count}]`}><div key={tag} className="badge badge-outline">{displayTag(tag)}</div></Link>
                 ))}
                 <div className="badge badge-outline tags-more" onClick={() => dialog.current?.showModal()}>+ {tagsNotDisplayedCount} more</div>
               </div>
@@ -111,7 +112,7 @@ export const Footer = ({ recentPosts, topTags, avatar }: {
             </Link>
             <div className="card-actions mt-4">
               {modalTags.map(({ tag, count }) => (
-                <Link key={tag} className="link link-hover" href={`/tag/${tag}`} title={`${tag} [${count}]`} onClick={() => dialog.current?.close()}><div key={tag} className="badge badge-outline">{tag}</div></Link>
+                <Link key={tag} className="link link-hover" href={`/tag/${tag}`} title={`${displayTag(tag)} [${count}]`} onClick={() => dialog.current?.close()}><div key={tag} className="badge badge-outline">{displayTag(tag)}</div></Link>
               ))}
             </div>
           </div>

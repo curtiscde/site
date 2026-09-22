@@ -87,6 +87,19 @@ describe('Footer', () => {
     expect(screen.getByRole('link', { name: 'Second Post' })).toHaveAttribute('href', '/post/second-post')
   })
 
+  // The footer renders on every page, so a tag shown as its slug here leaks the
+  // workaround onto the whole site.
+  it('renders a mapped tag by its display name, still linking to the slug', () => {
+    const tags: TagCount[] = [{ tag: 'c-sharp', count: 1, smartScore: 0 }]
+    render(<Footer recentPosts={recentPosts} topTags={tags} />)
+
+    const link = screen.getByRole('link', { name: 'c#' })
+
+    expect(link).toHaveAttribute('href', '/tag/c-sharp')
+    expect(link).toHaveAttribute('title', 'c# [1]')
+    expect(screen.queryByText('c-sharp')).toBeNull()
+  })
+
   it('renders only the first 12 tags inline with a "+ 3 more" badge', () => {
     render(<Footer recentPosts={recentPosts} topTags={topTags} />)
 
