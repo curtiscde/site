@@ -35,6 +35,10 @@ Post frontmatter requires: `id` (GUID string, e.g. `550e8400-e29b-41d4-a716-4466
 - **`id`**: Use a GUID for new posts. Older posts have numeric or timestamp ids — the schema accepts all formats.
 - **`image`**: Path relative to `public/`, e.g. `/post/{slug}/cover.jpg`. OG images should be 1200×630px and placed under `public/post/{slug}/`.
 
+### Images
+
+Responsive AVIF/WebP variants of every raster under `public/` live in `public/_img/`, alongside the `manifest.json` that the build reads. They are **committed**, so Netlify never has to encode them. After adding, changing, moving or removing any image under `public/`, run `npm run images` and commit `public/_img/` in the same commit. CI runs `npm run images:check` and fails if they are out of sync. See `docs/specs/committed-image-variants.md`.
+
 ### Routing
 
 - `/` — paginated post listing (20/page)

@@ -128,6 +128,13 @@ sooner.
 4. Netlify build time will rise. That is an acceptable trade for reader latency, and phase 2
    includes a manifest-based skip so the cost is paid once per changed image rather than once per
    build.
+
+> **Correction (2026-09-24).** Assumption 4 did not hold on Netlify. Every build starts from a
+> fresh checkout with no gitignored output, so the manifest-based skip never fired there: every
+> production deploy and deploy preview re-encoded all 110 images. Clean builds went from ~9s to
+> ~60s on an 18-core machine, and much longer on Netlify's hardware, which exhausted the free
+> plan's build minutes. Assumption 3 is therefore reversed: variants are now committed and
+> checked in CI. See `docs/specs/committed-image-variants.md`.
 5. There is no visual-regression tooling in this repo. Verification is byte counts, `grep`
    assertions against `out/`, the existing Jest suite, and a manual pass over three specific
    posts.
