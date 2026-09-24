@@ -12,6 +12,7 @@
     "test:ci": "jest --coverage",
     "check:bundle": "node scripts/check-client-bundle.mjs",
     "images": "node scripts/generate-image-variants.mjs",
+    "images:check": "node scripts/generate-image-variants.mjs --check",
     "prebuild": "npm run images"
   },
   "dependencies": {
