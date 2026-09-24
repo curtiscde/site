@@ -55,6 +55,17 @@ const ENCODE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg']);
 const MEASURE_EXTENSIONS = new Set(['.gif']);
 const EXTENSIONS = new Set([...ENCODE_EXTENSIONS, ...MEASURE_EXTENSIONS]);
 
+/** Every way the committed output can disagree with the sources, as `--check` reports it. */
+export const PROBLEM = Object.freeze({
+  MISSING: 'missing', // source with no manifest entry
+  STALE: 'stale', // source changed since its entry was written
+  CONFIG: 'config', // entry written under different widths, qualities or encoder
+  INCOMPLETE: 'incomplete', // entry names variant files that are not on disk
+  UNREADABLE: 'unreadable', // sharp cannot read the source at all
+  ORPHAN_ENTRY: 'orphan-entry', // entry whose source no longer exists
+  ORPHAN_FILE: 'orphan-file', // file under _img/ that no entry accounts for
+});
+
 /**
  * Widths to emit for a source of intrinsic width `native`.
  *
@@ -69,189 +80,243 @@ export function targetWidths(native) {
   return widths;
 }
 
-function walk(dir, outRoot) {
-  const found = [];
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      if (full === outRoot) continue; // never recurse into our own output
-      found.push(...walk(full, outRoot));
-    } else if (EXTENSIONS.has(path.extname(entry.name).toLowerCase())) {
-      found.push(full);
+/**
+ * Checks whether the committed output under `<root>/_img` matches every raster under
+ * `root`. Reads only; never encodes or writes. An empty `problems` list means
+ * `generateImageVariants` would change nothing.
+ */
+export async function checkImageVariants({ root = DEFAULT_ROOT } = {}) {
+  const plan = await planImageVariants(root);
+  return { problems: plan.problems, sources: plan.sources.length };
+}
+
+/**
+ * Brings `<root>/_img` in line with every raster under `root`: encodes what is missing or
+ * out of date, removes what nothing accounts for, and rewrites the manifest. `root` is the
+ * site's public/ directory; variant URLs in the manifest are relative to it.
+ */
+export async function generateImageVariants({ root = DEFAULT_ROOT } = {}) {
+  const plan = await planImageVariants(root);
+  const paths = layout(root);
+  const manifest = {};
+  const counts = { encoded: 0, reused: 0, measured: 0, skipped: 0 };
+
+  for (const source of plan.sources) {
+    switch (source.action) {
+      case 'reuse':
+        manifest[source.src] = source.entry;
+        counts.reused += 1;
+        break;
+      case 'measure':
+        manifest[source.src] = source.entry;
+        counts.measured += 1;
+        break;
+      case 'skip':
+        // A corrupt or unsupported file must not fail the build; it degrades to <img>.
+        console.warn(`  skip ${source.src} — ${source.reason}`);
+        counts.skipped += 1;
+        break;
+      case 'encode': {
+        const variants = plannedVariants(source.src, source.width);
+        for (const [format, options] of FORMATS) {
+          for (const [width, url] of variants[format]) {
+            const out = path.join(root, url);
+            fs.mkdirSync(path.dirname(out), { recursive: true });
+            await sharp(source.file).resize({ width, withoutEnlargement: true })[format](options).toFile(out);
+          }
+        }
+        manifest[source.src] = {
+          hash: source.hash,
+          config: CONFIG_HASH,
+          width: source.width,
+          height: source.height,
+          variants,
+        };
+        counts.encoded += 1;
+        break;
+      }
     }
   }
-  return found;
+
+  // Variants are committed, so anything no longer accounted for is removed here —
+  // otherwise deleted or renamed images would live on in the repo forever.
+  for (const url of plan.orphanFiles) fs.rmSync(path.join(root, url));
+  pruneEmptyDirs(paths.outDir);
+  fs.mkdirSync(paths.outDir, { recursive: true });
+  // Stable key order (sources are sorted) and a trailing newline, so an unchanged tree
+  // regenerates to an identical, diff-free manifest — and is then not written at all, so
+  // an in-sync run touches nothing on disk.
+  const json = JSON.stringify(manifest, null, 2) + '\n';
+  if (readText(paths.manifest) !== json) fs.writeFileSync(paths.manifest, json);
+
+  const bytes = (files) => files.reduce((total, file) => total + fs.statSync(file).size, 0);
+  const encodable = plan.sources.filter((s) => s.action === 'reuse' || s.action === 'encode');
+  return {
+    ...counts,
+    removed: plan.orphanFiles.length,
+    entries: Object.keys(manifest).length,
+    // Measure-only sources produce no variants, so counting them in the "before" figure
+    // would flatter the ratio against an "after" figure they contribute nothing to.
+    sourceBytes: bytes(encodable.map((s) => s.file)),
+    variantBytes: bytes(outputFiles(paths)),
+  };
+}
+
+/**
+ * The single source of truth for both operations: what should happen to each source, and
+ * every problem with the committed output. Check reports `problems`; generate carries out
+ * the actions. Because both read this, check passing means generate is a no-op.
+ */
+async function planImageVariants(root) {
+  const paths = layout(root);
+  const committed = loadManifest(paths.manifest);
+  const problems = [];
+  const sources = [];
+
+  for (const file of sourceFiles(paths)) {
+    const src = toUrl(root, file);
+    const committedEntry = committed[src];
+
+    const dimensions = await readDimensions(file);
+    if (dimensions.reason) {
+      problems.push({ kind: PROBLEM.UNREADABLE, src });
+      sources.push({ src, file, action: 'skip', reason: dimensions.reason });
+      continue;
+    }
+    const { width, height } = dimensions;
+
+    if (!ENCODE_EXTENSIONS.has(path.extname(file).toLowerCase())) {
+      // Measure-only entries carry dimensions and no `variants` key at all, which is what
+      // tells the renderers to emit a plain <img> of the original. No `hash`/`config`
+      // either: nothing is encoded, so there is nothing cached for them to invalidate.
+      const problem = !committedEntry
+        ? PROBLEM.MISSING
+        : committedEntry.width !== width || committedEntry.height !== height
+          ? PROBLEM.STALE
+          : null;
+      if (problem) problems.push({ kind: problem, src });
+      sources.push({ src, file, action: 'measure', entry: { width, height } });
+      continue;
+    }
+
+    const hash = hashFile(file);
+    const problem = reuseProblem(committedEntry, hash, root);
+    if (problem) {
+      problems.push({ kind: problem, src });
+      sources.push({ src, file, action: 'encode', hash, width, height });
+    } else {
+      sources.push({ src, file, action: 'reuse', entry: committedEntry });
+    }
+  }
+
+  const sourceUrls = new Set(sources.map((s) => s.src));
+  for (const src of Object.keys(committed).filter((src) => !sourceUrls.has(src)).sort()) {
+    problems.push({ kind: PROBLEM.ORPHAN_ENTRY, src });
+  }
+
+  const accountedFor = new Set(
+    sources.flatMap((s) => {
+      if (s.action === 'reuse') return variantUrls(s.entry.variants);
+      if (s.action === 'encode') return variantUrls(plannedVariants(s.src, s.width));
+      return [];
+    })
+  );
+  const orphanFiles = outputFiles(paths)
+    .map((file) => toUrl(root, file))
+    .filter((url) => !accountedFor.has(url))
+    .sort();
+  for (const variant of orphanFiles) problems.push({ kind: PROBLEM.ORPHAN_FILE, variant });
+
+  return { problems, sources, orphanFiles };
+}
+
+/**
+ * Why a committed manifest entry cannot be reused for a source with content hash `hash`,
+ * or null when it can.
+ */
+function reuseProblem(entry, hash, root) {
+  if (!entry?.variants) return PROBLEM.MISSING;
+  if (entry.hash !== hash) return PROBLEM.STALE;
+  if (entry.config !== CONFIG_HASH) return PROBLEM.CONFIG;
+  const allOnDisk = variantUrls(entry.variants).every((url) => fs.existsSync(path.join(root, url)));
+  if (!allOnDisk) return PROBLEM.INCOMPLETE;
+  return null;
+}
+
+/** The variant set a source of width `width` gets: `{ avif: [[width, url], ...], webp: ... }`. */
+function plannedVariants(src, width) {
+  const parsed = path.posix.parse(src);
+  return Object.fromEntries(
+    FORMATS.map(([format]) => [
+      format,
+      targetWidths(width).map((w) => [w, `/${OUT_DIR}${parsed.dir}/${parsed.name}-${w}.${format}`]),
+    ])
+  );
+}
+
+function variantUrls(variants = {}) {
+  return Object.values(variants)
+    .flat()
+    .map(([, url]) => url);
+}
+
+async function readDimensions(file) {
+  let meta;
+  try {
+    meta = await sharp(file).metadata();
+  } catch (error) {
+    return { reason: `sharp could not read it (${error.message})` };
+  }
+  // sharp types width as optional, and a header it cannot make sense of would otherwise
+  // reach targetWidths as undefined and produce `name-NaN.avif`.
+  if (!meta.width || !meta.height) return { reason: 'sharp reported no intrinsic dimensions' };
+  return { width: meta.width, height: meta.height };
+}
+
+function layout(root) {
+  const outDir = path.join(root, OUT_DIR);
+  return { root, outDir, manifest: path.join(outDir, 'manifest.json') };
+}
+
+function listFiles(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir, { recursive: true, withFileTypes: true })
+    .filter((entry) => entry.isFile())
+    .map((entry) => path.join(entry.parentPath, entry.name));
+}
+
+function sourceFiles({ root, outDir }) {
+  return listFiles(root)
+    .filter((file) => !file.startsWith(outDir + path.sep)) // never read our own output
+    .filter((file) => EXTENSIONS.has(path.extname(file).toLowerCase()))
+    .sort();
+}
+
+function outputFiles({ outDir, manifest }) {
+  return listFiles(outDir).filter((file) => file !== manifest);
 }
 
 // Key the cache on content, not mtime — a fresh CI checkout has new mtimes on every file
-// and would otherwise re-encode all 116 images on every run.
+// and would otherwise re-encode every image on every run.
 function hashFile(file) {
   return createHash('sha1').update(fs.readFileSync(file)).digest('hex').slice(0, 12);
 }
 
-/**
- * Why a previous manifest entry cannot be reused for a source with content hash `hash`,
- * or null when it can. The reasons double as `--check` discrepancy kinds.
- */
-function cacheMiss(cached, hash, root) {
-  if (!cached?.variants) return 'missing';
-  if (cached.hash !== hash) return 'stale';
-  if (cached.config !== CONFIG_HASH) return 'config';
-  const filesPresent = Object.values(cached.variants)
-    .flat()
-    .every(([, url]) => fs.existsSync(path.join(root, url)));
-  if (!filesPresent) return 'incomplete';
-  return null;
+function readText(file) {
+  try {
+    return fs.readFileSync(file, 'utf8');
+  } catch {
+    return null;
+  }
 }
 
 function loadManifest(manifestPath) {
   try {
-    return JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    return JSON.parse(readText(manifestPath) ?? '{}');
   } catch {
     return {};
   }
-}
-
-/**
- * Brings `<root>/_img` in line with every raster under `root`, and reports what it did.
- * `root` is the site's public/ directory; variant URLs in the manifest are relative to it.
- *
- * With `check`, nothing is encoded or written: every way the committed output disagrees
- * with the sources is collected into `discrepancies` instead. CI runs this, because
- * variants are committed and Netlify must never have to encode them.
- */
-export async function generateImageVariants({ root = DEFAULT_ROOT, check = false } = {}) {
-  const outRoot = path.join(root, OUT_DIR);
-  const manifestPath = path.join(outRoot, 'manifest.json');
-  const previous = loadManifest(manifestPath);
-  const manifest = {};
-  const sources = walk(root, outRoot).sort();
-
-  let encoded = 0;
-  let reused = 0;
-  let measured = 0;
-  let measuredBytes = 0;
-  let skipped = 0;
-  const discrepancies = [];
-
-  for (const file of sources) {
-    const src = toUrl(root, file);
-    const hash = hashFile(file);
-
-    let meta;
-    try {
-      meta = await sharp(file).metadata();
-    } catch (error) {
-      // A corrupt or unsupported file must not fail the build; it degrades to <img>.
-      console.warn(`  skip ${src} — sharp could not read it (${error.message})`);
-      skipped += 1;
-      continue;
-    }
-
-    // sharp types width as optional, and a header it cannot make sense of would otherwise
-    // reach targetWidths as undefined and produce `name-NaN.avif`.
-    if (!meta.width || !meta.height) {
-      console.warn(`  skip ${src} — sharp reported no intrinsic dimensions`);
-      skipped += 1;
-      continue;
-    }
-
-    // Measure-only formats carry dimensions but no `variants` key at all, which is what
-    // tells the renderers to emit a plain <img> of the original. No `hash`/`config`
-    // either: nothing is encoded, so there is no cached output for them to invalidate,
-    // and re-reading a handful of headers each run costs nothing.
-    if (!ENCODE_EXTENSIONS.has(path.extname(file).toLowerCase())) {
-      const was = previous[src];
-      if (check && !was) discrepancies.push({ kind: 'missing', src });
-      else if (check && (was.width !== meta.width || was.height !== meta.height)) {
-        discrepancies.push({ kind: 'stale', src });
-      }
-      manifest[src] = { width: meta.width, height: meta.height };
-      measuredBytes += fs.statSync(file).size;
-      measured += 1;
-      continue;
-    }
-
-    const cached = previous[src];
-    const miss = cacheMiss(cached, hash, root);
-    if (!miss) {
-      manifest[src] = cached;
-      reused += 1;
-      continue;
-    }
-
-    if (check) {
-      discrepancies.push({ kind: miss, src });
-      continue;
-    }
-
-    const targets = targetWidths(meta.width);
-
-    const parsed = path.parse(src);
-    const variants = {};
-
-    for (const [format, options] of FORMATS) {
-      variants[format] = [];
-      for (const width of targets) {
-        const url = `/${OUT_DIR}${parsed.dir}/${parsed.name}-${width}.${format}`;
-        const out = path.join(root, url);
-        fs.mkdirSync(path.dirname(out), { recursive: true });
-        await sharp(file).resize({ width, withoutEnlargement: true })[format](options).toFile(out);
-        variants[format].push([width, url]);
-      }
-    }
-
-    manifest[src] = { hash, config: CONFIG_HASH, width: meta.width, height: meta.height, variants };
-    encoded += 1;
-  }
-
-  // Variants are committed, so anything no longer backed by a source has to be found
-  // (check) or removed (generate) — otherwise deleted images live on in the repo forever.
-  const live = new Set(sources.map((file) => toUrl(root, file)));
-  const expected = check
-    ? Object.fromEntries(Object.entries(previous).filter(([src]) => live.has(src)))
-    : manifest;
-  const referenced = new Set(
-    Object.values(expected).flatMap((entry) =>
-      Object.values(entry.variants ?? {}).flat().map(([, url]) => url)
-    )
-  );
-  const orphanFiles = walkOut(outRoot)
-    .map((file) => toUrl(root, file))
-    .filter((url) => !referenced.has(url))
-    .sort();
-
-  if (check) {
-    for (const src of Object.keys(previous).filter((src) => !live.has(src)).sort()) {
-      discrepancies.push({ kind: 'orphan-entry', src });
-    }
-    for (const src of orphanFiles) discrepancies.push({ kind: 'orphan-file', src });
-  } else {
-    for (const url of orphanFiles) fs.rmSync(path.join(root, url));
-    pruneEmptyDirs(outRoot);
-    fs.mkdirSync(outRoot, { recursive: true });
-    // Stable key order (sources are sorted) and a trailing newline, so an unchanged tree
-    // regenerates to an identical, diff-free manifest.
-    fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
-  }
-
-  const bytes = (files) => files.reduce((a, f) => a + fs.statSync(f).size, 0);
-  // Measure-only sources produce no variants, so counting them in the "before" figure
-  // would flatter the ratio against a "after" figure they contribute nothing to.
-  const sourceBytes = bytes(sources) - measuredBytes;
-  const variantBytes = bytes(walkOut(outRoot));
-
-  return {
-    encoded,
-    reused,
-    measured,
-    skipped,
-    removed: check ? 0 : orphanFiles.length,
-    entries: Object.keys(manifest).length,
-    sourceBytes,
-    variantBytes,
-    discrepancies,
-  };
 }
 
 // Empty directories are not committed, so leaving them behind would only make a local
@@ -269,44 +334,36 @@ function toUrl(root, file) {
   return '/' + path.relative(root, file).split(path.sep).join('/');
 }
 
-function walkOut(outRoot) {
-  const found = [];
-  const visit = (dir) => {
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      const full = path.join(dir, entry.name);
-      if (entry.isDirectory()) visit(full);
-      else if (entry.name !== 'manifest.json') found.push(full);
-    }
-  };
-  if (fs.existsSync(outRoot)) visit(outRoot);
-  return found;
+async function runCheck() {
+  const { problems, sources } = await checkImageVariants();
+  if (problems.length === 0) {
+    console.log(`images: committed variants are in sync (${sources} sources)`);
+    return;
+  }
+  console.error(`images: ${problems.length} problem(s) with committed variants:`);
+  for (const problem of problems) {
+    console.error(`  ${problem.kind.padEnd(12)} ${problem.src ?? problem.variant}`);
+  }
+  console.error('\nRun `npm run images` and commit public/_img/ alongside the image change.');
+  process.exitCode = 1;
 }
 
-// Guarded so the module can be imported by tests without encoding 111 images.
+async function runGenerate() {
+  const result = await generateImageVariants();
+  const mb = (n) => (n / 1024 / 1024).toFixed(1);
+  console.log(
+    `images: ${result.encoded} encoded, ${result.reused} reused from cache, ` +
+      `${result.measured} measured only, ${result.skipped} skipped, ` +
+      `${result.removed} orphans removed, ${result.entries} in manifest`
+  );
+  console.log(`sources ${mb(result.sourceBytes)} MB -> variants ${mb(result.variantBytes)} MB`);
+}
+
+// Guarded so the module can be imported by tests without encoding every image.
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const check = process.argv.includes('--check');
-  generateImageVariants({ check })
-    .then((r) => {
-      if (check) {
-        if (r.discrepancies.length === 0) {
-          console.log(`images: committed variants are in sync (${r.reused + r.measured} sources)`);
-          return;
-        }
-        console.error(`images: ${r.discrepancies.length} problem(s) with committed variants:`);
-        for (const { kind, src } of r.discrepancies) console.error(`  ${kind.padEnd(12)} ${src}`);
-        console.error('\nRun `npm run images` and commit public/_img/ alongside the image change.');
-        process.exitCode = 1;
-        return;
-      }
-      const mb = (n) => (n / 1024 / 1024).toFixed(1);
-      console.log(
-        `images: ${r.encoded} encoded, ${r.reused} reused from cache, ${r.measured} measured only, ` +
-          `${r.skipped} skipped, ${r.removed} orphans removed, ${r.entries} in manifest`
-      );
-      console.log(`sources ${mb(r.sourceBytes)} MB -> variants ${mb(r.variantBytes)} MB`);
-    })
-    .catch((error) => {
-      console.error(error);
-      process.exit(1);
-    });
+  const run = process.argv.includes('--check') ? runCheck : runGenerate;
+  run().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
 }

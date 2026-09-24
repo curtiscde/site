@@ -50,8 +50,8 @@ Treat the generated variants as checked-in build artefacts, like a lockfile.
 - GitHub Actions (free for this public repo) enforces the contract. A PR whose committed variants
   are missing, stale or orphaned fails CI with a message telling the author to run
   `npm run images`.
-- Netlify skips builds entirely for commits that cannot change the published site (docs, specs,
-  tests, CI config), so they no longer consume build minutes.
+- Netlify skips deploy previews for commits that cannot change the published site (docs, specs,
+  tests, CI config), so they no longer consume build minutes. Production always builds.
 
 If someone forgets to regenerate, the site still builds correctly: the prebuild step encodes only
 the images whose variants are missing. The cost of forgetting is a few seconds on one build, not
@@ -80,9 +80,9 @@ a broken deploy, and CI flags it before merge.
 19. As the site owner, I want the check to run in GitHub Actions rather than on Netlify, so that verification uses free minutes and not Netlify's.
 20. As the site owner, I want Netlify's prebuild to still encode anything missing rather than fail, so that a forgotten regeneration degrades to a slower build rather than a failed deploy.
 21. As the site owner, I want the prebuild log on Netlify to say how many images were encoded versus reused, so that I can confirm from a deploy log that nothing was encoded.
-22. As the site owner, I want Netlify to skip building commits that only touch docs, specs, tests, CI workflows or markdown guides, so that housekeeping commits cost zero build minutes.
-23. As the site owner, I want Netlify to still build any commit that touches posts, `public/`, `src/`, dependencies or build config, so that the skip rule can never leave the live site stale.
-24. As the site owner, I want the skip rule to also apply to deploy previews, so that PRs that only change docs or tests don't burn minutes on previews.
+22. As the site owner, I want Netlify to skip deploy previews for commits that only touch docs, specs, tests, CI workflows or markdown guides, so that housekeeping PRs cost zero build minutes.
+23. As the site owner, I want Netlify to still build any commit that touches posts, `public/`, `src/`, dependencies or build config, so that a preview always reflects a real site change.
+24. As the site owner, I want production to always build, so that the skip rule can never leave the live site stale behind a failed build.
 25. As the site owner, I want the local dev server to keep working after a fresh clone without running any extra command, so that committed variants make onboarding simpler, not harder.
 26. As a reader, I want every page to render exactly the same images, `srcset`s and dimensions as before, so that the change is invisible to me.
 27. As a reader, I want the AVIF/WebP byte savings from #110 and #114 kept in full, so that a faster build is not bought with slower pages.
@@ -105,10 +105,12 @@ a broken deploy, and CI flags it before merge.
 - **Orphan cleanup in generate mode.** The generator currently only adds. With output committed,
   it must also delete variant files under `public/_img/` that no current manifest entry
   references, and drop manifest entries whose source no longer exists. `manifest.json` itself is
-  never deleted.
+  never deleted. The generator owns `_img/`, so *any* unaccounted-for file there (including
+  `.DS_Store`) is an orphan. Directories left empty are pruned, since they are not committed.
 - **Deterministic output.** Manifest keys stay sorted by source path (already the case, since
   sources are sorted), formatting stays two-space JSON with a trailing newline, and nothing
-  time-based or machine-specific is written. Encoded bytes must be identical across runs on the
+  time-based or machine-specific is written. The manifest is only rewritten when its content
+  changes, so an in-sync run touches nothing on disk. Encoded bytes must be identical across runs on the
   same `sharp`/libvips version. If a `sharp` upgrade changes encoder output, that shows up as a
   config or hash mismatch only if the config hash changes, so see the next point.
 - **The config hash includes the sharp version.** The cache key today is widths + max width +
@@ -116,34 +118,41 @@ a broken deploy, and CI flags it before merge.
   that could change encoder output forces a deliberate regeneration rather than leaving a mix of
   encoder generations. This makes dependency-update PRs that bump `sharp` fail `--check` until
   regenerated, which is intended.
-- **New `--check` mode on the generator.** Invoked as `npm run images:check` (new script). It
-  performs the same walk and hashing as generate mode but writes nothing and encodes nothing. It
-  collects every discrepancy into one report and exits non-zero if there are any. Discrepancy
-  kinds:
+- **Check and generate are two operations over one plan.** A single internal planning step walks
+  the sources and the committed output once. It decides an action for every source (reuse,
+  encode, measure or skip) and lists every problem. `checkImageVariants({ root })` returns the
+  problems and writes nothing. `generateImageVariants({ root })` carries out the actions. Because
+  both read the same plan, **check reporting nothing means generate would change nothing**; that
+  equivalence is the contract CI relies on. Both take one `root` (the public/ directory,
+  default `public`); output always goes to `<root>/_img`, because manifest URLs are relative to
+  `root` and a separate output root would add a parameter with nothing to vary. Neither calls
+  `process.exit`; the CLI wrapper maps results to logs and an exit code.
+- **`npm run images:check`** (new script) runs the check and exits non-zero on any problem,
+  listing each one. Problem kinds are exported as one constant (`PROBLEM`):
   - *missing*: source raster with no manifest entry
-  - *stale*: source hash ≠ manifest hash
+  - *stale*: source hash ≠ manifest hash (for GIFs, dimensions ≠ manifest dimensions)
   - *config*: entry's config hash ≠ current config hash
   - *incomplete*: manifest references a variant file that does not exist
+  - *unreadable*: sharp cannot read the source. Generate skips it so the build does not fail,
+    and drops its entry and variants. Check reports it, so CI fails until the file is fixed.
   - *orphan-entry*: manifest entry whose source does not exist
-  - *orphan-file*: file under the variants root that no entry references
-
-  Measure-only formats (GIFs) are checked for presence and correct dimensions only.
-- **The generator becomes callable with explicit roots.** The main routine accepts the source
-  root and output root as parameters (defaulting to `public` and `public/_img`) and returns a
-  result object (counts of encoded, reused, measured, skipped, removed, plus the list of
-  discrepancies in check mode). It no longer hard-codes paths or calls `process.exit` internally.
-  The CLI wrapper maps the result to logs and an exit code. This is the one test seam.
+  - *orphan-file*: file under `_img/` that no entry accounts for (reported as `variant`, not
+    `src`, since it is not a source image)
 - **CI.** The existing `CI` workflow runs `npm run images:check` immediately after `npm ci`,
   *before* `npm run build`. Otherwise the build's own `prebuild` would regenerate the missing
-  variants and mask the problem. It also bumps `actions/checkout` and `actions/setup-node` from
-  v2 to current majors while touching the file.
-- **Netlify skip rule.** Add an `ignore` command to the `[build]` section of `netlify.toml`. It
-  exits 0 (skip) when the diff between Netlify's cached commit and the current commit touches
-  only paths that cannot affect `out/`: `docs/`, `*.md` at the repo root, `.github/`, test files
-  (`*.test.ts`, `*.test.tsx`), `jest.config.ts`, `jest.setup.ts`, `codecov.yml`. Everything else
-  builds. The command must also build (exit 1) when there is no cached commit ref, such as on a
-  first build or a cleared cache. An allowlist of skippable paths is preferred over a denylist of
-  buildable ones, so any new top-level directory builds by default.
+  variants and mask the problem. Action versions are left as they are; bumping them is unrelated.
+- **Netlify skip rule, deploy previews only.** Add an `ignore` command to the `[build]` section of
+  `netlify.toml`. When `CONTEXT` is `deploy-preview`, it exits 0 (skip) if the diff between
+  Netlify's cached commit and the current commit touches only paths that cannot affect `out/`:
+  `docs/`, `*.md` at the repo root, `.github/`, test files (`*.test.ts`, `*.test.tsx`),
+  `jest.config.ts`, `jest.setup.ts`, `codecov.yml`. Everything else builds, including every
+  production and branch deploy. Netlify does not document whether `CACHED_COMMIT_REF` is the
+  last *successful* build. If it is not, skipping production could leave an earlier commit whose
+  build failed undeployed behind a docs-only commit. At 49s a build, that saving isn't worth the
+  risk; a skipped preview publishes nothing. The command also builds when there is no cached
+  ref, the cached ref equals the current one, or the diff fails. An allowlist of skippable paths
+  is preferred over a denylist of buildable ones, so any new top-level directory builds by
+  default.
 - **Docs.** CLAUDE.md gains a short "Images" note under the content pipeline: after adding,
   changing or removing any raster image under `public/`, run `npm run images` and commit
   `public/_img/` in the same commit. CI enforces it.
@@ -157,26 +166,29 @@ a broken deploy, and CI flags it before merge.
   it at a directory of images, run it, inspect the result object and the files on disk) and
   asserts outcomes, never internal helper calls. A test should still pass if the generator's
   internals were rewritten.
-- **One seam: the generator's main routine with explicit roots.** Tests build a small fixture tree
-  in a temp directory with a few tiny real images: one PNG, one JPEG, one GIF, one narrower than
-  the smallest rung. They then exercise:
+- **One seam: `checkImageVariants` / `generateImageVariants` with a temp `root`.** Tests build a
+  small fixture tree in a temp directory with a few tiny real images: one PNG, one JPEG, one GIF,
+  one narrower than the smallest rung. Every check goes through a helper that asserts the tree's
+  contents and mtimes are unchanged. The tests then exercise:
   - a first generate run encodes everything and writes a manifest; a second run encodes nothing and leaves every file byte-identical
-  - `--check` on a freshly generated tree reports no discrepancies
+  - a source narrower than every rung is offered at its own width only
+  - `--check` on a freshly generated tree reports nothing, and generate then changes nothing
   - after adding a source image, `--check` reports *missing* for exactly that image
   - after overwriting a source's bytes, `--check` reports *stale*
   - after deleting one variant file, `--check` reports *incomplete*
   - after deleting a source, `--check` reports *orphan-entry* and *orphan-file*; a generate run then removes those files and the entry
   - after renaming a source, generate produces variants at the new path and removes the old ones
   - a changed config hash is reported as *config* for every encoded entry
-  - check mode never writes: the fixture tree's file list and mtimes are unchanged after a failing check
+  - an unreadable source is reported by check both before and after generate, so the two agree
+  - check mode never writes: the fixture tree's file list and mtimes are unchanged after every check, passing or failing
 - Fixtures should be tiny (tens of pixels) so the suite stays fast. Real encoding at that size
   takes milliseconds.
 - **Prior art:** `src/app/util/images/targetWidths.test.ts` already imports from
   `scripts/generate-image-variants.mjs`, so Jest can load the script as-is. `urls.test.ts` shows
   the pattern of checking the real manifest against code, and should keep passing unchanged
   against the now-committed manifest.
-- **Not unit-tested:** the Netlify `ignore` command (verified manually by pushing a docs-only
-  commit and confirming Netlify reports "Build skipped") and the CI wiring (verified by the PR's
+- **Not unit-tested:** the Netlify `ignore` command (verified by running it against real commit
+  pairs in each `CONTEXT`, and on Netlify by pushing a docs-only commit to a PR) and the CI wiring (verified by the PR's
   own CI run, plus one deliberately stale commit that is then reverted).
 - **Acceptance measurement:** after merge, the Netlify deploy log's prebuild line reads
   "0 encoded, 110 reused", and total Netlify build time is compared against the last pre-merge

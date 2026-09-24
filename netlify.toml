@@ -1,7 +1,7 @@
 [build]
   command = "npm run build"
   publish = "out"
-  # Skip builds for commits that only touch docs, tests or CI config.
+  # Skip deploy previews for commits that only touch docs, tests or CI config.
   ignore = "sh scripts/netlify-ignore.sh"
 
 [build.environment]

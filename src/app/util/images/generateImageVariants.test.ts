@@ -5,7 +5,10 @@ import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import sharp from 'sharp'
-import { generateImageVariants } from '../../../../scripts/generate-image-variants.mjs'
+import {
+  checkImageVariants,
+  generateImageVariants,
+} from '../../../../scripts/generate-image-variants.mjs'
 
 // Drives the generator the way `npm run images` and CI do: point it at a public/ tree,
 // run it, and inspect what it reports and what it left on disk.
@@ -22,18 +25,24 @@ async function writeImage(rel: string, width: number, format: 'png' | 'jpeg' | '
     .toFile(file)
 }
 
-/** Every file under the tree, relative to root, with its bytes — for "nothing changed" checks. */
+/** Every file under the tree with its bytes and mtime — for "nothing changed" checks. */
 function snapshot(): Record<string, string> {
-  const out: Record<string, string> = {}
-  const visit = (dir: string) => {
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      const full = path.join(dir, entry.name)
-      if (entry.isDirectory()) visit(full)
-      else out[path.relative(root, full)] = fs.readFileSync(full).toString('base64')
-    }
+  const tree: Record<string, string> = {}
+  for (const entry of fs.readdirSync(root, { recursive: true, withFileTypes: true })) {
+    if (!entry.isFile()) continue
+    const full = path.join(entry.parentPath, entry.name)
+    const { mtimeMs } = fs.statSync(full)
+    tree[path.relative(root, full)] = `${mtimeMs}:${fs.readFileSync(full).toString('base64')}`
   }
-  visit(root)
-  return out
+  return tree
+}
+
+/** Runs the check, asserting along the way that it touched nothing on disk. */
+async function check() {
+  const before = snapshot()
+  const { problems } = await checkImageVariants({ root })
+  expect(snapshot()).toEqual(before)
+  return problems
 }
 
 beforeEach(async () => {
@@ -61,6 +70,18 @@ describe('generate', () => {
     expect(snapshot()).toEqual(before)
   })
 
+  it('offers a source narrower than every rung at its own width only', async () => {
+    await writeImage('images/icon.png', 60, 'png')
+
+    await generateImageVariants({ root })
+
+    const manifest = JSON.parse(fs.readFileSync(path.join(root, '_img/manifest.json'), 'utf8'))
+    expect(manifest['/images/icon.png'].variants).toEqual({
+      avif: [[60, '/_img/images/icon-60.avif']],
+      webp: [[60, '/_img/images/icon-60.webp']],
+    })
+  })
+
   it('removes the variants and entry of a deleted source', async () => {
     await generateImageVariants({ root })
     fs.rmSync(path.join(root, 'post/a/cover.png'))
@@ -71,7 +92,7 @@ describe('generate', () => {
     expect(fs.existsSync(path.join(root, '_img/post/a'))).toBe(false)
     const manifest = JSON.parse(fs.readFileSync(path.join(root, '_img/manifest.json'), 'utf8'))
     expect(Object.keys(manifest)).toEqual(['/images/photo.jpeg', '/post/a/anim.gif'])
-    expect((await generateImageVariants({ root, check: true })).discrepancies).toEqual([])
+    expect(await check()).toEqual([])
   })
 
   it('moves variants along with a renamed source', async () => {
@@ -86,7 +107,7 @@ describe('generate', () => {
       'portrait-96.avif',
       'portrait-96.webp',
     ])
-    expect((await generateImageVariants({ root, check: true })).discrepancies).toEqual([])
+    expect(await check()).toEqual([])
   })
 })
 
@@ -95,36 +116,30 @@ describe('check', () => {
     await generateImageVariants({ root })
   })
 
-  it('reports nothing for a tree that is in sync', async () => {
-    const result = await generateImageVariants({ root, check: true })
+  it('reports nothing for a tree that is in sync, and generate then changes nothing', async () => {
+    expect(await check()).toEqual([])
 
-    expect(result.discrepancies).toEqual([])
+    const before = snapshot()
+    await generateImageVariants({ root })
+    expect(snapshot()).toEqual(before)
   })
 
-  it('reports a source with no manifest entry as missing, without writing anything', async () => {
+  it('reports a source with no manifest entry as missing', async () => {
     await writeImage('post/b/new.png', 90, 'png')
-    const before = snapshot()
 
-    const result = await generateImageVariants({ root, check: true })
-
-    expect(result.discrepancies).toEqual([{ kind: 'missing', src: '/post/b/new.png' }])
-    expect(snapshot()).toEqual(before)
+    expect(await check()).toEqual([{ kind: 'missing', src: '/post/b/new.png' }])
   })
 
   it('reports a source whose bytes changed as stale', async () => {
     await writeImage('post/a/cover.png', 250, 'png', 200)
 
-    const result = await generateImageVariants({ root, check: true })
-
-    expect(result.discrepancies).toEqual([{ kind: 'stale', src: '/post/a/cover.png' }])
+    expect(await check()).toEqual([{ kind: 'stale', src: '/post/a/cover.png' }])
   })
 
   it('reports an entry whose variant files are not all on disk as incomplete', async () => {
     fs.rmSync(path.join(root, '_img/post/a/cover-96.webp'))
 
-    const result = await generateImageVariants({ root, check: true })
-
-    expect(result.discrepancies).toEqual([{ kind: 'incomplete', src: '/post/a/cover.png' }])
+    expect(await check()).toEqual([{ kind: 'incomplete', src: '/post/a/cover.png' }])
   })
 
   it('reports every encoded entry written under a different encoder config', async () => {
@@ -137,9 +152,7 @@ describe('check', () => {
     }
     fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2))
 
-    const result = await generateImageVariants({ root, check: true })
-
-    expect(result.discrepancies).toEqual([
+    expect(await check()).toEqual([
       { kind: 'config', src: '/images/photo.jpeg' },
       { kind: 'config', src: '/post/a/cover.png' },
     ])
@@ -148,24 +161,32 @@ describe('check', () => {
   it('reports the manifest entry and variant files left behind by a deleted source', async () => {
     fs.rmSync(path.join(root, 'post/a/cover.png'))
 
-    const result = await generateImageVariants({ root, check: true })
-
-    expect(result.discrepancies).toEqual([
+    expect(await check()).toEqual([
       { kind: 'orphan-entry', src: '/post/a/cover.png' },
-      { kind: 'orphan-file', src: '/_img/post/a/cover-200.avif' },
-      { kind: 'orphan-file', src: '/_img/post/a/cover-200.webp' },
-      { kind: 'orphan-file', src: '/_img/post/a/cover-250.avif' },
-      { kind: 'orphan-file', src: '/_img/post/a/cover-250.webp' },
-      { kind: 'orphan-file', src: '/_img/post/a/cover-96.avif' },
-      { kind: 'orphan-file', src: '/_img/post/a/cover-96.webp' },
+      { kind: 'orphan-file', variant: '/_img/post/a/cover-200.avif' },
+      { kind: 'orphan-file', variant: '/_img/post/a/cover-200.webp' },
+      { kind: 'orphan-file', variant: '/_img/post/a/cover-250.avif' },
+      { kind: 'orphan-file', variant: '/_img/post/a/cover-250.webp' },
+      { kind: 'orphan-file', variant: '/_img/post/a/cover-96.avif' },
+      { kind: 'orphan-file', variant: '/_img/post/a/cover-96.webp' },
     ])
   })
 
   it('reports a GIF whose dimensions changed as stale', async () => {
     await writeImage('post/a/anim.gif', 45, 'gif')
 
-    const result = await generateImageVariants({ root, check: true })
+    expect(await check()).toEqual([{ kind: 'stale', src: '/post/a/anim.gif' }])
+  })
 
-    expect(result.discrepancies).toEqual([{ kind: 'stale', src: '/post/a/anim.gif' }])
+  it('reports a source sharp cannot read, and agrees with what generate then does', async () => {
+    // Regression: generate skipped it and deleted its variants, while check kept the old
+    // entry and passed — so CI could pass on a tree `npm run images` would still change.
+    fs.writeFileSync(path.join(root, 'post/a/cover.png'), 'not an image')
+
+    const problems = await check()
+    expect(problems).toContainEqual({ kind: 'unreadable', src: '/post/a/cover.png' })
+
+    await generateImageVariants({ root })
+    expect(await check()).toEqual([{ kind: 'unreadable', src: '/post/a/cover.png' }])
   })
 })

@@ -10,6 +10,8 @@ npm run build        # Build static export
 npm run lint         # Run ESLint
 npm run test         # Run Jest in watch mode
 npm run test:ci      # Run Jest with coverage (CI)
+npm run images       # Regenerate committed image variants in public/_img/
+npm run images:check # Fail if committed image variants are out of sync (CI)
 ```
 
 To run a single test file:
