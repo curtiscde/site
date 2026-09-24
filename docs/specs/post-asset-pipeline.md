@@ -122,12 +122,12 @@ sooner.
 2. `highlight.js` and `sharp` become **build-time-only** dependencies. The highlight.js *stylesheet*
    still ships — it is ~5 KB of CSS, not JavaScript, and it is what colours the pre-highlighted
    markup.
-3. **Generated image variants are not committed.** They are produced into a gitignored directory
+3. ~~**Generated image variants are not committed.** They are produced into a gitignored directory
    by a `prebuild` step, so `public/post/**` stays the single source of truth and git history
-   stays clean.
-4. Netlify build time will rise. That is an acceptable trade for reader latency, and phase 2
+   stays clean.~~ **Superseded** — see the correction below this list.
+4. ~~Netlify build time will rise. That is an acceptable trade for reader latency, and phase 2
    includes a manifest-based skip so the cost is paid once per changed image rather than once per
-   build.
+   build.~~ **Did not hold** — see the correction below this list.
 5. There is no visual-regression tooling in this repo. Verification is byte counts, `grep`
    assertions against `out/`, the existing Jest suite, and a manual pass over three specific
    posts.
@@ -142,6 +142,13 @@ sooner.
    site, check the parent's `display`: if it is `flex` or `grid`, give the picture
    `display: contents` so the img remains the item. `display: block` does **not** fix it — a block
    picture is still the item and still sizes to max-content.
+
+> **Correction (2026-09-24).** Assumption 4 did not hold on Netlify. Every build starts from a
+> fresh checkout with no gitignored output, so the manifest-based skip never fired there: every
+> production deploy and deploy preview re-encoded all 110 images. Clean builds went from ~9s to
+> ~60s on an 18-core machine, and deploys took 7m 36s on Netlify, which exhausted the free
+> plan's build minutes. Assumption 3 is therefore reversed: variants are now committed and
+> checked in CI, and deploys take 49s. See `docs/specs/committed-image-variants.md`.
 
 ## Tech Stack
 
@@ -181,7 +188,7 @@ no change to `netlify.toml`.
 ```
 posts/{year}/                       Markdown source — not modified
 public/post/{year}/{slug}/          Original images — not modified, source of truth
-public/_img/                        NEW, gitignored. Generated AVIF/WebP variants
+public/_img/                        NEW. Generated AVIF/WebP variants (committed since 2026-09-24)
 scripts/                            NEW. Build-time Node scripts (ESM, .mjs)
   generate-image-variants.mjs       sharp pipeline + manifest
   check-client-bundle.mjs           Regression guard for phase 1
@@ -476,7 +483,8 @@ the one new test that must run in CI rather than locally.
 
 **Never**
 - Delete, move, rename or re-encode a file under `public/post/**`.
-- Commit generated image variants.
+- ~~Commit generated image variants.~~ Reversed on 2026-09-24: they are now committed. See
+  `docs/specs/committed-image-variants.md`.
 - Touch the JSON-LD effect or the theme system — those belong to finding 03.
 - Add a lightbox/carousel library. Native `<dialog>` and DaisyUI classes only.
 - Apply control semantics (`role`, `tabindex`) to images in server-rendered HTML — the affordance

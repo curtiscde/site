@@ -21,6 +21,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
+    # Image variants are committed so Netlify never has to encode them. This must run
+    # before the build: its prebuild step would otherwise regenerate anything missing and
+    # hide the problem. See docs/specs/committed-image-variants.md.
+    - run: npm run images:check
     - run: npm run lint
     - run: npm run build
     # Fails if highlight.js or marked reappear in a client chunk. Both are

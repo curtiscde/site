@@ -1,0 +1,5678 @@
+{
+  "/images/curtis-homepage.jpg": {
+    "hash": "3ff166f196d2",
+    "config": "2b4fe3dc",
+    "width": 1200,
+    "height": 618,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/images/curtis-homepage-96.avif"
+        ],
+        [
+          200,
+          "/_img/images/curtis-homepage-200.avif"
+        ],
+        [
+          400,
+          "/_img/images/curtis-homepage-400.avif"
+        ],
+        [
+          800,
+          "/_img/images/curtis-homepage-800.avif"
+        ],
+        [
+          1200,
+          "/_img/images/curtis-homepage-1200.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/images/curtis-homepage-96.webp"
+        ],
+        [
+          200,
+          "/_img/images/curtis-homepage-200.webp"
+        ],
+        [
+          400,
+          "/_img/images/curtis-homepage-400.webp"
+        ],
+        [
+          800,
+          "/_img/images/curtis-homepage-800.webp"
+        ],
+        [
+          1200,
+          "/_img/images/curtis-homepage-1200.webp"
+        ]
+      ]
+    }
+  },
+  "/images/curtis.png": {
+    "hash": "f12ab9eb1208",
+    "config": "2b4fe3dc",
+    "width": 600,
+    "height": 600,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/images/curtis-96.avif"
+        ],
+        [
+          200,
+          "/_img/images/curtis-200.avif"
+        ],
+        [
+          400,
+          "/_img/images/curtis-400.avif"
+        ],
+        [
+          600,
+          "/_img/images/curtis-600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/images/curtis-96.webp"
+        ],
+        [
+          200,
+          "/_img/images/curtis-200.webp"
+        ],
+        [
+          400,
+          "/_img/images/curtis-400.webp"
+        ],
+        [
+          600,
+          "/_img/images/curtis-600.webp"
+        ]
+      ]
+    }
+  },
+  "/images/logos/dreamscape.jpeg": {
+    "hash": "014963552e99",
+    "config": "2b4fe3dc",
+    "width": 200,
+    "height": 200,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/images/logos/dreamscape-96.avif"
+        ],
+        [
+          200,
+          "/_img/images/logos/dreamscape-200.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/images/logos/dreamscape-96.webp"
+        ],
+        [
+          200,
+          "/_img/images/logos/dreamscape-200.webp"
+        ]
+      ]
+    }
+  },
+  "/images/logos/next.png": {
+    "hash": "48db1d4e52a8",
+    "config": "2b4fe3dc",
+    "width": 3840,
+    "height": 926,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/images/logos/next-96.avif"
+        ],
+        [
+          200,
+          "/_img/images/logos/next-200.avif"
+        ],
+        [
+          400,
+          "/_img/images/logos/next-400.avif"
+        ],
+        [
+          800,
+          "/_img/images/logos/next-800.avif"
+        ],
+        [
+          1200,
+          "/_img/images/logos/next-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/images/logos/next-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/images/logos/next-96.webp"
+        ],
+        [
+          200,
+          "/_img/images/logos/next-200.webp"
+        ],
+        [
+          400,
+          "/_img/images/logos/next-400.webp"
+        ],
+        [
+          800,
+          "/_img/images/logos/next-800.webp"
+        ],
+        [
+          1200,
+          "/_img/images/logos/next-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/images/logos/next-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2014-cache-busting/cache-buster-example.png": {
+    "hash": "9c55caae7469",
+    "config": "2b4fe3dc",
+    "width": 200,
+    "height": 150,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2014-cache-busting/cache-buster-example-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2014-cache-busting/cache-buster-example-200.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2014-cache-busting/cache-buster-example-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2014-cache-busting/cache-buster-example-200.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2014-copy-table-schema-to-new-a-table/copytable.jpg": {
+    "hash": "709bc61bfe67",
+    "config": "2b4fe3dc",
+    "width": 200,
+    "height": 125,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2014-copy-table-schema-to-new-a-table/copytable-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2014-copy-table-schema-to-new-a-table/copytable-200.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2014-copy-table-schema-to-new-a-table/copytable-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2014-copy-table-schema-to-new-a-table/copytable-200.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2014-flashing-page-title/newchatmessage.gif": {
+    "width": 245,
+    "height": 45
+  },
+  "/post/2014-flashing-page-title/newchatmessage.png": {
+    "hash": "2882033b7070",
+    "config": "2b4fe3dc",
+    "width": 494,
+    "height": 88,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2014-flashing-page-title/newchatmessage-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2014-flashing-page-title/newchatmessage-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2014-flashing-page-title/newchatmessage-400.avif"
+        ],
+        [
+          494,
+          "/_img/post/2014-flashing-page-title/newchatmessage-494.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2014-flashing-page-title/newchatmessage-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2014-flashing-page-title/newchatmessage-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2014-flashing-page-title/newchatmessage-400.webp"
+        ],
+        [
+          494,
+          "/_img/post/2014-flashing-page-title/newchatmessage-494.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2014-mixing-patterns/module-pattern.png": {
+    "hash": "5a9f4acb1f18",
+    "config": "2b4fe3dc",
+    "width": 200,
+    "height": 200,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2014-mixing-patterns/module-pattern-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2014-mixing-patterns/module-pattern-200.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2014-mixing-patterns/module-pattern-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2014-mixing-patterns/module-pattern-200.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle.gif": {
+    "width": 366,
+    "height": 181
+  },
+  "/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle.png": {
+    "hash": "a8e95de18c9b",
+    "config": "2b4fe3dc",
+    "width": 2038,
+    "height": 710,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2015-how-to-store-razor-helpers-globally/HelpersSolutionExplorer.jpg": {
+    "hash": "59a74a42cbee",
+    "config": "2b4fe3dc",
+    "width": 209,
+    "height": 112,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2015-how-to-store-razor-helpers-globally/HelpersSolutionExplorer-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2015-how-to-store-razor-helpers-globally/HelpersSolutionExplorer-200.avif"
+        ],
+        [
+          209,
+          "/_img/post/2015-how-to-store-razor-helpers-globally/HelpersSolutionExplorer-209.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2015-how-to-store-razor-helpers-globally/HelpersSolutionExplorer-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2015-how-to-store-razor-helpers-globally/HelpersSolutionExplorer-200.webp"
+        ],
+        [
+          209,
+          "/_img/post/2015-how-to-store-razor-helpers-globally/HelpersSolutionExplorer-209.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2015-how-to-store-razor-helpers-globally/MyHelpersView.jpg": {
+    "hash": "3d86b66c3dc6",
+    "config": "2b4fe3dc",
+    "width": 319,
+    "height": 108,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2015-how-to-store-razor-helpers-globally/MyHelpersView-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2015-how-to-store-razor-helpers-globally/MyHelpersView-200.avif"
+        ],
+        [
+          319,
+          "/_img/post/2015-how-to-store-razor-helpers-globally/MyHelpersView-319.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2015-how-to-store-razor-helpers-globally/MyHelpersView-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2015-how-to-store-razor-helpers-globally/MyHelpersView-200.webp"
+        ],
+        [
+          319,
+          "/_img/post/2015-how-to-store-razor-helpers-globally/MyHelpersView-319.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2015-using-font-face-and-preventing-faux-styles/browser-font.jpg": {
+    "hash": "29eba48855af",
+    "config": "2b4fe3dc",
+    "width": 490,
+    "height": 65,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/browser-font-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/browser-font-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/browser-font-400.avif"
+        ],
+        [
+          490,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/browser-font-490.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/browser-font-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/browser-font-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/browser-font-400.webp"
+        ],
+        [
+          490,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/browser-font-490.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2015-using-font-face-and-preventing-faux-styles/font.png": {
+    "hash": "9ee5fab52ed1",
+    "config": "2b4fe3dc",
+    "width": 1020,
+    "height": 486,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/font-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/font-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/font-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/font-800.avif"
+        ],
+        [
+          1020,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/font-1020.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/font-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/font-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/font-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/font-800.webp"
+        ],
+        [
+          1020,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/font-1020.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2015-using-font-face-and-preventing-faux-styles/type-face-italic.jpg": {
+    "hash": "5e0fc7ca2185",
+    "config": "2b4fe3dc",
+    "width": 450,
+    "height": 71,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/type-face-italic-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/type-face-italic-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/type-face-italic-400.avif"
+        ],
+        [
+          450,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/type-face-italic-450.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/type-face-italic-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/type-face-italic-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/type-face-italic-400.webp"
+        ],
+        [
+          450,
+          "/_img/post/2015-using-font-face-and-preventing-faux-styles/type-face-italic-450.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2015/2015-8-tips-to-increase-front-end-website-performance/google-sprite-2015.png": {
+    "hash": "c2a9eb49936b",
+    "config": "2b4fe3dc",
+    "width": 167,
+    "height": 410,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/google-sprite-2015-96.avif"
+        ],
+        [
+          167,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/google-sprite-2015-167.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/google-sprite-2015-96.webp"
+        ],
+        [
+          167,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/google-sprite-2015-167.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-bad.jpg": {
+    "hash": "eb69a3c03bb6",
+    "config": "2b4fe3dc",
+    "width": 518,
+    "height": 158,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-bad-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-bad-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-bad-400.avif"
+        ],
+        [
+          518,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-bad-518.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-bad-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-bad-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-bad-400.webp"
+        ],
+        [
+          518,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-bad-518.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-good.jpg": {
+    "hash": "9c022eb0353d",
+    "config": "2b4fe3dc",
+    "width": 518,
+    "height": 154,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-good-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-good-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-good-400.avif"
+        ],
+        [
+          518,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-good-518.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-good-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-good-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-good-400.webp"
+        ],
+        [
+          518,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-good-518.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2015/2015-8-tips-to-increase-front-end-website-performance/wi-5.png": {
+    "hash": "4212a02f504c",
+    "config": "2b4fe3dc",
+    "width": 719,
+    "height": 490,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/wi-5-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/wi-5-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/wi-5-400.avif"
+        ],
+        [
+          719,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/wi-5-719.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/wi-5-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/wi-5-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/wi-5-400.webp"
+        ],
+        [
+          719,
+          "/_img/post/2015/2015-8-tips-to-increase-front-end-website-performance/wi-5-719.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2015/2015-setting-up-a-simple-angularjs-app-to-display-an-array/angularjs-logo-1024x547.png": {
+    "hash": "a9d5c607a31b",
+    "config": "2b4fe3dc",
+    "width": 1024,
+    "height": 547,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2015/2015-setting-up-a-simple-angularjs-app-to-display-an-array/angularjs-logo-1024x547-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2015/2015-setting-up-a-simple-angularjs-app-to-display-an-array/angularjs-logo-1024x547-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2015/2015-setting-up-a-simple-angularjs-app-to-display-an-array/angularjs-logo-1024x547-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2015/2015-setting-up-a-simple-angularjs-app-to-display-an-array/angularjs-logo-1024x547-800.avif"
+        ],
+        [
+          1024,
+          "/_img/post/2015/2015-setting-up-a-simple-angularjs-app-to-display-an-array/angularjs-logo-1024x547-1024.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2015/2015-setting-up-a-simple-angularjs-app-to-display-an-array/angularjs-logo-1024x547-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2015/2015-setting-up-a-simple-angularjs-app-to-display-an-array/angularjs-logo-1024x547-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2015/2015-setting-up-a-simple-angularjs-app-to-display-an-array/angularjs-logo-1024x547-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2015/2015-setting-up-a-simple-angularjs-app-to-display-an-array/angularjs-logo-1024x547-800.webp"
+        ],
+        [
+          1024,
+          "/_img/post/2015/2015-setting-up-a-simple-angularjs-app-to-display-an-array/angularjs-logo-1024x547-1024.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2016/2016-default-parameters-es6/es6-parameter.jpg": {
+    "hash": "569d8c64a735",
+    "config": "2b4fe3dc",
+    "width": 373,
+    "height": 94,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2016/2016-default-parameters-es6/es6-parameter-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2016/2016-default-parameters-es6/es6-parameter-200.avif"
+        ],
+        [
+          373,
+          "/_img/post/2016/2016-default-parameters-es6/es6-parameter-373.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2016/2016-default-parameters-es6/es6-parameter-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2016/2016-default-parameters-es6/es6-parameter-200.webp"
+        ],
+        [
+          373,
+          "/_img/post/2016/2016-default-parameters-es6/es6-parameter-373.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-8-useful-atom-packages/atom-editor-logo.jpg": {
+    "hash": "5f18d0fc3311",
+    "config": "2b4fe3dc",
+    "width": 600,
+    "height": 200,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/atom-editor-logo-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/atom-editor-logo-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/atom-editor-logo-400.avif"
+        ],
+        [
+          600,
+          "/_img/post/2017/2017-8-useful-atom-packages/atom-editor-logo-600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/atom-editor-logo-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/atom-editor-logo-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/atom-editor-logo-400.webp"
+        ],
+        [
+          600,
+          "/_img/post/2017/2017-8-useful-atom-packages/atom-editor-logo-600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-8-useful-atom-packages/drag-relative-path-example.gif": {
+    "width": 1468,
+    "height": 640
+  },
+  "/post/2017/2017-8-useful-atom-packages/file-icons-example.png": {
+    "hash": "f2d3a0078fbe",
+    "config": "2b4fe3dc",
+    "width": 1136,
+    "height": 616,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-example-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-example-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-example-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-example-800.avif"
+        ],
+        [
+          1136,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-example-1136.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-example-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-example-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-example-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-example-800.webp"
+        ],
+        [
+          1136,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-example-1136.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-8-useful-atom-packages/file-icons.png": {
+    "hash": "c221516b08da",
+    "config": "2b4fe3dc",
+    "width": 1650,
+    "height": 704,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-8-useful-atom-packages/file-icons-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-8-useful-atom-packages/highlight-example.gif": {
+    "width": 416,
+    "height": 154
+  },
+  "/post/2017/2017-8-useful-atom-packages/minimap-example.png": {
+    "hash": "783b67856da1",
+    "config": "2b4fe3dc",
+    "width": 2242,
+    "height": 800,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/minimap-example-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/minimap-example-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/minimap-example-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-8-useful-atom-packages/minimap-example-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-8-useful-atom-packages/minimap-example-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-8-useful-atom-packages/minimap-example-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/minimap-example-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/minimap-example-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/minimap-example-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-8-useful-atom-packages/minimap-example-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-8-useful-atom-packages/minimap-example-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-8-useful-atom-packages/minimap-example-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-8-useful-atom-packages/package-install.png": {
+    "hash": "d1e3d444969c",
+    "config": "2b4fe3dc",
+    "width": 1804,
+    "height": 786,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/package-install-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/package-install-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/package-install-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-8-useful-atom-packages/package-install-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-8-useful-atom-packages/package-install-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-8-useful-atom-packages/package-install-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/package-install-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/package-install-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/package-install-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-8-useful-atom-packages/package-install-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-8-useful-atom-packages/package-install-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-8-useful-atom-packages/package-install-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-8-useful-atom-packages/pigments-example.gif": {
+    "width": 845,
+    "height": 554
+  },
+  "/post/2017/2017-8-useful-atom-packages/pigments-logo.png": {
+    "hash": "0eb307100c0f",
+    "config": "2b4fe3dc",
+    "width": 1968,
+    "height": 572,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/pigments-logo-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/pigments-logo-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/pigments-logo-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-8-useful-atom-packages/pigments-logo-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-8-useful-atom-packages/pigments-logo-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-8-useful-atom-packages/pigments-logo-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/pigments-logo-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/pigments-logo-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/pigments-logo-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-8-useful-atom-packages/pigments-logo-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-8-useful-atom-packages/pigments-logo-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-8-useful-atom-packages/pigments-logo-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-8-useful-atom-packages/todo-example.png": {
+    "hash": "dedfd325b9fd",
+    "config": "2b4fe3dc",
+    "width": 1650,
+    "height": 1154,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/todo-example-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/todo-example-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/todo-example-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-8-useful-atom-packages/todo-example-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-8-useful-atom-packages/todo-example-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-8-useful-atom-packages/todo-example-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-8-useful-atom-packages/todo-example-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-8-useful-atom-packages/todo-example-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-8-useful-atom-packages/todo-example-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-8-useful-atom-packages/todo-example-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-8-useful-atom-packages/todo-example-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-8-useful-atom-packages/todo-example-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-angularjs-jest-unit-testing/angular-jest.png": {
+    "hash": "0368494ad949",
+    "config": "2b4fe3dc",
+    "width": 768,
+    "height": 236,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/angular-jest-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/angular-jest-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/angular-jest-400.avif"
+        ],
+        [
+          768,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/angular-jest-768.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/angular-jest-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/angular-jest-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/angular-jest-400.webp"
+        ],
+        [
+          768,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/angular-jest-768.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-fail.png": {
+    "hash": "ee264fb455b3",
+    "config": "2b4fe3dc",
+    "width": 1100,
+    "height": 166,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-fail-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-fail-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-fail-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-fail-800.avif"
+        ],
+        [
+          1100,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-fail-1100.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-fail-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-fail-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-fail-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-fail-800.webp"
+        ],
+        [
+          1100,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-fail-1100.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage.png": {
+    "hash": "657bca80e607",
+    "config": "2b4fe3dc",
+    "width": 1102,
+    "height": 496,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-800.avif"
+        ],
+        [
+          1102,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-1102.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-800.webp"
+        ],
+        [
+          1102,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-1102.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail.png": {
+    "hash": "a763a34c65ae",
+    "config": "2b4fe3dc",
+    "width": 1220,
+    "height": 588,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail-1200.avif"
+        ],
+        [
+          1220,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail-1220.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail-1200.webp"
+        ],
+        [
+          1220,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail-1220.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-angularjs-jest-unit-testing/jest-example-pass.png": {
+    "hash": "a4d0d207d768",
+    "config": "2b4fe3dc",
+    "width": 894,
+    "height": 324,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-pass-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-pass-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-pass-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-pass-800.avif"
+        ],
+        [
+          894,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-pass-894.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-pass-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-pass-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-pass-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-pass-800.webp"
+        ],
+        [
+          894,
+          "/_img/post/2017/2017-angularjs-jest-unit-testing/jest-example-pass-894.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-lischana-lane-photography/hugo.png": {
+    "hash": "7e508218163a",
+    "config": "2b4fe3dc",
+    "width": 1134,
+    "height": 450,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-lischana-lane-photography/hugo-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-lischana-lane-photography/hugo-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-lischana-lane-photography/hugo-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-lischana-lane-photography/hugo-800.avif"
+        ],
+        [
+          1134,
+          "/_img/post/2017/2017-lischana-lane-photography/hugo-1134.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-lischana-lane-photography/hugo-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-lischana-lane-photography/hugo-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-lischana-lane-photography/hugo-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-lischana-lane-photography/hugo-800.webp"
+        ],
+        [
+          1134,
+          "/_img/post/2017/2017-lischana-lane-photography/hugo-1134.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm.png": {
+    "hash": "dd857936f7ce",
+    "config": "2b4fe3dc",
+    "width": 2618,
+    "height": 358,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-tn.png": {
+    "hash": "704254dc521c",
+    "config": "2b4fe3dc",
+    "width": 700,
+    "height": 319,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-tn-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-tn-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-tn-400.avif"
+        ],
+        [
+          700,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-tn-700.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-tn-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-tn-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-tn-400.webp"
+        ],
+        [
+          700,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-tn-700.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio.png": {
+    "hash": "3b09c96fd211",
+    "config": "2b4fe3dc",
+    "width": 2880,
+    "height": 1314,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-lischana-lane-photography/lischana-lane-tweet.png": {
+    "hash": "4dac2708a449",
+    "config": "2b4fe3dc",
+    "width": 2470,
+    "height": 526,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-tweet-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-tweet-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-tweet-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-tweet-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-tweet-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-tweet-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-tweet-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-tweet-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-tweet-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-tweet-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-tweet-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-tweet-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery.png": {
+    "hash": "7cd80c564709",
+    "config": "2b4fe3dc",
+    "width": 1458,
+    "height": 748,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery-1200.avif"
+        ],
+        [
+          1458,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery-1458.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery-1200.webp"
+        ],
+        [
+          1458,
+          "/_img/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery-1458.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-moving-wordpress-hugo/hugo.png": {
+    "hash": "7e508218163a",
+    "config": "2b4fe3dc",
+    "width": 1134,
+    "height": 450,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-moving-wordpress-hugo/hugo-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-moving-wordpress-hugo/hugo-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-moving-wordpress-hugo/hugo-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-moving-wordpress-hugo/hugo-800.avif"
+        ],
+        [
+          1134,
+          "/_img/post/2017/2017-moving-wordpress-hugo/hugo-1134.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-moving-wordpress-hugo/hugo-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-moving-wordpress-hugo/hugo-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-moving-wordpress-hugo/hugo-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-moving-wordpress-hugo/hugo-800.webp"
+        ],
+        [
+          1134,
+          "/_img/post/2017/2017-moving-wordpress-hugo/hugo-1134.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-moving-wordpress-hugo/little-bobby-tables.png": {
+    "hash": "3ab72d771452",
+    "config": "2b4fe3dc",
+    "width": 666,
+    "height": 205,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-moving-wordpress-hugo/little-bobby-tables-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-moving-wordpress-hugo/little-bobby-tables-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-moving-wordpress-hugo/little-bobby-tables-400.avif"
+        ],
+        [
+          666,
+          "/_img/post/2017/2017-moving-wordpress-hugo/little-bobby-tables-666.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-moving-wordpress-hugo/little-bobby-tables-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-moving-wordpress-hugo/little-bobby-tables-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-moving-wordpress-hugo/little-bobby-tables-400.webp"
+        ],
+        [
+          666,
+          "/_img/post/2017/2017-moving-wordpress-hugo/little-bobby-tables-666.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2017/2017-style-readonly-attribute-css/input-readonly.png": {
+    "hash": "7ee039e078f1",
+    "config": "2b4fe3dc",
+    "width": 868,
+    "height": 266,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2017/2017-style-readonly-attribute-css/input-readonly-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-style-readonly-attribute-css/input-readonly-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-style-readonly-attribute-css/input-readonly-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-style-readonly-attribute-css/input-readonly-800.avif"
+        ],
+        [
+          868,
+          "/_img/post/2017/2017-style-readonly-attribute-css/input-readonly-868.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2017/2017-style-readonly-attribute-css/input-readonly-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2017/2017-style-readonly-attribute-css/input-readonly-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2017/2017-style-readonly-attribute-css/input-readonly-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2017/2017-style-readonly-attribute-css/input-readonly-800.webp"
+        ],
+        [
+          868,
+          "/_img/post/2017/2017-style-readonly-attribute-css/input-readonly-868.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow.png": {
+    "hash": "4b25e00128cb",
+    "config": "2b4fe3dc",
+    "width": 2428,
+    "height": 1568,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-user-details.png": {
+    "hash": "2d8e90388e0c",
+    "config": "2b4fe3dc",
+    "width": 400,
+    "height": 267,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-user-details-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-user-details-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-user-details-400.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-user-details-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-user-details-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-user-details-400.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-tn.png": {
+    "hash": "638aca29b901",
+    "config": "2b4fe3dc",
+    "width": 900,
+    "height": 600,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-tn-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-tn-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-tn-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-tn-800.avif"
+        ],
+        [
+          900,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-tn-900.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-tn-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-tn-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-tn-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-tn-800.webp"
+        ],
+        [
+          900,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-tn-900.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope.png": {
+    "hash": "8b2dc72899bd",
+    "config": "2b4fe3dc",
+    "width": 1500,
+    "height": 1000,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-1200.avif"
+        ],
+        [
+          1500,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-1500.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-1200.webp"
+        ],
+        [
+          1500,
+          "/_img/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-1500.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-hugo-netlify/build-options.png": {
+    "hash": "33818c8689e4",
+    "config": "2b4fe3dc",
+    "width": 2180,
+    "height": 1404,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/build-options-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/build-options-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/build-options-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/build-options-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/build-options-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-hugo-netlify/build-options-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/build-options-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/build-options-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/build-options-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/build-options-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/build-options-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-hugo-netlify/build-options-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-hugo-netlify/create-new-site.png": {
+    "hash": "58ccf055803f",
+    "config": "2b4fe3dc",
+    "width": 2594,
+    "height": 1394,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/create-new-site-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/create-new-site-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/create-new-site-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/create-new-site-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/create-new-site-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-hugo-netlify/create-new-site-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/create-new-site-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/create-new-site-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/create-new-site-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/create-new-site-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/create-new-site-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-hugo-netlify/create-new-site-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-hugo-netlify/custom-domain.png": {
+    "hash": "4a4060b0076b",
+    "config": "2b4fe3dc",
+    "width": 1876,
+    "height": 890,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/custom-domain-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/custom-domain-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/custom-domain-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/custom-domain-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/custom-domain-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-hugo-netlify/custom-domain-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/custom-domain-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/custom-domain-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/custom-domain-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/custom-domain-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/custom-domain-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-hugo-netlify/custom-domain-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-hugo-netlify/dns-verify-fail.png": {
+    "hash": "8f4b833dc79d",
+    "config": "2b4fe3dc",
+    "width": 1856,
+    "height": 902,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/dns-verify-fail-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/dns-verify-fail-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/dns-verify-fail-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/dns-verify-fail-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/dns-verify-fail-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-hugo-netlify/dns-verify-fail-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/dns-verify-fail-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/dns-verify-fail-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/dns-verify-fail-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/dns-verify-fail-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/dns-verify-fail-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-hugo-netlify/dns-verify-fail-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-hugo-netlify/hugo-netlify-tn.png": {
+    "hash": "a1d733c71d80",
+    "config": "2b4fe3dc",
+    "width": 400,
+    "height": 200,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-tn-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-tn-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-tn-400.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-tn-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-tn-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-tn-400.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-hugo-netlify/hugo-netlify.png": {
+    "hash": "0123b8f6a973",
+    "config": "2b4fe3dc",
+    "width": 800,
+    "height": 400,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-800.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/hugo-netlify-800.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-hugo-netlify/lets-encrypt.png": {
+    "hash": "937f21025919",
+    "config": "2b4fe3dc",
+    "width": 1240,
+    "height": 518,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/lets-encrypt-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/lets-encrypt-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/lets-encrypt-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/lets-encrypt-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/lets-encrypt-1200.avif"
+        ],
+        [
+          1240,
+          "/_img/post/2018/2018-hugo-netlify/lets-encrypt-1240.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/lets-encrypt-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/lets-encrypt-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/lets-encrypt-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/lets-encrypt-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/lets-encrypt-1200.webp"
+        ],
+        [
+          1240,
+          "/_img/post/2018/2018-hugo-netlify/lets-encrypt-1240.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-hugo-netlify/netlify-cd.png": {
+    "hash": "60bc791d1ca9",
+    "config": "2b4fe3dc",
+    "width": 816,
+    "height": 114,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/netlify-cd-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/netlify-cd-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/netlify-cd-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/netlify-cd-800.avif"
+        ],
+        [
+          816,
+          "/_img/post/2018/2018-hugo-netlify/netlify-cd-816.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/netlify-cd-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/netlify-cd-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/netlify-cd-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/netlify-cd-800.webp"
+        ],
+        [
+          816,
+          "/_img/post/2018/2018-hugo-netlify/netlify-cd-816.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-hugo-netlify/netlify-ci.png": {
+    "hash": "e7a7e2d969dc",
+    "config": "2b4fe3dc",
+    "width": 1566,
+    "height": 546,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/netlify-ci-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/netlify-ci-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/netlify-ci-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/netlify-ci-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/netlify-ci-1200.avif"
+        ],
+        [
+          1566,
+          "/_img/post/2018/2018-hugo-netlify/netlify-ci-1566.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/netlify-ci-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/netlify-ci-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/netlify-ci-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/netlify-ci-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/netlify-ci-1200.webp"
+        ],
+        [
+          1566,
+          "/_img/post/2018/2018-hugo-netlify/netlify-ci-1566.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-hugo-netlify/site-overview.png": {
+    "hash": "27dd9e4becff",
+    "config": "2b4fe3dc",
+    "width": 2494,
+    "height": 1430,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/site-overview-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/site-overview-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/site-overview-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/site-overview-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/site-overview-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-hugo-netlify/site-overview-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-hugo-netlify/site-overview-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-hugo-netlify/site-overview-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-hugo-netlify/site-overview-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-hugo-netlify/site-overview-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-hugo-netlify/site-overview-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-hugo-netlify/site-overview-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-massively-hugo-theme/hugo-massively-tn.png": {
+    "hash": "ad0dbaecd645",
+    "config": "2b4fe3dc",
+    "width": 900,
+    "height": 600,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-tn-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-tn-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-tn-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-tn-800.avif"
+        ],
+        [
+          900,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-tn-900.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-tn-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-tn-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-tn-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-tn-800.webp"
+        ],
+        [
+          900,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-tn-900.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-massively-hugo-theme/hugo-massively.png": {
+    "hash": "9a56eb0c110c",
+    "config": "2b4fe3dc",
+    "width": 1500,
+    "height": 1000,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-1200.avif"
+        ],
+        [
+          1500,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-1500.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-1200.webp"
+        ],
+        [
+          1500,
+          "/_img/post/2018/2018-massively-hugo-theme/hugo-massively-1500.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-reactjs-jest-snapshot-mocking/jest-snapshot-mocking.png": {
+    "hash": "b25113f5c95b",
+    "config": "2b4fe3dc",
+    "width": 659,
+    "height": 505,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/jest-snapshot-mocking-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/jest-snapshot-mocking-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/jest-snapshot-mocking-400.avif"
+        ],
+        [
+          659,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/jest-snapshot-mocking-659.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/jest-snapshot-mocking-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/jest-snapshot-mocking-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/jest-snapshot-mocking-400.webp"
+        ],
+        [
+          659,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/jest-snapshot-mocking-659.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-snapshot.png": {
+    "hash": "5a8795350f6a",
+    "config": "2b4fe3dc",
+    "width": 768,
+    "height": 150,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-snapshot-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-snapshot-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-snapshot-400.avif"
+        ],
+        [
+          768,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-snapshot-768.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-snapshot-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-snapshot-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-snapshot-400.webp"
+        ],
+        [
+          768,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-snapshot-768.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest.png": {
+    "hash": "751cb06bc97b",
+    "config": "2b4fe3dc",
+    "width": 400,
+    "height": 250,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-400.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-400.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error.png": {
+    "hash": "ac9e6560be8e",
+    "config": "2b4fe3dc",
+    "width": 2224,
+    "height": 1518,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal.png": {
+    "hash": "71cc0b24c02f",
+    "config": "2b4fe3dc",
+    "width": 774,
+    "height": 258,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-400.avif"
+        ],
+        [
+          774,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-774.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-400.webp"
+        ],
+        [
+          774,
+          "/_img/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-774.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2019/2019-add-body-class-gatsbyjs-fouc/body-class-removed.png": {
+    "hash": "fd882d7a66df",
+    "config": "2b4fe3dc",
+    "width": 330,
+    "height": 130,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-class-removed-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-class-removed-200.avif"
+        ],
+        [
+          330,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-class-removed-330.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-class-removed-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-class-removed-200.webp"
+        ],
+        [
+          330,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-class-removed-330.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2019/2019-add-body-class-gatsbyjs-fouc/body-no-class.png": {
+    "hash": "20e1cb62f288",
+    "config": "2b4fe3dc",
+    "width": 358,
+    "height": 71,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-no-class-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-no-class-200.avif"
+        ],
+        [
+          358,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-no-class-358.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-no-class-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-no-class-200.webp"
+        ],
+        [
+          358,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-no-class-358.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2019/2019-add-body-class-gatsbyjs-fouc/body-with-class.png": {
+    "hash": "6fa5f7332bda",
+    "config": "2b4fe3dc",
+    "width": 383,
+    "height": 76,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-with-class-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-with-class-200.avif"
+        ],
+        [
+          383,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-with-class-383.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-with-class-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-with-class-200.webp"
+        ],
+        [
+          383,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/body-with-class-383.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2019/2019-add-body-class-gatsbyjs-fouc/gatsbylogo.png": {
+    "hash": "23b41402ee03",
+    "config": "2b4fe3dc",
+    "width": 400,
+    "height": 200,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/gatsbylogo-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/gatsbylogo-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/gatsbylogo-400.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/gatsbylogo-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/gatsbylogo-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2019/2019-add-body-class-gatsbyjs-fouc/gatsbylogo-400.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup.png": {
+    "hash": "e8acdf4d5a51",
+    "config": "2b4fe3dc",
+    "width": 1566,
+    "height": 510,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup-1200.avif"
+        ],
+        [
+          1566,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup-1566.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup-1200.webp"
+        ],
+        [
+          1566,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup-1566.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping.png": {
+    "hash": "e3ebacc36cec",
+    "config": "2b4fe3dc",
+    "width": 1826,
+    "height": 700,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-600.png": {
+    "hash": "7d52063c545c",
+    "config": "2b4fe3dc",
+    "width": 600,
+    "height": 300,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-600-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-600-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-600-400.avif"
+        ],
+        [
+          600,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-600-600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-600-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-600-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-600-400.webp"
+        ],
+        [
+          600,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-600-600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-chartjs-filtering-duplicate-data/chartjs.png": {
+    "hash": "187f25ea16e5",
+    "config": "2b4fe3dc",
+    "width": 1000,
+    "height": 500,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-800.avif"
+        ],
+        [
+          1000,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-1000.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-800.webp"
+        ],
+        [
+          1000,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-1000.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-chartjs-filtering-duplicate-data/charts.png": {
+    "hash": "baf66c034542",
+    "config": "2b4fe3dc",
+    "width": 2830,
+    "height": 1258,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/charts-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/charts-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/charts-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/charts-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/charts-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/charts-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/charts-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/charts-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/charts-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/charts-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/charts-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-chartjs-filtering-duplicate-data/charts-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-codecov-monorepo/codecov-600w.png": {
+    "hash": "dec0086749ba",
+    "config": "2b4fe3dc",
+    "width": 600,
+    "height": 360,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-600w-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-600w-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-600w-400.avif"
+        ],
+        [
+          600,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-600w-600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-600w-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-600w-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-600w-400.webp"
+        ],
+        [
+          600,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-600w-600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-codecov-monorepo/codecov-pr.png": {
+    "hash": "2bdb430cd600",
+    "config": "2b4fe3dc",
+    "width": 1762,
+    "height": 728,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-pr-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-pr-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-pr-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-pr-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-pr-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-pr-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-pr-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-pr-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-pr-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-pr-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-pr-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-pr-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-codecov-monorepo/codecov-sunburst.png": {
+    "hash": "1f2618adb7a6",
+    "config": "2b4fe3dc",
+    "width": 1136,
+    "height": 1064,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-sunburst-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-sunburst-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-sunburst-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-sunburst-800.avif"
+        ],
+        [
+          1136,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-sunburst-1136.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-sunburst-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-sunburst-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-sunburst-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-sunburst-800.webp"
+        ],
+        [
+          1136,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-sunburst-1136.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-codecov-monorepo/codecov.png": {
+    "hash": "ecda5a167a23",
+    "config": "2b4fe3dc",
+    "width": 1000,
+    "height": 600,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-800.avif"
+        ],
+        [
+          1000,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-1000.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-800.webp"
+        ],
+        [
+          1000,
+          "/_img/post/2022/2022-codecov-monorepo/codecov-1000.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-displaying-strava-stats-using-webhooks/authorize.png": {
+    "hash": "f8caabd8cb37",
+    "config": "2b4fe3dc",
+    "width": 1520,
+    "height": 1170,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/authorize-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/authorize-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/authorize-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/authorize-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/authorize-1200.avif"
+        ],
+        [
+          1520,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/authorize-1520.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/authorize-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/authorize-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/authorize-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/authorize-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/authorize-1200.webp"
+        ],
+        [
+          1520,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/authorize-1520.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd.png": {
+    "hash": "dacca85ab6dd",
+    "config": "2b4fe3dc",
+    "width": 2838,
+    "height": 1144,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete.png": {
+    "hash": "081aadbd518b",
+    "config": "2b4fe3dc",
+    "width": 1202,
+    "height": 148,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete-1200.avif"
+        ],
+        [
+          1202,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete-1202.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete-1200.webp"
+        ],
+        [
+          1202,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete-1202.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-ytd-history.png": {
+    "hash": "cc80fbdc7f12",
+    "config": "2b4fe3dc",
+    "width": 1132,
+    "height": 150,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-ytd-history-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-ytd-history-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-ytd-history-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-ytd-history-800.avif"
+        ],
+        [
+          1132,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-ytd-history-1132.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-ytd-history-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-ytd-history-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-ytd-history-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-ytd-history-800.webp"
+        ],
+        [
+          1132,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-ytd-history-1132.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build.png": {
+    "hash": "72d55586642d",
+    "config": "2b4fe3dc",
+    "width": 2456,
+    "height": 1172,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot.png": {
+    "hash": "5cf3d6368931",
+    "config": "2b4fe3dc",
+    "width": 1718,
+    "height": 1462,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-diagram.png": {
+    "hash": "394bcf2b9edf",
+    "config": "2b4fe3dc",
+    "width": 1153,
+    "height": 1443,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-diagram-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-diagram-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-diagram-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-diagram-800.avif"
+        ],
+        [
+          1153,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-diagram-1153.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-diagram-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-diagram-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-diagram-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-diagram-800.webp"
+        ],
+        [
+          1153,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-diagram-1153.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-header.png": {
+    "hash": "fc6e4cda7e46",
+    "config": "2b4fe3dc",
+    "width": 1000,
+    "height": 100,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-header-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-header-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-header-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-header-800.avif"
+        ],
+        [
+          1000,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-header-1000.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-header-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-header-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-header-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-header-800.webp"
+        ],
+        [
+          1000,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-header-1000.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w1000.png": {
+    "hash": "9f593bd3f881",
+    "config": "2b4fe3dc",
+    "width": 1000,
+    "height": 600,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w1000-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w1000-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w1000-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w1000-800.avif"
+        ],
+        [
+          1000,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w1000-1000.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w1000-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w1000-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w1000-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w1000-800.webp"
+        ],
+        [
+          1000,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w1000-1000.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w600.png": {
+    "hash": "395ac121f610",
+    "config": "2b4fe3dc",
+    "width": 600,
+    "height": 360,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w600-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w600-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w600-400.avif"
+        ],
+        [
+          600,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w600-600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w600-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w600-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w600-400.webp"
+        ],
+        [
+          600,
+          "/_img/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w600-600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-github-profile-latest-posts/add-profile-repo.png": {
+    "hash": "9b3f75624c5f",
+    "config": "2b4fe3dc",
+    "width": 1470,
+    "height": 364,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-github-profile-latest-posts/add-profile-repo-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-github-profile-latest-posts/add-profile-repo-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-github-profile-latest-posts/add-profile-repo-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-github-profile-latest-posts/add-profile-repo-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-github-profile-latest-posts/add-profile-repo-1200.avif"
+        ],
+        [
+          1470,
+          "/_img/post/2022/2022-github-profile-latest-posts/add-profile-repo-1470.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-github-profile-latest-posts/add-profile-repo-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-github-profile-latest-posts/add-profile-repo-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-github-profile-latest-posts/add-profile-repo-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-github-profile-latest-posts/add-profile-repo-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-github-profile-latest-posts/add-profile-repo-1200.webp"
+        ],
+        [
+          1470,
+          "/_img/post/2022/2022-github-profile-latest-posts/add-profile-repo-1470.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml.png": {
+    "hash": "b424a5211874",
+    "config": "2b4fe3dc",
+    "width": 1840,
+    "height": 1084,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-github-profile-latest-posts/cover-latest-posts-1000w.png": {
+    "hash": "a93168355cb5",
+    "config": "2b4fe3dc",
+    "width": 1000,
+    "height": 589,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-1000w-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-1000w-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-1000w-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-1000w-800.avif"
+        ],
+        [
+          1000,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-1000w-1000.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-1000w-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-1000w-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-1000w-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-1000w-800.webp"
+        ],
+        [
+          1000,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-1000w-1000.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-github-profile-latest-posts/cover-latest-posts-600w.png": {
+    "hash": "616ed2499a77",
+    "config": "2b4fe3dc",
+    "width": 600,
+    "height": 353,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-600w-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-600w-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-600w-400.avif"
+        ],
+        [
+          600,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-600w-600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-600w-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-600w-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-600w-400.webp"
+        ],
+        [
+          600,
+          "/_img/post/2022/2022-github-profile-latest-posts/cover-latest-posts-600w-600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-github-profile-latest-posts/latest-posts.png": {
+    "hash": "a969e315f4cd",
+    "config": "2b4fe3dc",
+    "width": 1660,
+    "height": 362,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-github-profile-latest-posts/latest-posts-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-github-profile-latest-posts/latest-posts-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-github-profile-latest-posts/latest-posts-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-github-profile-latest-posts/latest-posts-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-github-profile-latest-posts/latest-posts-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-github-profile-latest-posts/latest-posts-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-github-profile-latest-posts/latest-posts-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-github-profile-latest-posts/latest-posts-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-github-profile-latest-posts/latest-posts-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-github-profile-latest-posts/latest-posts-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-github-profile-latest-posts/latest-posts-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-github-profile-latest-posts/latest-posts-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-github-profile-latest-posts/profile.png": {
+    "hash": "c288325fb6ad",
+    "config": "2b4fe3dc",
+    "width": 1822,
+    "height": 762,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-github-profile-latest-posts/profile-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-github-profile-latest-posts/profile-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-github-profile-latest-posts/profile-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-github-profile-latest-posts/profile-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-github-profile-latest-posts/profile-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-github-profile-latest-posts/profile-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-github-profile-latest-posts/profile-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-github-profile-latest-posts/profile-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-github-profile-latest-posts/profile-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-github-profile-latest-posts/profile-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-github-profile-latest-posts/profile-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-github-profile-latest-posts/profile-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate.png": {
+    "hash": "7cf363eda74e",
+    "config": "2b4fe3dc",
+    "width": 1844,
+    "height": 112,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot.png": {
+    "hash": "acdc99ac1a5a",
+    "config": "2b4fe3dc",
+    "width": 2870,
+    "height": 1448,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot.png": {
+    "hash": "cd8c086bf4a8",
+    "config": "2b4fe3dc",
+    "width": 3830,
+    "height": 1060,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example.png": {
+    "hash": "c65c6df56b62",
+    "config": "2b4fe3dc",
+    "width": 1428,
+    "height": 436,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example-1200.avif"
+        ],
+        [
+          1428,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example-1428.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example-1200.webp"
+        ],
+        [
+          1428,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example-1428.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click.png": {
+    "hash": "fdb860f63308",
+    "config": "2b4fe3dc",
+    "width": 2226,
+    "height": 798,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click.png": {
+    "hash": "554848dfcf09",
+    "config": "2b4fe3dc",
+    "width": 1200,
+    "height": 435,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click-1200.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click-1200.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-london-marathon/leaflet.png": {
+    "hash": "156b52f03ca2",
+    "config": "2b4fe3dc",
+    "width": 2876,
+    "height": 854,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-london-marathon/leaflet-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-london-marathon/leaflet-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-london-marathon/leaflet-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-london-marathon/leaflet-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-london-marathon/leaflet-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-london-marathon/leaflet-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-london-marathon/leaflet-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-london-marathon/leaflet-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-london-marathon/leaflet-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-london-marathon/leaflet-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-london-marathon/leaflet-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-london-marathon/leaflet-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-london-marathon/lm-canvas-img.png": {
+    "hash": "fe64a6c2b4a0",
+    "config": "2b4fe3dc",
+    "width": 2700,
+    "height": 1278,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-london-marathon/lm-canvas-img-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-london-marathon/lm-canvas-img-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-london-marathon/lm-canvas-img-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-london-marathon/lm-canvas-img-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-london-marathon/lm-canvas-img-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-london-marathon/lm-canvas-img-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-london-marathon/lm-canvas-img-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-london-marathon/lm-canvas-img-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-london-marathon/lm-canvas-img-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-london-marathon/lm-canvas-img-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-london-marathon/lm-canvas-img-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-london-marathon/lm-canvas-img-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-london-marathon/london-marathon-curtis-site.png": {
+    "hash": "4c894ca803da",
+    "config": "2b4fe3dc",
+    "width": 2488,
+    "height": 1642,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-london-marathon/london-marathon-curtis-site-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-london-marathon/london-marathon-curtis-site-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-london-marathon/london-marathon-curtis-site-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-london-marathon/london-marathon-curtis-site-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-london-marathon/london-marathon-curtis-site-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-london-marathon/london-marathon-curtis-site-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-london-marathon/london-marathon-curtis-site-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-london-marathon/london-marathon-curtis-site-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-london-marathon/london-marathon-curtis-site-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-london-marathon/london-marathon-curtis-site-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-london-marathon/london-marathon-curtis-site-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-london-marathon/london-marathon-curtis-site-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-london-marathon/london-marathon-site-donation-line-flow-diagram.png": {
+    "hash": "cca288c8ea16",
+    "config": "2b4fe3dc",
+    "width": 840,
+    "height": 998,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-london-marathon/london-marathon-site-donation-line-flow-diagram-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-london-marathon/london-marathon-site-donation-line-flow-diagram-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-london-marathon/london-marathon-site-donation-line-flow-diagram-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-london-marathon/london-marathon-site-donation-line-flow-diagram-800.avif"
+        ],
+        [
+          840,
+          "/_img/post/2026/2026-london-marathon/london-marathon-site-donation-line-flow-diagram-840.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-london-marathon/london-marathon-site-donation-line-flow-diagram-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-london-marathon/london-marathon-site-donation-line-flow-diagram-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-london-marathon/london-marathon-site-donation-line-flow-diagram-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-london-marathon/london-marathon-site-donation-line-flow-diagram-800.webp"
+        ],
+        [
+          840,
+          "/_img/post/2026/2026-london-marathon/london-marathon-site-donation-line-flow-diagram-840.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-obsidian-tasks-gtd/colored-tags-example.png": {
+    "hash": "398a781f83fd",
+    "config": "2b4fe3dc",
+    "width": 914,
+    "height": 206,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/colored-tags-example-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/colored-tags-example-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/colored-tags-example-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/colored-tags-example-800.avif"
+        ],
+        [
+          914,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/colored-tags-example-914.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/colored-tags-example-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/colored-tags-example-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/colored-tags-example-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/colored-tags-example-800.webp"
+        ],
+        [
+          914,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/colored-tags-example-914.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram.png": {
+    "hash": "d61c71b1d92d",
+    "config": "2b4fe3dc",
+    "width": 1418,
+    "height": 1413,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram-1200.avif"
+        ],
+        [
+          1418,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram-1418.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram-1200.webp"
+        ],
+        [
+          1418,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram-1418.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view.png": {
+    "hash": "effb7dccc654",
+    "config": "2b4fe3dc",
+    "width": 1552,
+    "height": 862,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view-1200.avif"
+        ],
+        [
+          1552,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view-1552.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view-1200.webp"
+        ],
+        [
+          1552,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view-1552.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut.png": {
+    "hash": "1b5fbf998f41",
+    "config": "2b4fe3dc",
+    "width": 1544,
+    "height": 140,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut-1200.avif"
+        ],
+        [
+          1544,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut-1544.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut-1200.webp"
+        ],
+        [
+          1544,
+          "/_img/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut-1544.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-tech-stack-snapshot/banner.png": {
+    "hash": "5d67f9b2031b",
+    "config": "2b4fe3dc",
+    "width": 2000,
+    "height": 421,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-tech-stack-snapshot/banner-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-tech-stack-snapshot/banner-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-tech-stack-snapshot/banner-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-tech-stack-snapshot/banner-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-tech-stack-snapshot/banner-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-tech-stack-snapshot/banner-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-tech-stack-snapshot/banner-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-tech-stack-snapshot/banner-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-tech-stack-snapshot/banner-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-tech-stack-snapshot/banner-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-tech-stack-snapshot/banner-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-tech-stack-snapshot/banner-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-tech-stack-snapshot/cover.png": {
+    "hash": "7a77fb8baa7d",
+    "config": "2b4fe3dc",
+    "width": 2000,
+    "height": 915,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-tech-stack-snapshot/cover-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-tech-stack-snapshot/cover-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-tech-stack-snapshot/cover-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-tech-stack-snapshot/cover-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-tech-stack-snapshot/cover-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-tech-stack-snapshot/cover-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-tech-stack-snapshot/cover-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-tech-stack-snapshot/cover-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-tech-stack-snapshot/cover-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-tech-stack-snapshot/cover-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-tech-stack-snapshot/cover-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-tech-stack-snapshot/cover-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/daily-commands/daily-commands.png": {
+    "hash": "cb2fd6043aeb",
+    "config": "2b4fe3dc",
+    "width": 1024,
+    "height": 1024,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/daily-commands/daily-commands-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/daily-commands/daily-commands-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/daily-commands/daily-commands-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/daily-commands/daily-commands-800.avif"
+        ],
+        [
+          1024,
+          "/_img/post/daily-commands/daily-commands-1024.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/daily-commands/daily-commands-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/daily-commands/daily-commands-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/daily-commands/daily-commands-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/daily-commands/daily-commands-800.webp"
+        ],
+        [
+          1024,
+          "/_img/post/daily-commands/daily-commands-1024.webp"
+        ]
+      ]
+    }
+  },
+  "/post/github-profile-readme/cover-latest-posts-600w.png": {
+    "hash": "616ed2499a77",
+    "config": "2b4fe3dc",
+    "width": 600,
+    "height": 353,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/github-profile-readme/cover-latest-posts-600w-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/github-profile-readme/cover-latest-posts-600w-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/github-profile-readme/cover-latest-posts-600w-400.avif"
+        ],
+        [
+          600,
+          "/_img/post/github-profile-readme/cover-latest-posts-600w-600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/github-profile-readme/cover-latest-posts-600w-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/github-profile-readme/cover-latest-posts-600w-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/github-profile-readme/cover-latest-posts-600w-400.webp"
+        ],
+        [
+          600,
+          "/_img/post/github-profile-readme/cover-latest-posts-600w-600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/jquery-data-storage/jquery.jpg": {
+    "hash": "31325936acd0",
+    "config": "2b4fe3dc",
+    "width": 280,
+    "height": 200,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/jquery-data-storage/jquery-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/jquery-data-storage/jquery-200.avif"
+        ],
+        [
+          280,
+          "/_img/post/jquery-data-storage/jquery-280.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/jquery-data-storage/jquery-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/jquery-data-storage/jquery-200.webp"
+        ],
+        [
+          280,
+          "/_img/post/jquery-data-storage/jquery-280.webp"
+        ]
+      ]
+    }
+  }
+}
