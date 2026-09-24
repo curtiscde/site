@@ -37,7 +37,7 @@ export const config: Config = {
     bluesky: 'https://bsky.app/profile/curtiscode.dev',
     stackoverflow: 'https://stackoverflow.com/users/370103/curtis',
     github: 'https://github.com/curtiscde',
-    linkedin: 'https://www.linkedin.com/in/curtis-timson-89040a37/',
+    linkedin: 'https://www.linkedin.com/in/curtiscode/',
     rss: '/rss.xml'
   },
   analytics: {
