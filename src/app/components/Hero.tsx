@@ -9,7 +9,7 @@ const { title, subtitle } = config
 
 /**
  * `compact` keeps the title/subtitle but shortens the banner.
- * `bare` drops the text entirely for a thin band carrying a single tag row.
+ * `bare` drops the text entirely for a thin band carrying one title row and one tag row.
  */
 type HeroVariant = 'compact' | 'bare'
 
