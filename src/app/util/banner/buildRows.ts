@@ -58,9 +58,12 @@ function deal(items: BannerItem[], rowCount: number): BannerItem[][] {
  * so the readable content sits where the eye already is and the outer rows read as
  * texture. With an even row count the peak falls between the two centre rows and
  * neither quite reaches `maxOpacity` — intentional, it keeps the ramp symmetrical.
+ *
+ * One or two rows have no middle to frame: the ramp would put a pair at `minOpacity`,
+ * leaving the bare strip as nothing but faint edges. They get `maxOpacity` instead.
  */
 function rampOpacity(index: number, total: number, min: number, max: number): number {
-  if (total <= 1) return max
+  if (total <= 2) return max
   const centre = (total - 1) / 2
   const distance = Math.abs(index - centre) / centre
   return Number((min + (max - min) * (1 - distance)).toFixed(3))

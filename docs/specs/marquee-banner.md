@@ -160,7 +160,7 @@ above were written by confirming they **fail** against the previous component.
 
 1. `/` renders `.hero` at 268px with 8 marquee rows, a frosted title panel and the avatar.
 2. `/cv` renders `hero--compact`; heading and subtitle are stacked, not side by side.
-3. `/uses` and `/privacy-policy` render `hero--bare` at 6rem: one tag row, no panel.
+3. `/uses` and `/privacy-policy` render `hero--bare` at 6rem: one title row and one tag row, no panel.
 4. `/tags` renders the full-height banner with `--hero-card-overlap: 0`, since it has no grid.
 5. `/tag/<tag>` marks that tag `hero-item--active` in both runs.
 6. Every `.hero-item` in every run is an `<a>` with a valid `href`; the duplicate run is

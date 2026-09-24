@@ -76,6 +76,11 @@ describe('buildRows', () => {
       expect(rows).toHaveLength(1)
       expect(rows[0].opacity).toBe(base.maxOpacity)
     })
+
+    it('gives a pair of rows the maximum, since neither is an outer row framing a middle', () => {
+      const rows = buildRows({ ...base, titleRowCount: 1, tagRowCount: 1 })
+      expect(rows.map((r) => r.opacity)).toEqual([base.maxOpacity, base.maxOpacity])
+    })
   })
 
   describe('durations', () => {
@@ -96,12 +101,12 @@ describe('buildRows', () => {
   })
 
   describe('bare composition', () => {
-    it('builds a single tag row and no title rows', () => {
-      const rows = buildRows({ ...base, titleRowCount: 0, tagRowCount: 1 })
+    it('builds one title row then one tag row, each carrying every item of its kind', () => {
+      const rows = buildRows({ ...base, titleRowCount: 1, tagRowCount: 1 })
 
-      expect(rows).toHaveLength(1)
-      expect(rows[0].kind).toBe('tag')
-      expect(rows[0].items).toHaveLength(base.tags.length)
+      expect(rows.map((r) => r.kind)).toEqual(['title', 'tag'])
+      expect(rows[0].items).toHaveLength(base.titles.length)
+      expect(rows[1].items).toHaveLength(base.tags.length)
     })
   })
 
