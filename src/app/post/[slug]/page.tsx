@@ -55,7 +55,7 @@ export async function generateMetadata(
       type: 'article',
       url: postUrl,
       siteName,
-      publishedTime: date.toString(),
+      publishedTime: date.toISOString(),
       authors: author ? [author] : undefined,
       // Display names, for the same reason as JSON-LD `keywords`: `article:tag` is
       // read as prose by crawlers and unfurlers, so it wants `c#` rather than the
