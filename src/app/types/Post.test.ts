@@ -83,6 +83,7 @@ describe('transformPost code highlighting', () => {
     ['clike', 'c'],
     ['zsh', 'bash'],
     ['md', 'markdown'],
+    ['ts', 'typescript'],
   ])('maps the legacy language name "%s" to "%s"', (alias, expected) => {
     expect(render(`\`\`\`${alias}\ncontent\n\`\`\``)).toContain(`language-${expected}`);
   });
@@ -108,6 +109,50 @@ describe('transformPost code highlighting', () => {
     const html = render('```js\nconst x = "<script>alert(1)</script>";\n```');
     expect(html).not.toContain('<script>alert(1)</script>');
     expect(html).toContain('&lt;script&gt;');
+  });
+});
+
+describe('transformPost code copy button', () => {
+  const block = (content: string) => {
+    const doc = new DOMParser().parseFromString(
+      transformPost({ ...basePost, content }).contentHtml, 'text/html');
+    return doc.querySelector('.code-block') as HTMLElement;
+  };
+
+  it('wraps each block so the button can sit outside the scrolling <pre>', () => {
+    const wrapper = block('```js\nconst a = 1;\n```');
+    expect(wrapper).not.toBeNull();
+    expect(wrapper.firstElementChild?.tagName).toBe('PRE');
+    expect(wrapper.querySelector('pre > code.language-js')).not.toBeNull();
+    expect(wrapper.querySelector('pre button')).toBeNull();
+  });
+
+  it('ships the button hidden, for the client to reveal once it can copy', () => {
+    const button = block('```js\nconst a = 1;\n```').querySelector('button.code-block__copy');
+    expect(button).not.toBeNull();
+    expect(button?.getAttribute('type')).toBe('button');
+    expect(button?.getAttribute('aria-label')).toBe('Copy code');
+    expect(button?.hasAttribute('hidden')).toBe(true);
+  });
+
+  it('includes both icons, hidden from assistive tech', () => {
+    const icons = block('```js\nconst a = 1;\n```').querySelectorAll('button svg');
+    expect(icons).toHaveLength(2);
+    icons.forEach(icon => expect(icon.getAttribute('aria-hidden')).toBe('true'));
+  });
+
+  it.each([
+    ['```js\nconst a = 1;\n```', 'js'],
+    ['```zsh\nls\n```', 'bash'],
+    ['```ts\nconst a = 1;\n```', 'typescript'],
+    ['```\nplain text\n```', 'none'],
+    ['```notalanguage\nconst a = 1;\n```', 'none'],
+  ])('records the resolved language of %j as "%s"', (markdown, expected) => {
+    expect(block(markdown).dataset.language).toBe(expected);
+  });
+
+  it('wraps an indented code block too', () => {
+    expect(block('Text\n\n    const a = 1;\n')).not.toBeNull();
   });
 });
 

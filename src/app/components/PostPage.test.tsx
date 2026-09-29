@@ -65,3 +65,36 @@ describe('PostPage article content', () => {
     )
   })
 })
+
+describe('PostPage code copy', () => {
+  const codePost: Post = {
+    ...basePost,
+    contentHtml: '<div class="code-block" data-language="js">'
+      + '<pre><code class="hljs language-js">a</code></pre>'
+      + '<button type="button" class="code-block__copy" aria-label="Copy code" hidden></button>'
+      + '</div>',
+  }
+
+  beforeEach(() => {
+    Object.defineProperty(navigator, 'clipboard', { value: { writeText: jest.fn() }, configurable: true })
+  })
+
+  it('brings the build-time copy buttons to life', () => {
+    render(<PostPage post={codePost} relatedPosts={[]} />)
+    expect(screen.getByRole('button', { name: 'Copy code' })).toBeVisible()
+  })
+
+  it('keeps the article DOM when it re-renders with the same content', () => {
+    // React compares `dangerouslySetInnerHTML` by object identity, so a fresh
+    // `{ __html }` on every render re-sets innerHTML and wipes what the copy buttons
+    // and the lightbox have done to it.
+    const { rerender } = render(<PostPage post={codePost} relatedPosts={[]} />)
+    rerender(<PostPage post={{ ...codePost }} relatedPosts={[]} />)
+    expect(screen.getByRole('button', { name: 'Copy code' })).toBeVisible()
+  })
+
+  it('renders one live region for the copy announcements', () => {
+    const { container } = render(<PostPage post={codePost} relatedPosts={[]} />)
+    expect(container.querySelectorAll('[aria-live="polite"]')).toHaveLength(1)
+  })
+})
