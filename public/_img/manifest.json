@@ -4727,6 +4727,358 @@
       ]
     }
   },
+  "/post/2026/2026-how-i-use-claude-code/claude-usage-tracker-bluesky.png": {
+    "hash": "d1e54c276de1",
+    "config": "2b4fe3dc",
+    "width": 1114,
+    "height": 898,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-how-i-use-claude-code/claude-usage-tracker-bluesky-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-how-i-use-claude-code/claude-usage-tracker-bluesky-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-how-i-use-claude-code/claude-usage-tracker-bluesky-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-how-i-use-claude-code/claude-usage-tracker-bluesky-800.avif"
+        ],
+        [
+          1114,
+          "/_img/post/2026/2026-how-i-use-claude-code/claude-usage-tracker-bluesky-1114.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-how-i-use-claude-code/claude-usage-tracker-bluesky-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-how-i-use-claude-code/claude-usage-tracker-bluesky-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-how-i-use-claude-code/claude-usage-tracker-bluesky-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-how-i-use-claude-code/claude-usage-tracker-bluesky-800.webp"
+        ],
+        [
+          1114,
+          "/_img/post/2026/2026-how-i-use-claude-code/claude-usage-tracker-bluesky-1114.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-how-i-use-claude-code/cover.png": {
+    "hash": "9f24a514beec",
+    "config": "2b4fe3dc",
+    "width": 2000,
+    "height": 1047,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-how-i-use-claude-code/cover-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-how-i-use-claude-code/cover-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-how-i-use-claude-code/cover-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-how-i-use-claude-code/cover-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-how-i-use-claude-code/cover-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-how-i-use-claude-code/cover-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-how-i-use-claude-code/cover-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-how-i-use-claude-code/cover-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-how-i-use-claude-code/cover-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-how-i-use-claude-code/cover-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-how-i-use-claude-code/cover-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-how-i-use-claude-code/cover-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-how-i-use-claude-code/github-pr-checks.png": {
+    "hash": "300df102b2bc",
+    "config": "2b4fe3dc",
+    "width": 1894,
+    "height": 1086,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-how-i-use-claude-code/github-pr-checks-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-how-i-use-claude-code/github-pr-checks-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-how-i-use-claude-code/github-pr-checks-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-how-i-use-claude-code/github-pr-checks-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-how-i-use-claude-code/github-pr-checks-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-how-i-use-claude-code/github-pr-checks-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-how-i-use-claude-code/github-pr-checks-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-how-i-use-claude-code/github-pr-checks-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-how-i-use-claude-code/github-pr-checks-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-how-i-use-claude-code/github-pr-checks-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-how-i-use-claude-code/github-pr-checks-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-how-i-use-claude-code/github-pr-checks-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown.png": {
+    "hash": "c9e2ed6c1b94",
+    "config": "2b4fe3dc",
+    "width": 1968,
+    "height": 184,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs.png": {
+    "hash": "686fc03e87d8",
+    "config": "2b4fe3dc",
+    "width": 2880,
+    "height": 1362,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-how-i-use-claude-code/workflow-diagram.png": {
+    "hash": "b076532ae551",
+    "config": "2b4fe3dc",
+    "width": 1776,
+    "height": 448,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-how-i-use-claude-code/workflow-diagram-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-how-i-use-claude-code/workflow-diagram-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-how-i-use-claude-code/workflow-diagram-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-how-i-use-claude-code/workflow-diagram-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-how-i-use-claude-code/workflow-diagram-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-how-i-use-claude-code/workflow-diagram-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-how-i-use-claude-code/workflow-diagram-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-how-i-use-claude-code/workflow-diagram-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-how-i-use-claude-code/workflow-diagram-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-how-i-use-claude-code/workflow-diagram-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-how-i-use-claude-code/workflow-diagram-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-how-i-use-claude-code/workflow-diagram-1600.webp"
+        ]
+      ]
+    }
+  },
   "/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot.png": {
     "hash": "cd8c086bf4a8",
     "config": "2b4fe3dc",
