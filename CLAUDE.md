@@ -28,8 +28,8 @@ This is **Curtis Lane's personal blog** (curtiscode.dev), a Next.js 15 static si
 Markdown posts are loaded at build time:
 1. `getPosts()` (`src/app/util/posts/`) reads all `.md` files recursively
 2. `gray-matter` parses YAML frontmatter; content is validated with a Zod schema
-3. `showdown` converts markdown body to HTML
-4. `highlight.js` handles syntax highlighting (JS, Bash, TS, CSS)
+3. `marked` converts markdown body to HTML, with custom renderers in `src/app/types/Post.ts`
+4. `highlight.js` highlights code blocks at build time inside the `code` renderer, so it never reaches the browser
 
 Post frontmatter requires: `id` (GUID string, e.g. `550e8400-e29b-41d4-a716-446655440000`), `title`, `slug`, `date` (format: `2026-01-15T00:00:00`), `tags` (array). Optional: `description`, `image`, `author`.
 
