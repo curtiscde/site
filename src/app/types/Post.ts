@@ -3,6 +3,7 @@ import { marked, type Token } from 'marked';
 import hljs from 'highlight.js';
 import { renderPicture, resolveImage, type ImageVariantSet } from '../util/images';
 import { config } from "../config";
+import { COPY_ICON, DONE_ICON } from '../components/CodeCopy/codeBlockIcons';
 
 export function getOrdinalSuffix(day: number): string {
   if (day > 3 && day < 21) return 'th';
@@ -22,6 +23,8 @@ const LANGUAGE_ALIASES: Record<string, string> = {
   clike: 'c',
   markup: 'xml',
   md: 'markdown',
+  // Posts use both spellings; one name keeps the `copy_code` analytics from splitting.
+  ts: 'typescript',
   zsh: 'bash',
 };
 
@@ -59,7 +62,14 @@ marked.use({
       // The `hljs` class must sit on <code> — that is what the atom-one-dark
       // stylesheet targets for token colours.
       const className = isKnown ? `hljs language-${language}` : 'hljs';
-      return `<pre><code class="${className}">${highlighted}</code></pre>`;
+      // The wrapper, not <pre>, positions the copy button: <pre> scrolls sideways, and
+      // the button would scroll away with it. The button ships `hidden` — CodeCopy
+      // reveals it once it knows the clipboard API is there. `data-language` is what
+      // the copy event reports, so the client never has to parse class names.
+      return `<div class="code-block" data-language="${isKnown ? language : 'none'}">` +
+        `<pre><code class="${className}">${highlighted}</code></pre>` +
+        `<button type="button" class="code-block__copy" aria-label="Copy code" hidden>` +
+        `${COPY_ICON}${DONE_ICON}</button></div>`;
     },
     // In-article images become responsive <picture> markup against the build-time
     // manifest. The markdown alt text doubles as a visible caption.
