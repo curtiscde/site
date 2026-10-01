@@ -2,6 +2,7 @@ import { config } from "../config"
 import { getBannerRows, type BannerItem, type BannerRow, type BannerVariant } from "../util/banner"
 import { displayTag } from "../util/tags"
 import { BannerPointer } from "./BannerPointer"
+import { BannerSpotlight } from "./BannerSpotlight"
 import { SiteImage } from "./SiteImage"
 import "./Hero.scss"
 
@@ -142,6 +143,7 @@ export const Hero = ({ tag, title, subtitle, variant, rows }: HeroProps) => {
   return (
     <div className={variant != null ? `hero hero--${variant}` : "hero"}>
       <BannerPointer />
+      <BannerSpotlight />
       <Field />
       <div className="hero-rows">
         {bannerRows.map((row, index) => (
