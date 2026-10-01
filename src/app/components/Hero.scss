@@ -203,9 +203,77 @@
   animation-play-state: paused;
 }
 
+// The fallback before BannerSpotlight mounts, and on touch, which it ignores.
 .hero-row:hover,
 .hero-row:focus-within {
   opacity: 1;
+}
+
+// Registered so they interpolate. A gradient can't transition, so the spotlight fades
+// via --spot-k scaling the mask, and the edges slide when moving chip to chip.
+@property --spot-k {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --spot-l {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --spot-r {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+// The row sits at full opacity and the mask carries its resting opacity instead, so at
+// --spot-k 0 it renders exactly as an unlit row. Away from the chip, alpha follows
+// o + (1 - o) * (1 - smoothstep(t)) * k, t running 0..1 across --spot-reach; the stop
+// weights below are that curve sampled at quarters.
+.hero[data-spotlight] .hero-row {
+  --spot-reach: 320px;
+  --spot-o: var(--hero-row-opacity);
+  --spot-lift: calc((1 - var(--spot-o)) * var(--spot-k));
+
+  opacity: 1;
+  transition: --spot-k 0.18s ease;
+
+  $spotlight: linear-gradient(
+    to right,
+    rgb(0 0 0 / var(--spot-o)) calc(var(--spot-l) - var(--spot-reach)),
+    rgb(0 0 0 / calc(var(--spot-o) + var(--spot-lift) * 0.156)) calc(var(--spot-l) - var(--spot-reach) * 0.75),
+    rgb(0 0 0 / calc(var(--spot-o) + var(--spot-lift) * 0.5)) calc(var(--spot-l) - var(--spot-reach) * 0.5),
+    rgb(0 0 0 / calc(var(--spot-o) + var(--spot-lift) * 0.844)) calc(var(--spot-l) - var(--spot-reach) * 0.25),
+    rgb(0 0 0 / calc(var(--spot-o) + var(--spot-lift))) var(--spot-l),
+    rgb(0 0 0 / calc(var(--spot-o) + var(--spot-lift))) var(--spot-r),
+    rgb(0 0 0 / calc(var(--spot-o) + var(--spot-lift) * 0.844)) calc(var(--spot-r) + var(--spot-reach) * 0.25),
+    rgb(0 0 0 / calc(var(--spot-o) + var(--spot-lift) * 0.5)) calc(var(--spot-r) + var(--spot-reach) * 0.5),
+    rgb(0 0 0 / calc(var(--spot-o) + var(--spot-lift) * 0.156)) calc(var(--spot-r) + var(--spot-reach) * 0.75),
+    rgb(0 0 0 / var(--spot-o)) calc(var(--spot-r) + var(--spot-reach))
+  );
+  mask-image: $spotlight;
+  -webkit-mask-image: $spotlight;
+
+  // Edges slide only while lit, i.e. chip to chip. BannerSpotlight lands them before
+  // adding the class, so a row lighting up never sweeps in from its last position.
+  &.is-spot {
+    --spot-k: 1;
+    transition: --spot-k 0.18s ease, --spot-l 0.18s ease, --spot-r 0.18s ease;
+  }
+
+  // A touch tap never gets .is-spot, so without this the fallback above would be
+  // swallowed by the mask and the tapped row would not brighten at all. Touch-only: with
+  // a mouse, the row is taller than its chips, and the strip above and below them would
+  // flash the whole row on every time the pointer slipped off a chip.
+  @media (hover: none) {
+    &:is(:hover, :focus-within):not(.is-spot) {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
 }
 
 // Hover must not use a palette colour: the background IS the palette, so amber text
@@ -337,6 +405,12 @@ a.hero-item:focus-visible {
   .hero-track,
   .hero-bands {
     animation: none !important;
+  }
+
+  // The spotlight still runs under reduced motion; only its fade and slide go.
+  .hero[data-spotlight] .hero-row,
+  .hero[data-spotlight] .hero-row.is-spot {
+    transition: none;
   }
 
   // BannerPointer bails out on reduced-motion too; this also pins the transform so a

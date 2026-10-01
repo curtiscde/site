@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * The banner's only client JavaScript. Renders nothing: it attaches one passive
+ * Drives the colour field's parallax. Renders nothing: it attaches one passive
  * pointermove listener and writes two custom properties, so the banner markup stays
  * server-rendered and the CSS does the work.
  *
