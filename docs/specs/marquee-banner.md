@@ -170,11 +170,51 @@ above were written by confirming they **fail** against the previous component.
 9. `npm run check:bundle` passes within the 190 KB budget.
 10. `npm run test:ci`, `npm run lint` and `npm run build` all pass.
 
+## Performance
+
+Audited 2026-10-03 against a production build (`npm run build`, `out/` served statically), in
+Chrome driven over the DevTools Protocol at 1440×900 @2x with 4× CPU throttling, on an Apple
+M5 Pro. Each figure is the median of five 5-second runs. The bar for a change that could alter
+the look was set in advance: it had to remove dropped frames, or save at least 2ms per frame.
+
+**Fixed: the parallax restyled the whole banner on every pointer frame.** `BannerPointer`
+wrote `--hero-mx`/`--hero-my` onto `.hero`. Custom properties inherit, so every write
+invalidated every element in the banner — ~400 marquee anchors across both runs — and the
+listener is on `window`, so it happened wherever the pointer was on the page. The properties
+now go on `.hero-parallax`, the only element that reads them.
+
+| Pointer moving, 4× throttle | Before | After |
+|---|---|---|
+| Renderer main thread busy | 461 ms/s | 308 ms/s |
+| Elements per style recalc (median / p90) | 115 / 445 | 38 / 117 |
+| Single write + style flush, unthrottled | ~1.2 ms | ~0.06 ms |
+
+What remains while the pointer is over the banner is the hover pause and `BannerSpotlight`,
+which is the behaviour itself. Over the post cards below, the page is back to ordinary input
+handling (~130 ms/s).
+
+**Measured and deliberately left alone.** Each was A/B'd by injecting an override into the
+same build. None dropped a frame, and the GPU draw cost of the whole banner is 0.14–0.22ms per
+frame, so no saving could reach the 2ms bar:
+
+- `backdrop-filter` on `.hero-panel` — no measurable saving.
+- `filter: blur(18px)` on `.hero-bands` — ~0.04ms/frame.
+- `mix-blend-mode: overlay` on the cross band — no measurable saving.
+- The edge-fade and spotlight masks — ~0.06ms/frame.
+
+**Not added: pausing off screen.** With the banner scrolled out of view Chrome already stops
+producing frames for it (0.2 fps measured), so an IntersectionObserver would be client JS for
+no gain. Revisit only if Safari is shown to keep drawing.
+
+**Not measurable here: sub-pixel stepping.** The rows move 0.2–0.35px per frame, which can
+read as shimmer on some browsers. The speeds are tuned, so any fix must keep them identical;
+judge it by eye on a real device, not in a trace.
+
 ## Deferred
 
 - **Sticky navbar**, with the `Header`-into-`layout.tsx` question.
-- **No tests for `getBannerRows` or `BannerPointer`.** The row-count and duration constants and
-  the pointer clamp are currently unverified.
+- **No tests for `getBannerRows`.** The row-count and duration constants are currently
+  unverified. `BannerPointer` is covered by `BannerPointer.test.tsx`.
 - **`--hero-card-overlap` uses `:has()`.** Browsers without it fall back to `0`, sitting the
   title 24px low on listing pages — degraded, not broken.
 - **Stale generated variants.** `public/_img/images/cover-*` (10 files) remain on disk from
