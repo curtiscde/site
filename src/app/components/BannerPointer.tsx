@@ -15,7 +15,12 @@ import { useEffect } from 'react'
 export function BannerPointer() {
   useEffect(() => {
     const el = document.querySelector<HTMLElement>('.hero')
-    if (el == null) return
+    // The properties go on the parallax wrapper, not on .hero. Custom properties inherit,
+    // so writing them on .hero invalidated the style of every element in the banner —
+    // ~400 marquee anchors — on every pointer frame, anywhere on the page. That measured
+    // ~1.2ms per write unthrottled against ~0.06ms here; the wrapper has three children.
+    const target = el?.querySelector<HTMLElement>('.hero-parallax')
+    if (el == null || target == null) return
     // matchMedia is absent in jsdom and in older browsers. Treat that as "no stated
     // preference" rather than crashing the effect — the CSS still honours the query.
     if (typeof window.matchMedia === 'function'
@@ -27,8 +32,8 @@ export function BannerPointer() {
 
     const apply = () => {
       frame = 0
-      el.style.setProperty('--hero-mx', x.toFixed(3))
-      el.style.setProperty('--hero-my', y.toFixed(3))
+      target.style.setProperty('--hero-mx', x.toFixed(3))
+      target.style.setProperty('--hero-my', y.toFixed(3))
     }
 
     // Clamped because the listener is on the window, not the banner: a pointer further
