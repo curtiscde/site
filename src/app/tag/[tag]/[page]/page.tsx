@@ -3,7 +3,8 @@ import { Hero } from "@/app/components/Hero";
 import PostsWithPagination from "@/app/components/Posts";
 import { config } from "@/app/config";
 import { Post } from "@/app/types";
-import { filterPostsByTag, formatTagStats, getPages, getPosts, getTopTags, paginatePosts } from "@/app/util/posts";
+import { RelatedTags } from "@/app/components/RelatedTags";
+import { filterPostsByTag, formatTagStats, getPages, getPosts, getRelatedTags, getTopTags, paginatePosts } from "@/app/util/posts";
 import { toSummary } from "@/app/types";
 
 const { postsPerPage } = config
@@ -50,7 +51,8 @@ export default async function Page({ params }: {
 }) {
   const { tag, page } = (await params)
 
-  const tagPosts: Post[] = filterPostsByTag(getPosts(), tag);
+  const posts: Post[] = getPosts();
+  const tagPosts: Post[] = filterPostsByTag(posts, tag);
   const { currentPage, pageCount, pagePosts } = paginatePosts(tagPosts, postsPerPage, page)
 
   return (
@@ -61,6 +63,7 @@ export default async function Page({ params }: {
         <div className="container mx-auto">
           <PostsWithPagination postsProps={{ posts: pagePosts.map(toSummary) }} paginationProps={{ currentPage, pageCount, tag }} />
         </div>
+        <RelatedTags tag={tag} relatedTags={getRelatedTags(posts, tag)} />
       </main>
     </>
   );

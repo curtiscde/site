@@ -1,4 +1,6 @@
 export { getRelatedPosts } from './getRelatedPosts'
+export { getRelatedTags } from './getRelatedTags'
+export type { RelatedTag } from './getRelatedTags'
 export { getPages } from './getPages'
 export { getPosts } from './getPosts'
 export { getTopTags } from './getTopTags'
