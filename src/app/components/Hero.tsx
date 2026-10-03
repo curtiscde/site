@@ -1,3 +1,4 @@
+import { Tag } from "lucide-react"
 import { config } from "../config"
 import { getBannerRows, type BannerItem, type BannerRow, type BannerVariant } from "../util/banner"
 import { displayTag } from "../util/tags"
@@ -25,12 +26,31 @@ interface HeroProps {
 
 /**
  * Shown only alongside the site's own name, not on tag or custom-title banners —
- * a face next to "🔖 javascript" reads as a byline for the tag.
+ * a face next to a tag name reads as a byline for the tag.
  */
 const Avatar = () => (
   <div className="hero-avatar">
     <SiteImage src="/images/curtis.png" alt={config.title} sizes="76px" priority />
   </div>
+)
+
+const Heading = ({ title, subtitle }: { title: React.ReactNode; subtitle?: string }) => (
+  <>
+    <h1 className="hero-title">{title}</h1>
+    {subtitle != null && <p className="hero-subtitle">{subtitle}</p>}
+  </>
+)
+
+/**
+ * The icon is decoration, so the heading's accessible name comes from the hidden text:
+ * "posts tagged javascript" rather than a bare "javascript".
+ */
+const TagTitle = ({ tag }: { tag: string }) => (
+  <>
+    <Tag className="hero-tag-icon" aria-hidden="true" />
+    <span className="sr-only">posts tagged </span>
+    {displayTag(tag)}
+  </>
 )
 
 /**
@@ -40,24 +60,14 @@ const Avatar = () => (
  */
 const Content = ({ tag, title: titleProp, subtitle: subtitleProp }: HeroProps) => {
   if (titleProp != null) {
-    return (
-      <>
-        <h1 className="hero-title">{titleProp}</h1>
-        {subtitleProp != null && <p className="hero-subtitle">{subtitleProp}</p>}
-      </>
-    )
+    return <Heading title={titleProp} subtitle={subtitleProp} />
   }
 
   if (tag != null) {
-    return <h1 className="hero-title">🔖 {displayTag(tag)}</h1>
+    return <Heading title={<TagTitle tag={tag} />} subtitle={subtitleProp} />
   }
 
-  return (
-    <>
-      <h1 className="hero-title">{title}</h1>
-      <p className="hero-subtitle">{subtitle}</p>
-    </>
-  )
+  return <Heading title={title} subtitle={subtitle} />
 }
 
 /**
@@ -153,7 +163,7 @@ export const Hero = ({ tag, title, subtitle, variant, rows }: HeroProps) => {
       {!isBare && (
         <div className="hero-centre">
           <div className="hero-panel">
-            {/* Only beside the site's own name — a face next to "🔖 javascript" or
+            {/* Only beside the site's own name — a face next to a tag name or
                 "Curriculum Vitae" reads as a byline for that page's subject. */}
             {tag == null && title == null && <Avatar />}
             <div className="hero-text">

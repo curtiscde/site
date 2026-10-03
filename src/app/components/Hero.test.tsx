@@ -94,9 +94,26 @@ describe('Hero', () => {
   })
 
   describe('tag variant', () => {
-    it('renders the tag heading with a bookmark', () => {
+    // Only the visually hidden text names the heading, so a screen reader hears what the
+    // page is, not a bare tag name. The trailing space matters: without it the name is
+    // "posts taggedjavascript".
+    it('heads the page "posts tagged <tag>"', () => {
       render(<Hero tag="javascript" rows={rows} />)
-      expect(screen.getByRole('heading', { name: /javascript/i })).toBeInTheDocument()
+      expect(screen.getByRole('heading', { name: 'posts tagged javascript' })).toBeInTheDocument()
+    })
+
+    it('shows a tag icon, hidden from assistive tech, instead of an emoji', () => {
+      const { container } = render(<Hero tag="javascript" rows={rows} />)
+      const icon = container.querySelector('h1 svg.hero-tag-icon')
+
+      expect(icon).toBeInTheDocument()
+      expect(icon).toHaveAttribute('aria-hidden', 'true')
+      expect(screen.queryByText(/🔖/)).toBeNull()
+    })
+
+    it('renders the stats line as the subtitle', () => {
+      render(<Hero tag="javascript" subtitle="15 posts · 2012–2022" rows={rows} />)
+      expect(screen.getByText('15 posts · 2012–2022')).toHaveClass('hero-subtitle')
     })
 
     it('does not render the default site title', () => {
@@ -127,7 +144,7 @@ describe('Hero', () => {
     it('renders the tag heading using the display name', () => {
       render(<Hero tag="c-sharp" rows={rows} />)
 
-      expect(screen.getByRole('heading', { name: /c#/ })).toBeInTheDocument()
+      expect(screen.getByRole('heading', { name: 'posts tagged c#' })).toBeInTheDocument()
       expect(screen.queryByRole('heading', { name: /c-sharp/ })).toBeNull()
     })
 
@@ -150,9 +167,9 @@ describe('Hero', () => {
     })
 
     it('takes precedence over the tag variant', () => {
-      render(<Hero title="Curriculum Vitae" tag="javascript" rows={rows} />)
+      const { container } = render(<Hero title="Curriculum Vitae" tag="javascript" rows={rows} />)
       expect(screen.getByRole('heading', { name: 'Curriculum Vitae' })).toBeInTheDocument()
-      expect(screen.queryByText(/🔖/)).toBeNull()
+      expect(container.querySelector('.hero-tag-icon')).toBeNull()
     })
   })
 
