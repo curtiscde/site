@@ -7,55 +7,62 @@ tags: ["javascript", "notification", "page-title", "project"]
 image: "/post/2014-flashing-page-title/newchatmessage.png"
 id: 21
 ---
+> **Updated October 2026:** the package is now [`flashing-page-title`](https://www.npmjs.com/package/flashing-page-title), an ES module, with a [new demo site](https://flashing-page-title.curtiscode.dev). The examples below are up to date.
+
 Page title notifications switch between the default page title and a notification message continously in order to grab the user's attention. This is commonly used with chat applications.
 
 ![New chat message notification](/post/2014-flashing-page-title/newchatmessage.gif)
 
-I've written a small javascript object which can be used to switch on and off page title notifications.
+I've written a small, dependency-free library which can be used to switch on and off page title notifications.
+
+## Install
+
+```bash
+npm install flashing-page-title
+```
+
+## Usage
 
 To activate the page title notification call the following:
 
 ```js
-pageTitleNotification.on("New Message!");
+import { flashingPageTitle } from "flashing-page-title";
+
+flashingPageTitle.on("New Message!");
 ```
 
-Then call the following to turn it off:
+Then call the following to turn it off, which also restores the original page title:
 
 ```js
-pageTitleNotification.off()
+flashingPageTitle.off();
 ```
 
 The default speed is 1000 milliseconds, but this can be customised by passing a 2nd parameter to the `on()` function.
 
 ```js
-pageTitleNotification.on("New Message!", 5000);
+flashingPageTitle.on("New Message!", 5000);
 ```
 
-## Download
+### Without a bundler
 
-There are various ways you can integrate this into your project:
+You can also load it straight into the page as an ES module:
 
-### npm
-Run the following `npm install` command:
+```html
+<script type="module">
+  import { flashingPageTitle } from "https://esm.sh/flashing-page-title@3";
 
-```js
-npm install flashing-page-title-notification --save
+  flashingPageTitle.on("New Message!");
+</script>
 ```
-
-https://www.npmjs.com/package/flashing-page-title-notification
-
-### Minified file
-
-Download the minified javascript version from GitHub:
-
-<a href="https://github.com/curtiscde/Flashing-Page-Title-Notification/blob/master/dist/PageTitleNotification.min.js" target="_blank">PageTitleNotification.min.js</a>
 
 ## Demo
 
-https://flashing-page-title-notification.netlify.com/demo
+Try it out, with copyable examples for React and more:
+
+https://flashing-page-title.curtiscode.dev
 
 ## GitHub
 
 Full source code available on GitHub. Please feel free to raise any issues or pull requests!
 
-https://github.com/curtiscde/Flashing-Page-Title-Notification
+https://github.com/curtiscde/flashing-page-title
