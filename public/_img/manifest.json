@@ -1,7 +1,7 @@
 {
   "/images/curtis-homepage.jpg": {
     "hash": "3ff166f196d2",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1200,
     "height": 618,
     "variants": {
@@ -53,7 +53,7 @@
   },
   "/images/curtis.png": {
     "hash": "f12ab9eb1208",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 600,
     "height": 600,
     "variants": {
@@ -97,7 +97,7 @@
   },
   "/images/logos/dreamscape.jpeg": {
     "hash": "014963552e99",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 200,
     "height": 200,
     "variants": {
@@ -125,7 +125,7 @@
   },
   "/images/logos/next.png": {
     "hash": "48db1d4e52a8",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 3840,
     "height": 926,
     "variants": {
@@ -185,7 +185,7 @@
   },
   "/post/2014-cache-busting/cache-buster-example.png": {
     "hash": "9c55caae7469",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 200,
     "height": 150,
     "variants": {
@@ -213,7 +213,7 @@
   },
   "/post/2014-copy-table-schema-to-new-a-table/copytable.jpg": {
     "hash": "709bc61bfe67",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 200,
     "height": 125,
     "variants": {
@@ -245,7 +245,7 @@
   },
   "/post/2014-flashing-page-title/newchatmessage.png": {
     "hash": "2882033b7070",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 494,
     "height": 88,
     "variants": {
@@ -289,7 +289,7 @@
   },
   "/post/2014-mixing-patterns/module-pattern.png": {
     "hash": "5a9f4acb1f18",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 200,
     "height": 200,
     "variants": {
@@ -321,7 +321,7 @@
   },
   "/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle.png": {
     "hash": "a8e95de18c9b",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2038,
     "height": 710,
     "variants": {
@@ -381,7 +381,7 @@
   },
   "/post/2015-how-to-store-razor-helpers-globally/HelpersSolutionExplorer.jpg": {
     "hash": "59a74a42cbee",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 209,
     "height": 112,
     "variants": {
@@ -417,7 +417,7 @@
   },
   "/post/2015-how-to-store-razor-helpers-globally/MyHelpersView.jpg": {
     "hash": "3d86b66c3dc6",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 319,
     "height": 108,
     "variants": {
@@ -453,7 +453,7 @@
   },
   "/post/2015-using-font-face-and-preventing-faux-styles/browser-font.jpg": {
     "hash": "29eba48855af",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 490,
     "height": 65,
     "variants": {
@@ -497,7 +497,7 @@
   },
   "/post/2015-using-font-face-and-preventing-faux-styles/font.png": {
     "hash": "9ee5fab52ed1",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1020,
     "height": 486,
     "variants": {
@@ -549,7 +549,7 @@
   },
   "/post/2015-using-font-face-and-preventing-faux-styles/type-face-italic.jpg": {
     "hash": "5e0fc7ca2185",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 450,
     "height": 71,
     "variants": {
@@ -593,7 +593,7 @@
   },
   "/post/2015/2015-8-tips-to-increase-front-end-website-performance/google-sprite-2015.png": {
     "hash": "c2a9eb49936b",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 167,
     "height": 410,
     "variants": {
@@ -621,7 +621,7 @@
   },
   "/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-bad.jpg": {
     "hash": "eb69a3c03bb6",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 518,
     "height": 158,
     "variants": {
@@ -665,7 +665,7 @@
   },
   "/post/2015/2015-8-tips-to-increase-front-end-website-performance/js-good.jpg": {
     "hash": "9c022eb0353d",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 518,
     "height": 154,
     "variants": {
@@ -709,7 +709,7 @@
   },
   "/post/2015/2015-8-tips-to-increase-front-end-website-performance/wi-5.png": {
     "hash": "4212a02f504c",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 719,
     "height": 490,
     "variants": {
@@ -753,7 +753,7 @@
   },
   "/post/2015/2015-setting-up-a-simple-angularjs-app-to-display-an-array/angularjs-logo-1024x547.png": {
     "hash": "a9d5c607a31b",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1024,
     "height": 547,
     "variants": {
@@ -805,7 +805,7 @@
   },
   "/post/2016/2016-default-parameters-es6/es6-parameter.jpg": {
     "hash": "569d8c64a735",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 373,
     "height": 94,
     "variants": {
@@ -841,7 +841,7 @@
   },
   "/post/2017/2017-8-useful-atom-packages/atom-editor-logo.jpg": {
     "hash": "5f18d0fc3311",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 600,
     "height": 200,
     "variants": {
@@ -889,7 +889,7 @@
   },
   "/post/2017/2017-8-useful-atom-packages/file-icons-example.png": {
     "hash": "f2d3a0078fbe",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1136,
     "height": 616,
     "variants": {
@@ -941,7 +941,7 @@
   },
   "/post/2017/2017-8-useful-atom-packages/file-icons.png": {
     "hash": "c221516b08da",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1650,
     "height": 704,
     "variants": {
@@ -1005,7 +1005,7 @@
   },
   "/post/2017/2017-8-useful-atom-packages/minimap-example.png": {
     "hash": "783b67856da1",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2242,
     "height": 800,
     "variants": {
@@ -1065,7 +1065,7 @@
   },
   "/post/2017/2017-8-useful-atom-packages/package-install.png": {
     "hash": "d1e3d444969c",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1804,
     "height": 786,
     "variants": {
@@ -1129,7 +1129,7 @@
   },
   "/post/2017/2017-8-useful-atom-packages/pigments-logo.png": {
     "hash": "0eb307100c0f",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1968,
     "height": 572,
     "variants": {
@@ -1189,7 +1189,7 @@
   },
   "/post/2017/2017-8-useful-atom-packages/todo-example.png": {
     "hash": "dedfd325b9fd",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1650,
     "height": 1154,
     "variants": {
@@ -1249,7 +1249,7 @@
   },
   "/post/2017/2017-angularjs-jest-unit-testing/angular-jest.png": {
     "hash": "0368494ad949",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 768,
     "height": 236,
     "variants": {
@@ -1293,7 +1293,7 @@
   },
   "/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage-fail.png": {
     "hash": "ee264fb455b3",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1100,
     "height": 166,
     "variants": {
@@ -1345,7 +1345,7 @@
   },
   "/post/2017/2017-angularjs-jest-unit-testing/jest-codecoverage.png": {
     "hash": "657bca80e607",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1102,
     "height": 496,
     "variants": {
@@ -1397,7 +1397,7 @@
   },
   "/post/2017/2017-angularjs-jest-unit-testing/jest-example-fail.png": {
     "hash": "a763a34c65ae",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1220,
     "height": 588,
     "variants": {
@@ -1457,7 +1457,7 @@
   },
   "/post/2017/2017-angularjs-jest-unit-testing/jest-example-pass.png": {
     "hash": "a4d0d207d768",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 894,
     "height": 324,
     "variants": {
@@ -1509,7 +1509,7 @@
   },
   "/post/2017/2017-lischana-lane-photography/hugo.png": {
     "hash": "7e508218163a",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1134,
     "height": 450,
     "variants": {
@@ -1561,7 +1561,7 @@
   },
   "/post/2017/2017-lischana-lane-photography/lischana-lane-lastfm.png": {
     "hash": "dd857936f7ce",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2618,
     "height": 358,
     "variants": {
@@ -1621,7 +1621,7 @@
   },
   "/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio-tn.png": {
     "hash": "704254dc521c",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 700,
     "height": 319,
     "variants": {
@@ -1665,7 +1665,7 @@
   },
   "/post/2017/2017-lischana-lane-photography/lischana-lane-portfolio.png": {
     "hash": "3b09c96fd211",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2880,
     "height": 1314,
     "variants": {
@@ -1725,7 +1725,7 @@
   },
   "/post/2017/2017-lischana-lane-photography/lischana-lane-tweet.png": {
     "hash": "4dac2708a449",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2470,
     "height": 526,
     "variants": {
@@ -1785,7 +1785,7 @@
   },
   "/post/2017/2017-lischana-lane-photography/lischana-lane-unitegallery.png": {
     "hash": "7cd80c564709",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1458,
     "height": 748,
     "variants": {
@@ -1845,7 +1845,7 @@
   },
   "/post/2017/2017-moving-wordpress-hugo/hugo.png": {
     "hash": "7e508218163a",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1134,
     "height": 450,
     "variants": {
@@ -1897,7 +1897,7 @@
   },
   "/post/2017/2017-moving-wordpress-hugo/little-bobby-tables.png": {
     "hash": "3ab72d771452",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 666,
     "height": 205,
     "variants": {
@@ -1941,7 +1941,7 @@
   },
   "/post/2017/2017-style-readonly-attribute-css/input-readonly.png": {
     "hash": "7ee039e078f1",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 868,
     "height": 266,
     "variants": {
@@ -1993,7 +1993,7 @@
   },
   "/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-flow.png": {
     "hash": "4b25e00128cb",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2428,
     "height": 1568,
     "variants": {
@@ -2053,7 +2053,7 @@
   },
   "/post/2018/2018-auth0-access-user-details-email-nodejs/auth0-nodejs-user-details.png": {
     "hash": "2d8e90388e0c",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 400,
     "height": 267,
     "variants": {
@@ -2089,7 +2089,7 @@
   },
   "/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope-tn.png": {
     "hash": "638aca29b901",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 900,
     "height": 600,
     "variants": {
@@ -2141,7 +2141,7 @@
   },
   "/post/2018/2018-dopetrope-hugo-theme/hugo-dopetrope.png": {
     "hash": "8b2dc72899bd",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1500,
     "height": 1000,
     "variants": {
@@ -2201,7 +2201,7 @@
   },
   "/post/2018/2018-hugo-netlify/build-options.png": {
     "hash": "33818c8689e4",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2180,
     "height": 1404,
     "variants": {
@@ -2261,7 +2261,7 @@
   },
   "/post/2018/2018-hugo-netlify/create-new-site.png": {
     "hash": "58ccf055803f",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2594,
     "height": 1394,
     "variants": {
@@ -2321,7 +2321,7 @@
   },
   "/post/2018/2018-hugo-netlify/custom-domain.png": {
     "hash": "4a4060b0076b",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1876,
     "height": 890,
     "variants": {
@@ -2381,7 +2381,7 @@
   },
   "/post/2018/2018-hugo-netlify/dns-verify-fail.png": {
     "hash": "8f4b833dc79d",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1856,
     "height": 902,
     "variants": {
@@ -2441,7 +2441,7 @@
   },
   "/post/2018/2018-hugo-netlify/hugo-netlify-tn.png": {
     "hash": "a1d733c71d80",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 400,
     "height": 200,
     "variants": {
@@ -2477,7 +2477,7 @@
   },
   "/post/2018/2018-hugo-netlify/hugo-netlify.png": {
     "hash": "0123b8f6a973",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 800,
     "height": 400,
     "variants": {
@@ -2521,7 +2521,7 @@
   },
   "/post/2018/2018-hugo-netlify/lets-encrypt.png": {
     "hash": "937f21025919",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1240,
     "height": 518,
     "variants": {
@@ -2581,7 +2581,7 @@
   },
   "/post/2018/2018-hugo-netlify/netlify-cd.png": {
     "hash": "60bc791d1ca9",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 816,
     "height": 114,
     "variants": {
@@ -2633,7 +2633,7 @@
   },
   "/post/2018/2018-hugo-netlify/netlify-ci.png": {
     "hash": "e7a7e2d969dc",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1566,
     "height": 546,
     "variants": {
@@ -2693,7 +2693,7 @@
   },
   "/post/2018/2018-hugo-netlify/site-overview.png": {
     "hash": "27dd9e4becff",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2494,
     "height": 1430,
     "variants": {
@@ -2753,7 +2753,7 @@
   },
   "/post/2018/2018-massively-hugo-theme/hugo-massively-tn.png": {
     "hash": "ad0dbaecd645",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 900,
     "height": 600,
     "variants": {
@@ -2805,7 +2805,7 @@
   },
   "/post/2018/2018-massively-hugo-theme/hugo-massively.png": {
     "hash": "9a56eb0c110c",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1500,
     "height": 1000,
     "variants": {
@@ -2865,7 +2865,7 @@
   },
   "/post/2018/2018-reactjs-jest-snapshot-mocking/jest-snapshot-mocking.png": {
     "hash": "b25113f5c95b",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 659,
     "height": 505,
     "variants": {
@@ -2909,7 +2909,7 @@
   },
   "/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest-snapshot.png": {
     "hash": "5a8795350f6a",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 768,
     "height": 150,
     "variants": {
@@ -2953,7 +2953,7 @@
   },
   "/post/2018/2018-reactjs-jest-snapshot-mocking/react-jest.png": {
     "hash": "751cb06bc97b",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 400,
     "height": 250,
     "variants": {
@@ -2989,7 +2989,7 @@
   },
   "/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal-error.png": {
     "hash": "ac9e6560be8e",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2224,
     "height": 1518,
     "variants": {
@@ -3049,7 +3049,7 @@
   },
   "/post/2018/2018-reactjs-jest-snapshot-mocking/reactjs-snapshot-terminal.png": {
     "hash": "71cc0b24c02f",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 774,
     "height": 258,
     "variants": {
@@ -3093,7 +3093,7 @@
   },
   "/post/2019/2019-add-body-class-gatsbyjs-fouc/body-class-removed.png": {
     "hash": "fd882d7a66df",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 330,
     "height": 130,
     "variants": {
@@ -3129,7 +3129,7 @@
   },
   "/post/2019/2019-add-body-class-gatsbyjs-fouc/body-no-class.png": {
     "hash": "20e1cb62f288",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 358,
     "height": 71,
     "variants": {
@@ -3165,7 +3165,7 @@
   },
   "/post/2019/2019-add-body-class-gatsbyjs-fouc/body-with-class.png": {
     "hash": "6fa5f7332bda",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 383,
     "height": 76,
     "variants": {
@@ -3201,7 +3201,7 @@
   },
   "/post/2019/2019-add-body-class-gatsbyjs-fouc/gatsbylogo.png": {
     "hash": "23b41402ee03",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 400,
     "height": 200,
     "variants": {
@@ -3237,7 +3237,7 @@
   },
   "/post/2022/2022-chartjs-filtering-duplicate-data/chart-dedup.png": {
     "hash": "e8acdf4d5a51",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1566,
     "height": 510,
     "variants": {
@@ -3297,7 +3297,7 @@
   },
   "/post/2022/2022-chartjs-filtering-duplicate-data/chart-overlapping.png": {
     "hash": "e3ebacc36cec",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1826,
     "height": 700,
     "variants": {
@@ -3357,7 +3357,7 @@
   },
   "/post/2022/2022-chartjs-filtering-duplicate-data/chartjs-600.png": {
     "hash": "7d52063c545c",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 600,
     "height": 300,
     "variants": {
@@ -3401,7 +3401,7 @@
   },
   "/post/2022/2022-chartjs-filtering-duplicate-data/chartjs.png": {
     "hash": "187f25ea16e5",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1000,
     "height": 500,
     "variants": {
@@ -3453,7 +3453,7 @@
   },
   "/post/2022/2022-chartjs-filtering-duplicate-data/charts.png": {
     "hash": "baf66c034542",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2830,
     "height": 1258,
     "variants": {
@@ -3513,7 +3513,7 @@
   },
   "/post/2022/2022-codecov-monorepo/codecov-600w.png": {
     "hash": "dec0086749ba",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 600,
     "height": 360,
     "variants": {
@@ -3557,7 +3557,7 @@
   },
   "/post/2022/2022-codecov-monorepo/codecov-pr.png": {
     "hash": "2bdb430cd600",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1762,
     "height": 728,
     "variants": {
@@ -3617,7 +3617,7 @@
   },
   "/post/2022/2022-codecov-monorepo/codecov-sunburst.png": {
     "hash": "1f2618adb7a6",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1136,
     "height": 1064,
     "variants": {
@@ -3669,7 +3669,7 @@
   },
   "/post/2022/2022-codecov-monorepo/codecov.png": {
     "hash": "ecda5a167a23",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1000,
     "height": 600,
     "variants": {
@@ -3721,7 +3721,7 @@
   },
   "/post/2022/2022-displaying-strava-stats-using-webhooks/authorize.png": {
     "hash": "f8caabd8cb37",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1520,
     "height": 1170,
     "variants": {
@@ -3781,7 +3781,7 @@
   },
   "/post/2022/2022-displaying-strava-stats-using-webhooks/gh-action-update-ath-ytd.png": {
     "hash": "dacca85ab6dd",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2838,
     "height": 1144,
     "variants": {
@@ -3841,7 +3841,7 @@
   },
   "/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-athlete.png": {
     "hash": "081aadbd518b",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1202,
     "height": 148,
     "variants": {
@@ -3901,7 +3901,7 @@
   },
   "/post/2022/2022-displaying-strava-stats-using-webhooks/git-update-ytd-history.png": {
     "hash": "cc80fbdc7f12",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1132,
     "height": 150,
     "variants": {
@@ -3953,7 +3953,7 @@
   },
   "/post/2022/2022-displaying-strava-stats-using-webhooks/netlify-build.png": {
     "hash": "72d55586642d",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2456,
     "height": 1172,
     "variants": {
@@ -4013,7 +4013,7 @@
   },
   "/post/2022/2022-displaying-strava-stats-using-webhooks/screenshot.png": {
     "hash": "5cf3d6368931",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1718,
     "height": 1462,
     "variants": {
@@ -4073,7 +4073,7 @@
   },
   "/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-diagram.png": {
     "hash": "394bcf2b9edf",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1153,
     "height": 1443,
     "variants": {
@@ -4125,7 +4125,7 @@
   },
   "/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-header.png": {
     "hash": "fc6e4cda7e46",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1000,
     "height": 100,
     "variants": {
@@ -4177,7 +4177,7 @@
   },
   "/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w1000.png": {
     "hash": "9f593bd3f881",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1000,
     "height": 600,
     "variants": {
@@ -4229,7 +4229,7 @@
   },
   "/post/2022/2022-displaying-strava-stats-using-webhooks/stravaytd-w600.png": {
     "hash": "395ac121f610",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 600,
     "height": 360,
     "variants": {
@@ -4273,7 +4273,7 @@
   },
   "/post/2022/2022-github-profile-latest-posts/add-profile-repo.png": {
     "hash": "9b3f75624c5f",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1470,
     "height": 364,
     "variants": {
@@ -4333,7 +4333,7 @@
   },
   "/post/2022/2022-github-profile-latest-posts/blog-post-workflow.yml.png": {
     "hash": "b424a5211874",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1840,
     "height": 1084,
     "variants": {
@@ -4393,7 +4393,7 @@
   },
   "/post/2022/2022-github-profile-latest-posts/cover-latest-posts-1000w.png": {
     "hash": "a93168355cb5",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1000,
     "height": 589,
     "variants": {
@@ -4445,7 +4445,7 @@
   },
   "/post/2022/2022-github-profile-latest-posts/cover-latest-posts-600w.png": {
     "hash": "616ed2499a77",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 600,
     "height": 353,
     "variants": {
@@ -4489,7 +4489,7 @@
   },
   "/post/2022/2022-github-profile-latest-posts/latest-posts.png": {
     "hash": "a969e315f4cd",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1660,
     "height": 362,
     "variants": {
@@ -4549,7 +4549,7 @@
   },
   "/post/2022/2022-github-profile-latest-posts/profile.png": {
     "hash": "c288325fb6ad",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1822,
     "height": 762,
     "variants": {
@@ -4609,7 +4609,7 @@
   },
   "/post/2022/2022-nextjs-boilerplate-template-typerite/githubtemplate.png": {
     "hash": "7cf363eda74e",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1844,
     "height": 112,
     "variants": {
@@ -4669,7 +4669,7 @@
   },
   "/post/2022/2022-nextjs-boilerplate-template-typerite/typeritescreenshot.png": {
     "hash": "acdc99ac1a5a",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2870,
     "height": 1448,
     "variants": {
@@ -4729,7 +4729,7 @@
   },
   "/post/2026/2026-how-i-use-claude-code/claude-usage-tracker-bluesky.png": {
     "hash": "d1e54c276de1",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1114,
     "height": 898,
     "variants": {
@@ -4781,7 +4781,7 @@
   },
   "/post/2026/2026-how-i-use-claude-code/cover.png": {
     "hash": "9f24a514beec",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2000,
     "height": 1047,
     "variants": {
@@ -4841,7 +4841,7 @@
   },
   "/post/2026/2026-how-i-use-claude-code/github-pr-checks.png": {
     "hash": "300df102b2bc",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1894,
     "height": 1086,
     "variants": {
@@ -4901,7 +4901,7 @@
   },
   "/post/2026/2026-how-i-use-claude-code/sentry-copy-as-markdown.png": {
     "hash": "c9e2ed6c1b94",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1968,
     "height": 184,
     "variants": {
@@ -4961,7 +4961,7 @@
   },
   "/post/2026/2026-how-i-use-claude-code/warp-worktree-tabs.png": {
     "hash": "686fc03e87d8",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2880,
     "height": 1362,
     "variants": {
@@ -5021,7 +5021,7 @@
   },
   "/post/2026/2026-how-i-use-claude-code/workflow-diagram.png": {
     "hash": "b076532ae551",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1776,
     "height": 448,
     "variants": {
@@ -5081,7 +5081,7 @@
   },
   "/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot.png": {
     "hash": "cd8c086bf4a8",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 3830,
     "height": 1060,
     "variants": {
@@ -5141,7 +5141,7 @@
   },
   "/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-london-marathon-example.png": {
     "hash": "c65c6df56b62",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1428,
     "height": 436,
     "variants": {
@@ -5201,7 +5201,7 @@
   },
   "/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-narrow-click.png": {
     "hash": "fdb860f63308",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2226,
     "height": 798,
     "variants": {
@@ -5261,7 +5261,7 @@
   },
   "/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-wider-click.png": {
     "hash": "554848dfcf09",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1200,
     "height": 435,
     "variants": {
@@ -5313,7 +5313,7 @@
   },
   "/post/2026/2026-london-marathon/leaflet.png": {
     "hash": "156b52f03ca2",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2876,
     "height": 854,
     "variants": {
@@ -5373,7 +5373,7 @@
   },
   "/post/2026/2026-london-marathon/lm-canvas-img.png": {
     "hash": "fe64a6c2b4a0",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2700,
     "height": 1278,
     "variants": {
@@ -5433,7 +5433,7 @@
   },
   "/post/2026/2026-london-marathon/london-marathon-curtis-site.png": {
     "hash": "4c894ca803da",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2488,
     "height": 1642,
     "variants": {
@@ -5493,7 +5493,7 @@
   },
   "/post/2026/2026-london-marathon/london-marathon-site-donation-line-flow-diagram.png": {
     "hash": "cca288c8ea16",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 840,
     "height": 998,
     "variants": {
@@ -5545,7 +5545,7 @@
   },
   "/post/2026/2026-obsidian-tasks-gtd/colored-tags-example.png": {
     "hash": "398a781f83fd",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 914,
     "height": 206,
     "variants": {
@@ -5597,7 +5597,7 @@
   },
   "/post/2026/2026-obsidian-tasks-gtd/gtd-workflow-diagram.png": {
     "hash": "d61c71b1d92d",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1418,
     "height": 1413,
     "variants": {
@@ -5657,7 +5657,7 @@
   },
   "/post/2026/2026-obsidian-tasks-gtd/obsidian-tasks-gtd-view.png": {
     "hash": "effb7dccc654",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1552,
     "height": 862,
     "variants": {
@@ -5717,7 +5717,7 @@
   },
   "/post/2026/2026-obsidian-tasks-gtd/templater-gtd-tag-shortcut.png": {
     "hash": "1b5fbf998f41",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1544,
     "height": 140,
     "variants": {
@@ -5777,7 +5777,7 @@
   },
   "/post/2026/2026-tech-stack-snapshot/banner.png": {
     "hash": "5d67f9b2031b",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2000,
     "height": 421,
     "variants": {
@@ -5837,7 +5837,7 @@
   },
   "/post/2026/2026-tech-stack-snapshot/cover.png": {
     "hash": "7a77fb8baa7d",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 2000,
     "height": 915,
     "variants": {
@@ -5897,7 +5897,7 @@
   },
   "/post/daily-commands/daily-commands.png": {
     "hash": "cb2fd6043aeb",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 1024,
     "height": 1024,
     "variants": {
@@ -5949,7 +5949,7 @@
   },
   "/post/github-profile-readme/cover-latest-posts-600w.png": {
     "hash": "616ed2499a77",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 600,
     "height": 353,
     "variants": {
@@ -5993,7 +5993,7 @@
   },
   "/post/jquery-data-storage/jquery.jpg": {
     "hash": "31325936acd0",
-    "config": "2b4fe3dc",
+    "config": "b468255f",
     "width": 280,
     "height": 200,
     "variants": {
