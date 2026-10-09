@@ -5079,6 +5079,230 @@
       ]
     }
   },
+  "/post/2026/2026-jev-github-issues/cover.png": {
+    "hash": "47fbb93fef7c",
+    "config": "2b4fe3dc",
+    "width": 2000,
+    "height": 1050,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-jev-github-issues/cover-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-jev-github-issues/cover-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-jev-github-issues/cover-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-jev-github-issues/cover-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-jev-github-issues/cover-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-jev-github-issues/cover-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-jev-github-issues/cover-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-jev-github-issues/cover-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-jev-github-issues/cover-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-jev-github-issues/cover-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-jev-github-issues/cover-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-jev-github-issues/cover-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-jev-github-issues/github-issue-questions.png": {
+    "hash": "78dbab83d70f",
+    "config": "2b4fe3dc",
+    "width": 2000,
+    "height": 924,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-jev-github-issues/github-issue-questions-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-jev-github-issues/github-issue-questions-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-jev-github-issues/github-issue-questions-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-jev-github-issues/github-issue-questions-800.avif"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-jev-github-issues/github-issue-questions-1200.avif"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-jev-github-issues/github-issue-questions-1600.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-jev-github-issues/github-issue-questions-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-jev-github-issues/github-issue-questions-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-jev-github-issues/github-issue-questions-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-jev-github-issues/github-issue-questions-800.webp"
+        ],
+        [
+          1200,
+          "/_img/post/2026/2026-jev-github-issues/github-issue-questions-1200.webp"
+        ],
+        [
+          1600,
+          "/_img/post/2026/2026-jev-github-issues/github-issue-questions-1600.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-jev-github-issues/jev-question-types.png": {
+    "hash": "e86b9c01aaa6",
+    "config": "2b4fe3dc",
+    "width": 1018,
+    "height": 467,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-jev-github-issues/jev-question-types-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-jev-github-issues/jev-question-types-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-jev-github-issues/jev-question-types-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-jev-github-issues/jev-question-types-800.avif"
+        ],
+        [
+          1018,
+          "/_img/post/2026/2026-jev-github-issues/jev-question-types-1018.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-jev-github-issues/jev-question-types-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-jev-github-issues/jev-question-types-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-jev-github-issues/jev-question-types-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-jev-github-issues/jev-question-types-800.webp"
+        ],
+        [
+          1018,
+          "/_img/post/2026/2026-jev-github-issues/jev-question-types-1018.webp"
+        ]
+      ]
+    }
+  },
+  "/post/2026/2026-jev-github-issues/jev-results.png": {
+    "hash": "9c6874b26bb3",
+    "config": "2b4fe3dc",
+    "width": 894,
+    "height": 817,
+    "variants": {
+      "avif": [
+        [
+          96,
+          "/_img/post/2026/2026-jev-github-issues/jev-results-96.avif"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-jev-github-issues/jev-results-200.avif"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-jev-github-issues/jev-results-400.avif"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-jev-github-issues/jev-results-800.avif"
+        ],
+        [
+          894,
+          "/_img/post/2026/2026-jev-github-issues/jev-results-894.avif"
+        ]
+      ],
+      "webp": [
+        [
+          96,
+          "/_img/post/2026/2026-jev-github-issues/jev-results-96.webp"
+        ],
+        [
+          200,
+          "/_img/post/2026/2026-jev-github-issues/jev-results-200.webp"
+        ],
+        [
+          400,
+          "/_img/post/2026/2026-jev-github-issues/jev-results-400.webp"
+        ],
+        [
+          800,
+          "/_img/post/2026/2026-jev-github-issues/jev-results-800.webp"
+        ],
+        [
+          894,
+          "/_img/post/2026/2026-jev-github-issues/jev-results-894.webp"
+        ]
+      ]
+    }
+  },
   "/post/2026/2026-leaflet-clickable-polyline/leaflet-blog-post-demo-site-screenshot.png": {
     "hash": "cd8c086bf4a8",
     "config": "2b4fe3dc",
