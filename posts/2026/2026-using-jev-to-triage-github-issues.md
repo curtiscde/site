@@ -1,6 +1,6 @@
 ---
 id: "8b424649-1252-40a3-8d27-f4346a010d19"
-title: "Using Jev to Triage GitHub Issues"
+title: "Using Jev to triage GitHub issues"
 slug: "using-jev-to-triage-github-issues"
 date: 2026-10-09T08:00:00
 tags: ["jev", "ai", "ai-sdk", "github", "typescript"]
