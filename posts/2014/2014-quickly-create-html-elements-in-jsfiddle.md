@@ -54,13 +54,13 @@ Which will produce:
 Finally we can also add other attributes in the same way we would select them in CSS:
 
 ```html
-a[href='http://curtistimson.co.uk']
+a[href='https://www.curtiscode.dev']
 ```
 
 Which produces:
 
 ```html
-<a href="http://curtistimson.co.uk"></a>
+<a href="https://www.curtiscode.dev"></a>
 ```
 
 ![Typing a shorthand abbreviation in JSFiddle's HTML panel and watching it expand into full markup](/post/2014-quickly-create-html-elements-in-jsfiddle/jsfiddle.gif)
