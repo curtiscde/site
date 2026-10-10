@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { render, screen, fireEvent, within } from '@testing-library/react'
+import { act, render, screen, fireEvent, within } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { ArticleLightbox } from './ArticleLightbox'
 
@@ -246,5 +246,106 @@ describe('ArticleLightbox dismissal', () => {
     dismiss()
 
     expect(dialog().open).toBe(false)
+  })
+})
+
+describe('ArticleLightbox zoom', () => {
+  // jsdom has no PointerEvent, so fireEvent.pointer* would otherwise arrive as a plain
+  // Event with no pointerType or coordinates.
+  const original = window.PointerEvent
+  beforeAll(() => {
+    class PointerEvent extends MouseEvent {
+      pointerType: string
+      constructor(type: string, init: PointerEventInit = {}) {
+        super(type, init)
+        this.pointerType = init.pointerType ?? ''
+      }
+    }
+    window.PointerEvent = PointerEvent as typeof window.PointerEvent
+  })
+  afterAll(() => {
+    window.PointerEvent = original
+  })
+
+  const tap = (img: HTMLElement, pointerType = 'touch') => {
+    fireEvent.pointerDown(img, { pointerType, clientX: 50, clientY: 50 })
+    fireEvent.pointerUp(img, { pointerType, clientX: 50, clientY: 50 })
+  }
+  const doubleTap = (img: HTMLElement, pointerType?: string) => {
+    tap(img, pointerType)
+    tap(img, pointerType)
+  }
+  /** Panzoom paints in requestAnimationFrame, and frames run in the order requested. */
+  const nextFrame = () =>
+    act(() => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())))
+
+  it('claims touch for the image, so a pinch zooms it rather than the page', () => {
+    render(<Article html={gallery} />)
+    openImage('One')
+
+    expect(shownImage().style.touchAction).toBe('none')
+  })
+
+  it('zooms in on a double-tap, and back out on another, without closing', async () => {
+    render(<Article html={gallery} />)
+    openImage('One')
+
+    doubleTap(shownImage())
+    await nextFrame()
+    expect(shownImage().style.transform).toContain('scale(2.5)')
+    expect(dialog().open).toBe(true)
+
+    doubleTap(shownImage())
+    await nextFrame()
+    expect(shownImage().style.transform).toContain('scale(1)')
+    expect(dialog().open).toBe(true)
+  })
+
+  it('does not zoom on a mouse double-click, leaving desktop unchanged', async () => {
+    render(<Article html={gallery} />)
+    openImage('One')
+
+    doubleTap(shownImage(), 'mouse')
+    await nextFrame()
+
+    expect(shownImage().style.transform).not.toContain('scale(2.5)')
+  })
+
+  it('does not zoom with the mouse wheel', async () => {
+    render(<Article html={gallery} />)
+    openImage('One')
+
+    fireEvent.wheel(shownImage(), { deltaY: -100 })
+    await nextFrame()
+
+    expect(shownImage().style.transform).not.toMatch(/scale\((?!1\))/)
+  })
+
+  it('starts the next image in the gallery unzoomed', async () => {
+    render(<Article html={gallery} />)
+    openImage('One')
+    doubleTap(shownImage())
+    await nextFrame()
+    expect(shownImage().style.transform).toContain('scale(2.5)')
+
+    fireEvent.click(screen.getByLabelText('Next image'))
+    await nextFrame()
+
+    expect(shownImage()).toHaveAttribute('alt', 'Two')
+    expect(shownImage().style.transform).not.toContain('scale(2.5)')
+  })
+
+  it('hands the image back untouched when closed', async () => {
+    render(<Article html={gallery} />)
+    openImage('One')
+    const img = shownImage()
+    doubleTap(img)
+    await nextFrame()
+
+    fireEvent.click(screen.getByLabelText('Close'))
+    await nextFrame()
+
+    expect(img.style.touchAction).toBe('')
+    expect(img.style.transform).toBe('')
   })
 })
