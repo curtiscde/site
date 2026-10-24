@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import { useArticleLightbox } from './useArticleLightbox'
+import { useLightboxZoom } from './useLightboxZoom'
 import './ArticleLightbox.scss'
 
 /**
@@ -11,8 +12,9 @@ import './ArticleLightbox.scss'
  * are screenshots of code and UIs where detail is the point, so the reader needs a way
  * back to full resolution — but only pays for it on click.
  *
- * Native <dialog> supplies Escape-to-close, focus trapping and background inertness, so
- * no lightbox dependency is needed. Matches the modal pattern in Footer.tsx.
+ * Native <dialog> supplies Escape-to-close, focus trapping and background inertness;
+ * the only dependency is Panzoom, for pinch-zoom on phones (see useLightboxZoom). Matches
+ * the modal pattern in Footer.tsx.
  */
 export const ArticleLightbox = ({
   containerRef,
@@ -21,12 +23,15 @@ export const ArticleLightbox = ({
 }) => {
   const { images, index, close, next, prev } = useArticleLightbox(containerRef)
   const dialog = useRef<HTMLDialogElement>(null)
+  const image = useRef<HTMLImageElement>(null)
   // The original that has finished decoding, rather than a boolean: comparing it against
   // the current image makes moving through the gallery reset the placeholder for free.
   const [decoded, setDecoded] = useState<string | null>(null)
 
   const current = index === null ? undefined : images[index]
   const showFull = current !== undefined && decoded === current.full
+
+  useLightboxZoom(image, current)
 
   useEffect(() => {
     const element = dialog.current
@@ -111,12 +116,16 @@ export const ArticleLightbox = ({
 
         {current !== undefined && (
           <figure className="article-lightbox__figure">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="article-lightbox__image"
-              src={showFull ? current.full : current.preview}
-              alt={current.alt}
-            />
+            {/* Panzoom's frame: it clips the zoomed image and must wrap it exactly. */}
+            <div className="article-lightbox__stage">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                ref={image}
+                className="article-lightbox__image"
+                src={showFull ? current.full : current.preview}
+                alt={current.alt}
+              />
+            </div>
             {current.caption !== '' && (
               <figcaption className="article-lightbox__caption">{current.caption}</figcaption>
             )}
