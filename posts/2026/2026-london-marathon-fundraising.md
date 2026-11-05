@@ -161,11 +161,14 @@ It also makes smaller donations feel meaningful. Even modest contributions perma
 As with all personal projects, there is always more that can be done! Here are a few of the ideas I've got in mind:
 
 - Currently the site is very fixed to my marathon fundraising. It would be great to allow other runners to use the model for their own fundraising, on different running courses
+  - **November 2026 Update**: [Route Raiser](https://www.routeraiser.com) is now an open platform. Any runner can create a page for their own race and charity.
 - Allow donors to be able to easily share their segment with social media. Currently there's no way of doing this, other than screenshotting, which isn't ideal.
   - **April 2026 Update**: This is now possible via a "Share" link in the donation modal
 - Some donors have suggested they would donate more for more premium spots on the route (for example, Tower Bridge). I'd like to find a way of incorporating this idea
 - Better interaction between JustGiving -> Donation Site. Once the donation is made, via JustGiving, the donor must find their own way back to the site, and refresh the page, to then see their donation on the map. It would be nice to give more instant gratification here with an immediate display of their donation segment.
+  - **August 2026 Update**: After donating on JustGiving, donors now come straight back to a thanks page showing the stretch of route they sponsored, with a share link.
 - Caching of segmentation allocation for performance gains
+  - **August 2026 Update**: Map data and fundraising pages are now cached, and the cache is skipped for donors returning from JustGiving so they still see their segment straight away.
 
 ---
 
